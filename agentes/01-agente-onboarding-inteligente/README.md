@@ -1,18 +1,128 @@
 ﻿# Agente de Onboarding Inteligente para PYMES
 
-## Objetivo
-Definir una base técnica demostrable para asistir el alta inicial de clientes mediante recogida estructurada de datos, checklist de onboarding, clasificación inicial y preparación de expediente.
+## Descripción breve
+Este agente está pensado para ordenar el alta inicial de clientes en pequeñas y medianas empresas mediante recogida estructurada de datos, checklist de onboarding, clasificación inicial y preparación de expediente. El enfoque actual es construir una base técnica demostrable y documentada que permita estandarizar el proceso de entrada de clientes. Su propósito es reducir ambigüedad operativa y mejorar trazabilidad desde el primer contacto. En esta etapa no se presenta como producto terminado, sino como marco inicial de trabajo para evolución progresiva.
 
-## Alcance por versiones
-- V1 implementable: estructura documental, definición de flujo y criterios operativos.
-- V2 futura: automatización con Google Workspace, generación documental, dashboard e integración progresiva con IA.
-- Fuera de alcance: ejecución productiva completa y conectores activos en esta etapa.
+## Estado del agente
+- Estado actual: fase documental inicial.
+- Código funcional: no implementado todavía.
+- Automatizaciones: no implementadas todavía.
+- Integraciones: no implementadas todavía.
+- Dashboard: no implementado todavía.
+- IA funcional: no implementada todavía.
 
-## Entregables actuales
+## Problema que aborda
+El onboarding en muchas PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) suele comenzar con información inicial dispersa y sin estructura operativa uniforme. Es habitual trabajar con correos y documentos sueltos, sin checklist claro ni trazabilidad mínima de qué datos faltan para avanzar. Esto provoca inicios de proyecto sin expediente completo, retrabajo administrativo y dependencia de memoria, llamadas o seguimiento manual para cerrar pendientes críticos.
+
+## Usuario objetivo
+Este agente está orientado a entornos como:
+- Consultorías pequeñas.
+- Agencias de servicios.
+- Despachos profesionales.
+- Formadores.
+- Empresas de servicios recurrentes.
+- Equipos internos de operaciones o administración.
+
+Está pensado para organizaciones sin infraestructura técnica compleja y con necesidad de ordenar su proceso de alta de clientes antes de escalar automatizaciones.
+
+## Objetivo funcional
+El objetivo funcional es ayudar a convertir una entrada de cliente desordenada en un expediente inicial más claro, estructurado y revisable.
+
+Este objetivo incluye:
+- Recogida inicial de datos.
+- Organización de información.
+- Identificación de datos pendientes.
+- Checklist de onboarding.
+- Preparación de expediente.
+- Revisión humana antes de avanzar.
+
+## Alcance V1 implementable
+La V1 (*Version 1 – Versión 1*) se plantea como una primera versión pequeña, realista y verificable.
+
+Puede incluir:
+- Documentación funcional y técnica.
+- Definición del flujo básico.
+- Checklist inicial de onboarding.
+- Modelo conceptual de datos.
+- Ejemplo de expediente de cliente.
+- Validación manual de campos mínimos.
+- Preparación para automatización futura.
+
+Esta V1 no implica todavía automatización completa ni IA (*Artificial Intelligence – Inteligencia Artificial*) generativa funcional.
+
+## Evolución V2 futura
+La V2 (*Version 2 – Versión 2*) define una posible evolución técnica posterior.
+
+Puede incluir:
+- Formulario de entrada con Google Forms.
+- Registro operativo en Google Sheets.
+- Generación documental con Google Docs.
+- Carpetas de cliente en Google Drive.
+- Dashboard operativo.
+- Clasificación inicial mediante reglas.
+- Resumen asistido con IA.
+- Alertas o avisos básicos.
+- Evolución hacia integración con CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*) y conexión por API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*), cuando proceda.
+
+Esta sección describe posibilidades futuras y no funcionalidades implementadas.
+
+## Fuera de alcance inicial
+- Agente autónomo completo.
+- Toma de decisiones sin revisión humana.
+- Despliegue productivo.
+- Multiempresa real.
+- Integraciones activas con clientes reales.
+- Sustitución de criterio profesional.
+- Gestión legal, fiscal o contractual avanzada.
+- Automatizaciones irreversibles.
+- CRM completo.
+
+## Entradas previstas
+Posibles entradas futuras:
+- Nombre del cliente.
+- Datos de contacto.
+- Tipo de servicio solicitado.
+- Necesidad principal.
+- Documentación recibida.
+- Prioridad inicial.
+- Observaciones internas.
+- Estado del checklist.
+
+Todavía no existe sistema funcional de captura implementado.
+
+## Salidas previstas
+Posibles salidas futuras:
+- Expediente inicial del cliente.
+- Checklist de onboarding.
+- Lista de datos pendientes.
+- Clasificación inicial.
+- Resumen operativo.
+- Próximas acciones recomendadas para revisión humana.
+
+Todavía no existe generación automática implementada.
+
+## Estructura documental del agente
+- README.md
 - docs/ARQUITECTURA.md
 - docs/CASO_USO.md
 - docs/ROADMAP.md
+- requirements.txt
+- .gitignore
+
+## Criterios de validación
+- ¿Se entiende qué problema resuelve?
+- ¿La V1 puede implementarse sin sobreingeniería?
+- ¿Está claro qué no está implementado?
+- ¿La evolución futura está separada del alcance actual?
+- ¿El agente puede demostrarse con datos de ejemplo?
+- ¿Existe revisión humana en puntos relevantes?
+
+## Próximos pasos
+1. Completar la arquitectura del agente.
+2. Completar el caso de uso funcional.
+3. Completar el roadmap de evolución.
 
 ## 🪪 Licencia y Autoría
+
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
