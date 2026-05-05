@@ -1,0 +1,395 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_ejemplo": "Cartera ficticia de clientes para validacion documental V1",
+    "descripcion": "Conjunto de datos inventados para validar manualmente el modelo de seguimiento de clientes del agente 03.",
+    "estado": "ejemplo ficticio para futura implementacion minima de V1; no hay automatizacion funcional implementada",
+    "advertencia": "Todos los datos son ficticios. No representan personas, empresas ni clientes reales. No hay CRM, dashboard, recordatorios automaticos, Google Workspace, API ni IA funcional implementada."
+  },
+  "empresa_ficticia": {
+    "nombre_empresa": "NexoForm Servicios",
+    "tipo_actividad": "pequena empresa ficticia de formacion corporativa",
+    "problema_seguimiento_principal": "mantener visibilidad sobre clientes activos, proximas acciones, bloqueos y riesgos operativos sin depender de memoria personal ni notas dispersas",
+    "equipo_implicado": [
+      "responsable de operaciones",
+      "consultor de formacion",
+      "consultora de formacion",
+      "soporte administrativo"
+    ],
+    "responsable_interno": "Laura Medina"
+  },
+  "clientes": [
+    {
+      "identificador_cliente": "CLI-001",
+      "nombre_cliente": "Marta Salcedo",
+      "nombre_empresa": "Aula Norte Simulada",
+      "estado_cliente": "activo",
+      "ultima_interaccion": "2025-03-03",
+      "proxima_accion": "Enviar propuesta ajustada de taller para equipo comercial.",
+      "responsable_interno": "Laura Medina",
+      "prioridad": "alta",
+      "riesgo_operativo": "bajo",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "2025-03-06",
+      "observaciones_internas": "Cliente interesado en una formacion breve y practica. Proxima accion clara y revisable."
+    },
+    {
+      "identificador_cliente": "CLI-002",
+      "nombre_cliente": "Sergio Lamas",
+      "nombre_empresa": "Vectoria Servicios Ficticios",
+      "estado_cliente": "pendiente_revision",
+      "ultima_interaccion": "2025-02-20",
+      "proxima_accion": "sin definir",
+      "responsable_interno": "Laura Medina",
+      "prioridad": "media",
+      "riesgo_operativo": "medio",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "2025-02-27",
+      "observaciones_internas": "Cliente con seguimiento vencido y sin proxima accion registrada. Requiere decision humana."
+    },
+    {
+      "identificador_cliente": "CLI-003",
+      "nombre_cliente": "Irene Campos",
+      "nombre_empresa": "Talleres Luar Simulados",
+      "estado_cliente": "esperando_cliente",
+      "ultima_interaccion": "2025-03-01",
+      "proxima_accion": "Esperar confirmacion de asistentes y horario disponible.",
+      "responsable_interno": "Daniel Rivas",
+      "prioridad": "media",
+      "riesgo_operativo": "bajo",
+      "bloqueo": "pendiente de respuesta del cliente",
+      "fecha_prevista_seguimiento": "2025-03-08",
+      "observaciones_internas": "El avance depende de informacion pendiente por parte del cliente ficticio."
+    },
+    {
+      "identificador_cliente": "CLI-004",
+      "nombre_cliente": "Alvaro Nunez",
+      "nombre_empresa": "Bruma Digital Inventada",
+      "estado_cliente": "bloqueado",
+      "ultima_interaccion": "2025-02-25",
+      "proxima_accion": "Revisar internamente el alcance antes de responder al cliente.",
+      "responsable_interno": "Laura Medina",
+      "prioridad": "alta",
+      "riesgo_operativo": "alto",
+      "bloqueo": "discrepancia de alcance",
+      "fecha_prevista_seguimiento": "2025-03-04",
+      "observaciones_internas": "Hay desacuerdo sobre contenidos incluidos. No debe avanzarse sin revision humana."
+    },
+    {
+      "identificador_cliente": "CLI-005",
+      "nombre_cliente": "Paula Ibanez",
+      "nombre_empresa": "Mantenimiento Prisma Ficticio",
+      "estado_cliente": "en_riesgo",
+      "ultima_interaccion": "2025-02-10",
+      "proxima_accion": "Llamar para revisar satisfaccion y confirmar continuidad.",
+      "responsable_interno": "Clara Torres",
+      "prioridad": "alta",
+      "riesgo_operativo": "alto",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "2025-02-17",
+      "observaciones_internas": "Seguimiento vencido con senales ficticias de baja satisfaccion. Requiere revision prioritaria."
+    },
+    {
+      "identificador_cliente": "CLI-006",
+      "nombre_cliente": "Hector Molina",
+      "nombre_empresa": "Centro Beta Formativo",
+      "estado_cliente": "cerrado",
+      "ultima_interaccion": "2025-02-28",
+      "proxima_accion": "Registrar cierre documental del servicio.",
+      "responsable_interno": "Laura Medina",
+      "prioridad": "baja",
+      "riesgo_operativo": "bajo",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "2025-03-10",
+      "observaciones_internas": "Servicio ficticio finalizado. Solo queda revision administrativa de ejemplo."
+    },
+    {
+      "identificador_cliente": "CLI-007",
+      "nombre_cliente": "Nuria Beltran",
+      "nombre_empresa": "Horizonte Sur Simulado",
+      "estado_cliente": "descartado",
+      "ultima_interaccion": "2025-02-18",
+      "proxima_accion": "No aplica.",
+      "responsable_interno": "Daniel Rivas",
+      "prioridad": "baja",
+      "riesgo_operativo": "bajo",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "sin fecha prevista",
+      "observaciones_internas": "Cliente descartado por falta de encaje con el servicio ficticio ofrecido."
+    },
+    {
+      "identificador_cliente": "CLI-008",
+      "nombre_cliente": "Raquel Prieto",
+      "nombre_empresa": "Orbita Aprendizaje Simulado",
+      "estado_cliente": "activo",
+      "ultima_interaccion": "2025-02-14",
+      "proxima_accion": "sin definir",
+      "responsable_interno": "Clara Torres",
+      "prioridad": "alta",
+      "riesgo_operativo": "critico",
+      "bloqueo": "no",
+      "fecha_prevista_seguimiento": "2025-02-21",
+      "observaciones_internas": "Cliente activo sin proxima accion y con seguimiento vencido. Debe priorizarse para revision humana."
+    }
+  ],
+  "interacciones": [
+    {
+      "identificador_interaccion": "INT-001",
+      "identificador_cliente": "CLI-001",
+      "tipo_interaccion": "correo",
+      "fecha_interaccion": "2025-03-03",
+      "resumen_interaccion": "La cliente solicita una propuesta ajustada para una formacion de ventas consultivas.",
+      "responsable_interaccion": "Laura Medina",
+      "resultado_interaccion": "interes confirmado",
+      "proxima_accion_derivada": "Enviar propuesta ajustada.",
+      "observaciones_interaccion": "Interaccion ficticia; no procede de correo real."
+    },
+    {
+      "identificador_interaccion": "INT-002",
+      "identificador_cliente": "CLI-003",
+      "tipo_interaccion": "llamada",
+      "fecha_interaccion": "2025-03-01",
+      "resumen_interaccion": "El cliente indica que necesita confirmar asistentes antes de cerrar fechas.",
+      "responsable_interaccion": "Daniel Rivas",
+      "resultado_interaccion": "pendiente de respuesta del cliente",
+      "proxima_accion_derivada": "Revisar si responde antes de la fecha prevista.",
+      "observaciones_interaccion": "Registro ficticio sin conexion con telefonia real."
+    },
+    {
+      "identificador_interaccion": "INT-003",
+      "identificador_cliente": "CLI-004",
+      "tipo_interaccion": "reunion",
+      "fecha_interaccion": "2025-02-25",
+      "resumen_interaccion": "Se detecta una discrepancia sobre el alcance de los contenidos incluidos.",
+      "responsable_interaccion": "Laura Medina",
+      "resultado_interaccion": "seguimiento bloqueado",
+      "proxima_accion_derivada": "Revisar alcance internamente.",
+      "observaciones_interaccion": "No existe reunion real ni acta real asociada."
+    },
+    {
+      "identificador_interaccion": "INT-004",
+      "identificador_cliente": "CLI-005",
+      "tipo_interaccion": "nota_interna",
+      "fecha_interaccion": "2025-02-12",
+      "resumen_interaccion": "Se registra preocupacion por baja participacion en la ultima sesion ficticia.",
+      "responsable_interaccion": "Clara Torres",
+      "resultado_interaccion": "riesgo operativo identificado",
+      "proxima_accion_derivada": "Llamar para revisar satisfaccion.",
+      "observaciones_interaccion": "Nota inventada para validacion documental."
+    },
+    {
+      "identificador_interaccion": "INT-005",
+      "identificador_cliente": "CLI-002",
+      "tipo_interaccion": "revision_operativa",
+      "fecha_interaccion": "2025-02-27",
+      "resumen_interaccion": "Se detecta que no hay proxima accion definida tras la ultima conversacion.",
+      "responsable_interaccion": "Laura Medina",
+      "resultado_interaccion": "requiere revision humana",
+      "proxima_accion_derivada": "Decidir si se reactiva o se descarta.",
+      "observaciones_interaccion": "No procede de sistema automatico."
+    },
+    {
+      "identificador_interaccion": "INT-006",
+      "identificador_cliente": "CLI-008",
+      "tipo_interaccion": "revision_operativa",
+      "fecha_interaccion": "2025-02-21",
+      "resumen_interaccion": "Se confirma que el cliente activo no tiene proxima accion y acumula seguimiento vencido.",
+      "responsable_interaccion": "Clara Torres",
+      "resultado_interaccion": "riesgo critico por falta de siguiente paso",
+      "proxima_accion_derivada": "Definir accion de recuperacion o descarte.",
+      "observaciones_interaccion": "Registro ficticio para validar cliente activo sin proxima accion."
+    }
+  ],
+  "acciones_seguimiento": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_cliente": "CLI-001",
+      "descripcion_accion": "Enviar propuesta ajustada de taller para equipo comercial.",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-06",
+      "bloqueo_asociado": "no",
+      "observaciones_accion": "Accion clara y lista para revision final."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_cliente": "CLI-002",
+      "descripcion_accion": "Revisar manualmente si el cliente debe reactivarse o descartarse.",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-03-05",
+      "bloqueo_asociado": "no",
+      "observaciones_accion": "Cliente sin proxima accion registrada."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_cliente": "CLI-003",
+      "descripcion_accion": "Esperar confirmacion de asistentes y horario.",
+      "responsable_accion": "Daniel Rivas",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-03-08",
+      "bloqueo_asociado": "pendiente de respuesta del cliente",
+      "observaciones_accion": "Si no hay respuesta, revisar alternativa de contacto."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_cliente": "CLI-004",
+      "descripcion_accion": "Resolver discrepancia interna sobre alcance antes de contactar al cliente.",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-04",
+      "bloqueo_asociado": "discrepancia de alcance",
+      "observaciones_accion": "No debe avanzarse sin revision humana."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_cliente": "CLI-006",
+      "descripcion_accion": "Registrar cierre documental del servicio finalizado.",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "completada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2025-03-10",
+      "bloqueo_asociado": "no",
+      "observaciones_accion": "Accion completada en el ejemplo ficticio."
+    },
+    {
+      "identificador_accion": "ACC-006",
+      "identificador_cliente": "CLI-007",
+      "descripcion_accion": "Continuar seguimiento comercial.",
+      "responsable_accion": "Daniel Rivas",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "sin fecha prevista",
+      "bloqueo_asociado": "no",
+      "observaciones_accion": "Accion descartada por falta de encaje."
+    },
+    {
+      "identificador_accion": "ACC-007",
+      "identificador_cliente": "CLI-008",
+      "descripcion_accion": "Definir manualmente una proxima accion o decidir descarte.",
+      "responsable_accion": "Clara Torres",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-02",
+      "bloqueo_asociado": "no",
+      "observaciones_accion": "Accion de revision creada para corregir ausencia de siguiente paso."
+    }
+  ],
+  "bloqueos_operativos": [
+    {
+      "identificador_bloqueo": "BLO-001",
+      "identificador_cliente": "CLI-004",
+      "descripcion_bloqueo": "No esta claro si determinados contenidos estaban incluidos en la propuesta inicial.",
+      "motivo_bloqueo": "discrepancia de alcance",
+      "impacto_operativo": "impide responder al cliente con seguridad",
+      "responsable_revision": "Laura Medina",
+      "prioridad_bloqueo": "alta",
+      "estado_bloqueo": "activo",
+      "observaciones_bloqueo": "Requiere revision interna ficticia antes de avanzar."
+    },
+    {
+      "identificador_bloqueo": "BLO-002",
+      "identificador_cliente": "CLI-003",
+      "descripcion_bloqueo": "Falta confirmacion de asistentes y horario por parte del cliente ficticio.",
+      "motivo_bloqueo": "pendiente de informacion externa",
+      "impacto_operativo": "retrasa la planificacion de la formacion",
+      "responsable_revision": "Daniel Rivas",
+      "prioridad_bloqueo": "media",
+      "estado_bloqueo": "en_revision",
+      "observaciones_bloqueo": "Si no hay respuesta, se propondria nueva llamada."
+    },
+    {
+      "identificador_bloqueo": "BLO-003",
+      "identificador_cliente": "CLI-006",
+      "descripcion_bloqueo": "Pendiente administrativo de cierre ya revisado.",
+      "motivo_bloqueo": "revision interna completada",
+      "impacto_operativo": "sin impacto operativo actual",
+      "responsable_revision": "Laura Medina",
+      "prioridad_bloqueo": "baja",
+      "estado_bloqueo": "resuelto",
+      "observaciones_bloqueo": "Bloqueo ficticio resuelto para cubrir estado de validacion."
+    },
+    {
+      "identificador_bloqueo": "BLO-004",
+      "identificador_cliente": "CLI-007",
+      "descripcion_bloqueo": "Falta de encaje con el servicio ofrecido.",
+      "motivo_bloqueo": "oportunidad descartada",
+      "impacto_operativo": "no requiere seguimiento activo",
+      "responsable_revision": "Daniel Rivas",
+      "prioridad_bloqueo": "baja",
+      "estado_bloqueo": "descartado",
+      "observaciones_bloqueo": "Caso descartado de forma manual."
+    }
+  ],
+  "clasificaciones_riesgo": [
+    {
+      "identificador_clasificacion": "RSK-001",
+      "identificador_cliente": "CLI-001",
+      "nivel_riesgo": "bajo",
+      "motivo_riesgo": "proxima accion clara y cliente activo",
+      "prioridad_revision": "alta por oportunidad activa",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "revision manual",
+      "observaciones_clasificacion": "La prioridad se debe a oportunidad abierta, no a riesgo negativo."
+    },
+    {
+      "identificador_clasificacion": "RSK-002",
+      "identificador_cliente": "CLI-002",
+      "nivel_riesgo": "medio",
+      "motivo_riesgo": "seguimiento vencido y ausencia de proxima accion",
+      "prioridad_revision": "media",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "regla simple por falta de proxima accion",
+      "observaciones_clasificacion": "Debe decidirse si se reactiva o se descarta."
+    },
+    {
+      "identificador_clasificacion": "RSK-003",
+      "identificador_cliente": "CLI-004",
+      "nivel_riesgo": "alto",
+      "motivo_riesgo": "cliente bloqueado por discrepancia de alcance",
+      "prioridad_revision": "alta",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "regla simple por bloqueo activo",
+      "observaciones_clasificacion": "No debe avanzarse sin revisar el caso internamente."
+    },
+    {
+      "identificador_clasificacion": "RSK-004",
+      "identificador_cliente": "CLI-005",
+      "nivel_riesgo": "alto",
+      "motivo_riesgo": "seguimiento vencido y senal de baja satisfaccion",
+      "prioridad_revision": "alta",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "revision manual y regla simple por fecha vencida",
+      "observaciones_clasificacion": "Caso util para validar deteccion de riesgo operativo."
+    },
+    {
+      "identificador_clasificacion": "RSK-005",
+      "identificador_cliente": "CLI-006",
+      "nivel_riesgo": "bajo",
+      "motivo_riesgo": "servicio cerrado y sin bloqueo operativo relevante",
+      "prioridad_revision": "baja",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "revision manual",
+      "observaciones_clasificacion": "Solo queda revision administrativa ficticia."
+    },
+    {
+      "identificador_clasificacion": "RSK-006",
+      "identificador_cliente": "CLI-008",
+      "nivel_riesgo": "critico",
+      "motivo_riesgo": "cliente activo sin proxima accion y seguimiento vencido",
+      "prioridad_revision": "alta",
+      "requiere_revision_humana": true,
+      "criterio_clasificacion": "regla simple por cliente activo sin proxima accion",
+      "observaciones_clasificacion": "Debe revisarse antes de considerar controlada la cartera."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_resultante": "revision_manual_pendiente",
+    "decision_revision_humana": "revisar_de_nuevo",
+    "motivo_decision": "La cartera contiene clientes sin proxima accion, seguimientos vencidos, bloqueos activos y riesgos altos o criticos que requieren validacion humana antes de avanzar.",
+    "proxima_accion_global": "Revisar CLI-008, CLI-004, CLI-005 y CLI-002 antes de considerar preparada la V1 documental."
+  }
+}
