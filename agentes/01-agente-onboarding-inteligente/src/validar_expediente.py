@@ -1,4 +1,5 @@
 from pathlib import Path
+import argparse
 import json
 
 
@@ -28,10 +29,31 @@ CAMPOS_CLIENTE_OBLIGATORIOS = [
 ]
 
 
-def obtener_ruta_expediente():
+def obtener_ruta_expediente_por_defecto():
     """Construye la ruta al JSON ficticio desde la ubicacion de este script."""
     carpeta_agente = Path(__file__).resolve().parents[1]
     return carpeta_agente / "datos_ejemplo" / "cliente_onboarding_ficticio.json"
+
+
+def leer_argumentos():
+    """Lee una ruta opcional al expediente JSON desde la consola."""
+    parser = argparse.ArgumentParser(
+        description="Valida un expediente ficticio de onboarding para PYMES."
+    )
+    parser.add_argument(
+        "ruta_json",
+        nargs="?",
+        help="Ruta opcional al archivo JSON ficticio que se quiere validar.",
+    )
+    return parser.parse_args()
+
+
+def obtener_ruta_expediente(argumentos):
+    """Decide si se usa la ruta recibida o el JSON ficticio por defecto."""
+    if argumentos.ruta_json:
+        return Path(argumentos.ruta_json)
+
+    return obtener_ruta_expediente_por_defecto()
 
 
 def cargar_expediente(ruta_expediente):
@@ -213,7 +235,8 @@ def imprimir_informe(
 
 def main():
     """Orquesta la carga, validacion y generacion del informe."""
-    ruta_expediente = obtener_ruta_expediente()
+    argumentos = leer_argumentos()
+    ruta_expediente = obtener_ruta_expediente(argumentos)
     expediente = cargar_expediente(ruta_expediente)
 
     if expediente is None:

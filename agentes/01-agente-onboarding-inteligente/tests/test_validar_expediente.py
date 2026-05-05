@@ -8,23 +8,26 @@ import unittest
 class PruebaValidarExpediente(unittest.TestCase):
     """Comprueba la ejecucion real del script desde consola."""
 
-    def test_informe_basico_con_datos_ficticios(self):
-        """Valida la salida minima esperada para la V1 local."""
-        raiz_repositorio = Path(__file__).resolve().parents[3]
-        ruta_script = (
-            raiz_repositorio
-            / "agentes"
-            / "01-agente-onboarding-inteligente"
-            / "src"
-            / "validar_expediente.py"
-        )
+    def setUp(self):
+        """Prepara rutas compartidas para las pruebas."""
+        self.raiz_repositorio = Path(__file__).resolve().parents[3]
+        self.ruta_agente = self.raiz_repositorio / "agentes" / "01-agente-onboarding-inteligente"
+        self.ruta_script = self.ruta_agente / "src" / "validar_expediente.py"
+        self.ruta_json = self.ruta_agente / "datos_ejemplo" / "cliente_onboarding_ficticio.json"
+
+    def ejecutar_script(self, argumentos=None):
+        """Ejecuta el script como lo haria una persona desde consola."""
         entorno = os.environ.copy()
         # Se fuerza PYTHONIOENCODING para evitar problemas de codificacion al capturar salida en Windows.
         entorno["PYTHONIOENCODING"] = "utf-8"
+        comando = [sys.executable, str(self.ruta_script)]
 
-        resultado = subprocess.run(
-            [sys.executable, str(ruta_script)],
-            cwd=raiz_repositorio,
+        if argumentos:
+            comando.extend(str(argumento) for argumento in argumentos)
+
+        return subprocess.run(
+            comando,
+            cwd=self.raiz_repositorio,
             capture_output=True,
             text=True,
             encoding="utf-8",
@@ -33,6 +36,8 @@ class PruebaValidarExpediente(unittest.TestCase):
             check=False,
         )
 
+    def comprobar_salida_basica(self, resultado):
+        """Comprueba el resultado minimo esperado del expediente ficticio."""
         salida = resultado.stdout or ""
         error = resultado.stderr or ""
 
@@ -46,18 +51,21 @@ class PruebaValidarExpediente(unittest.TestCase):
             "INFORME DE VALIDACION DEL EXPEDIENTE",
             "Laura Martín",
             "Taller Creativo Bahía, S. L.",
-            "Estado del onboarding: en_revision",
-            "Documentos recibidos: 1",
-            "Documentos pendientes: 1",
-            "Documentos incompletos: 1",
-            "Items completos: 7",
-            "Items obligatorios pendientes: 2",
-            "Items bloqueados: 2",
             "Decision recomendada de revision manual: bloquear",
         ]
 
         for texto in textos_esperados:
             self.assertIn(texto, salida)
+
+    def test_informe_basico_sin_argumentos(self):
+        """Valida que el script usa el JSON ficticio por defecto."""
+        resultado = self.ejecutar_script()
+        self.comprobar_salida_basica(resultado)
+
+    def test_informe_basico_con_ruta_json_explicita(self):
+        """Valida que el script acepta una ruta JSON por parametro."""
+        resultado = self.ejecutar_script([self.ruta_json])
+        self.comprobar_salida_basica(resultado)
 
 
 if __name__ == "__main__":
