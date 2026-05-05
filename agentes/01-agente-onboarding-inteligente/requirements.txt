@@ -1,2 +1,24 @@
-﻿# Pendiente de definición en fase de implementación funcional.
+# Agente de Onboarding Inteligente para PYMES
+# Estado actual: fase documental inicial.
+# No hay dependencias activas porque todavía no existe código funcional.
+# Las dependencias se añadirán cuando se implemente la V1.
 
+# Futuro bloque: validación de datos.
+# Ejemplos orientativos para una V1 futura:
+# pydantic
+
+# Futuro bloque: automatización local.
+# Ejemplos orientativos para una V1 futura:
+# pandas
+
+# Futuro bloque: integración futura con Google Workspace.
+# Ejemplos orientativos para una V1 futura:
+# google-api-python-client
+
+# Futuro bloque: integración futura con IA.
+# Ejemplos orientativos para una V1 futura:
+# openai
+
+# Futuro bloque: pruebas.
+# Ejemplos orientativos para una V1 futura:
+# pytest

@@ -1,3 +1,31 @@
-﻿.venv/
+# Entornos virtuales de Python
+.venv/
+venv/
+
+# Cachés de Python
 __pycache__/
+*.pyc
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Variables de entorno
 .env
+.env.local
+
+# Carpetas de datos locales o privados
+datos_locales/
+datos_privados/
+
+# Salidas generadas futuras
+salidas/
+
+# Archivos de sistema de Windows y macOS
+.DS_Store
+Thumbs.db
+
+# Configuración local de editores
+.vscode/
+.idea/
