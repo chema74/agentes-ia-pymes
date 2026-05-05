@@ -1,0 +1,17 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_ejemplo": "Expediente ficticio incompleto para prueba",
+    "descripcion": "Datos inventados para validar errores de estructura en la V1 minima."
+  },
+  "cliente": {
+    "identificador_cliente": "CLI-PRUEBA-001",
+    "nombre_cliente": "Cliente Ficticio",
+    "nombre_empresa": "Empresa Ficticia, S. L.",
+    "correo_contacto": "cliente.ficticio@ejemplo.local",
+    "telefono_contacto": "+34 600 000 000",
+    "tipo_servicio_solicitado": "Onboarding administrativo ficticio",
+    "necesidad_principal": "Validar comportamiento con estructura incompleta.",
+    "estado_onboarding": "en_revision",
+    "responsable_interno": "Responsable Ficticio"
+  }
+}

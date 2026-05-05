@@ -15,6 +15,12 @@ class PruebaValidarExpediente(unittest.TestCase):
         self.ruta_script = self.ruta_agente / "src" / "validar_expediente.py"
         self.ruta_json = self.ruta_agente / "datos_ejemplo" / "cliente_onboarding_ficticio.json"
         self.ruta_json_inexistente = self.ruta_agente / "datos_ejemplo" / "no_existe.json"
+        self.ruta_json_incompleto = (
+            self.ruta_agente
+            / "tests"
+            / "datos_prueba"
+            / "expediente_incompleto.json"
+        )
 
     def ejecutar_script(self, argumentos=None):
         """Ejecuta el script como lo haria una persona desde consola."""
@@ -78,6 +84,18 @@ class PruebaValidarExpediente(unittest.TestCase):
         self.assertNotEqual(resultado.returncode, 0)
         self.assertIn("archivo", salida_completa)
         self.assertIn("no se ha encontrado", salida_completa)
+
+    def test_error_con_json_de_estructura_incompleta(self):
+        """Valida que un JSON incompleto devuelve error claro."""
+        resultado = self.ejecutar_script([self.ruta_json_incompleto])
+        salida = (resultado.stdout or "").lower()
+        error = (resultado.stderr or "").lower()
+        salida_completa = f"{salida}\n{error}"
+
+        self.assertNotEqual(resultado.returncode, 0)
+        self.assertIn("estructura", salida_completa)
+        self.assertIn("incompleta", salida_completa)
+        self.assertIn("secciones", salida_completa)
 
 
 if __name__ == "__main__":
