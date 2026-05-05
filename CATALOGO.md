@@ -1,97 +1,119 @@
-﻿# Catálogo de Agentes IA para PYMES
+# Catálogo de Agentes IA para PYMES
 
 ## Objetivo del catálogo
-Este archivo resume los agentes previstos dentro del repositorio y su estado real de avance. Su función es ofrecer una vista técnica rápida para entender qué está en desarrollo activo, qué está reservado y qué permanece fuera de alcance en la fase actual.
+Este archivo resume los agentes previstos dentro del repositorio y su estado real de avance. Su función es ofrecer una vista técnica rápida para entender qué está cerrado en V1 mínima, qué está reservado y qué permanece como evolución futura.
 
 ## Estado general
-- El repositorio está en fase inicial.
+- El repositorio sigue en evolución.
 - La infraestructura documental común ya está creada.
-- El desarrollo activo se concentra únicamente en el agente 01.
+- El agente 01 tiene una V1 mínima local cerrada.
+- Los agentes 02 al 10 siguen como estructura reservada y desarrollo pendiente.
+- No existe IA funcional, Google Workspace, dashboard, API, automatización productiva ni integración real con clientes.
 
 ## Agentes del portfolio
 
 ### 01 — Agente de Onboarding Inteligente
 - Carpeta: `agentes/01-agente-onboarding-inteligente/`
-- Estado: en desarrollo documental inicial.
-- Objetivo: ordenar el alta inicial de clientes en PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) mediante recogida estructurada de datos, checklist, clasificación inicial y preparación de expediente.
-- Alcance V1 (*Version 1 – Versión 1*): documentación funcional y técnica, diseño del flujo, checklist inicial, modelo conceptual de datos y preparación para automatización futura.
-- Evolución V2 (*Version 2 – Versión 2*): Google Workspace, generación documental, dashboard e integración futura con IA (*Artificial Intelligence – Inteligencia Artificial*).
-- Fuera de alcance inicial: agente autónomo completo, despliegue productivo, multiempresa, integraciones reales y toma de decisiones sin revisión humana.
+- Estado: V1 mínima local cerrada.
+- Objetivo: ordenar el alta inicial de clientes en PYMES mediante validación local de un expediente ficticio, checklist, documentación recibida y revisión manual prevista.
+
+Incluye:
+- Documentación funcional y técnica.
+- Modelo de datos.
+- Checklist.
+- Expediente ficticio.
+- Flujo de validación manual.
+- Script local de validación.
+- Datos ficticios.
+- 4 pruebas `unittest` OK.
+
+Alcance real de la V1 mínima:
+- Validación local con Python estándar.
+- Informe por consola.
+- Ejecución sin argumento.
+- Ejecución con ruta explícita al JSON ficticio.
+- Control de ruta inexistente.
+- Control de JSON válido con estructura incompleta.
+
+Fuera de alcance actual:
+- Producto comercial terminado.
+- IA funcional.
+- Google Workspace.
+- Dashboard.
+- API.
+- Automatización productiva.
+- Integración real con clientes.
+- Decisiones sin revisión humana.
+
+Evolución V2:
+- Se mantiene como evolución futura.
+- Debe documentarse antes de integrar Google Workspace, dashboard, API o IA.
 
 ### 02 — Agente Documental Inteligente
 - Carpeta: `agentes/02-agente-documental-inteligente/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: organizar, versionar y priorizar documentación operativa y comercial con criterios homogéneos.
-- Propósito previsto: preparar una base para generación y validación documental asistida en fases posteriores.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 03 — Agente de Seguimiento de Clientes
 - Carpeta: `agentes/03-agente-seguimiento-clientes/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: centralizar hitos de seguimiento y próximos pasos de clientes para reducir olvidos operativos.
-- Propósito previsto: contemplar evolución posterior con integración a CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*).
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 04 — Agente Generador de Propuestas
 - Carpeta: `agentes/04-agente-generador-propuestas/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: estandarizar la preparación de propuestas comerciales a partir de insumos estructurados.
-- Propósito previsto: facilitar consistencia de alcance, tiempos y condiciones en documentos base.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 05 — Agente de Operaciones para PYMES
 - Carpeta: `agentes/05-agente-operaciones-pymes/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: mapear tareas recurrentes de operaciones y establecer trazabilidad mínima de ejecución.
-- Propósito previsto: permitir automatizaciones incrementales sobre procesos críticos en fases futuras.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 06 — Agente de Control de Cobros y Flujo de Caja
 - Carpeta: `agentes/06-agente-control-cobros-flujo-caja/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: ordenar eventos de cobro, alertas básicas y seguimiento de vencimientos para mejorar visibilidad financiera operativa.
-- Propósito previsto: mantener un enfoque inicial documental y de reglas de control.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 07 — Agente de Pipeline Comercial
 - Carpeta: `agentes/07-agente-pipeline-comercial/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: definir etapas comerciales, criterios de avance y señales de bloqueo para oportunidades en curso.
-- Propósito previsto: mejorar trazabilidad y priorización de trabajo comercial.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 08 — Agente de Formación Interna
 - Carpeta: `agentes/08-agente-formacion-interna/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: estructurar contenidos internos de capacitación y rutas de aprendizaje por rol.
-- Propósito previsto: documentar procesos formativos repetibles antes de cualquier automatización.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 09 — Agente de Análisis de Mercado
 - Carpeta: `agentes/09-agente-analisis-mercado/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: definir un marco para recopilar y organizar señales de mercado relevantes para decisiones comerciales.
-- Propósito previsto: comenzar con criterios, fuentes y trazabilidad documental.
 - Nota: no hay funcionalidad implementada todavía.
 
 ### 10 — Agente de Revisión y Cumplimiento
 - Carpeta: `agentes/10-agente-revision-cumplimiento/`
 - Estado: estructura reservada, desarrollo pendiente.
 - Propósito previsto: establecer controles de revisión documental y verificación de cumplimiento operativo básico.
-- Propósito previsto: evolucionar en etapas posteriores a chequeos asistidos más avanzados.
 - Nota: no hay funcionalidad implementada todavía.
 
 ## Criterios de activación de un agente
-- Un agente solo pasará de reservado a activo cuando se cumplan de forma explícita estos tres criterios.
-- Creación de su documentación base mínima.
-- Definición de su V1 implementable con alcance verificable.
-- Establecimiento de límites claros de lo que queda fuera de alcance.
+- Un agente solo pasará de reservado a activo cuando tenga documentación base mínima.
+- Debe existir una V1 implementable con alcance verificable.
+- Deben quedar claros los límites de lo que no está implementado.
+- No se debe avanzar a integración externa sin pruebas y documentación previa.
 
 ## Orden de trabajo
-- Cerrar la base documental del agente 01.
-- Definir su V1 implementable.
-- Implementar solo después una primera versión mínima.
-- No avanzar al agente 02 hasta cerrar el agente 01.
+- Mantener la V1 mínima del agente 01 como referencia inicial.
+- Mejorar pruebas del agente 01 solo si aparecen nuevas reglas.
+- Preparar V2 documental antes de integrar herramientas externas.
+- Mantener los agentes 02 a 10 como reservados hasta activar su ciclo propio.
 
 ## 🪪 Licencia y Autoría
 
