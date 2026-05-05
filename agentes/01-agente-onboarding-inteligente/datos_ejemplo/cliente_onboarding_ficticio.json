@@ -1,0 +1,221 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_ejemplo": "Cliente ficticio de onboarding para validación de V1",
+    "descripcion": "Ejemplo de datos ficticios para validar el modelo conceptual, el checklist y el flujo manual del Agente de Onboarding Inteligente para PYMES.",
+    "estado": "diseño y validación documental de V1",
+    "advertencia": "Todos los datos son inventados, no corresponden a ninguna empresa real y no deben usarse datos sensibles en esta fase."
+  },
+  "cliente": {
+    "identificador_cliente": "CLI-001",
+    "nombre_cliente": "Laura Martín",
+    "nombre_empresa": "Taller Creativo Bahía, S. L.",
+    "correo_contacto": "laura.martin@tallercreativobahia.ejemplo",
+    "telefono_contacto": "+34 600 123 456",
+    "tipo_servicio_solicitado": "Onboarding administrativo y orden documental inicial",
+    "necesidad_principal": "Ordenar el alta de nuevos proyectos y centralizar la documentación de clientes.",
+    "fecha_entrada": "2025-05-06",
+    "prioridad_inicial": "media",
+    "estado_onboarding": "en_revision",
+    "responsable_interno": "Sergio Vega",
+    "observaciones_internas": "La empresa quiere reducir retrasos, evitar correos dispersos y unificar el seguimiento del alta inicial."
+  },
+  "documentacion_recibida": [
+    {
+      "identificador_documento": "DOC-001",
+      "identificador_cliente": "CLI-001",
+      "nombre_documento": "Formulario breve de solicitud de servicio",
+      "tipo_documento": "formulario",
+      "estado_documento": "recibido",
+      "fecha_recepcion": "2025-05-06",
+      "observaciones_documento": "Contiene datos básicos de contacto y una descripción general de la necesidad."
+    },
+    {
+      "identificador_documento": "DOC-002",
+      "identificador_cliente": "CLI-001",
+      "nombre_documento": "Resumen de alcance preliminar",
+      "tipo_documento": "nota interna",
+      "estado_documento": "incompleto",
+      "fecha_recepcion": "2025-05-06",
+      "observaciones_documento": "Faltan detalles sobre prioridades y entregables esperados."
+    },
+    {
+      "identificador_documento": "DOC-003",
+      "identificador_cliente": "CLI-001",
+      "nombre_documento": "Lista de materiales y referencias internas",
+      "tipo_documento": "listado",
+      "estado_documento": "pendiente",
+      "fecha_recepcion": "2025-05-07",
+      "observaciones_documento": "Aún no se ha recibido y es necesaria para cerrar la revisión inicial."
+    }
+  ],
+  "checklist_onboarding": [
+    {
+      "identificador_item": "CHK-001",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Identificación del cliente",
+      "nombre_item": "Nombre del cliente registrado",
+      "descripcion_item": "Verificar que existe una referencia clara del cliente.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "El nombre del cliente está identificado."
+    },
+    {
+      "identificador_item": "CHK-002",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Identificación del cliente",
+      "nombre_item": "Canal de entrada identificado",
+      "descripcion_item": "Verificar por qué canal entró la solicitud principal.",
+      "estado_item": "bloqueado",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "La solicitud llegó por varios canales y falta un origen principal unificado."
+    },
+    {
+      "identificador_item": "CHK-003",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Servicio solicitado",
+      "nombre_item": "Tipo de servicio solicitado identificado",
+      "descripcion_item": "Confirmar el tipo de servicio pedido por el cliente.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "El servicio se asocia a un onboarding administrativo inicial."
+    },
+    {
+      "identificador_item": "CHK-004",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Servicio solicitado",
+      "nombre_item": "Alcance preliminar registrado",
+      "descripcion_item": "Definir los entregables esperados en esta primera fase.",
+      "estado_item": "bloqueado",
+      "obligatorio": true,
+      "responsable_revision": "Laura Martín",
+      "observaciones_item": "Falta concretar el alcance y los entregables esperados."
+    },
+    {
+      "identificador_item": "CHK-005",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Documentación inicial",
+      "nombre_item": "Documentos recibidos registrados",
+      "descripcion_item": "Comprobar qué documentación ya ha llegado.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "Hay documentos de entrada suficientes para empezar la revisión."
+    },
+    {
+      "identificador_item": "CHK-006",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Documentación inicial",
+      "nombre_item": "Documentos pendientes identificados",
+      "descripcion_item": "Detectar qué documentación falta por recibir.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "Se ha detectado al menos un documento pendiente."
+    },
+    {
+      "identificador_item": "CHK-007",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Revisión operativa interna",
+      "nombre_item": "Responsable interno asignado",
+      "descripcion_item": "Asignar una persona interna para gestionar el caso.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "Sergio Vega queda asignado como responsable."
+    },
+    {
+      "identificador_item": "CHK-008",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Revisión operativa interna",
+      "nombre_item": "Dudas internas registradas",
+      "descripcion_item": "Anotar dudas o aclaraciones pendientes sobre el alcance.",
+      "estado_item": "pendiente",
+      "obligatorio": false,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "Faltan aclaraciones sobre el nivel de detalle esperado en el onboarding."
+    },
+    {
+      "identificador_item": "CHK-009",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Preparación del expediente",
+      "nombre_item": "Expediente inicial preparado",
+      "descripcion_item": "Verificar que existe una base ordenada del caso.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "Existe una base estructurada del caso."
+    },
+    {
+      "identificador_item": "CHK-010",
+      "identificador_cliente": "CLI-001",
+      "bloque": "Cierre del onboarding inicial",
+      "nombre_item": "Revisión humana realizada",
+      "descripcion_item": "Confirmar que una persona ha revisado el caso antes de avanzar.",
+      "estado_item": "completo",
+      "obligatorio": true,
+      "responsable_revision": "Sergio Vega",
+      "observaciones_item": "La revisión humana ya se ha realizado, pero quedan pendientes críticos por resolver."
+    }
+  ],
+  "clasificacion_inicial": {
+    "identificador_clasificacion": "CLA-001",
+    "identificador_cliente": "CLI-001",
+    "tipo_cliente": "PYME de servicios creativos",
+    "complejidad_inicial": "media-baja",
+    "urgencia": "media",
+    "informacion_completa": false,
+    "requiere_revision_previa": true,
+    "criterio_clasificacion": "Onboarding administrativo con documentación parcial y necesidad de revisión humana."
+  },
+  "acciones_siguientes": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_cliente": "CLI-001",
+      "descripcion_accion": "Solicitar la lista de materiales y referencias internas.",
+      "responsable_accion": "Laura Martín",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-05-08",
+      "observaciones_accion": "Esta acción cierra un pendiente clave para continuar."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_cliente": "CLI-001",
+      "descripcion_accion": "Revisar y completar el alcance preliminar.",
+      "responsable_accion": "Sergio Vega",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "media-alta",
+      "fecha_prevista": "2025-05-08",
+      "observaciones_accion": "Se revisarán los entregables esperados y la prioridad."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_cliente": "CLI-001",
+      "descripcion_accion": "Preparar versión consolidada del expediente inicial.",
+      "responsable_accion": "Sergio Vega",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-05-09",
+      "observaciones_accion": "Se completará después de recibir la información pendiente."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_cliente": "CLI-001",
+      "descripcion_accion": "Confirmar el canal principal de entrada y registrar el origen del caso.",
+      "responsable_accion": "Sergio Vega",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2025-05-09",
+      "observaciones_accion": "Ayudará a cerrar una duda operativa menor."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_resultante": "pendiente_informacion",
+    "decision_revision_humana": "pedir_informacion",
+    "motivo_decision": "Faltan información crítica sobre el alcance preliminar y la lista de materiales y referencias internas.",
+    "proxima_accion_global": "Solicitar la información pendiente y volver a revisar el expediente antes de marcarlo como preparado para avanzar."
+  }
+}

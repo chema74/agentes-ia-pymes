@@ -4,12 +4,25 @@
 Este agente está pensado para ordenar el alta inicial de clientes en pequeñas y medianas empresas mediante recogida estructurada de datos, checklist de onboarding, clasificación inicial y preparación de expediente. El enfoque actual es construir una base técnica demostrable y documentada que permita estandarizar el proceso de entrada de clientes. Su propósito es reducir ambigüedad operativa y mejorar trazabilidad desde el primer contacto. En esta etapa no se presenta como producto terminado, sino como marco inicial de trabajo para evolución progresiva.
 
 ## Estado del agente
-- Estado actual: fase documental inicial.
+- Fase documental inicial: activa.
+- Diseño V1: en preparación avanzada.
 - Código funcional: no implementado todavía.
 - Automatizaciones: no implementadas todavía.
 - Integraciones: no implementadas todavía.
 - Dashboard: no implementado todavía.
 - IA funcional: no implementada todavía.
+- Datos ficticios de ejemplo: disponibles.
+
+## Documentación V1 disponible
+- [Modelo conceptual de datos](docs/MODELO_DATOS.md): define los datos mínimos necesarios para la V1 y sirve como base conceptual previa a cualquier implementación.
+- [Checklist inicial de onboarding](docs/CHECKLIST_ONBOARDING.md): establece la lista operativa de verificación para ordenar el alta inicial de clientes.
+- [Expediente ficticio de cliente](docs/EXPEDIENTE_CLIENTE_FICTICIO.md): muestra un ejemplo completo y ficticio para validar el modelo, el checklist y la revisión manual.
+- [Flujo de validación manual](docs/FLUJO_VALIDACION_MANUAL.md): describe el procedimiento mínimo para revisar si un expediente puede avanzar.
+
+## Datos de ejemplo disponibles
+- [cliente_onboarding_ficticio.json](datos_ejemplo/cliente_onboarding_ficticio.json): archivo JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) con datos ficticios para validar documentalmente el modelo, el checklist y el flujo manual de la V1.
+
+Este archivo no contiene datos reales, no es código funcional, no implica automatización implementada y sirve como base para una futura implementación mínima.
 
 ## Problema que aborda
 El onboarding en muchas PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) suele comenzar con información inicial dispersa y sin estructura operativa uniforme. Es habitual trabajar con correos y documentos sueltos, sin checklist claro ni trazabilidad mínima de qué datos faltan para avanzar. Esto provoca inicios de proyecto sin expediente completo, retrabajo administrativo y dependencia de memoria, llamadas o seguimiento manual para cerrar pendientes críticos.
@@ -118,9 +131,9 @@ Todavía no existe generación automática implementada.
 - ¿Existe revisión humana en puntos relevantes?
 
 ## Próximos pasos
-1. Completar la arquitectura del agente.
-2. Completar el caso de uso funcional.
-3. Completar el roadmap de evolución.
+1. Revisar la coherencia documental completa del agente 01.
+2. Preparar después una primera implementación mínima si la documentación queda validada.
+3. Hacer commit manual de la fase documental V1 cuando se revise el estado del repositorio.
 
 ## 🪪 Licencia y Autoría
 
