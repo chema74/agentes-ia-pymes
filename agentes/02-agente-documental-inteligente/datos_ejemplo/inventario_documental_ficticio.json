@@ -1,0 +1,348 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_ejemplo": "Inventario documental ficticio para validacion de V1",
+    "descripcion": "Ejemplo inventado para validar el modelo documental, los estados, los pendientes, las versiones y las acciones siguientes del Agente Documental Inteligente para PYMES.",
+    "estado": "diseno y validacion documental de V1 sin automatizacion funcional",
+    "advertencia": "Todos los datos son inventados. No corresponden a ninguna empresa real y no deben usarse documentos sensibles en esta fase."
+  },
+  "empresa_ficticia": {
+    "nombre_empresa": "Nexo Aula Servicios, S. L.",
+    "tipo_actividad": "Empresa ficticia de formacion corporativa y soporte operativo para pequenas empresas.",
+    "problema_documental_principal": "Documentacion dispersa en carpetas con nombres poco consistentes, versiones antiguas mezcladas con versiones vigentes y documentos pendientes sin seguimiento claro.",
+    "areas_documentales_implicadas": [
+      "comercial",
+      "formacion",
+      "operaciones",
+      "administracion",
+      "soporte interno"
+    ],
+    "responsable_interno": "Clara Montes"
+  },
+  "documentos": [
+    {
+      "identificador_documento": "DOC-FIC-001",
+      "nombre_documento": "Propuesta base de formacion interna",
+      "tipo_documental": "propuesta",
+      "area_o_proceso": "comercial",
+      "fecha_creacion_o_recepcion": "2025-04-10",
+      "estado_documental": "validado",
+      "responsable_interno": "Clara Montes",
+      "version_documento": "v1.2",
+      "ubicacion_prevista": "Comercial/Propuestas/Base",
+      "observaciones_documento": "Documento ficticio revisado como plantilla vigente para propuestas de formacion interna."
+    },
+    {
+      "identificador_documento": "DOC-FIC-002",
+      "nombre_documento": "Manual de bienvenida para participantes",
+      "tipo_documental": "manual",
+      "area_o_proceso": "formacion",
+      "fecha_creacion_o_recepcion": "2025-04-18",
+      "estado_documental": "incompleto",
+      "responsable_interno": "Diego Salas",
+      "version_documento": "v0.8",
+      "ubicacion_prevista": "Formacion/Manuales/Participantes",
+      "observaciones_documento": "Falta revisar la seccion de preguntas frecuentes y el bloque de soporte posterior."
+    },
+    {
+      "identificador_documento": "DOC-FIC-003",
+      "nombre_documento": "Plantilla de acta de sesion",
+      "tipo_documental": "plantilla",
+      "area_o_proceso": "operaciones",
+      "fecha_creacion_o_recepcion": "2025-04-20",
+      "estado_documental": "recibido",
+      "responsable_interno": "Clara Montes",
+      "version_documento": "v1.0",
+      "ubicacion_prevista": "Operaciones/Plantillas/Sesiones",
+      "observaciones_documento": "Documento recibido y pendiente de confirmacion final de formato."
+    },
+    {
+      "identificador_documento": "DOC-FIC-004",
+      "nombre_documento": "Listado de materiales previos",
+      "tipo_documental": "listado",
+      "area_o_proceso": "formacion",
+      "fecha_creacion_o_recepcion": "pendiente",
+      "estado_documental": "pendiente",
+      "responsable_interno": "Paula Rivas",
+      "version_documento": "no_aplica",
+      "ubicacion_prevista": "Formacion/Materiales/Previos",
+      "observaciones_documento": "Documento ficticio aun no disponible para completar el paquete de formacion."
+    },
+    {
+      "identificador_documento": "DOC-FIC-005",
+      "nombre_documento": "Guia antigua de preparacion de talleres",
+      "tipo_documental": "guia",
+      "area_o_proceso": "operaciones",
+      "fecha_creacion_o_recepcion": "2024-11-05",
+      "estado_documental": "obsoleto",
+      "responsable_interno": "Diego Salas",
+      "version_documento": "v0.6",
+      "ubicacion_prevista": "Operaciones/Historico/Guias",
+      "observaciones_documento": "Documento sustituido por una guia posterior, conservado solo como referencia historica ficticia."
+    },
+    {
+      "identificador_documento": "DOC-FIC-006",
+      "nombre_documento": "Propuesta formacion interna copia revisada",
+      "tipo_documental": "propuesta",
+      "area_o_proceso": "comercial",
+      "fecha_creacion_o_recepcion": "2025-04-12",
+      "estado_documental": "duplicado",
+      "responsable_interno": "Clara Montes",
+      "version_documento": "v1.2-copia",
+      "ubicacion_prevista": "Comercial/Propuestas/Revisar",
+      "observaciones_documento": "Posible duplicado conceptual de DOC-FIC-001."
+    },
+    {
+      "identificador_documento": "DOC-FIC-007",
+      "nombre_documento": "Procedimiento de soporte posterior a sesiones",
+      "tipo_documental": "procedimiento",
+      "area_o_proceso": "soporte interno",
+      "fecha_creacion_o_recepcion": "2025-04-22",
+      "estado_documental": "en_revision",
+      "responsable_interno": "Paula Rivas",
+      "version_documento": "v0.9",
+      "ubicacion_prevista": "Soporte/Procedimientos",
+      "observaciones_documento": "Pendiente de revision humana para confirmar si el flujo de soporte esta completo."
+    },
+    {
+      "identificador_documento": "DOC-FIC-008",
+      "nombre_documento": "Borrador de indice documental antiguo",
+      "tipo_documental": "indice",
+      "area_o_proceso": "administracion",
+      "fecha_creacion_o_recepcion": "2024-10-02",
+      "estado_documental": "descartado",
+      "responsable_interno": "Clara Montes",
+      "version_documento": "borrador",
+      "ubicacion_prevista": "Administracion/Historico/Indices",
+      "observaciones_documento": "Borrador ficticio descartado por no reflejar la estructura documental actual."
+    }
+  ],
+  "clasificaciones_documentales": [
+    {
+      "identificador_clasificacion": "CLA-FIC-001",
+      "identificador_documento": "DOC-FIC-001",
+      "categoria_principal": "comercial",
+      "subcategoria": "propuesta base",
+      "prioridad_revision": "baja",
+      "criterio_clasificacion": "Documento validado y usado como referencia comercial ficticia.",
+      "requiere_revision_humana": false,
+      "observaciones_clasificacion": "Mantener como plantilla base mientras no exista una version superior."
+    },
+    {
+      "identificador_clasificacion": "CLA-FIC-002",
+      "identificador_documento": "DOC-FIC-002",
+      "categoria_principal": "formacion",
+      "subcategoria": "manual de participante",
+      "prioridad_revision": "alta",
+      "criterio_clasificacion": "Documento incompleto que afecta a la experiencia de participantes.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Revisar secciones pendientes antes de marcarlo como validado."
+    },
+    {
+      "identificador_clasificacion": "CLA-FIC-003",
+      "identificador_documento": "DOC-FIC-004",
+      "categoria_principal": "formacion",
+      "subcategoria": "materiales previos",
+      "prioridad_revision": "media",
+      "criterio_clasificacion": "Documento pendiente necesario para preparar el paquete inicial.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Solicitar a la persona responsable antes de cerrar el inventario."
+    },
+    {
+      "identificador_clasificacion": "CLA-FIC-004",
+      "identificador_documento": "DOC-FIC-006",
+      "categoria_principal": "comercial",
+      "subcategoria": "posible duplicado",
+      "prioridad_revision": "media",
+      "criterio_clasificacion": "Nombre y version sugieren duplicidad con DOC-FIC-001.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Confirmar si aporta cambios reales o debe descartarse."
+    },
+    {
+      "identificador_clasificacion": "CLA-FIC-005",
+      "identificador_documento": "DOC-FIC-007",
+      "categoria_principal": "soporte interno",
+      "subcategoria": "procedimiento",
+      "prioridad_revision": "alta",
+      "criterio_clasificacion": "Documento en revision que puede afectar al seguimiento posterior a sesiones.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Validar responsables, pasos y tiempos antes de publicarlo como vigente."
+    },
+    {
+      "identificador_clasificacion": "CLA-FIC-006",
+      "identificador_documento": "DOC-FIC-008",
+      "categoria_principal": "administracion",
+      "subcategoria": "indice antiguo",
+      "prioridad_revision": "baja",
+      "criterio_clasificacion": "Borrador descartado por no representar el inventario actual.",
+      "requiere_revision_humana": false,
+      "observaciones_clasificacion": "Conservar solo como ejemplo de documento descartado."
+    }
+  ],
+  "control_versiones": [
+    {
+      "identificador_version": "VER-FIC-001",
+      "identificador_documento": "DOC-FIC-001",
+      "nombre_version": "Propuesta base de formacion interna v1.2",
+      "numero_version": "v1.2",
+      "fecha_version": "2025-04-10",
+      "estado_version": "vigente",
+      "documento_relacionado": "DOC-FIC-006",
+      "observaciones_version": "Version considerada vigente frente a la copia revisada."
+    },
+    {
+      "identificador_version": "VER-FIC-002",
+      "identificador_documento": "DOC-FIC-005",
+      "nombre_version": "Guia antigua de preparacion de talleres v0.6",
+      "numero_version": "v0.6",
+      "fecha_version": "2024-11-05",
+      "estado_version": "antigua",
+      "documento_relacionado": "DOC-FIC-007",
+      "observaciones_version": "Se conserva como antecedente, pero no debe usarse como documento operativo principal."
+    },
+    {
+      "identificador_version": "VER-FIC-003",
+      "identificador_documento": "DOC-FIC-006",
+      "nombre_version": "Propuesta formacion interna copia revisada",
+      "numero_version": "v1.2-copia",
+      "fecha_version": "2025-04-12",
+      "estado_version": "duplicada",
+      "documento_relacionado": "DOC-FIC-001",
+      "observaciones_version": "Requiere revision para confirmar si contiene cambios reales."
+    },
+    {
+      "identificador_version": "VER-FIC-004",
+      "identificador_documento": "DOC-FIC-002",
+      "nombre_version": "Manual de bienvenida para participantes v0.8",
+      "numero_version": "v0.8",
+      "fecha_version": "2025-04-18",
+      "estado_version": "pendiente_revision",
+      "documento_relacionado": "no_aplica",
+      "observaciones_version": "Pendiente de completar antes de considerarse vigente."
+    },
+    {
+      "identificador_version": "VER-FIC-005",
+      "identificador_documento": "DOC-FIC-008",
+      "nombre_version": "Borrador de indice documental antiguo",
+      "numero_version": "borrador",
+      "fecha_version": "2024-10-02",
+      "estado_version": "descartada",
+      "documento_relacionado": "no_aplica",
+      "observaciones_version": "Borrador descartado por no reflejar la estructura documental actual."
+    }
+  ],
+  "pendientes_documentales": [
+    {
+      "identificador_pendiente": "PEN-FIC-001",
+      "identificador_documento": "DOC-FIC-002",
+      "descripcion_pendiente": "Completar preguntas frecuentes y soporte posterior.",
+      "motivo_pendiente": "El manual no cubre dudas operativas posteriores a la sesion.",
+      "impacto_operativo": "Puede generar consultas repetidas del equipo operativo.",
+      "responsable_revision": "Diego Salas",
+      "prioridad_pendiente": "alta",
+      "estado_pendiente": "en_revision",
+      "observaciones_pendiente": "Debe revisarse antes de marcar el manual como validado."
+    },
+    {
+      "identificador_pendiente": "PEN-FIC-002",
+      "identificador_documento": "DOC-FIC-004",
+      "descripcion_pendiente": "Recibir listado de materiales previos.",
+      "motivo_pendiente": "El documento todavia no esta disponible.",
+      "impacto_operativo": "Bloquea la preparacion completa del paquete de formacion.",
+      "responsable_revision": "Paula Rivas",
+      "prioridad_pendiente": "media",
+      "estado_pendiente": "pendiente",
+      "observaciones_pendiente": "Solicitar version inicial al equipo de formacion."
+    },
+    {
+      "identificador_pendiente": "PEN-FIC-003",
+      "identificador_documento": "DOC-FIC-006",
+      "descripcion_pendiente": "Confirmar si es duplicado real de DOC-FIC-001.",
+      "motivo_pendiente": "Nombre y version sugieren duplicidad.",
+      "impacto_operativo": "Puede causar uso de versiones contradictorias.",
+      "responsable_revision": "Clara Montes",
+      "prioridad_pendiente": "media",
+      "estado_pendiente": "bloqueado",
+      "observaciones_pendiente": "No descartar hasta confirmar diferencias."
+    },
+    {
+      "identificador_pendiente": "PEN-FIC-004",
+      "identificador_documento": "DOC-FIC-001",
+      "descripcion_pendiente": "Confirmacion final de ubicacion documental.",
+      "motivo_pendiente": "La carpeta prevista ya esta definida.",
+      "impacto_operativo": "Bajo, solo afecta a orden interno.",
+      "responsable_revision": "Clara Montes",
+      "prioridad_pendiente": "baja",
+      "estado_pendiente": "resuelto",
+      "observaciones_pendiente": "Ubicacion confirmada en el inventario ficticio."
+    },
+    {
+      "identificador_pendiente": "PEN-FIC-005",
+      "identificador_documento": "DOC-FIC-005",
+      "descripcion_pendiente": "Valorar eliminacion del flujo operativo.",
+      "motivo_pendiente": "Documento obsoleto.",
+      "impacto_operativo": "Evita usar una guia antigua por error.",
+      "responsable_revision": "Diego Salas",
+      "prioridad_pendiente": "baja",
+      "estado_pendiente": "descartado",
+      "observaciones_pendiente": "Se conserva solo como referencia historica ficticia."
+    }
+  ],
+  "acciones_documentales_siguientes": [
+    {
+      "identificador_accion": "ACC-FIC-001",
+      "identificador_documento": "DOC-FIC-002",
+      "descripcion_accion": "Completar el manual de bienvenida con preguntas frecuentes.",
+      "responsable_accion": "Diego Salas",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-05-15",
+      "observaciones_accion": "Revisar con el equipo operativo antes de validar."
+    },
+    {
+      "identificador_accion": "ACC-FIC-002",
+      "identificador_documento": "DOC-FIC-004",
+      "descripcion_accion": "Solicitar el listado de materiales previos.",
+      "responsable_accion": "Paula Rivas",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-05-16",
+      "observaciones_accion": "Necesario para completar el paquete documental de formacion."
+    },
+    {
+      "identificador_accion": "ACC-FIC-003",
+      "identificador_documento": "DOC-FIC-006",
+      "descripcion_accion": "Comparar la copia revisada con la propuesta base vigente.",
+      "responsable_accion": "Clara Montes",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-05-17",
+      "observaciones_accion": "Determinar si se descarta o se fusionan cambios."
+    },
+    {
+      "identificador_accion": "ACC-FIC-004",
+      "identificador_documento": "DOC-FIC-001",
+      "descripcion_accion": "Confirmar ubicacion definitiva de la propuesta base.",
+      "responsable_accion": "Clara Montes",
+      "estado_accion": "completada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2025-05-12",
+      "observaciones_accion": "Accion cerrada en el inventario ficticio."
+    },
+    {
+      "identificador_accion": "ACC-FIC-005",
+      "identificador_documento": "DOC-FIC-008",
+      "descripcion_accion": "Mantener el borrador de indice fuera del inventario operativo.",
+      "responsable_accion": "Clara Montes",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2025-05-13",
+      "observaciones_accion": "No se elimina fisicamente; solo se marca como documento descartado en el ejemplo."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_resultante": "pendiente_revision_documental",
+    "decision_revision_humana": "revisar_antes_de_avanzar",
+    "motivo_decision": "Existen documentos incompletos, pendientes, en revision, obsoletos y posibles duplicados que requieren validacion humana antes de considerar cerrado el inventario.",
+    "proxima_accion_global": "Resolver pendientes criticos, confirmar duplicados y validar versiones antes de preparar una implementacion minima."
+  }
+}
