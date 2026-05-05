@@ -1,0 +1,15 @@
+﻿# Entornos locales
+.venv/
+venv/
+
+# Cachés Python
+__pycache__/
+*.pyc
+
+# Variables de entorno
+.env
+.env.*
+
+# Artefactos de sistema
+.DS_Store
+Thumbs.db
