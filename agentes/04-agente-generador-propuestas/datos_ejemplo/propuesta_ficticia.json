@@ -1,0 +1,229 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_ejemplo": "Propuesta ficticia para validacion documental V1",
+    "descripcion": "Conjunto de datos inventados para validar manualmente el modelo de propuesta del agente 04.",
+    "estado": "ejemplo ficticio para futura implementacion minima de V1; no hay automatizacion funcional implementada",
+    "advertencia": "Todos los datos son ficticios. No representan personas, empresas ni clientes reales. No hay generacion automatica, PDF, Google Workspace, CRM, API, dashboard ni IA funcional implementada."
+  },
+  "propuesta": {
+    "identificador_propuesta": "PROP-001",
+    "nombre_cliente": "Marta Salcedo",
+    "nombre_empresa": "Aula Norte Simulada",
+    "tipo_oportunidad": "formacion_corporativa",
+    "servicio_propuesto": "taller de ventas consultivas para equipo comercial",
+    "necesidad_principal": "mejorar la estructura de conversaciones comerciales y el cierre de propuestas",
+    "alcance_preliminar": "sesion de diagnostico inicial, taller practico y documento de recomendaciones basicas",
+    "plazo_estimado": "dos semanas desde la validacion interna",
+    "estado_propuesta": "borrador",
+    "responsable_interno": "Laura Medina",
+    "observaciones_internas": "Propuesta ficticia preparada para validar estructura documental, alcance y revision humana."
+  },
+  "entregables_propuestos": [
+    {
+      "identificador_entregable": "ENT-001",
+      "identificador_propuesta": "PROP-001",
+      "nombre_entregable": "documento de alcance inicial",
+      "descripcion_entregable": "resumen estructurado de lo que se incluye y lo que queda fuera de la propuesta",
+      "estado_entregable": "definido",
+      "incluido_en_alcance": true,
+      "requiere_revision": true,
+      "observaciones_entregable": "debe revisarse internamente antes de enviarlo"
+    },
+    {
+      "identificador_entregable": "ENT-002",
+      "identificador_propuesta": "PROP-001",
+      "nombre_entregable": "guion del taller",
+      "descripcion_entregable": "secuencia basica de contenidos y actividades del taller de ventas consultivas",
+      "estado_entregable": "definido",
+      "incluido_en_alcance": true,
+      "requiere_revision": true,
+      "observaciones_entregable": "el detalle final depende de la validacion del responsable interno"
+    },
+    {
+      "identificador_entregable": "ENT-003",
+      "identificador_propuesta": "PROP-001",
+      "nombre_entregable": "material de apoyo basico",
+      "descripcion_entregable": "esquema breve para acompanar la sesion formativa y facilitar la revision interna",
+      "estado_entregable": "pendiente",
+      "incluido_en_alcance": true,
+      "requiere_revision": true,
+      "observaciones_entregable": "falta concretar si sera una ficha unica o varios documentos breves"
+    },
+    {
+      "identificador_entregable": "ENT-004",
+      "identificador_propuesta": "PROP-001",
+      "nombre_entregable": "resumen de recomendaciones",
+      "descripcion_entregable": "lista de recomendaciones aplicables al equipo comercial ficticio",
+      "estado_entregable": "en_revision",
+      "incluido_en_alcance": true,
+      "requiere_revision": true,
+      "observaciones_entregable": "requiere validacion humana antes de considerarse cerrado"
+    },
+    {
+      "identificador_entregable": "ENT-005",
+      "identificador_propuesta": "PROP-001",
+      "nombre_entregable": "lista de proximos pasos",
+      "descripcion_entregable": "acciones sugeridas para la continuidad comercial y operativa",
+      "estado_entregable": "definido",
+      "incluido_en_alcance": true,
+      "requiere_revision": true,
+      "observaciones_entregable": "util para cerrar la propuesta con claridad"
+    }
+  ],
+  "condiciones_comerciales": [
+    {
+      "identificador_condicion": "CON-001",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_condicion": "confirmar si la sesion se realizara en formato presencial o virtual",
+      "estado_condicion": "pendiente",
+      "impacto_comercial": "afecta la logistica y la preparacion del taller",
+      "responsable_revision": "Laura Medina",
+      "prioridad_condicion": "alta",
+      "observaciones_condicion": "debe aclararse antes de enviar la version final"
+    },
+    {
+      "identificador_condicion": "CON-002",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_condicion": "confirmar numero exacto de asistentes",
+      "estado_condicion": "pendiente",
+      "impacto_comercial": "afecta el enfoque y la profundidad del contenido",
+      "responsable_revision": "Laura Medina",
+      "prioridad_condicion": "alta",
+      "observaciones_condicion": "dato necesario para cerrar el alcance"
+    },
+    {
+      "identificador_condicion": "CON-003",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_condicion": "confirmar si se requiere adaptacion sectorial",
+      "estado_condicion": "en_revision",
+      "impacto_comercial": "puede modificar el contenido y el tiempo de preparacion",
+      "responsable_revision": "Daniel Rivas",
+      "prioridad_condicion": "media",
+      "observaciones_condicion": "la adaptacion puede ser basica o mas amplia segun la validacion interna"
+    },
+    {
+      "identificador_condicion": "CON-004",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_condicion": "definir si se anadira documentacion de cierre",
+      "estado_condicion": "definida",
+      "impacto_comercial": "afecta al alcance final y a la entrega documental",
+      "responsable_revision": "Laura Medina",
+      "prioridad_condicion": "media",
+      "observaciones_condicion": "condicion cerrada de forma provisional"
+    }
+  ],
+  "alcance_propuesta": [
+    {
+      "identificador_alcance": "ALC-001",
+      "identificador_propuesta": "PROP-001",
+      "elemento_alcance": "diagnostico inicial",
+      "tipo_alcance": "incluido",
+      "descripcion_alcance": "revision de la situacion comercial y de la necesidad principal",
+      "estado_alcance": "definido",
+      "requiere_revision": true,
+      "observaciones_alcance": "sirve como base para estructurar la propuesta"
+    },
+    {
+      "identificador_alcance": "ALC-002",
+      "identificador_propuesta": "PROP-001",
+      "elemento_alcance": "taller practico de ventas consultivas",
+      "tipo_alcance": "incluido",
+      "descripcion_alcance": "sesion formativa con enfoque practico",
+      "estado_alcance": "en_revision",
+      "requiere_revision": true,
+      "observaciones_alcance": "debe validarse la duracion y el formato"
+    },
+    {
+      "identificador_alcance": "ALC-003",
+      "identificador_propuesta": "PROP-001",
+      "elemento_alcance": "adaptacion sectorial",
+      "tipo_alcance": "pendiente_definir",
+      "descripcion_alcance": "ajuste del contenido al contexto real de la empresa ficticia",
+      "estado_alcance": "pendiente",
+      "requiere_revision": true,
+      "observaciones_alcance": "depende de la informacion que confirme el cliente ficticio"
+    },
+    {
+      "identificador_alcance": "ALC-004",
+      "identificador_propuesta": "PROP-001",
+      "elemento_alcance": "consultoria legal",
+      "tipo_alcance": "fuera_de_alcance",
+      "descripcion_alcance": "asesoramiento juridico o contractual avanzado",
+      "estado_alcance": "descartado",
+      "requiere_revision": false,
+      "observaciones_alcance": "no forma parte de esta propuesta ficticia"
+    },
+    {
+      "identificador_alcance": "ALC-005",
+      "identificador_propuesta": "PROP-001",
+      "elemento_alcance": "seguimiento posterior",
+      "tipo_alcance": "pendiente_definir",
+      "descripcion_alcance": "revision opcional tras la entrega del taller",
+      "estado_alcance": "pendiente",
+      "requiere_revision": true,
+      "observaciones_alcance": "puede incorporarse o dejarse fuera segun la revision interna"
+    }
+  ],
+  "acciones_comerciales_siguientes": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_accion": "validar internamente la propuesta antes de enviarla",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-06",
+      "observaciones_accion": "accion necesaria para cerrar el borrador"
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_accion": "confirmar formato presencial o virtual",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-05",
+      "observaciones_accion": "depende de la respuesta ficticia del cliente"
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_accion": "revisar el alcance preliminar con el equipo tecnico",
+      "responsable_accion": "Daniel Rivas",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-03-05",
+      "observaciones_accion": "debe cerrarse antes de preparar la version final"
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_propuesta": "PROP-001",
+      "descripcion_accion": "preparar la version final de la propuesta",
+      "responsable_accion": "Laura Medina",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-03-07",
+      "observaciones_accion": "bloqueada hasta revisar condiciones pendientes"
+    }
+  ],
+  "revision_humana": {
+    "identificador_revision": "REV-001",
+    "identificador_propuesta": "PROP-001",
+    "responsable_revision": "Laura Medina",
+    "estado_revision": "en_revision",
+    "aspectos_revisados": [
+      "alcance preliminar",
+      "entregables",
+      "condiciones pendientes",
+      "plazo estimado"
+    ],
+    "observaciones_revision": "revision ficticia preparada para validar el flujo documental",
+    "decision_revision": "revisar_de_nuevo"
+  },
+  "resultado_validacion_manual": {
+    "estado_resultante": "revision_manual_pendiente",
+    "decision_revision_humana": "revisar_de_nuevo",
+    "motivo_decision": "La propuesta contiene condiciones pendientes de alto impacto, alcance pendiente de definir y una accion final bloqueada; por ello requiere revision humana adicional antes de considerarse lista.",
+    "proxima_accion_global": "Revisar CON-001, CON-002, ALC-003 y ACC-004 antes de considerar preparada la V1 documental."
+  }
+}
