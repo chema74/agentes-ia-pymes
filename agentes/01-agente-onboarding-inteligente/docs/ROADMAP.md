@@ -3,16 +3,21 @@
 ## Propósito del documento
 Este documento define la evolución prevista del agente por fases, diferenciando documentación, implementación mínima, validación interna y posibles mejoras futuras. Su función es servir como guía técnica progresiva sin presentar como implementado ningún elemento que todavía no exista.
 
+El agente está orientado a PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) que necesitan ordenar el alta inicial de clientes con datos ficticios, reglas simples y revisión humana.
+
 ## Estado actual
-- Estado documental: en desarrollo inicial.
-- Estado técnico: pendiente de implementación.
-- Código funcional: no implementado todavía.
+- Estado documental: base V1 (*Version 1 – Versión 1*) documentada.
+- Estado técnico: implementación mínima V1 parcial iniciada.
+- Código funcional: script local básico disponible.
+- Script disponible: `src/validar_expediente.py`.
+- Datos ficticios de ejemplo: disponibles.
 - Automatizaciones: no implementadas todavía.
 - Integraciones activas: no implementadas todavía.
 - Dashboard: no implementado todavía.
-- IA funcional: no implementada todavía.
-- Última fase completada: documentación base en preparación.
-- Próxima fase prevista: definición del modelo conceptual mínimo de datos para la V1 (*Version 1 – Versión 1*).
+- IA (*Artificial Intelligence – Inteligencia Artificial*) funcional: no implementada todavía.
+- Base de datos: no implementada todavía.
+- Última fase completada: documentación V1 y primera validación local con datos ficticios.
+- Próxima fase prevista: crear prueba básica del script con datos ficticios.
 
 ## Fase 0 — Base documental
 Esta fase sirve para definir el problema, el alcance y la estructura del agente antes de crear código.
@@ -25,49 +30,77 @@ Entregables:
 - Límites de alcance.
 - Criterios de validación.
 
-Esta fase no implica código funcional.
+Estado: completada para la base V1.
 
 ## Fase 1 — Definición de V1 implementable
-Esta fase debe convertir la documentación en un diseño mínimo que pueda implementarse después.
+Esta fase convierte la documentación en un diseño mínimo que puede implementarse de forma pequeña, local y verificable.
 
-Entregables previstos:
+Entregables disponibles:
 - Modelo conceptual mínimo de datos.
 - Checklist inicial de onboarding.
 - Ejemplo de expediente de cliente.
 - Flujo básico de entrada y salida.
 - Reglas simples de validación.
-- Reglas simples de clasificación inicial.
 - Criterios de revisión humana.
+- Datos de ejemplo en JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*).
 
-Esta fase todavía puede completarse sin automatización real.
+Estado: preparada para la base V1.
 
 ## Fase 2 — Implementación mínima V1
-Esta fase solo debe abrirse cuando la documentación y el diseño mínimo estén cerrados.
+Esta fase está iniciada parcialmente mediante un script local de validación.
 
-Puede incluir:
-- Script o lógica mínima para procesar datos de ejemplo.
-- Validación de campos obligatorios.
-- Generación simple de salida estructurada.
-- Checklist en formato demostrable.
-- Registro básico de estado.
-- Documentación actualizada.
+Ya existe:
+- Script local de validación.
+- Carga de datos desde JSON ficticio.
+- Validación de secciones principales.
+- Validación de campos mínimos del cliente.
+- Revisión de documentación recibida, pendiente e incompleta.
+- Revisión de checklist.
+- Detección de pendientes y bloqueos.
+- Decisión recomendada de revisión humana por consola.
 
-La implementación debe ser pequeña, verificable y sin sobreingeniería.
+Todavía falta:
+- Prueba básica automatizada.
+- Mejorar separación de reglas si procede.
+- Documentar criterios de ejecución.
+- Mantener el alcance pequeño.
+
+La implementación actual es parcial. No implica IA funcional, Google Workspace, dashboard, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*), automatización productiva, integración real con clientes ni base de datos.
+
+## Estado de la primera ejecución local
+Con los datos ficticios disponibles, el resultado actual esperado es:
+
+- Cliente ficticio: Laura Martín.
+- Empresa ficticia: Taller Creativo Bahía, S. L.
+- Estado del onboarding: en_revision.
+- Documentos recibidos: 1.
+- Documentos pendientes: 1.
+- Documentos incompletos: 1.
+- Ítems completos: 7.
+- Ítems pendientes: 1.
+- Ítems obligatorios pendientes: 2.
+- Ítems bloqueados: 2.
+- Decisión recomendada de revisión manual: bloquear.
+
+Este resultado procede de datos ficticios. No implica automatización productiva, no sustituye revisión humana y solo valida la lógica mínima inicial.
 
 ## Fase 3 — Validación interna
 Esta fase sirve para probar el flujo con datos de ejemplo antes de ampliar el agente.
 
 Incluye:
-- Prueba con un cliente ficticio.
+- Prueba básica del script con un cliente ficticio.
 - Revisión de campos completos y pendientes.
-- Revisión de clasificación inicial.
-- Revisión del expediente generado o preparado.
-- Ajuste de documentación.
+- Revisión del checklist.
+- Confirmación de bloqueos detectados.
+- Comparación de la decisión recomendada con los datos ficticios.
+- Ajuste de documentación si la prueba detecta diferencias.
 - Confirmación de límites de alcance.
 
 No deben usarse datos reales sensibles en esta fase.
 
 ## Fase 4 — V2 futura
+La V2 (*Version 2 – Versión 2*) representa una posible evolución posterior, no una funcionalidad implementada.
+
 Posibles ampliaciones futuras:
 - Entrada mediante Google Forms.
 - Registro en Google Sheets.
@@ -75,10 +108,10 @@ Posibles ampliaciones futuras:
 - Organización de carpetas en Google Drive.
 - Dashboard operativo.
 - Alertas básicas por correo.
-- Clasificación asistida con IA (*Artificial Intelligence – Inteligencia Artificial*).
+- Clasificación asistida con IA.
 - Resumen operativo asistido.
 - Integración futura con CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*).
-- Posible API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) si el proyecto crece.
+- Posible API si el proyecto crece.
 
 Estas funcionalidades no están implementadas todavía.
 
@@ -110,6 +143,11 @@ Esta fase no pertenece al alcance inicial.
 - Decisiones sin revisión humana.
 - Tratamiento de datos sensibles sin controles específicos.
 - Métricas de impacto no verificadas.
+- Base de datos.
+- Dashboard.
+- Google Workspace operativo.
+- API externa.
+- IA funcional.
 
 ## Criterios para cerrar una fase
 Preguntas de control:
@@ -121,6 +159,15 @@ Preguntas de control:
 - ¿El agente sigue resolviendo un problema concreto?
 - ¿La revisión humana está contemplada?
 
+Criterios específicos para cerrar la implementación mínima V1:
+- El script se ejecuta desde la raíz del repositorio.
+- El JSON de ejemplo se carga correctamente.
+- El informe por consola es comprensible.
+- Los bloqueos se detectan correctamente.
+- La decisión recomendada coincide con los datos ficticios.
+- No se usan dependencias externas.
+- No se usan datos reales.
+
 ## Criterios para activar la siguiente fase
 Condiciones:
 - Documentación base completa.
@@ -130,27 +177,29 @@ Condiciones:
 - Riesgos principales identificados.
 - Revisión humana contemplada.
 - Validación interna realizada cuando proceda.
+- Prueba básica del script creada antes de ampliar el alcance técnico.
 
 ## Evidencias recomendadas para portfolio
-Posibles evidencias futuras:
+Evidencias disponibles o recomendadas:
 - README claro.
 - Arquitectura explicada.
 - Caso de uso realista.
 - Roadmap transparente.
-- Datos de ejemplo si existen.
+- Datos de ejemplo ficticios.
 - Checklist demostrable.
 - Expediente de cliente ficticio.
-- Capturas si en el futuro existe interfaz.
+- Script local de validación.
+- Informe por consola reproducible.
 - Registro de cambios documentado.
 
 Las evidencias solo deben añadirse cuando existan realmente.
 
 ## Próximos pasos inmediatos
-1. Definir el modelo conceptual mínimo de datos para la V1.
-2. Preparar un checklist inicial de onboarding.
-3. Preparar un expediente ficticio de cliente para validación documental.
+1. Crear una prueba básica del script con datos ficticios.
+2. Actualizar después la documentación técnica si la prueba confirma el comportamiento esperado.
+3. Hacer commit manual de la primera implementación mínima cuando el estado quede limpio.
 
-## 🪪 Licencia y Autoría
+## Ã°Å¸ÂªÂª Licencia y AutorÃƒÂ­a
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
-© 2025 – Txema Ríos. Todos los derechos compartidos.
+Ã‚Â© 2025 Ã¢â‚¬â€œ Txema RÃƒÂ­os. Todos los derechos compartidos.
