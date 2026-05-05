@@ -1,6 +1,7 @@
 from pathlib import Path
 import argparse
 import json
+import sys
 
 
 # Secciones principales que debe tener el expediente ficticio.
@@ -240,13 +241,13 @@ def main():
     expediente = cargar_expediente(ruta_expediente)
 
     if expediente is None:
-        return
+        return 1
 
     secciones_faltantes = validar_secciones(expediente)
     if secciones_faltantes:
         print("ERROR: La estructura del expediente esta incompleta.")
         imprimir_lista("Secciones faltantes", secciones_faltantes)
-        return
+        return 1
 
     campos_faltantes = validar_campos_cliente(expediente["cliente"])
     resumen_checklist = revisar_checklist(expediente["checklist_onboarding"])
@@ -267,6 +268,8 @@ def main():
         decision_recomendada,
     )
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

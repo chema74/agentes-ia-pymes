@@ -14,6 +14,7 @@ class PruebaValidarExpediente(unittest.TestCase):
         self.ruta_agente = self.raiz_repositorio / "agentes" / "01-agente-onboarding-inteligente"
         self.ruta_script = self.ruta_agente / "src" / "validar_expediente.py"
         self.ruta_json = self.ruta_agente / "datos_ejemplo" / "cliente_onboarding_ficticio.json"
+        self.ruta_json_inexistente = self.ruta_agente / "datos_ejemplo" / "no_existe.json"
 
     def ejecutar_script(self, argumentos=None):
         """Ejecuta el script como lo haria una persona desde consola."""
@@ -66,6 +67,17 @@ class PruebaValidarExpediente(unittest.TestCase):
         """Valida que el script acepta una ruta JSON por parametro."""
         resultado = self.ejecutar_script([self.ruta_json])
         self.comprobar_salida_basica(resultado)
+
+    def test_error_con_ruta_json_inexistente(self):
+        """Valida que una ruta inexistente devuelve error claro."""
+        resultado = self.ejecutar_script([self.ruta_json_inexistente])
+        salida = (resultado.stdout or "").lower()
+        error = (resultado.stderr or "").lower()
+        salida_completa = f"{salida}\n{error}"
+
+        self.assertNotEqual(resultado.returncode, 0)
+        self.assertIn("archivo", salida_completa)
+        self.assertIn("no se ha encontrado", salida_completa)
 
 
 if __name__ == "__main__":
