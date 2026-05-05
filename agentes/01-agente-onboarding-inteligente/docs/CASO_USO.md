@@ -1,156 +1,115 @@
 # Caso de Uso del Agente de Onboarding Inteligente para PYMES
 
 ## Propósito del documento
-Este documento define el escenario funcional previsto para el agente y sirve para entender cómo podría aplicarse a una pequeña o mediana empresa real. Su función es describir un caso de uso técnico, verificable y progresivo, sin presentar como implementado nada que todavía no exista.
+Este documento describe el escenario funcional del agente 01 y cómo la V1 mínima permite validar el caso con datos ficticios. No presenta el agente como producto terminado ni como sistema conectado a clientes reales.
 
 ## Estado del caso de uso
-- Estado documental: en desarrollo inicial.
-- Código funcional: no implementado todavía.
-- Automatizaciones: no implementadas todavía.
-- Integraciones activas: no implementadas todavía.
-- IA funcional: no implementada todavía.
-- Dashboard: no implementado todavía.
+- Caso de uso documentado: sí.
+- Validación local con datos ficticios: disponible.
+- Script de validación: `src/validar_expediente.py`.
+- Datos ficticios: `datos_ejemplo/cliente_onboarding_ficticio.json`.
+- Pruebas básicas: 4 tests con `unittest`.
+- Cliente real: no existe.
+- Automatización productiva: no existe.
+- IA funcional: no existe.
+- Google Workspace: no existe.
+- Dashboard: no existe.
+- API: no existe.
+- Integración real con clientes: no existe.
 
 ## Contexto empresarial
-El caso de uso parte de una PYME (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) de servicios que recibe nuevos clientes por correo, llamadas o formularios dispersos. El problema no es solo recibir datos, sino ordenar la información antes de empezar a trabajar para evitar retrabajo, vacíos de información y pérdida de contexto operativo.
+El caso de uso parte de una PYME de servicios que recibe nuevos clientes con información inicial dispersa. El problema principal es ordenar los datos antes de empezar a trabajar para evitar retrabajo, vacíos de información y falta de trazabilidad.
 
 ## Situación inicial sin agente
-- Datos del cliente repartidos entre correos, notas y documentos.
-- Falta de una lista clara de información mínima.
+- Datos repartidos entre correos, notas y documentos.
+- Falta de una lista mínima de información necesaria.
 - Inicio del trabajo sin saber qué falta.
 - Repetición de preguntas al cliente.
 - Retrasos por documentación incompleta.
-- Ausencia de una visión común del estado del onboarding.
-- Dependencia de una persona concreta que recuerda el contexto.
+- Dependencia de seguimiento manual.
 
 ## Objetivo del caso de uso
-El objetivo es convertir una entrada desordenada de cliente en un expediente inicial revisable, con checklist y estado claro.
+El objetivo es convertir una entrada desordenada en un expediente inicial revisable, con checklist, documentación clasificada por estado y decisión recomendada para revisión humana.
 
-Debe incluir:
-- Recoger datos mínimos.
-- Ordenar información inicial.
-- Detectar datos pendientes.
-- Preparar checklist.
-- Clasificar el tipo de onboarding.
-- Generar una vista operativa para revisión humana.
+La V1 mínima ya permite validar este caso con datos ficticios mediante el script local.
+
+## Flujo validable en V1
+1. Se parte de un expediente ficticio en JSON.
+2. El script local carga el expediente.
+3. Se validan secciones principales.
+4. Se revisan campos mínimos del cliente.
+5. Se cuentan documentos recibidos, pendientes e incompletos.
+6. Se revisa el checklist.
+7. Se detectan pendientes y bloqueos.
+8. Se imprime un informe por consola.
+9. Se recomienda una decisión de revisión humana.
+
+Este flujo no es una automatización productiva. Es una validación local reproducible con datos inventados.
+
+## Resultado del ejemplo ficticio
+El expediente ficticio de Laura Martín, de Taller Creativo Bahía, S. L., produce una decisión recomendada:
+
+- Decisión recomendada de revisión manual: `bloquear`.
+
+La decisión `bloquear` procede de reglas simples:
+- Existen ítems bloqueados.
+- Existen ítems obligatorios pendientes.
+- La revisión humana sigue siendo necesaria antes de avanzar.
+
+No procede de IA y no sustituye criterio profesional.
 
 ## Actores implicados
-
-### Cliente
-Aporta información inicial, documentación y contexto básico.
+### Cliente ficticio
+Aporta información inicial y documentación dentro del ejemplo inventado.
 
 ### Responsable interno
-Revisa los datos, valida el expediente y decide si el onboarding puede avanzar.
+Revisa el informe, interpreta los bloqueos y decide qué hacer antes de avanzar.
 
-### Agente de onboarding
-En la visión prevista, ayuda a ordenar información, detectar pendientes y preparar el expediente inicial. Aclara que todavía no hay agente funcional implementado.
+### Script local
+Ordena la validación mínima del expediente ficticio y genera una salida por consola. No actúa sobre sistemas reales.
 
-## Flujo funcional previsto
-1. Recepción de información inicial.
-2. Registro básico del cliente.
-3. Revisión de campos mínimos.
-4. Identificación de información pendiente.
-5. Construcción del checklist.
-6. Clasificación inicial del onboarding.
-7. Preparación del expediente.
-8. Revisión humana.
-9. Confirmación de siguiente paso.
+## Entradas actuales
+- Archivo JSON ficticio.
+- Ruta opcional al archivo JSON.
 
-Este flujo es diseño funcional previsto, no ejecución automática actual.
+No existe captura automática desde formularios, correo, Google Workspace ni sistemas externos.
 
-## Datos mínimos del caso de uso
-- Nombre del cliente.
-- Empresa.
-- Correo electrónico.
-- Teléfono.
-- Tipo de servicio solicitado.
-- Fecha de entrada.
-- Necesidad principal.
-- Documentos recibidos.
-- Documentos pendientes.
-- Prioridad inicial.
-- Observaciones internas.
-- Estado del onboarding.
+## Salidas actuales
+- Informe por consola.
+- Código de salida del proceso.
+- Decisión recomendada para revisión humana.
 
-Todavía no existe captura funcional automatizada.
+No se crean archivos de salida, documentos, dashboards ni registros en base de datos.
 
-## Checklist inicial previsto
-- Datos de contacto completos.
-- Servicio solicitado identificado.
-- Necesidad principal descrita.
-- Documentación básica recibida.
-- Documentación pendiente identificada.
-- Responsable interno asignado.
-- Prioridad inicial revisada.
-- Expediente inicial preparado.
-- Revisión humana realizada.
-- Siguiente paso definido.
+## Pruebas del caso de uso
+El caso de uso se valida con `unittest` mediante cuatro pruebas:
+- Ejecución sin argumentos.
+- Ejecución con ruta explícita al JSON ficticio.
+- Error por ruta inexistente.
+- Error por JSON válido con estructura incompleta.
 
-Este checklist es diseño previsto para V1 (*Version 1 – Versión 1*), no automatización implementada.
+Estas pruebas confirman que la V1 mínima es reproducible en local sin dependencias externas.
 
-## Clasificación inicial prevista
-En V1 la clasificación podría ser manual o basada en reglas simples.
-
-Posibles criterios:
-- Tipo de servicio.
-- Urgencia.
-- Complejidad.
-- Información completa o incompleta.
-- Necesidad de revisión previa.
-- Existencia de documentación pendiente.
-
-La clasificación con IA (*Artificial Intelligence – Inteligencia Artificial*) sería una evolución futura, no una funcionalidad actual.
-
-## Resultado esperado en V1
-Salida mínima y verificable:
-- Expediente inicial ordenado.
-- Checklist completado o parcialmente completado.
-- Lista de datos pendientes.
-- Estado del onboarding.
-- Clasificación inicial simple.
-- Próximas acciones para revisión humana.
-
-La V1 debe poder demostrarse con datos de ejemplo, sin depender de integraciones complejas.
-
-## Evolución V2 futura
-Posibles mejoras futuras:
-- Formulario de entrada con Google Forms.
-- Registro automático en Google Sheets.
-- Generación de expediente en Google Docs.
-- Carpeta automática en Google Drive.
-- Dashboard operativo.
-- Avisos por correo.
-- Resumen asistido con IA.
-- Clasificación inicial asistida.
-- Integración futura con CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*).
-
-Estas mejoras no están implementadas todavía.
-
-## Fuera de alcance inicial
-- Agente autónomo completo.
-- Automatizaciones reales en producción.
-- Integración activa con sistemas de clientes.
-- CRM completo.
-- Firma digital.
-- Gestión legal, fiscal o contractual avanzada.
+## Fuera de alcance actual
+- Cliente real.
+- Datos reales.
+- Automatización productiva.
+- IA funcional.
+- Google Workspace.
+- Dashboard.
+- API.
+- Base de datos.
+- Integración real con clientes.
 - Decisiones sin revisión humana.
-- Tratamiento de datos sensibles sin controles específicos.
-- Métricas de impacto no verificadas.
-- Multiempresa real.
+- Producción real.
 
-## Criterios de validación funcional
-- ¿El caso de uso representa un problema real de PYME?
-- ¿La entrada y la salida se entienden?
-- ¿La V1 puede demostrarse con datos de ejemplo?
-- ¿Está claro qué parte no está implementada?
-- ¿La revisión humana está contemplada?
-- ¿La V2 está separada del alcance actual?
-- ¿El flujo evita prometer automatización inexistente?
+## Evolución futura
+Una V2 podría ampliar la entrada de datos, integrar herramientas externas o mejorar la presentación del estado del onboarding. Antes de implementar esas capacidades debe existir documentación específica, nuevos criterios de validación y pruebas adicionales.
 
 ## Próximos pasos
-1. Completar el roadmap de evolución del agente.
-2. Definir después el modelo conceptual mínimo de datos para la V1.
-3. Preparar después un ejemplo simple de expediente de cliente.
+1. Mejorar casos de prueba si aparecen variantes del expediente.
+2. Separar reglas si la lógica deja de ser pequeña.
+3. Preparar una V2 documental antes de integrar Google Workspace u otros servicios.
 
 ## 🪪 Licencia y Autoría
 

@@ -1,61 +1,79 @@
 # Agente de Onboarding Inteligente para PYMES
 
-## Descripcion breve
-Este agente esta pensado para ordenar el alta inicial de clientes en PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) mediante recogida estructurada de datos, checklist de onboarding, clasificacion inicial y preparacion de expediente. El enfoque actual es construir una base tecnica demostrable y documentada que permita estandarizar el proceso de entrada de clientes.
+## Descripción breve
+Este agente está pensado para ordenar el alta inicial de clientes en PYMES mediante recogida estructurada de datos, checklist de onboarding, revisión de documentación y preparación de un expediente inicial. La V1 mínima ya cuenta con una implementación local verificable, limitada a validar un expediente ficticio y generar un informe por consola.
 
-Su proposito es reducir ambiguedad operativa y mejorar trazabilidad desde el primer contacto. En esta etapa no se presenta como producto terminado, sino como una primera base de trabajo para evolucion progresiva.
+El agente no se presenta como producto terminado. Es una primera base técnica de portfolio para demostrar un flujo pequeño, reproducible y sin dependencias externas.
 
-## Estado del agente
-- Fase documental inicial: completada para la base V1 (*Version 1 – Versión 1*).
-- Diseño V1: preparado.
-- Datos ficticios de ejemplo: disponibles.
-- Codigo funcional minimo: implementado parcialmente.
-- Automatizaciones: no implementadas todavia.
-- Integraciones: no implementadas todavia.
-- Dashboard: no implementado todavia.
-- IA (*Artificial Intelligence – Inteligencia Artificial*) funcional: no implementada todavia.
+## Estado actual
+- Estado documental: base V1 documentada.
+- Estado técnico: V1 mínima local implementada y probada.
+- Código funcional disponible: validación local de un expediente ficticio.
+- Script local: `src/validar_expediente.py`.
+- Datos ficticios: `datos_ejemplo/cliente_onboarding_ficticio.json`.
+- Pruebas: `tests/test_validar_expediente.py`.
+- Casos de prueba actuales: 4 tests con `unittest`, validados correctamente.
+- Dependencias externas: ninguna.
+- `requirements.txt`: sin dependencias activas.
+- Automatización productiva: no existe todavía.
+- IA funcional: no existe todavía.
+- Google Workspace: no existe todavía.
+- Dashboard: no existe todavía.
+- API: no existe todavía.
+- Integración real con clientes: no existe todavía.
 
-## Documentacion V1 disponible
-- [Modelo conceptual de datos](docs/MODELO_DATOS.md): define los datos minimos necesarios para la V1 y sirve como base conceptual previa a cualquier implementacion.
-- [Checklist inicial de onboarding](docs/CHECKLIST_ONBOARDING.md): establece la lista operativa de verificacion para ordenar el alta inicial de clientes.
-- [Expediente ficticio de cliente](docs/EXPEDIENTE_CLIENTE_FICTICIO.md): muestra un ejemplo completo y ficticio para validar el modelo, el checklist y la revision manual.
-- [Flujo de validacion manual](docs/FLUJO_VALIDACION_MANUAL.md): describe el procedimiento minimo para revisar si un expediente puede avanzar.
-
-## Datos de ejemplo disponibles
-- [cliente_onboarding_ficticio.json](datos_ejemplo/cliente_onboarding_ficticio.json): archivo JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) con datos ficticios para validar documentalmente el modelo, el checklist y el flujo manual de la V1.
-
-Este archivo no contiene datos reales, no implica automatizacion implementada y sirve como base para la implementacion minima local.
-
-## Implementacion minima V1 disponible
-Existe una primera implementacion local y verificable:
+## Implementación mínima V1 disponible
+La implementación mínima V1 se limita a un script local:
 
 - `src/validar_expediente.py`
 
-El script realiza las siguientes acciones:
-- Carga el archivo JSON ficticio.
-- Valida secciones principales del expediente.
-- Revisa campos minimos del cliente.
-- Cuenta documentos recibidos, pendientes e incompletos.
-- Revisa items del checklist.
-- Detecta pendientes y bloqueos.
-- Genera un informe por consola.
-- Recomienda una decision de revision humana.
+El script permite:
+- Ejecutarse sin argumentos usando el JSON ficticio por defecto.
+- Ejecutarse con una ruta explícita a un archivo JSON.
+- Cargar datos ficticios de onboarding.
+- Validar que existen las secciones principales del expediente.
+- Validar campos mínimos del cliente.
+- Contar documentos recibidos, pendientes e incompletos.
+- Revisar ítems completos, pendientes y bloqueados del checklist.
+- Detectar pendientes y bloqueos.
+- Recomendar una decisión simple de revisión humana.
+- Devolver código de salida distinto de `0` ante archivo inexistente, JSON inválido o estructura incompleta.
 
-Esta implementacion usa solo la biblioteca estandar de Python. No usa IA, no usa Google Workspace, no usa API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) externa, no crea archivos de salida y no sustituye la revision humana.
+Esta implementación usa solo biblioteca estándar de Python. No usa IA, Google Workspace, API externa, dashboard, base de datos ni automatizaciones productivas.
 
-## Ejecucion local
-El script debe ejecutarse desde la raiz del repositorio con este comando:
+## Ejecución local
+Desde la raíz del repositorio, el script puede ejecutarse sin argumentos:
 
 ```bash
 python agentes/01-agente-onboarding-inteligente/src/validar_expediente.py
 ```
 
-## Resultado de validacion actual
-Con el cliente ficticio disponible, la validacion actual produce este resumen:
+También puede ejecutarse indicando explícitamente la ruta del JSON ficticio:
+
+```bash
+python agentes/01-agente-onboarding-inteligente/src/validar_expediente.py agentes/01-agente-onboarding-inteligente/datos_ejemplo/cliente_onboarding_ficticio.json
+```
+
+## Pruebas
+Las pruebas se ejecutan desde la raíz del repositorio con:
+
+```bash
+python -m unittest discover -s agentes/01-agente-onboarding-inteligente/tests
+```
+
+Estado actual de pruebas:
+- 4 pruebas con `unittest`.
+- Ejecución sin argumentos: OK.
+- Ejecución con ruta explícita al JSON ficticio: OK.
+- Ruta de JSON inexistente: OK, devuelve error controlado.
+- JSON válido con estructura incompleta: OK, devuelve error controlado.
+
+## Resultado de validación actual
+Con el expediente ficticio disponible, la validación local produce una decisión recomendada de revisión manual:
 
 - Cliente ficticio: Laura Martín.
 - Empresa ficticia: Taller Creativo Bahía, S. L.
-- Estado del onboarding: en_revision.
+- Estado del onboarding: `en_revision`.
 - Documentos recibidos: 1.
 - Documentos pendientes: 1.
 - Documentos incompletos: 1.
@@ -63,129 +81,58 @@ Con el cliente ficticio disponible, la validacion actual produce este resumen:
 - Ítems pendientes: 1.
 - Ítems obligatorios pendientes: 2.
 - Ítems bloqueados: 2.
-- Decisión recomendada de revision manual: bloquear.
+- Decisión recomendada de revisión manual: `bloquear`.
 
-Este resultado procede de datos ficticios y sirve solo para validar la V1 minima.
+Este resultado procede de datos ficticios y de reglas simples. No sustituye revisión humana.
 
 ## Problema que aborda
-El onboarding en muchas PYMES suele comenzar con informacion inicial dispersa y sin estructura operativa uniforme. Es habitual trabajar con correos y documentos sueltos, sin checklist claro ni trazabilidad minima de que datos faltan para avanzar.
+El onboarding en muchas PYMES suele empezar con información dispersa, correos sueltos, documentación incompleta y falta de trazabilidad sobre qué datos faltan para avanzar. Esto provoca retrasos, retrabajo administrativo y dependencia de seguimiento manual.
 
-Esto provoca inicios de proyecto sin expediente completo, retrabajo administrativo y dependencia de memoria, llamadas o seguimiento manual para cerrar pendientes criticos.
+La V1 mínima demuestra cómo convertir un expediente ficticio en un informe local que ayuda a revisar el estado del onboarding antes de avanzar.
 
-## Usuario objetivo
-Este agente esta orientado a entornos como:
-- Consultorias pequeñas.
-- Agencias de servicios.
-- Despachos profesionales.
-- Formadores.
-- Empresas de servicios recurrentes.
-- Equipos internos de operaciones o administracion.
+## Alcance actual
+Incluye:
+- Documentación funcional y técnica.
+- Modelo de datos ficticio.
+- Checklist de onboarding ficticio.
+- Script local de validación.
+- Informe por consola.
+- Pruebas básicas con `unittest`.
+- Control básico de errores.
 
-Esta pensado para organizaciones sin infraestructura tecnica compleja y con necesidad de ordenar su proceso de alta de clientes antes de escalar automatizaciones.
-
-## Objetivo funcional
-El objetivo funcional es ayudar a convertir una entrada de cliente desordenada en un expediente inicial mas claro, estructurado y revisable.
-
-Este objetivo incluye:
-- Recogida inicial de datos.
-- Organizacion de informacion.
-- Identificacion de datos pendientes.
-- Checklist de onboarding.
-- Preparacion de expediente.
-- Revision humana antes de avanzar.
-
-## Alcance V1 implementable
-La V1 se plantea como una primera version pequeña, realista y verificable.
-
-Incluye actualmente:
-- Documentacion funcional y tecnica.
-- Definicion del flujo basico.
-- Checklist inicial de onboarding.
-- Modelo conceptual de datos.
-- Ejemplo de expediente de cliente.
-- Validacion local minima con datos ficticios.
-- Informe por consola para revision humana.
-
-Esta V1 no implica todavia automatizacion completa ni IA generativa funcional.
-
-## Evolucion V2 futura
-La V2 (*Version 2 – Versión 2*) define una posible evolucion tecnica posterior.
-
-Puede incluir:
-- Formulario de entrada con Google Forms.
-- Registro operativo en Google Sheets.
-- Generacion documental con Google Docs.
-- Carpetas de cliente en Google Drive.
-- Dashboard operativo.
-- Clasificacion inicial mediante reglas.
-- Resumen asistido con IA.
-- Alertas o avisos basicos.
-- Evolucion hacia integracion con CRM (*Customer Relationship Management - Gestión de Relaciones con Clientes*) y conexion por API, cuando proceda.
-
-Esta seccion describe posibilidades futuras y no funcionalidades implementadas.
-
-## Fuera de alcance inicial
-- Agente autonomo completo.
-- Toma de decisiones sin revision humana.
-- Despliegue productivo.
-- Multiempresa real.
-- Integraciones activas con clientes reales.
-- Sustitucion de criterio profesional.
-- Gestion legal, fiscal o contractual avanzada.
-- Automatizaciones irreversibles.
-- CRM completo.
+No incluye:
+- IA funcional.
+- Google Workspace.
 - Dashboard.
-- Google Workspace operativo.
-- API externa.
+- API.
+- Base de datos.
+- Automatización productiva.
+- Integración real con clientes.
+- Captura real de datos.
+- Generación automática de documentos.
 
-## Entradas previstas
-Entradas representadas actualmente en datos ficticios:
-- Nombre del cliente.
-- Datos de contacto.
-- Tipo de servicio solicitado.
-- Necesidad principal.
-- Documentacion recibida.
-- Prioridad inicial.
-- Observaciones internas.
-- Estado del checklist.
+## Evolución futura
+Una posible V2 podría explorar integración documental o formularios, pero solo después de preparar documentación específica y mantener una separación clara entre lo implementado y lo previsto.
 
-Todavia no existe sistema funcional de captura implementado.
+Cualquier futura integración con Google Workspace, dashboard, API o IA debe tratarse como evolución posterior, no como funcionalidad actual.
 
-## Salidas previstas
-Salidas representadas actualmente por consola:
-- Resumen del expediente inicial del cliente.
-- Estado de documentacion.
-- Estado del checklist de onboarding.
-- Lista de datos pendientes.
-- Bloqueos detectados.
-- Decision recomendada para revision humana.
+## Estructura relevante
+- `README.md`
+- `docs/ARQUITECTURA.md`
+- `docs/CASO_USO.md`
+- `docs/ROADMAP.md`
+- `datos_ejemplo/cliente_onboarding_ficticio.json`
+- `src/validar_expediente.py`
+- `tests/test_validar_expediente.py`
+- `tests/datos_prueba/expediente_incompleto.json`
+- `requirements.txt`
 
-Todavia no existe generacion automatica de documentos, dashboard ni integracion real con clientes.
+## Próximos pasos
+1. Mejorar casos de prueba si aparecen nuevas reglas.
+2. Separar reglas de validación si la lógica crece.
+3. Preparar una posible V2 documental antes de integrar Google Workspace.
 
-## Estructura documental del agente
-- README.md
-- docs/ARQUITECTURA.md
-- docs/CASO_USO.md
-- docs/ROADMAP.md
-- datos_ejemplo/cliente_onboarding_ficticio.json
-- src/validar_expediente.py
-- requirements.txt
-- .gitignore
-
-## Criterios de validacion
-- Se entiende que problema resuelve.
-- La V1 puede ejecutarse localmente sin sobreingenieria.
-- Esta claro que no esta implementado.
-- La evolucion futura esta separada del alcance actual.
-- El agente puede demostrarse con datos de ejemplo ficticios.
-- Existe revision humana en puntos relevantes.
-
-## Proximos pasos
-1. Actualizar el roadmap del agente para reflejar la implementacion minima V1.
-2. Crear despues una prueba basica del script con datos ficticios.
-3. Hacer commit manual de la primera implementacion minima cuando la documentacion quede alineada.
-
-## ðŸªª Licencia y AutorÃ­a
+## 🪪 Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
-Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
+© 2025 – Txema Ríos. Todos los derechos compartidos.

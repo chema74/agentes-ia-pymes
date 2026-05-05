@@ -1,188 +1,112 @@
-﻿# Arquitectura del Agente de Onboarding Inteligente para PYMES
+# Arquitectura del Agente de Onboarding Inteligente para PYMES
 
 ## Propósito del documento
-Este documento describe la arquitectura conceptual y técnica prevista para el agente, sin declarar como implementado ningún componente o comportamiento que todavía no exista.
+Este documento describe la arquitectura conceptual y técnica del agente 01, diferenciando la implementación mínima V1 ya disponible de las posibles ampliaciones futuras.
 
-## Estado de la arquitectura
-- Estado documental: en desarrollo inicial.
-- Estado técnico: pendiente de implementación.
-- Código funcional: no implementado todavía.
-- Automatizaciones reales: no implementadas todavía.
-- Integraciones activas: no implementadas todavía.
-- Dashboard: no implementado todavía.
-- IA funcional: no implementada todavía.
+## Estado técnico actual
+- Arquitectura actual: mínima, local y verificable.
+- Implementación disponible: script local de validación.
+- Script: `src/validar_expediente.py`.
+- Entrada principal: archivo JSON ficticio.
+- Salida principal: informe por consola.
+- Pruebas: `unittest` mediante subprocess.
+- Dependencias externas: ninguna.
+- Automatización productiva: no existe.
+- IA funcional: no existe.
+- Google Workspace: no existe.
+- Dashboard: no existe.
+- API: no existe.
+- Base de datos: no existe.
+- Integraciones reales: no existen.
 
-## Visión conceptual
-El agente se plantea como una capa de organización entre la entrada inicial de un cliente y el inicio operativo del servicio. En una versión futura, este agente podrá recibir información inicial del cliente, ordenar datos básicos, identificar información pendiente, generar o preparar un checklist y consolidar un expediente inicial para revisión humana antes de avanzar.
+## Arquitectura actual V1 mínima
+La arquitectura implementada se compone de cuatro piezas:
 
-Esta visión conceptual define intención de diseño y no equivale a funcionalidad implementada actualmente.
+- JSON ficticio de entrada: `datos_ejemplo/cliente_onboarding_ficticio.json`.
+- Script Python local: `src/validar_expediente.py`.
+- Salida por consola: informe de validación y decisión recomendada.
+- Pruebas con biblioteca estándar: `tests/test_validar_expediente.py`.
 
-## Flujo general previsto
-1. Entrada de información del cliente.
-2. Validación inicial de campos mínimos.
-3. Organización de datos.
-4. Identificación de datos pendientes.
-5. Clasificación inicial.
-6. Preparación de expediente.
-7. Revisión humana.
-8. Registro del estado del onboarding.
+El flujo técnico actual es:
 
-Este flujo es diseño previsto y no ejecución automática actual.
+1. El script recibe una ruta opcional de JSON o usa la ruta ficticia por defecto.
+2. Carga el JSON con biblioteca estándar.
+3. Valida secciones principales.
+4. Valida campos mínimos del cliente.
+5. Revisa documentación y checklist.
+6. Detecta pendientes y bloqueos.
+7. Imprime un informe por consola.
+8. Devuelve código `0` si la validación se ejecuta correctamente.
+9. Devuelve código distinto de `0` ante archivo inexistente, JSON inválido o estructura incompleta.
 
-## Componentes conceptuales
+## Componentes funcionales actuales
+### Entrada
+La entrada actual es un JSON ficticio. No existe captura real de datos, formulario, conexión externa ni integración con clientes.
 
-### Entrada de datos
-La entrada podría venir de formulario, documento, hoja de cálculo o carga manual, según el nivel de madurez operativa de la empresa.
+### Validación
+La validación actual se basa en reglas simples:
+- Presencia de secciones principales.
+- Presencia de campos mínimos del cliente.
+- Conteo de documentos por estado.
+- Conteo y revisión de ítems del checklist.
+- Detección de ítems obligatorios pendientes.
+- Detección de bloqueos.
 
-### Validación inicial
-Esta capa serviría para detectar campos vacíos, datos incompletos o ausencia de información mínima necesaria para continuar.
+### Decisión recomendada
+La decisión recomendada procede de reglas simples del script. No procede de IA ni sustituye revisión humana.
 
-### Checklist de onboarding
-El checklist permitiría controlar qué elementos están completos, cuáles permanecen pendientes y cuáles bloquean el inicio operativo.
+### Salida
+La salida actual es texto por consola. No se generan archivos, dashboards, documentos ni registros en base de datos.
 
-### Clasificación inicial
-La clasificación podría organizar tipo de cliente, prioridad, complejidad o estado inicial mediante reglas simples en V1 (*Version 1 – Versión 1*), con posible asistencia de IA (*Artificial Intelligence – Inteligencia Artificial*) en V2 (*Version 2 – Versión 2*).
+### Pruebas
+La arquitectura incluye pruebas con `unittest` que ejecutan el script mediante `subprocess`, simulando el uso desde consola.
 
-### Expediente inicial
-Este componente reuniría la información estructurada del cliente antes de iniciar el servicio.
+Casos cubiertos:
+- Ejecución sin argumentos.
+- Ejecución con ruta explícita al JSON ficticio.
+- Ruta inexistente.
+- JSON válido con estructura incompleta.
 
-### Registro de trazabilidad
-Permitirá conocer qué datos se recibieron, qué falta y qué revisión humana se realizó en cada paso.
+## Arquitectura futura posible
+Una futura V2 podría estudiar integraciones, pero no forman parte de la V1 mínima.
 
-### Dashboard futuro
-Podría mostrar estados, pendientes y próximos pasos, pero todavía no está implementado.
-
-## Arquitectura V1 implementable
-La V1 se define como arquitectura mínima, realista y verificable.
-
-Puede incluir:
-- Documentación completa del flujo.
-- Modelo conceptual de datos.
-- Checklist inicial en formato simple.
-- Ejemplo de expediente.
-- Validación manual o semiautomática de campos mínimos.
-- Clasificación inicial por reglas simples.
-- Revisión humana obligatoria.
-
-La V1 no debe depender de automatizaciones complejas ni de IA generativa funcional.
-
-## Arquitectura V2 futura
-Posibles ampliaciones futuras:
-- Google Forms para entrada de datos.
-- Google Sheets para registro operativo.
-- Google Docs para generación documental.
-- Google Drive para carpetas de cliente.
-- Dashboard en HTML, CSS y JavaScript.
-- Clasificación asistida mediante IA.
-- Resúmenes operativos asistidos.
-- Alertas básicas.
-- Posible API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) futura si el proyecto crece.
-
-Estas ampliaciones no están implementadas todavía.
-
-## Datos previstos
-
-### Datos de entrada
-- Nombre del cliente.
-- Datos de contacto.
-- Empresa.
-- Tipo de servicio solicitado.
-- Necesidad principal.
-- Documentación recibida.
-- Observaciones iniciales.
-- Prioridad estimada.
-- Estado del checklist.
-
-### Datos intermedios
-- Campos completos.
-- Campos pendientes.
-- Nivel de prioridad.
-- Tipo de cliente.
-- Estado del expediente.
-- Observaciones internas.
-
-### Datos de salida
-- Expediente inicial.
-- Checklist de onboarding.
-- Lista de datos pendientes.
-- Clasificación inicial.
-- Resumen operativo.
-- Próximas acciones para revisión humana.
-
-Todavía no existe tratamiento automatizado real de estos datos.
-
-## Integraciones previstas
-
-### Integraciones no existentes actualmente
-- Google Workspace.
-- Google Forms.
-- Google Sheets.
-- Google Docs.
-- Google Drive.
-- Modelos de lenguaje.
+Posibles líneas futuras:
+- Entrada con formularios.
+- Registro operativo externo.
+- Organización documental.
+- Dashboard.
+- Integración con Google Workspace.
 - API.
-- CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*) externo.
+- Asistencia con IA.
 
-### Integraciones posibles en V2
-- Entrada mediante formulario.
-- Registro en hoja de cálculo.
-- Generación documental.
-- Organización de carpetas.
-- Dashboard operativo.
-- Resumen asistido con IA.
+Estas líneas requieren documentación previa, revisión del alcance y nuevas pruebas antes de implementarse.
 
-### Integraciones fuera de alcance inicial
-- CRM completo.
-- ERP (*Enterprise Resource Planning – Planificación de Recursos Empresariales*).
-- Sistemas de pago.
-- Firma digital.
-- Integraciones críticas con datos reales de clientes.
-- Automatizaciones irreversibles.
+## Riesgos controlados en V1
+- No se usan datos reales.
+- No se instalan dependencias.
+- No se conectan servicios externos.
+- No se automatizan acciones productivas.
+- No se toman decisiones sin revisión humana.
+- No se presenta el agente como sistema terminado.
 
-## Control humano
-El agente debe mantener revisión humana en puntos clave:
-- Confirmación de datos recibidos.
-- Validación de información pendiente.
-- Aprobación del expediente inicial.
-- Revisión de clasificación.
-- Decisión de iniciar el servicio.
-- Corrección de errores o ambigüedades.
-
-## Riesgos técnicos
-- Automatizar un proceso todavía mal definido.
-- Confundir documentación prevista con funcionalidad implementada.
-- Prometer IA donde solo existen reglas o diseño.
-- Depender demasiado pronto de integraciones externas.
-- Crear una V1 demasiado grande.
-- Tratar datos sensibles sin controles suficientes.
-- Generar expedientes sin revisión humana.
-
-## Fuera de alcance inicial
-- Agente autónomo completo.
+## Fuera de alcance actual
+- IA funcional.
+- Google Workspace.
+- Dashboard.
+- API.
+- Base de datos.
+- Automatización productiva.
+- Integración real con clientes.
 - Producción real.
-- Multiempresa.
-- Integraciones activas con clientes reales.
-- Seguridad avanzada no implementada.
-- Decisiones sensibles sin supervisión.
-- Sustitución de criterio profesional.
-- Automatizaciones irreversibles.
+- Seguridad avanzada.
+- Gestión legal, fiscal o contractual.
 - CRM completo.
 - ERP.
-- Gestión legal, fiscal o contractual avanzada.
-
-## Criterios de validación técnica
-- ¿La arquitectura se entiende sin necesidad de código?
-- ¿La V1 puede implementarse de forma mínima?
-- ¿Está claro qué no existe todavía?
-- ¿La V2 está planteada como evolución futura?
-- ¿Hay revisión humana en puntos relevantes?
-- ¿Se evitan promesas no verificables?
-- ¿La arquitectura sirve para explicar un caso real de PYME?
 
 ## Próximos pasos técnicos
-1. Completar el caso de uso funcional.
-2. Completar el roadmap de evolución.
-3. Definir después el modelo conceptual mínimo de datos para la V1.
+1. Mejorar casos de prueba si aparecen nuevos escenarios.
+2. Separar reglas de validación si la lógica crece.
+3. Diseñar una V2 documental antes de integrar herramientas externas.
 
 ## 🪪 Licencia y Autoría
 
