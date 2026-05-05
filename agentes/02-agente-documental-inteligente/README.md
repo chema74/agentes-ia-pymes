@@ -1,16 +1,34 @@
 # Agente Documental Inteligente para PYMES
 
 ## Descripción breve
-Este agente está pensado para ayudar a una pequeña o mediana empresa a ordenar documentación interna, clasificar documentos y detectar documentación pendiente. Su propósito es preparar una base documental más trazable, con criterios claros sobre qué existe, qué falta y qué debe revisarse. Está orientado a PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) que trabajan con expedientes, propuestas, contratos, manuales o documentación recurrente. En esta fase es una base técnica demostrable y documental, no un producto terminado.
+Este agente está pensado para ayudar a una pequeña o mediana empresa a ordenar documentación interna, clasificar documentos y detectar documentación pendiente. Su propósito es preparar una base documental más trazable, con criterios claros sobre qué existe, qué falta y qué debe revisarse.
+
+La fase documental V1 está preparada y sirve como base para una futura implementación mínima. El agente no se presenta como producto terminado y todavía no incluye código funcional ni automatización productiva.
 
 ## Estado del agente
-- Estado actual: fase documental inicial.
+- Estado actual: fase documental V1 preparada.
 - Código funcional: no implementado todavía.
-- Automatizaciones: no implementadas todavía.
+- Automatización documental: no implementada todavía.
 - Integraciones: no implementadas todavía.
 - Dashboard: no implementado todavía.
-- Buscador documental: no implementado todavía.
-- IA (*Artificial Intelligence – Inteligencia Artificial*) funcional: no implementada todavía.
+- Buscador semántico: no implementado todavía.
+- OCR: no implementado todavía.
+- RAG: no implementado todavía.
+- Google Workspace: no implementado todavía.
+- IA funcional: no implementada todavía.
+
+## Documentación V1 disponible
+- [Arquitectura conceptual](docs/ARQUITECTURA.md): describe la arquitectura prevista y los límites técnicos del agente documental.
+- [Caso de uso funcional](docs/CASO_USO.md): define el escenario funcional previsto para una PYME con documentación dispersa.
+- [Roadmap de evolución](docs/ROADMAP.md): separa fase documental, V1 implementable, validación interna, V2 futura y fuera de alcance.
+- [Modelo conceptual de datos](docs/MODELO_DATOS.md): define entidades, campos mínimos y relaciones documentales para una futura V1.
+- [Inventario documental ficticio](docs/INVENTARIO_DOCUMENTAL_FICTICIO.md): muestra un ejemplo documental inventado para validar el modelo.
+- [Flujo de validación documental](docs/FLUJO_VALIDACION_DOCUMENTAL.md): describe una revisión manual mínima de documentos, estados, pendientes y acciones.
+
+## Datos de ejemplo disponibles
+- [inventario_documental_ficticio.json](datos_ejemplo/inventario_documental_ficticio.json): archivo JSON ficticio con documentos inventados, clasificaciones, versiones, pendientes, acciones y resultado de revisión manual.
+
+Este JSON sirve para una futura validación mínima de V1. No es código funcional, no ejecuta automatizaciones y no implica buscador semántico, OCR, RAG, IA funcional, dashboard ni integración con Google Workspace.
 
 ## Problema que aborda
 Muchas PYMES trabajan con documentación distribuida en carpetas compartidas, correos, discos locales o herramientas internas sin criterios homogéneos. Esto suele generar pérdida de tiempo, duplicidades y dificultad para saber qué documento es el vigente.
@@ -49,24 +67,22 @@ Debe incluir:
 - Revisión humana antes de cualquier decisión.
 
 ## Alcance V1 implementable
-La V1 (*Version 1 – Versión 1*) debe ser pequeña, realista y verificable. Su objetivo no es construir un sistema documental completo, sino definir una primera base que pueda demostrarse con datos ficticios.
+La V1 implementable futura debe ser pequeña, realista y verificable. Su objetivo no sería construir un sistema documental completo, sino validar con datos ficticios un flujo documental mínimo.
 
-Puede incluir:
-- Documentación funcional y técnica.
-- Definición del flujo documental básico.
-- Modelo conceptual de datos documental.
-- Criterios de clasificación.
-- Ejemplo de inventario documental ficticio.
-- Validación manual de campos mínimos.
-- Reglas simples para estado documental.
-- Preparación para automatización futura.
+Puede incluir más adelante:
+- Script o lógica mínima para procesar el JSON ficticio.
+- Validación de campos obligatorios.
+- Revisión de estados documentales.
+- Detección simple de pendientes.
+- Detección simple de posibles duplicados o versiones ambiguas.
+- Informe por consola.
 
-Esta V1 no implica todavía OCR (*Optical Character Recognition – Reconocimiento Óptico de Caracteres*) funcional, RAG (*Retrieval-Augmented Generation – Generación Aumentada por Recuperación*), buscador semántico ni IA generativa funcional.
+Esta V1 futura no implica todavía OCR funcional, RAG funcional, buscador semántico, dashboard, Google Workspace ni IA funcional.
 
 ## Evolución V2 futura
-La V2 (*Version 2 – Versión 2*) puede definir una evolución técnica posterior si la V1 documental queda validada.
+La V2 puede definir una evolución técnica posterior si la V1 mínima queda validada.
 
-Puede incluir:
+Puede incluir en el futuro:
 - Registro documental en Google Sheets.
 - Organización de carpetas en Google Drive.
 - Generación de índice documental.
@@ -79,7 +95,7 @@ Puede incluir:
 
 Esta sección describe posibilidades futuras, no funcionalidades implementadas.
 
-## Fuera de alcance inicial
+## Fuera de alcance actual
 - Sistema documental completo en producción.
 - Buscador semántico funcional.
 - RAG implementado.
@@ -90,47 +106,25 @@ Esta sección describe posibilidades futuras, no funcionalidades implementadas.
 - Gestión legal avanzada.
 - Sustitución de revisión humana.
 - Control documental normativo completo.
-- API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) pública.
+- API pública.
 - Multiempresa real.
-
-## Entradas previstas
-Posibles entradas futuras:
-- Nombre del documento.
-- Tipo de documento.
-- Área o proceso relacionado.
-- Fecha de recepción o creación.
-- Estado documental.
-- Responsable interno.
-- Versión.
-- Ubicación prevista.
-- Observaciones internas.
-- Documentos relacionados.
-
-Todavía no existe sistema funcional de captura.
-
-## Salidas previstas
-Posibles salidas futuras:
-- Inventario documental.
-- Lista de documentos pendientes.
-- Clasificación inicial de documentos.
-- Estado documental por área.
-- Detección básica de posibles duplicados.
-- Recomendaciones de revisión humana.
-- Índice documental inicial.
-
-Todavía no existe generación automática implementada.
+- Automatización productiva.
 
 ## Estructura documental del agente
 - README.md
 - docs/ARQUITECTURA.md
 - docs/CASO_USO.md
 - docs/ROADMAP.md
+- docs/MODELO_DATOS.md
+- docs/INVENTARIO_DOCUMENTAL_FICTICIO.md
+- docs/FLUJO_VALIDACION_DOCUMENTAL.md
+- datos_ejemplo/inventario_documental_ficticio.json
 - requirements.txt
 - .gitignore
 
 ## Criterios de validación
 - ¿Se entiende qué problema documental resuelve?
-- ¿La V1 puede implementarse sin sobreingeniería?
+- ¿La V1 futura puede implementarse sin sobreingeniería?
 - ¿Está claro qué no está implementado?
 - ¿La evolución futura está separada del alcance actual?
 - ¿El agente puede demostrarse con datos documentales ficticios?
@@ -138,9 +132,9 @@ Todavía no existe generación automática implementada.
 - ¿No se promete IA documental inexistente?
 
 ## Próximos pasos
-1. Completar la arquitectura del agente documental.
-2. Completar el caso de uso funcional.
-3. Completar el roadmap de evolución.
+1. Validar el JSON de ejemplo.
+2. Hacer commit manual de la fase documental V1 del agente 02.
+3. Pasar después al agente 03.
 
 ## 🪪 Licencia y Autoría
 
