@@ -2,20 +2,22 @@
 
 ## Descripción breve
 
-Este agente está pensado para ayudar a una pequeña o mediana empresa a controlar el estado de sus clientes, las próximas acciones, las tareas pendientes, los bloqueos y el seguimiento operativo.  
+Este agente está pensado para ayudar a una pequeña o mediana empresa a controlar el estado de sus clientes, próximas acciones, tareas pendientes, bloqueos y seguimiento operativo.  
 Su propósito es ordenar información dispersa y convertirla en una base revisable para la gestión diaria de clientes.  
 El enfoque está orientado a PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*) que necesitan claridad operativa sin implantar una infraestructura compleja.  
-En su estado actual, el agente es una base técnica demostrable en fase documental inicial, no un producto terminado ni una automatización funcional.
+En su estado actual, el agente cuenta con la fase documental V1 preparada, pero no es un producto terminado ni una automatización funcional.
 
 ## Estado del agente
 
-- Estado actual: fase documental inicial.
+- Estado actual: fase documental V1 preparada.
 - Código funcional: no implementado todavía.
-- Automatizaciones: no implementadas todavía.
+- Automatización de seguimiento: no implementada todavía.
 - Recordatorios automáticos: no implementados todavía.
-- Integraciones: no implementadas todavía.
+- Integraciones activas: no implementadas todavía.
+- Google Workspace: no implementado todavía.
 - Dashboard: no implementado todavía.
 - CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*): no implementado todavía.
+- API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*): no implementada todavía.
 - IA (*Artificial Intelligence – Inteligencia Artificial*) funcional: no implementada todavía.
 
 ## Problema que aborda
@@ -50,7 +52,7 @@ Perfiles posibles:
 - Equipos de atención o soporte.
 - Profesionales que gestionan varios clientes activos a la vez.
 
-El diseño conceptual está orientado a empresas sin infraestructura técnica compleja, sin necesidad inicial de un CRM completo, integraciones avanzadas o automatizaciones en producción.
+El diseño conceptual está orientado a empresas sin infraestructura técnica compleja, sin necesidad inicial de CRM completo, integraciones avanzadas o automatizaciones productivas.
 
 ## Objetivo funcional
 
@@ -69,27 +71,48 @@ La base funcional prevista incluye:
 
 La revisión humana es un principio central del diseño: cualquier recomendación, priorización o siguiente paso debe poder ser revisado por una persona antes de ejecutarse o comunicarse al cliente.
 
-## Alcance V1 implementable
+## Documentación V1 disponible
 
-La V1 (*Version 1 – Versión 1*) implementable debe ser pequeña, realista y verificable. Su objetivo es crear una base documental y técnica que permita demostrar el caso de uso sin presentar capacidades que todavía no existen.
+La fase documental V1 (*Version 1 – Versión 1*) está preparada como base de portfolio técnico. Estos documentos describen el alcance, el caso de uso, el modelo de datos, la cartera ficticia y el flujo de validación manual, sin afirmar que exista implementación funcional.
 
-El alcance previsto para esta V1 puede incluir:
+Documentos disponibles:
+
+- [Arquitectura conceptual](docs/ARQUITECTURA.md)
+- [Caso de uso funcional](docs/CASO_USO.md)
+- [Roadmap de evolución](docs/ROADMAP.md)
+- [Modelo conceptual de datos](docs/MODELO_DATOS.md)
+- [Cartera ficticia de clientes](docs/CARTERA_CLIENTES_FICTICIA.md)
+- [Flujo de validación de seguimiento](docs/FLUJO_VALIDACION_SEGUIMIENTO.md)
+
+Esta documentación permite revisar el diseño de la V1 antes de decidir si se implementa una lógica mínima más adelante.
+
+## Datos de ejemplo disponibles
+
+Existe un dato de ejemplo ficticio para apoyar una futura validación mínima:
+
+- [Cartera ficticia de clientes en JSON](datos_ejemplo/cartera_clientes_ficticia.json)
+
+Este JSON contiene una cartera inventada coherente con la documentación del agente. Sirve como dato de ejemplo para una posible implementación mínima futura, pero no es código funcional, no automatiza el seguimiento, no ejecuta recordatorios y no implica integración con sistemas externos.
+
+## Alcance V1 documental
+
+La V1 documental preparada incluye:
 
 - Documentación funcional y técnica.
 - Definición del flujo de seguimiento.
 - Modelo conceptual de datos.
 - Estados de cliente.
-- Estados de tarea.
+- Estados de acción.
 - Ejemplo ficticio de cartera de clientes.
-- Validación manual de próximos pasos.
-- Reglas simples para detectar clientes sin próxima acción.
-- Preparación para automatización futura.
+- Flujo manual de validación.
+- JSON ficticio de ejemplo.
+- Reglas simples para detectar clientes sin próxima acción, bloqueos y riesgos.
 
-Esta V1 no implica todavía recordatorios automáticos, integración con CRM, dashboard ni IA generativa funcional. Tampoco implica captura automática de correos, conexión con calendarios, envío de alertas ni análisis inteligente real. La prioridad de esta fase es definir bien el problema, el flujo operativo y las reglas mínimas que podrían implementarse posteriormente.
+Esta V1 documental no implica recordatorios automáticos, integración con CRM, dashboard, Google Workspace, API ni IA generativa funcional. Tampoco implica captura automática de correos, conexión con calendarios, envío de alertas ni automatización productiva.
 
 ## Evolución V2 futura
 
-La V2 (*Version 2 – Versión 2*) futura describe una posible evolución del agente cuando la base documental esté validada y exista una primera implementación verificable. Esta sección no describe funcionalidades implementadas, sino opciones razonables para una fase posterior.
+La V2 (*Version 2 – Versión 2*) futura describe una posible evolución del agente si se decide avanzar después de validar la documentación y, en su caso, una implementación mínima.
 
 Una evolución futura podría incluir:
 
@@ -103,13 +126,11 @@ Una evolución futura podría incluir:
 - Integración futura con CRM.
 - Integración futura con calendario.
 
-También podría contemplarse el uso de una API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) si en el futuro existiera una necesidad real de conectar el agente con otros sistemas. En ese caso, cualquier integración debería diseñarse con controles de permisos, trazabilidad y revisión humana.
+Esta sección describe posibilidades futuras, no funcionalidades implementadas.
 
-La evolución V2 no debe confundirse con el estado actual del agente. Actualmente no existe automatización real, dashboard funcional, integración con Google Workspace, CRM ni IA funcional implementada.
+## Fuera de alcance actual
 
-## Fuera de alcance inicial
-
-Quedan fuera del alcance inicial:
+Quedan fuera del alcance actual:
 
 - CRM completo en producción.
 - Automatización comercial completa.
@@ -118,78 +139,31 @@ Quedan fuera del alcance inicial:
 - Integración real con Google Workspace.
 - Integración con correo real.
 - Integración con calendario real.
+- API pública.
 - Toma de decisiones sin revisión humana.
 - Multiempresa real.
-- API pública.
 - Sustitución de gestión comercial o atención humana.
 - Métricas de impacto no verificadas.
 
-El agente tampoco debe presentarse como una solución cerrada de ventas, atención al cliente o productividad. En esta fase es un caso técnico documental para preparar una implementación controlada y demostrable.
-
-## Entradas previstas
-
-En una fase futura, el agente podría trabajar con entradas operativas básicas asociadas al seguimiento de clientes.
-
-Entradas posibles:
-
-- Nombre del cliente.
-- Empresa.
-- Estado del cliente.
-- Última interacción.
-- Próxima acción.
-- Responsable interno.
-- Prioridad.
-- Riesgo.
-- Bloqueo.
-- Fecha prevista de seguimiento.
-- Observaciones internas.
-
-Todavía no existe un sistema funcional de captura de estas entradas. No hay formularios implementados, integración con hojas de cálculo, conexión con correo ni sincronización automática con herramientas externas.
-
-## Salidas previstas
-
-En una fase futura, el agente podría generar salidas orientadas a la revisión operativa y la priorización manual.
-
-Salidas posibles:
-
-- Lista de clientes activos.
-- Clientes sin próxima acción.
-- Clientes bloqueados.
-- Clientes en riesgo.
-- Seguimientos pendientes.
-- Priorización operativa.
-- Próximas acciones recomendadas para revisión humana.
-
-Todavía no existe generación automática implementada. Cualquier salida descrita en esta sección corresponde a una capacidad prevista o diseñable, no a una funcionalidad actualmente disponible.
-
-## Estructura documental del agente
-
-- README.md
-- docs/ARQUITECTURA.md
-- docs/CASO_USO.md
-- docs/ROADMAP.md
-- requirements.txt
-- .gitignore
+El agente no debe presentarse como una solución cerrada de ventas, atención al cliente o productividad. En esta fase es un caso técnico documental preparado para revisión y posible evolución posterior.
 
 ## Criterios de validación
 
 Para validar la calidad documental y técnica del agente, pueden utilizarse las siguientes preguntas:
 
 - ¿Se entiende qué problema de seguimiento resuelve?
-- ¿La V1 puede implementarse sin sobreingeniería?
+- ¿La V1 documental puede revisarse sin sobreingeniería?
 - ¿Está claro qué no está implementado?
 - ¿La evolución futura está separada del alcance actual?
 - ¿El agente puede demostrarse con datos ficticios de clientes?
 - ¿Existe revisión humana en puntos relevantes?
 - ¿No se promete automatización comercial inexistente?
 
-Si el documento permite responder afirmativamente a estas preguntas, la base del agente será suficientemente clara para avanzar hacia arquitectura, caso de uso y roadmap sin confundir alcance actual con evolución futura.
-
 ## Próximos pasos
 
-1. Completar la arquitectura del agente de seguimiento.
-2. Completar el caso de uso funcional.
-3. Completar el roadmap de evolución.
+1. Validar el JSON de ejemplo.
+2. Hacer commit manual de la fase documental V1 del agente 03.
+3. Pasar después al agente 04.
 
 ## 🪪 Licencia y Autoría
 

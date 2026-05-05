@@ -8,38 +8,44 @@ El roadmap no presenta el agente como terminado. Sirve como planificación técn
 
 ## Estado actual
 
-- Estado documental: en desarrollo inicial.
+- Estado documental: fase documental V1 preparada.
 - Estado técnico: pendiente de implementación.
 - Código funcional: no implementado todavía.
-- Automatizaciones: no implementadas todavía.
+- Automatización de seguimiento: no implementada todavía.
 - Recordatorios automáticos: no implementados todavía.
 - Integraciones activas: no implementadas todavía.
+- Google Workspace: no implementado todavía.
 - Dashboard: no implementado todavía.
 - CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*): no implementado todavía.
+- API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*): no implementada todavía.
 - IA (*Artificial Intelligence – Inteligencia Artificial*) funcional: no implementada todavía.
-- Última fase completada: documentación base en preparación.
-- Próxima fase prevista: definición del modelo conceptual mínimo de datos para la V1.
+- Última fase completada: documentación V1 preparada con modelo de datos, cartera ficticia, flujo de validación manual y JSON de ejemplo.
+- Próxima decisión real: decidir si se implementa código mínimo más adelante o se continúa con el agente 04.
 
 ## Fase 0 — Base documental
 
 Esta fase sirve para definir el problema de seguimiento, el alcance y la estructura del agente antes de crear código. El objetivo es dejar claro qué problema operativo se quiere resolver, qué límites tiene el agente y qué evidencias documentales sostienen el caso de portfolio.
 
-Entregables:
+Entregables preparados:
 
 - README del agente.
 - Arquitectura conceptual.
 - Caso de uso funcional.
 - Roadmap.
+- Modelo conceptual de datos.
+- Cartera ficticia de clientes.
+- Flujo mínimo de validación manual.
+- JSON ficticio de ejemplo.
 - Límites de alcance.
 - Criterios de validación.
 
-Esta fase no implica código funcional, automatizaciones reales, dashboard, integración con Google Workspace, CRM ni IA funcional implementada.
+Esta fase no implica código funcional, automatizaciones reales, dashboard, integración con Google Workspace, CRM, API ni IA funcional implementada.
 
 ## Fase 1 — Definición de V1 implementable
 
-Esta fase debe convertir la documentación en un diseño mínimo que pueda implementarse después. La V1 (*Version 1 – Versión 1*) debe ser pequeña, verificable y centrada en el seguimiento operativo básico de clientes.
+Esta fase convierte la documentación en un diseño mínimo que podría implementarse después. La V1 (*Version 1 – Versión 1*) debe ser pequeña, verificable y centrada en el seguimiento operativo básico de clientes.
 
-Entregables previstos:
+Entregables preparados en la fase documental:
 
 - Modelo conceptual mínimo de datos.
 - Estados de cliente.
@@ -50,16 +56,17 @@ Entregables previstos:
 - Reglas simples para detectar bloqueos.
 - Reglas simples para detectar riesgo operativo.
 - Criterios de revisión humana.
+- Dato de ejemplo ficticio en JSON.
 
-Esta fase todavía puede completarse sin automatización real. Su valor está en cerrar el diseño mínimo antes de decidir cualquier implementación.
+Esta fase está preparada a nivel documental. Todavía no existe automatización real ni ejecución funcional.
 
-## Fase 2 — Implementación mínima V1
+## Fase 2 — Implementación mínima V1 futura
 
-Esta fase solo debe abrirse cuando la documentación y el diseño mínimo estén cerrados. La implementación debe limitarse a demostrar el flujo básico con datos ficticios, sin introducir complejidad innecesaria ni dependencias externas no justificadas.
+Esta fase solo debe abrirse si se decide implementar código mínimo más adelante. La implementación debería limitarse a demostrar el flujo básico con datos ficticios, sin introducir complejidad innecesaria ni dependencias externas no justificadas.
 
-Puede incluir:
+Podría incluir:
 
-- Script o lógica mínima para procesar datos ficticios de clientes.
+- Lógica mínima para procesar datos ficticios de clientes.
 - Validación de campos obligatorios.
 - Detección de clientes sin próxima acción.
 - Detección de clientes bloqueados.
@@ -68,13 +75,13 @@ Puede incluir:
 - Registro básico de estado de seguimiento.
 - Documentación actualizada al cierre del bloque.
 
-La implementación debe ser pequeña, verificable y sin sobreingeniería. No debe presentarse como un CRM completo, un dashboard funcional, una solución con recordatorios automáticos ni una automatización comercial en producción.
+Esta fase es futura. No hay pruebas, código, automatizaciones, dashboard, recordatorios, CRM, Google Workspace, API ni IA funcional implementada.
 
-## Fase 3 — Validación interna
+## Fase 3 — Validación interna futura
 
-Esta fase sirve para probar el flujo de seguimiento con datos ficticios antes de ampliar el agente. El objetivo es comprobar si el diseño ayuda realmente a revisar clientes activos, detectar huecos de seguimiento y priorizar acciones.
+Esta fase serviría para probar el flujo de seguimiento con datos ficticios si se implementa una lógica mínima. El objetivo sería comprobar si el diseño ayuda realmente a revisar clientes activos, detectar huecos de seguimiento y priorizar acciones.
 
-Incluye:
+Podría incluir:
 
 - Prueba con cartera ficticia de clientes.
 - Revisión de clientes activos.
@@ -103,15 +110,15 @@ Posibles ampliaciones futuras:
 - Resúmenes asistidos con IA.
 - Integración futura con CRM.
 - KPI (*Key Performance Indicator – Indicador Clave de Rendimiento*) operativos de seguimiento.
-- Posible API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) si el proyecto crece.
+- Posible API si el proyecto crece.
 
-Estas funcionalidades no están implementadas todavía. Antes de abordarlas debería existir una validación interna suficiente de la V1 y una justificación técnica clara.
+Estas funcionalidades no están implementadas todavía. Antes de abordarlas debería existir una validación suficiente de la V1 y una justificación técnica clara.
 
 ## Fase 5 — Integraciones avanzadas opcionales
 
 Esta fase solo tendría sentido si la V1 y la V2 quedan validadas. Su objetivo sería conectar el agente con sistemas externos y mejorar la trazabilidad del seguimiento, siempre manteniendo controles de revisión humana.
 
-Puede incluir:
+Podría incluir:
 
 - Conexión con CRM externo.
 - Integración con Google Calendar.
@@ -122,11 +129,11 @@ Puede incluir:
 - Automatizaciones controladas.
 - Conectores externos.
 
-Esta fase no pertenece al alcance inicial. Tampoco debe asumirse como necesaria hasta que exista una base funcional demostrada y un caso de uso suficientemente validado.
+Esta fase no pertenece al alcance actual. Tampoco debe asumirse como necesaria hasta que exista una base funcional demostrada y un caso de uso suficientemente validado.
 
-## Fuera de alcance inicial
+## Fuera de alcance actual
 
-Quedan fuera del alcance inicial:
+Quedan fuera del alcance actual:
 
 - CRM completo en producción.
 - Automatización comercial completa.
@@ -142,7 +149,7 @@ Quedan fuera del alcance inicial:
 - Métricas de impacto no verificadas.
 - Automatizaciones irreversibles.
 
-Estos elementos pueden evaluarse en fases posteriores, pero no forman parte del estado actual ni de la primera definición implementable.
+Estos elementos pueden evaluarse en fases posteriores, pero no forman parte del estado actual ni de la fase documental V1 preparada.
 
 ## Criterios para cerrar una fase
 
@@ -158,7 +165,7 @@ Preguntas de control:
 
 Una fase no debería cerrarse si existen ambigüedades relevantes sobre el alcance, el estado real o las capacidades implementadas.
 
-## Criterios para activar la siguiente fase
+## Criterios para activar una implementación mínima futura
 
 Condiciones mínimas:
 
@@ -168,13 +175,14 @@ Condiciones mínimas:
 - Flujo de seguimiento mínimo comprensible.
 - Riesgos principales identificados.
 - Revisión humana contemplada.
-- Validación interna realizada cuando proceda.
+- JSON de ejemplo validado.
+- Decisión explícita de implementar código mínimo.
 
-Activar una fase posterior sin cumplir estas condiciones aumentaría el riesgo de sobreingeniería o de presentar como implementadas capacidades que todavía son solo previsiones.
+Activar una implementación sin cumplir estas condiciones aumentaría el riesgo de sobreingeniería o de presentar como implementadas capacidades que todavía son solo previsiones.
 
 ## Evidencias recomendadas para portfolio
 
-Posibles evidencias futuras:
+Evidencias documentales disponibles o previstas:
 
 - README claro.
 - Arquitectura explicada.
@@ -182,18 +190,17 @@ Posibles evidencias futuras:
 - Roadmap transparente.
 - Modelo de datos.
 - Cartera ficticia de clientes.
-- Datos de ejemplo si existen.
-- Pruebas si hay implementación mínima.
-- Capturas si en el futuro existe interfaz.
-- Registro de cambios documentado.
+- Flujo de validación manual.
+- Datos de ejemplo ficticios.
+- Registro de cambios documentado cuando exista.
 
-Las evidencias solo deben añadirse cuando existan realmente. No deben incorporarse métricas, capturas, integraciones ni resultados que no hayan sido producidos o verificados.
+Las evidencias solo deben añadirse cuando existan realmente. No deben incorporarse métricas, capturas, integraciones, pruebas ni resultados que no hayan sido producidos o verificados.
 
 ## Próximos pasos inmediatos
 
-1. Definir el modelo conceptual mínimo de datos para la V1.
-2. Preparar una cartera ficticia de clientes.
-3. Preparar después un flujo mínimo de validación de seguimiento manual.
+1. Validar el JSON de ejemplo.
+2. Hacer commit manual de la fase documental V1 del agente 03.
+3. Pasar después al agente 04.
 
 ## 🪪 Licencia y Autoría
 
