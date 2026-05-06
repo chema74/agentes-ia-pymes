@@ -1,24 +1,41 @@
 # Criterios del Portfolio
 
 ## Criterios de diseño
-- Uniformidad documental entre agentes.
-- Trazabilidad de decisiones técnicas.
-- Delimitación estricta de alcance por versiones.
-- Coherencia entre documentación global y estado real del repositorio.
+- Cada agente debe responder a un problema empresarial reconocible.
+- Cada agente debe mantener alcance explícito y verificable.
+- Cada agente debe evitar prometer automatización o inteligencia no implementadas.
+- La documentación debe separar V1 implementada, V2 futura y fuera de alcance.
+
+## Criterios mínimos por agente
+Cada agente del portfolio debe incluir, como mínimo:
+- documentación Markdown suficiente para entender el caso de uso,
+- un JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) ficticio válido,
+- un script local de consola en Python,
+- pruebas `unittest`,
+- mensajes y errores en castellano,
+- revisión humana como parte explícita del flujo.
+
+## Criterios de implementación
+- La V1 actual debe funcionar con biblioteca estándar de Python.
+- No se incorporan dependencias externas salvo justificación futura clara.
+- No se debe presentar como implementado ningún conector, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*), dashboard, integración real o capa de IA (*Artificial Intelligence – Inteligencia Artificial*) que no exista.
 
 ## Criterios de validación
-- Cada agente debe incluir objetivo, caso de uso, arquitectura y roadmap.
-- La documentación debe estar en castellano y ser reutilizable para demostración.
-- Las funcionalidades futuras deben declararse sin simular implementación actual.
-- La documentación global debe reflejar el estado real del agente 01 y de los agentes 02 al 10.
+- El script local debe poder ejecutarse por consola.
+- Debe existir al menos una prueba de ejecución correcta y pruebas mínimas de error.
+- El agente debe trabajar con datos ficticios y trazables.
+- La documentación debe coincidir con los nombres reales de scripts, tests y JSON.
+
+## Criterios de veracidad
+- No inventar capacidades.
+- No presentar una validación local como producto operativo real.
+- No presentar datos ficticios como evidencia de uso real.
+- No ocultar límites funcionales.
 
 ## Criterios de evolución
-- V1 implementable: estructura y narrativa técnica verificable.
-- V2 futura: integraciones y automatizaciones priorizadas.
-- Fuera de alcance: desarrollo funcional completo en esta fase.
-- El criterio actual del repositorio es cerrar primero documentación V1 por agente.
-- Solo se implementa código mínimo cuando aporta evidencia técnica real.
-- Los agentes documentales no deben presentarse como funcionales si no tienen código.
+- V1 implementada: documentación, JSON ficticio, script local y pruebas.
+- V2 futura: integraciones, automatizaciones, interfaces y posibles componentes avanzados.
+- Fuera de alcance actual: producto completo, automatización real de negocio y promesas no verificables.
 
 ## 🪪 Licencia y Autoría
 

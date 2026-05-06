@@ -1,94 +1,69 @@
 # Visión General del Portfolio de Agentes IA para PYMES
 
 ## Propósito
-Este repositorio agrupa agentes técnicos demostrables orientados a procesos reales de pequeñas y medianas empresas. Su finalidad es construir una base de trabajo estructurada para aplicar IA (*Artificial Intelligence – Inteligencia Artificial*) de forma gradual, verificable y alineada con necesidades operativas concretas de PYMES (*Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas*).
+Este portfolio muestra cómo descomponer problemas frecuentes de una PYME en agentes técnicos pequeños, verificables y documentados con honestidad de alcance.
 
-## Enfoque del portfolio
-El enfoque del portfolio no consiste en crear productos comerciales cerrados desde el primer día. La línea de trabajo es construir casos técnicos progresivos, documentados, verificables y ampliables, con separación explícita entre lo implementado, lo planificado y lo que permanece fuera de alcance en cada fase.
+## Estado actual de la base técnica
+El repositorio ya no es solo documental. La primera base técnica local de los 10 agentes está completada:
+- cada agente tiene un JSON ficticio de ejemplo,
+- cada agente tiene un script de consola en Python,
+- cada agente tiene pruebas `unittest`,
+- cada agente produce una validación local con salida en castellano.
 
-## Problemas empresariales que se quieren abordar
-- Procesos manuales dispersos.
-- Falta de trazabilidad.
-- Documentación desorganizada.
-- Seguimiento débil de clientes.
-- Pérdida de información operativa.
-- Dependencia excesiva de tareas repetitivas.
-- Baja visibilidad sobre cobros, propuestas, operaciones, formación interna, mercado y cumplimiento.
+La implementación actual sigue siendo V1 local y mínima. No representa una suite productiva, una automatización operativa real ni una plataforma multiagente desplegada.
 
-## Principios de trabajo
-- Realismo técnico.
-- Desarrollo incremental.
-- Documentación clara.
-- Separación entre lo implementado y lo previsto.
-- Automatización gradual.
-- Revisión humana en decisiones relevantes.
-- Uso responsable de IA.
-- Orientación a procesos reales de PYMES.
+## Qué demuestra esta V1
+- Coherencia entre documentación y código.
+- Casos de uso diferenciados por agente.
+- Validación local reproducible sin dependencias externas.
+- Trazabilidad técnica suficiente para portfolio profesional.
+- Uso explícito de revisión humana como criterio de control.
 
-## Arquitectura conceptual del portfolio
-Cada agente del portfolio se diseña sobre una base documental homogénea que permita entender su propósito y su evolución sin ambigüedad. A nivel conceptual, cada agente tiene:
-- Una documentación base.
-- Un caso de uso definido.
-- Una arquitectura inicial.
-- Un roadmap.
-- Una V1 (*Version 1 – Versión 1*) implementable o preparada.
-- Una posible V2 (*Version 2 – Versión 2*) futura.
-- Límites explícitos de alcance.
+## Qué no demuestra esta V1
+- IA (*Artificial Intelligence – Inteligencia Artificial*) funcional.
+- RAG (*Retrieval-Augmented Generation – Generación Aumentada por Recuperación*) real.
+- OCR (*Optical Character Recognition – Reconocimiento Óptico de Caracteres*) real.
+- API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*).
+- dashboard.
+- Google Workspace.
+- integraciones reales.
+- decisiones automáticas de negocio.
+- despliegue productivo.
 
-Esta arquitectura conceptual no implica código funcional en la fase actual salvo en el agente 01, que ya dispone de una V1 mínima local funcional.
+## Relación entre agentes
+Los 10 agentes cubren un recorrido operativo amplio:
+- onboarding,
+- documentación,
+- seguimiento de clientes,
+- propuestas,
+- operaciones,
+- cobros,
+- pipeline comercial,
+- formación interna,
+- análisis de mercado,
+- revisión y cumplimiento.
 
-## Relación entre los 10 agentes
-Los 10 agentes están pensados como piezas independientes, con valor propio por separado, pero compatibles entre sí para una evolución futura hacia una suite de automatización para PYMES.
+La relación entre ellos sigue siendo conceptual y documental. En V1 no existe una orquestación real entre agentes.
 
-La relación funcional prevista cubre estas áreas:
-- Onboarding.
-- Documentación.
-- Seguimiento de clientes.
-- Propuestas.
-- Operaciones.
-- Cobros y flujo de caja.
-- Pipeline comercial.
-- Formación interna.
-- Análisis de mercado.
-- Revisión y cumplimiento.
+## Roadmap futuro
+Las siguientes líneas pertenecen a fases futuras, no implementadas:
+- automatización incremental por agente,
+- integración entre agentes,
+- conectores externos,
+- API,
+- dashboard,
+- Google Workspace,
+- componentes de IA funcional,
+- capas de priorización y observabilidad más avanzadas.
 
-Como evolución futura, también se contempla compatibilidad con flujos de CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*). Esta relación entre agentes es una visión de evolución futura y no una funcionalidad implementada actualmente.
+La prioridad actual sigue siendo mantener una base técnica honesta, pequeña y verificable.
 
-## Estado actual
-- Infraestructura documental creada.
-- Repositorio en evolución controlada.
-- Agente 01 con V1 mínima local funcional.
-- Agentes 02 al 10 con fase documental V1 preparada.
-- Sin suite completa en producción.
-- Sin IA funcional.
-- Sin Google Workspace.
-- Sin dashboard funcional.
-- Sin API funcional.
-- Sin integraciones reales con clientes.
-
-## Criterio de calidad
-Cada agente debe poder entenderse por sí mismo y demostrar con claridad:
-- Qué problema resuelve.
-- Qué alcance tiene.
-- Qué está implementado.
-- Qué está pendiente.
-- Qué queda fuera.
-- Cómo podría evolucionar.
-
-## Fuera de alcance de la visión inicial
-- Suite completa en producción.
-- Agentes autónomos sin supervisión.
-- Multiempresa real.
-- Integraciones activas con clientes reales.
-- Despliegue comercial.
-- Sustitución de asesoría profesional.
-- Promesas de automatización no implementada.
-
-## Próximos pasos
-- Mantener coherencia entre documentación y estado real.
-- Actualizar la web más adelante, no en esta revisión.
-- Cerrar documentación transversal cuando sea necesario.
-- Evitar que el catálogo declare como funcional algo que solo está documentado.
+## Criterio de calidad de la visión
+La visión del portfolio se considera correcta cuando:
+- describe solo lo que existe,
+- separa V1 implementada de V2 futura,
+- evita presentar prototipos locales como productos terminados,
+- mantiene un tono técnico y profesional.
 
 ## 🪪 Licencia y Autoría
 

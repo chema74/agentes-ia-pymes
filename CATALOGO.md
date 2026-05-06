@@ -1,128 +1,49 @@
 # Catálogo de Agentes IA para PYMES
 
 ## Objetivo del catálogo
-Este archivo resume los agentes incluidos dentro del repositorio y su estado real de avance. Su función es ofrecer una vista técnica rápida para entender qué está cerrado en V1 mínima, qué tiene documentación V1 preparada y qué permanece como evolución futura.
+Este catálogo resume el alcance real de los 10 agentes del repositorio y diferencia con claridad entre validación local implementada, evolución futura y capacidades fuera de alcance.
 
 ## Estado general
-- El repositorio sigue en evolución.
-- La infraestructura documental común está creada.
-- El agente 01 tiene una V1 mínima local funcional.
-- Los agentes 02 al 10 tienen fase documental V1 preparada.
-- No existe IA funcional, Google Workspace, dashboard, API, automatización productiva ni integración real con clientes.
+- El Agente 01 dispone de V1 mínima local funcional.
+- Los Agentes 02 al 10 disponen de V1 técnica local mínima.
+- Los 10 agentes incluyen documentación base, JSON ficticio, script Python local y pruebas `unittest`.
+- Los scripts actuales actúan como validadores locales por consola.
+- No existen IA (*Artificial Intelligence – Inteligencia Artificial*) funcional, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*), dashboard, Google Workspace ni integraciones reales.
 
-## Agente 01 — V1 mínima local funcional
-- Carpeta: `agentes/01-agente-onboarding-inteligente/`
-- Estado: V1 mínima local funcional.
-- Objetivo: ordenar el alta inicial de clientes en PYMES mediante validación local de un expediente ficticio, checklist, documentación recibida y revisión manual prevista.
+## Agente 01 — Agente de Onboarding Inteligente
+Valida localmente un expediente ficticio de onboarding con `validar_expediente.py` y pruebas `unittest`, sin automatización real del proceso.
 
-Incluye:
-- Documentación funcional y técnica.
-- Modelo de datos.
-- Checklist.
-- Expediente ficticio.
-- Flujo de validación manual.
-- Script local de validación.
-- Datos ficticios.
-- 4 pruebas `unittest` OK.
+## Agente 02 — Agente Documental Inteligente
+Valida localmente un inventario documental ficticio con `validar_inventario_documental.py` y pruebas `unittest`, como base técnica mínima de revisión documental.
 
-Alcance real de la V1 mínima:
-- Validación local con Python estándar.
-- Informe por consola.
-- Ejecución sin argumento.
-- Ejecución con ruta explícita al JSON ficticio.
-- Control de ruta inexistente.
-- Control de JSON válido con estructura incompleta.
+## Agente 03 — Agente de Seguimiento de Clientes
+Valida localmente una cartera ficticia de clientes con `validar_cartera_clientes.py` y pruebas `unittest`, sin CRM (*Customer Relationship Management – Gestión de Relaciones con Clientes*) real.
 
-Fuera de alcance actual:
-- Producto comercial terminado.
-- IA funcional.
-- Google Workspace.
-- Dashboard.
-- API.
-- Automatización productiva.
-- Integración real con clientes.
-- Decisiones sin revisión humana.
+## Agente 04 — Agente Generador de Propuestas
+Valida localmente una propuesta ficticia con `validar_propuesta.py` y pruebas `unittest`, sin generación automática real ni envío externo.
 
-Evolución V2:
-- Se mantiene como evolución futura.
-- Debe documentarse antes de integrar Google Workspace, dashboard, API o IA.
+## Agente 05 — Agente de Operaciones para PYMES
+Valida localmente tareas y bloqueos operativos ficticios con `validar_operaciones.py` y pruebas `unittest`, como soporte básico de revisión operativa.
 
-## Agentes 02 al 10 — Fase documental V1 preparada
+## Agente 06 — Agente de Control de Cobros y Flujo de Caja
+Valida localmente cobros y previsiones operativas ficticias con `validar_cobros_flujo_caja.py` y pruebas `unittest`, sin asesoría financiera ni automatización de cobro.
 
-### 02 — Agente Documental Inteligente
-- Carpeta: `agentes/02-agente-documental-inteligente/`
-- Estado: fase documental V1 preparada.
-- Propósito: organizar, versionar y priorizar documentación operativa y comercial con criterios homogéneos.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
+## Agente 07 — Agente de Pipeline Comercial
+Valida localmente oportunidades comerciales ficticias con `validar_pipeline_comercial.py` y pruebas `unittest`, sin predicción comercial ni gestión comercial real.
 
-### 03 — Agente de Seguimiento de Clientes
-- Carpeta: `agentes/03-agente-seguimiento-clientes/`
-- Estado: fase documental V1 preparada.
-- Propósito: centralizar hitos de seguimiento y próximos pasos de clientes para reducir olvidos operativos.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
+## Agente 08 — Agente de Formación Interna
+Valida localmente rutas, módulos y evidencias formativas ficticias con `validar_formacion_interna.py` y pruebas `unittest`, sin LMS (*Learning Management System – Sistema de Gestión del Aprendizaje*) real.
 
-### 04 — Agente Generador de Propuestas
-- Carpeta: `agentes/04-agente-generador-propuestas/`
-- Estado: fase documental V1 preparada.
-- Propósito: estandarizar la preparación de propuestas comerciales a partir de insumos estructurados.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
+## Agente 09 — Agente de Análisis de Mercado
+Valida localmente señales de mercado ficticias con `validar_analisis_mercado.py` y pruebas `unittest`, sin consulta de internet ni analítica predictiva.
 
-### 05 — Agente de Operaciones para PYMES
-- Carpeta: `agentes/05-agente-operaciones-pymes/`
-- Estado: fase documental V1 preparada.
-- Propósito: mapear tareas recurrentes de operaciones y establecer trazabilidad mínima de ejecución.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
+## Agente 10 — Agente de Revisión y Cumplimiento
+Valida localmente controles, evidencias y hallazgos ficticios con `validar_revision_cumplimiento.py` y pruebas `unittest`, sin presentarse como revisión normativa profesional.
 
-### 06 — Agente de Control de Cobros y Flujo de Caja
-- Carpeta: `agentes/06-agente-control-cobros-flujo-caja/`
-- Estado: fase documental V1 preparada.
-- Propósito: ordenar eventos de cobro, alertas básicas y seguimiento de vencimientos para mejorar visibilidad operativa.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
-
-### 07 — Agente de Pipeline Comercial
-- Carpeta: `agentes/07-agente-pipeline-comercial/`
-- Estado: fase documental V1 preparada.
-- Propósito: definir etapas comerciales, criterios de avance y señales de bloqueo para oportunidades en curso.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
-
-### 08 — Agente de Formación Interna
-- Carpeta: `agentes/08-agente-formacion-interna/`
-- Estado: fase documental V1 preparada.
-- Propósito: estructurar contenidos internos de capacitación y rutas de aprendizaje por rol.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
-
-### 09 — Agente de Análisis de Mercado
-- Carpeta: `agentes/09-agente-analisis-mercado/`
-- Estado: fase documental V1 preparada.
-- Propósito: definir un marco para recopilar y organizar señales de mercado relevantes para decisiones comerciales.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
-
-### 10 — Agente de Revisión y Cumplimiento
-- Carpeta: `agentes/10-agente-revision-cumplimiento/`
-- Estado: fase documental V1 preparada.
-- Propósito: establecer controles de revisión documental y verificación de cumplimiento operativo básico.
-- Evidencia disponible: documentación V1 + JSON ficticio.
-- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
-
-## Criterios de activación de un agente
-- Un agente solo pasará de documental a activo cuando tenga documentación base mínima.
-- Debe existir una V1 implementable con alcance verificable.
-- Deben quedar claros los límites de lo que no está implementado.
-- No se debe avanzar a integración externa sin pruebas y documentación previa.
-
-## Orden de trabajo
-- Mantener la V1 mínima del agente 01 como referencia inicial.
-- Mejorar pruebas del agente 01 solo si aparecen nuevas reglas.
-- Preparar V2 documental antes de integrar herramientas externas.
-- Mantener los agentes 02 a 10 como documentación V1 preparada.
+## Criterio de lectura del catálogo
+- V1 implementada: validación local, datos ficticios, revisión humana y pruebas reproducibles.
+- V2 futura: automatizaciones, integraciones o capas funcionales posteriores.
+- Fuera de alcance actual: producto terminado, decisiones automáticas, integraciones vivas o promesas no implementadas.
 
 ## 🪪 Licencia y Autoría
 

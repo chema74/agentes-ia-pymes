@@ -1,88 +1,89 @@
 # Repositorio Técnico agentes-ia-pymes
 
 ## Descripción breve
-Este repositorio organiza un portfolio técnico en castellano para diseñar, documentar y validar agentes orientados a pequeñas y medianas empresas. El foco es avanzar por iteraciones pequeñas, trazables y verificables, separando claramente lo implementado de lo previsto para fases futuras.
-
-El repositorio sigue en evolución. No se presenta como producto terminado ni como una suite comercial cerrada.
+`agentes-ia-pymes` es un portfolio técnico con 10 agentes demostrables orientados a problemas habituales de pequeñas y medianas empresas. El repositorio prioriza trazabilidad, alcance real y revisión humana frente a promesas de automatización no implementada.
 
 ## Estado actual del repositorio
-El portfolio contiene 10 agentes.
+- Los 10 agentes tienen V1 técnica local mínima disponible.
+- Cada agente incluye documentación base, un archivo JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) ficticio, un script Python de consola y pruebas `unittest`.
+- Toda la ejecución actual funciona con biblioteca estándar de Python.
+- La V1 actual valida estructura, estados e incidencias locales con datos ficticios y salida por consola.
+- No hay IA (*Artificial Intelligence – Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*).
+- No hay dashboard.
+- No hay Google Workspace.
+- No hay integraciones reales.
+- No hay RAG (*Retrieval-Augmented Generation – Generación Aumentada por Recuperación*) real.
+- No hay OCR (*Optical Character Recognition – Reconocimiento Óptico de Caracteres*) real.
 
-Estado por bloques:
-- Agente 01: V1 mínima local funcional.
-- Agentes 02 al 10: fase documental V1 preparada.
+## V1 implementada
+La V1 implementada del repositorio consiste en una base técnica local verificable:
+- Scripts de consola pequeños y didácticos.
+- Validación de JSON ficticios por agente.
+- Reglas mínimas de análisis operativo.
+- Informes en castellano con decisión humana recomendada.
+- Pruebas `unittest` ejecutables por agente.
 
-Estado real resumido:
-- `01-agente-onboarding-inteligente`: V1 mínima local funcional, con script Python, JSON ficticio y pruebas `unittest`.
-- `02-agente-documental-inteligente` a `10-agente-revision-cumplimiento`: documentación V1 preparada y JSON ficticio de ejemplo.
-- IA funcional: no existe.
-- Google Workspace: no existe.
-- Dashboard funcional: no existe.
-- API funcional: no existe.
-- Automatización productiva: no existe.
-- Integración real con clientes: no existe.
-
-## Agente 01
-El Agente de Onboarding Inteligente para PYMES ya dispone de una primera implementación mínima local.
-
-Incluye:
-- Script local de validación.
-- Datos ficticios.
-- Pruebas `unittest`.
-
-La V1 mínima valida un expediente ficticio mediante Python estándar y pruebas `unittest`. Su alcance se limita a validación local, informe por consola y control básico de errores.
-
-## Agentes 02 al 10
-Los agentes 02 al 10 tienen fase documental V1 preparada. Cada uno dispone de documentación V1 y JSON ficticio de ejemplo, pero no tiene código funcional todavía.
-
-## Problema general que aborda
-Muchas PYMES tienen procesos críticos dispersos, con baja estandarización y alta dependencia manual. Este portfolio aborda ese problema mediante diseños de agentes que ayudan a estructurar información, mejorar trazabilidad y preparar automatizaciones progresivas con enfoque implementable.
+Esta V1 no representa una suite productiva ni un sistema automatizado de agentes en producción. Representa una primera base reproducible de portfolio técnico.
 
 ## Agentes incluidos
-- `01-agente-onboarding-inteligente`: V1 mínima local funcional.
-- `02-agente-documental-inteligente`: fase documental V1 preparada.
-- `03-agente-seguimiento-clientes`: fase documental V1 preparada.
-- `04-agente-generador-propuestas`: fase documental V1 preparada.
-- `05-agente-operaciones-pymes`: fase documental V1 preparada.
-- `06-agente-control-cobros-flujo-caja`: fase documental V1 preparada.
-- `07-agente-pipeline-comercial`: fase documental V1 preparada.
-- `08-agente-formacion-interna`: fase documental V1 preparada.
-- `09-agente-analisis-mercado`: fase documental V1 preparada.
-- `10-agente-revision-cumplimiento`: fase documental V1 preparada.
+- `01-agente-onboarding-inteligente`: validación local de expedientes ficticios de onboarding.
+- `02-agente-documental-inteligente`: validación local de inventario documental ficticio.
+- `03-agente-seguimiento-clientes`: validación local de cartera ficticia de seguimiento de clientes.
+- `04-agente-generador-propuestas`: validación local de propuesta ficticia.
+- `05-agente-operaciones-pymes`: validación local de tareas y bloqueos operativos ficticios.
+- `06-agente-control-cobros-flujo-caja`: validación local de cobros y previsión operativa ficticia.
+- `07-agente-pipeline-comercial`: validación local de oportunidades comerciales ficticias.
+- `08-agente-formacion-interna`: validación local de rutas y módulos formativos ficticios.
+- `09-agente-analisis-mercado`: validación local de señales de mercado ficticias.
+- `10-agente-revision-cumplimiento`: validación local de revisión interna ficticia y seguimiento de evidencias.
 
 ## Alcance actual
-Incluye:
-- Documentación global del portfolio.
-- Catálogo de agentes y estados.
-- Desarrollo completo de la V1 mínima local del agente 01.
-- Documentación V1 y datos ficticios para los agentes 02 al 10.
+El repositorio sirve como evidencia técnica de:
+- capacidad de estructurar casos de uso por agente,
+- capacidad de traducir documentación V1 a validadores locales mínimos,
+- capacidad de mantener coherencia entre datos ficticios, scripts y pruebas,
+- capacidad de delimitar con claridad lo implementado y lo no implementado.
 
-No incluye:
-- IA funcional.
-- Google Workspace.
-- Dashboard.
-- API.
-- Automatización productiva.
-- Integración real con clientes.
-- Despliegue productivo.
+## V2 futura
+La V2 futura puede explorar, si se prioriza más adelante:
+- automatizaciones internas adicionales,
+- mayor separación de reglas y lógica,
+- interfaces de uso más cómodas,
+- conectores o integraciones externas,
+- IA funcional,
+- API,
+- dashboard,
+- flujos con Google Workspace,
+- capas posteriores de RAG u OCR cuando el alcance lo justifique.
+
+Nada de lo anterior está implementado en esta V1.
+
+## Fuera de alcance actual
+- Producto SaaS.
+- Automatización real de procesos de negocio.
+- Decisiones automáticas sobre clientes, personas, documentos, cobros o cumplimiento.
+- Integración con sistemas vivos.
+- Servicios en red, paneles o despliegues.
+- Uso de dependencias externas.
 
 ## Estructura del repositorio
-- `README.md`: presentación técnica general del portfolio.
-- `CATALOGO.md`: inventario de agentes y estado general.
-- `docs/`: visión global y criterios técnicos transversales.
-- `plantillas/`: plantillas base para documentación de agentes.
-- `agentes/`: carpetas individuales de cada agente.
+- `README.md`
+- `CATALOGO.md`
+- `docs/`
+- `agentes/01-agente-onboarding-inteligente/`
+- `agentes/02-agente-documental-inteligente/`
+- `agentes/03-agente-seguimiento-clientes/`
+- `agentes/04-agente-generador-propuestas/`
+- `agentes/05-agente-operaciones-pymes/`
+- `agentes/06-agente-control-cobros-flujo-caja/`
+- `agentes/07-agente-pipeline-comercial/`
+- `agentes/08-agente-formacion-interna/`
+- `agentes/09-agente-analisis-mercado/`
+- `agentes/10-agente-revision-cumplimiento/`
 
-Dentro del agente 01 existe además una V1 mínima local con `src/`, `tests/` y datos ficticios. Los agentes 02 al 10 contienen documentación V1 y JSON ficticio.
-
-## Próximos pasos
-1. Mantener estable la V1 mínima del agente 01.
-2. Preparar futuras evoluciones documentales si aparecen nuevas necesidades.
-3. Actualizar la web más adelante, no en esta revisión.
-4. Mantener la trazabilidad entre lo documentado y lo realmente implementado.
-
-## Nota de evolución del portfolio
-El repositorio se encuentra en evolución controlada. La prioridad actual es mantener trazabilidad de alcance, evitar promesas no implementadas y avanzar agente por agente con validaciones pequeñas y reproducibles.
+## Nota de portfolio
+El valor actual del repositorio está en la veracidad del alcance: cada agente muestra documentación, datos ficticios, validación local y pruebas pequeñas, sin presentarse como producto terminado ni como automatización real.
 
 ## 🪪 Licencia y Autoría
 
