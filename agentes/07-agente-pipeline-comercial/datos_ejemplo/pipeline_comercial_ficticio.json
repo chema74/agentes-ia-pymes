@@ -1,0 +1,361 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "pipeline_comercial_ficticio_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2026-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de pipeline comercial"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Soluciones Comerciales, S.L.",
+    "sector": "servicios",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que ordena oportunidades comerciales, fases, bloqueos y acciones de seguimiento con un equipo reducido."
+  },
+  "oportunidades_comerciales": [
+    {
+      "identificador_oportunidad": "OPO-001",
+      "nombre_cliente": "Cliente Atlas",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "renovacion de soporte anual",
+      "fase_comercial": "primer_contacto",
+      "estado_oportunidad": "abierta",
+      "temperatura_comercial": "templada",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Laura",
+      "fecha_ultima_interaccion": "2026-05-02",
+      "proxima_accion": "realizar llamada de seguimiento inicial",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "Hay interes inicial pero falta confirmar encaje."
+    },
+    {
+      "identificador_oportunidad": "OPO-002",
+      "nombre_cliente": "Grupo Orion",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "implantacion de servicio recurrente",
+      "fase_comercial": "diagnostico",
+      "estado_oportunidad": "en_revision",
+      "temperatura_comercial": "caliente",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Sergio",
+      "fecha_ultima_interaccion": "2026-05-04",
+      "proxima_accion": "cerrar diagnostico con el cliente",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "La oportunidad necesita validar requisitos antes de propuesta."
+    },
+    {
+      "identificador_oportunidad": "OPO-003",
+      "nombre_cliente": "Consultora Luma",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "propuesta de mejora interna",
+      "fase_comercial": "propuesta",
+      "estado_oportunidad": "abierta",
+      "temperatura_comercial": "templada",
+      "prioridad_seguimiento": "media",
+      "responsable_interno": "Marta",
+      "fecha_ultima_interaccion": "2026-04-30",
+      "proxima_accion": "enviar ajuste de propuesta",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "La propuesta está en revisión por el cliente."
+    },
+    {
+      "identificador_oportunidad": "OPO-004",
+      "nombre_cliente": "Empresa Nadir",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "ampliacion de alcance comercial",
+      "fase_comercial": "negociacion",
+      "estado_oportunidad": "bloqueada",
+      "temperatura_comercial": "critica",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Javier",
+      "fecha_ultima_interaccion": "2026-05-03",
+      "proxima_accion": "confirmar alcance final con dirección interna",
+      "bloqueo_asociado": "BLQ-001",
+      "observaciones_internas": "Falta validar una condición de alcance antes de cerrar negociación."
+    },
+    {
+      "identificador_oportunidad": "OPO-005",
+      "nombre_cliente": "Cliente Senda",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "acuerdo pendiente de decision",
+      "fase_comercial": "pendiente_decision",
+      "estado_oportunidad": "abierta",
+      "temperatura_comercial": "caliente",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Nerea",
+      "fecha_ultima_interaccion": "2026-05-01",
+      "proxima_accion": "pedir decision formal al cliente",
+      "bloqueo_asociado": "BLQ-002",
+      "observaciones_internas": "La dirección del cliente aún no ha confirmado el paso siguiente."
+    },
+    {
+      "identificador_oportunidad": "OPO-006",
+      "nombre_cliente": "Cliente Vega",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "cierre de oferta de soporte",
+      "fase_comercial": "ganada",
+      "estado_oportunidad": "ganada",
+      "temperatura_comercial": "caliente",
+      "prioridad_seguimiento": "media",
+      "responsable_interno": "Lucía",
+      "fecha_ultima_interaccion": "2026-05-05",
+      "proxima_accion": "registrar cierre documental",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "La oportunidad puede darse por ganada si se completa el cierre."
+    },
+    {
+      "identificador_oportunidad": "OPO-007",
+      "nombre_cliente": "Servicios Delta",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "servicio no encajado",
+      "fase_comercial": "perdida",
+      "estado_oportunidad": "perdida",
+      "temperatura_comercial": "fria",
+      "prioridad_seguimiento": "baja",
+      "responsable_interno": "Sergio",
+      "fecha_ultima_interaccion": "2026-04-29",
+      "proxima_accion": "cerrar seguimiento y documentar motivo",
+      "bloqueo_asociado": "BLQ-003",
+      "observaciones_internas": "La oportunidad no encaja con el servicio ofrecido."
+    },
+    {
+      "identificador_oportunidad": "OPO-008",
+      "nombre_cliente": "Cliente Alba",
+      "nombre_empresa": "NexoSur Soluciones Comerciales, S.L.",
+      "servicio_interes": "segunda llamada de diagnóstico",
+      "fase_comercial": "diagnostico",
+      "estado_oportunidad": "abierta",
+      "temperatura_comercial": "templada",
+      "prioridad_seguimiento": "media",
+      "responsable_interno": "Laura",
+      "fecha_ultima_interaccion": "2026-05-02",
+      "proxima_accion": null,
+      "bloqueo_asociado": null,
+      "observaciones_internas": "Falta asignar una acción siguiente concreta."
+    }
+  ],
+  "interacciones_comerciales": [
+    {
+      "identificador_interaccion": "INT-001",
+      "identificador_oportunidad": "OPO-001",
+      "tipo_interaccion": "llamada",
+      "fecha_interaccion": "2026-05-02",
+      "resumen_interaccion": "Contacto inicial para confirmar interes general.",
+      "responsable_interaccion": "Laura",
+      "resultado_interaccion": "interes_inicial",
+      "proxima_accion_derivada": "realizar llamada de seguimiento inicial",
+      "observaciones_interaccion": "No hay bloqueo, pero falta concretar prioridad."
+    },
+    {
+      "identificador_interaccion": "INT-002",
+      "identificador_oportunidad": "OPO-002",
+      "tipo_interaccion": "reunion",
+      "fecha_interaccion": "2026-05-04",
+      "resumen_interaccion": "Reunion de diagnostico de necesidades.",
+      "responsable_interaccion": "Sergio",
+      "resultado_interaccion": "diagnostico_en_curso",
+      "proxima_accion_derivada": "cerrar diagnostico con el cliente",
+      "observaciones_interaccion": "Se requiere revisar requisitos antes de propuesta."
+    },
+    {
+      "identificador_interaccion": "INT-003",
+      "identificador_oportunidad": "OPO-003",
+      "tipo_interaccion": "correo",
+      "fecha_interaccion": "2026-04-30",
+      "resumen_interaccion": "Envío de propuesta comercial revisada.",
+      "responsable_interaccion": "Marta",
+      "resultado_interaccion": "propuesta_en_revision",
+      "proxima_accion_derivada": "enviar ajuste de propuesta",
+      "observaciones_interaccion": "La respuesta del cliente sigue pendiente."
+    },
+    {
+      "identificador_interaccion": "INT-004",
+      "identificador_oportunidad": "OPO-004",
+      "tipo_interaccion": "llamada",
+      "fecha_interaccion": "2026-05-03",
+      "resumen_interaccion": "Negociacion de alcance y condiciones.",
+      "responsable_interaccion": "Javier",
+      "resultado_interaccion": "bloqueo_detectado",
+      "proxima_accion_derivada": "confirmar alcance final con dirección interna",
+      "observaciones_interaccion": "Falta validar una condición interna."
+    },
+    {
+      "identificador_interaccion": "INT-005",
+      "identificador_oportunidad": "OPO-005",
+      "tipo_interaccion": "correo",
+      "fecha_interaccion": "2026-05-01",
+      "resumen_interaccion": "Solicitud de decisión formal al cliente.",
+      "responsable_interaccion": "Nerea",
+      "resultado_interaccion": "pendiente_decision",
+      "proxima_accion_derivada": "pedir decision formal al cliente",
+      "observaciones_interaccion": "La dirección del cliente no ha respondido."
+    },
+    {
+      "identificador_interaccion": "INT-006",
+      "identificador_oportunidad": "OPO-006",
+      "tipo_interaccion": "llamada",
+      "fecha_interaccion": "2026-05-05",
+      "resumen_interaccion": "Confirmacion de cierre comercial.",
+      "responsable_interaccion": "Lucía",
+      "resultado_interaccion": "ganada",
+      "proxima_accion_derivada": "registrar cierre documental",
+      "observaciones_interaccion": "Solo queda dejar constancia documental."
+    },
+    {
+      "identificador_interaccion": "INT-007",
+      "identificador_oportunidad": "OPO-008",
+      "tipo_interaccion": "llamada",
+      "fecha_interaccion": "2026-05-02",
+      "resumen_interaccion": "Segunda toma de contacto para diagnostico.",
+      "responsable_interaccion": "Laura",
+      "resultado_interaccion": "sin_cierre",
+      "proxima_accion_derivada": null,
+      "observaciones_interaccion": "Falta definir una acción siguiente."
+    }
+  ],
+  "bloqueos_comerciales": [
+    {
+      "identificador_bloqueo": "BLQ-001",
+      "identificador_oportunidad": "OPO-004",
+      "descripcion_bloqueo": "Falta validacion interna del alcance final.",
+      "motivo_bloqueo": "Pendiente de aprobacion interna.",
+      "impacto_comercial": "impide cerrar la negociacion",
+      "responsable_revision": "Javier",
+      "prioridad_bloqueo": "alta",
+      "estado_bloqueo": "activo",
+      "observaciones_bloqueo": "No debe avanzarse sin revision humana."
+    },
+    {
+      "identificador_bloqueo": "BLQ-002",
+      "identificador_oportunidad": "OPO-005",
+      "descripcion_bloqueo": "Falta decision formal del cliente.",
+      "motivo_bloqueo": "Pendiente de respuesta de direccion.",
+      "impacto_comercial": "retrasa la definicion de siguiente paso",
+      "responsable_revision": "Nerea",
+      "prioridad_bloqueo": "media",
+      "estado_bloqueo": "en_revision",
+      "observaciones_bloqueo": "Se debe volver a contactar si no hay respuesta."
+    },
+    {
+      "identificador_bloqueo": "BLQ-003",
+      "identificador_oportunidad": "OPO-007",
+      "descripcion_bloqueo": "La oportunidad no encaja con el servicio.",
+      "motivo_bloqueo": "Desalineacion comercial.",
+      "impacto_comercial": "cierre por perdida",
+      "responsable_revision": "Sergio",
+      "prioridad_bloqueo": "baja",
+      "estado_bloqueo": "resuelto",
+      "observaciones_bloqueo": "El motivo de perdida quedo documentado."
+    }
+  ],
+  "acciones_comerciales_siguientes": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_oportunidad": "OPO-001",
+      "descripcion_accion": "Realizar llamada de seguimiento inicial.",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "Accion preventiva de primer contacto."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_oportunidad": "OPO-002",
+      "descripcion_accion": "Cerrar diagnostico con el cliente.",
+      "responsable_accion": "Sergio",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-06",
+      "observaciones_accion": "Necesita confirmacion de requisitos."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_oportunidad": "OPO-004",
+      "descripcion_accion": "Confirmar alcance final con direccion interna.",
+      "responsable_accion": "Javier",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "Depende de aprobacion interna."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_oportunidad": "OPO-006",
+      "descripcion_accion": "Registrar cierre documental.",
+      "responsable_accion": "Lucía",
+      "estado_accion": "completada",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-05",
+      "observaciones_accion": "La oportunidad puede darse por ganada."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_oportunidad": "OPO-008",
+      "descripcion_accion": "Definir una accion siguiente concreta.",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-08",
+      "observaciones_accion": "La oportunidad no puede quedar sin siguiente paso."
+    }
+  ],
+  "clasificaciones_comerciales": [
+    {
+      "identificador_clasificacion": "CLAS-001",
+      "identificador_oportunidad": "OPO-001",
+      "nivel_prioridad": "alta",
+      "temperatura_comercial": "templada",
+      "motivo_clasificacion": "Primer contacto con interes inicial.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Requiere seguimiento cercano."
+    },
+    {
+      "identificador_clasificacion": "CLAS-002",
+      "identificador_oportunidad": "OPO-002",
+      "nivel_prioridad": "alta",
+      "temperatura_comercial": "caliente",
+      "motivo_clasificacion": "Diagnostico activo con accion pendiente.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Debe avanzar a propuesta si el diagnostico se cierra."
+    },
+    {
+      "identificador_clasificacion": "CLAS-003",
+      "identificador_oportunidad": "OPO-004",
+      "nivel_prioridad": "alta",
+      "temperatura_comercial": "critica",
+      "motivo_clasificacion": "Bloqueo comercial activo en negociacion.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "No debe automatizarse el cambio de fase."
+    },
+    {
+      "identificador_clasificacion": "CLAS-004",
+      "identificador_oportunidad": "OPO-006",
+      "nivel_prioridad": "media",
+      "temperatura_comercial": "caliente",
+      "motivo_clasificacion": "Oportunidad ganada con cierre documental pendiente.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "Solo falta dejar constancia final."
+    },
+    {
+      "identificador_clasificacion": "CLAS-005",
+      "identificador_oportunidad": "OPO-007",
+      "nivel_prioridad": "baja",
+      "temperatura_comercial": "fria",
+      "motivo_clasificacion": "Oportunidad perdida por falta de encaje.",
+      "requiere_revision_humana": true,
+      "observaciones_clasificacion": "El cierre debe quedar documentado."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten una oportunidad bloqueada, una oportunidad sin proxima accion y varias clasificaciones que requieren confirmacion humana.",
+    "oportunidades_sin_proxima_accion": 1,
+    "oportunidades_bloqueadas": 1,
+    "oportunidades_con_temperatura_critica": 1,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real ni para uso comercial operativo.",
+    "siguiente_paso_recomendado": "Revisar bloqueos y completar la proxima accion faltante."
+  }
+}

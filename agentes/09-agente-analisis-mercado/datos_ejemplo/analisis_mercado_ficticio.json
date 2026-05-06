@@ -1,0 +1,302 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "analisis_mercado_ficticio_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2026-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de analisis de mercado"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Observatorio Comercial, S.L.",
+    "sector": "servicios",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que ordena señales de mercado, competidores, oportunidades y riesgos con un equipo reducido."
+  },
+  "senales_mercado": [
+    {
+      "identificador_senal": "SEN-001",
+      "titulo_senal": "Aumento de demanda en mantenimiento preventivo",
+      "descripcion_senal": "Clientes recurrentes preguntan por servicios preventivos con mayor frecuencia.",
+      "tipo_senal": "demanda_cliente",
+      "fuente_observada": "conversaciones internas",
+      "area_impacto": "oferta de servicios",
+      "nivel_relevancia": "alta",
+      "estado_senal": "validada",
+      "responsable_revision": "Laura",
+      "observaciones_internas": "Se detecta una tendencia operativa clara."
+    },
+    {
+      "identificador_senal": "SEN-002",
+      "titulo_senal": "Entrada de un competidor con servicio paquetizado",
+      "descripcion_senal": "Un competidor lanza una propuesta más cerrada y fácil de comparar.",
+      "tipo_senal": "competidor",
+      "fuente_observada": "seguimiento comercial manual",
+      "area_impacto": "posicionamiento",
+      "nivel_relevancia": "alta",
+      "estado_senal": "en_revision",
+      "responsable_revision": "Sergio",
+      "observaciones_internas": "Conviene revisar cómo afecta a la oferta actual."
+    },
+    {
+      "identificador_senal": "SEN-003",
+      "titulo_senal": "Presion a la baja en precios de servicios basicos",
+      "descripcion_senal": "Se observan ofertas con menor precio en servicios de entrada.",
+      "tipo_senal": "precio",
+      "fuente_observada": "comparativa manual de propuestas",
+      "area_impacto": "pricing comercial",
+      "nivel_relevancia": "media",
+      "estado_senal": "validada",
+      "responsable_revision": "Marta",
+      "observaciones_internas": "No conviene confundir observacion con recomendacion de precio."
+    },
+    {
+      "identificador_senal": "SEN-004",
+      "titulo_senal": "Aumento del uso de canal digital para primeras consultas",
+      "descripcion_senal": "Crece el contacto inicial por formularios y mensajeria digital.",
+      "tipo_senal": "canal",
+      "fuente_observada": "conversaciones internas",
+      "area_impacto": "captacion",
+      "nivel_relevancia": "media",
+      "estado_senal": "nueva",
+      "responsable_revision": "Javier",
+      "observaciones_internas": "La señal debe validarse antes de priorizar cambios."
+    },
+    {
+      "identificador_senal": "SEN-005",
+      "titulo_senal": "Crecimiento de demanda en soporte remoto",
+      "descripcion_senal": "Aparecen más consultas para soporte no presencial y seguimiento rápido.",
+      "tipo_senal": "tendencia",
+      "fuente_observada": "equipo comercial",
+      "area_impacto": "servicios",
+      "nivel_relevancia": "critica",
+      "estado_senal": "validada",
+      "responsable_revision": "Nerea",
+      "observaciones_internas": "La señal requiere revisión prioritaria."
+    },
+    {
+      "identificador_senal": "SEN-006",
+      "titulo_senal": "Riesgo de saturacion en atencion de consultas",
+      "descripcion_senal": "La capacidad interna puede no cubrir picos de demanda.",
+      "tipo_senal": "riesgo",
+      "fuente_observada": "carga operativa interna",
+      "area_impacto": "operaciones",
+      "nivel_relevancia": "alta",
+      "estado_senal": "bloqueada",
+      "responsable_revision": "Laura",
+      "observaciones_internas": "Requiere revisión humana antes de consolidarse."
+    },
+    {
+      "identificador_senal": "SEN-007",
+      "titulo_senal": "Oportunidad para servicio complementario de seguimiento",
+      "descripcion_senal": "Existe espacio para ofrecer un servicio adicional de seguimiento.",
+      "tipo_senal": "oportunidad",
+      "fuente_observada": "feedback comercial",
+      "area_impacto": "nueva oferta",
+      "nivel_relevancia": "alta",
+      "estado_senal": "en_revision",
+      "responsable_revision": "Sergio",
+      "observaciones_internas": "La oportunidad debe contrastarse con capacidad real."
+    },
+    {
+      "identificador_senal": "SEN-008",
+      "titulo_senal": "Cambio de preferencia hacia respuesta mas rapida",
+      "descripcion_senal": "Algunos contactos valoran más la rapidez que la profundidad inicial.",
+      "tipo_senal": "demanda_cliente",
+      "fuente_observada": "notas de equipo de atencion",
+      "area_impacto": "atencion comercial",
+      "nivel_relevancia": "baja",
+      "estado_senal": "descartada",
+      "responsable_revision": "Marta",
+      "observaciones_internas": "Se descarta por baja consistencia en la muestra observada."
+    }
+  ],
+  "competidores_observados": [
+    {
+      "identificador_competidor": "COM-001",
+      "nombre_competidor_ficticio": "SoluNorte Servicios, S.L.",
+      "segmento": "servicios preventivos",
+      "propuesta_observada": "paquetes cerrados con precio de entrada",
+      "fortaleza_detectada": "claridad comercial",
+      "debilidad_detectada": "menor flexibilidad",
+      "nivel_amenaza": "alta",
+      "observaciones_competidor": "Competidor visible en ofertas comparables."
+    },
+    {
+      "identificador_competidor": "COM-002",
+      "nombre_competidor_ficticio": "Delta Soporte Integral, S.L.",
+      "segmento": "soporte remoto",
+      "propuesta_observada": "respuesta rapida con canal digital",
+      "fortaleza_detectada": "rapidez de respuesta",
+      "debilidad_detectada": "servicio menos personalizado",
+      "nivel_amenaza": "media",
+      "observaciones_competidor": "Su propuesta afecta al canal inicial."
+    },
+    {
+      "identificador_competidor": "COM-003",
+      "nombre_competidor_ficticio": "RedFase Consultores, S.L.",
+      "segmento": "consultoria de servicios",
+      "propuesta_observada": "acompanamiento continuo",
+      "fortaleza_detectada": "fidelizacion",
+      "debilidad_detectada": "precio superior",
+      "nivel_amenaza": "media",
+      "observaciones_competidor": "Compite por valor y continuidad."
+    }
+  ],
+  "oportunidades_mercado": [
+    {
+      "identificador_oportunidad": "OPO-001",
+      "identificador_senal": "SEN-001",
+      "descripcion_oportunidad": "reforzar una linea de mantenimiento preventivo",
+      "segmento_objetivo": "clientes recurrentes",
+      "prioridad_exploracion": "alta",
+      "estado_oportunidad": "en_revision",
+      "responsable_exploracion": "Laura",
+      "observaciones_oportunidad": "Puede encajar con la demanda creciente."
+    },
+    {
+      "identificador_oportunidad": "OPO-002",
+      "identificador_senal": "SEN-004",
+      "descripcion_oportunidad": "mejorar el canal digital de primera entrada",
+      "segmento_objetivo": "nuevos contactos",
+      "prioridad_exploracion": "media",
+      "estado_oportunidad": "nueva",
+      "responsable_exploracion": "Sergio",
+      "observaciones_oportunidad": "Conviene validar la relevancia real del canal."
+    },
+    {
+      "identificador_oportunidad": "OPO-003",
+      "identificador_senal": "SEN-005",
+      "descripcion_oportunidad": "ofrecer soporte remoto como servicio complementario",
+      "segmento_objetivo": "clientes con necesidad rapida",
+      "prioridad_exploracion": "alta",
+      "estado_oportunidad": "validada",
+      "responsable_exploracion": "Nerea",
+      "observaciones_oportunidad": "La señal es critica y requiere exploración prioritaria."
+    },
+    {
+      "identificador_oportunidad": "OPO-004",
+      "identificador_senal": "SEN-007",
+      "descripcion_oportunidad": "crear un servicio de seguimiento adicional",
+      "segmento_objetivo": "clientes recurrentes",
+      "prioridad_exploracion": "alta",
+      "estado_oportunidad": "en_revision",
+      "responsable_exploracion": "Marta",
+      "observaciones_oportunidad": "Depende de la capacidad operativa disponible."
+    }
+  ],
+  "riesgos_mercado": [
+    {
+      "identificador_riesgo": "RIE-001",
+      "identificador_senal": "SEN-003",
+      "descripcion_riesgo": "presion a la baja en precios de entrada",
+      "impacto_potencial": "reduccion de margen percibido",
+      "nivel_riesgo": "medio",
+      "estado_riesgo": "validada",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "No conviene extrapolar sin revisar el contexto."
+    },
+    {
+      "identificador_riesgo": "RIE-002",
+      "identificador_senal": "SEN-002",
+      "descripcion_riesgo": "competidor con propuesta paquetizada",
+      "impacto_potencial": "desviacion de clientes sensibles a comparacion",
+      "nivel_riesgo": "alta",
+      "estado_riesgo": "en_revision",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "Debe analizarse su impacto en la oferta actual."
+    },
+    {
+      "identificador_riesgo": "RIE-003",
+      "identificador_senal": "SEN-006",
+      "descripcion_riesgo": "saturacion de capacidad de atencion",
+      "impacto_potencial": "retraso en respuesta comercial",
+      "nivel_riesgo": "critica",
+      "estado_riesgo": "bloqueada",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "La capacidad interna debe revisarse antes de consolidar la señal."
+    },
+    {
+      "identificador_riesgo": "RIE-004",
+      "identificador_senal": "SEN-008",
+      "descripcion_riesgo": "señal con baja consistencia observada",
+      "impacto_potencial": "ruido analitico sin valor operativo",
+      "nivel_riesgo": "baja",
+      "estado_riesgo": "descartada",
+      "requiere_revision_humana": false,
+      "observaciones_riesgo": "Se descarta por baja solidez en la observación."
+    }
+  ],
+  "acciones_exploracion": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_senal": "SEN-001",
+      "descripcion_accion": "revisar interes recurrente en mantenimiento preventivo",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-08",
+      "observaciones_accion": "Accion prioritaria por repeticion de demanda."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_senal": "SEN-002",
+      "descripcion_accion": "comparar la propuesta del competidor con la oferta actual",
+      "responsable_accion": "Sergio",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "Debe hacerse revisión manual de posicionamiento."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_senal": "SEN-005",
+      "descripcion_accion": "validar encaje del soporte remoto como linea complementaria",
+      "responsable_accion": "Nerea",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "La señal critica requiere revisión prioritaria."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_senal": "SEN-006",
+      "descripcion_accion": "revisar capacidad interna antes de consolidar el riesgo",
+      "responsable_accion": "Laura",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-09",
+      "observaciones_accion": "Depende de revisión interna de carga."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_senal": "SEN-007",
+      "descripcion_accion": "explorar el servicio adicional con un pequeño grupo piloto",
+      "responsable_accion": "Marta",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-10",
+      "observaciones_accion": "Accion condicionada a capacidad real."
+    },
+    {
+      "identificador_accion": "ACC-006",
+      "identificador_senal": "SEN-008",
+      "descripcion_accion": "cerrar la señal descartada por baja consistencia",
+      "responsable_accion": "Javier",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2026-05-06",
+      "observaciones_accion": "No requiere seguimiento adicional."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten una señal critica, un riesgo bloqueado y varias oportunidades en revision que requieren seguimiento manual.",
+    "senales_validas": 5,
+    "oportunidades_en_revision": 2,
+    "riesgos_bloqueados": 1,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real ni para uso estrategico operativo.",
+    "siguiente_paso_recomendado": "Revisar la señal critica y volver a validar el informe."
+  }
+}

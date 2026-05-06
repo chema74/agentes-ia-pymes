@@ -1,0 +1,325 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "formacion_interna_ficticia_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2026-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de formacion interna"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Formacion Interna, S.L.",
+    "sector": "servicios",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que ordena rutas formativas, perfiles, módulos y evidencias con un equipo reducido."
+  },
+  "rutas_formativas": [
+    {
+      "identificador_ruta": "RUTA-001",
+      "nombre_ruta": "Onboarding interno de procesos",
+      "perfil_destinatario": "personal nuevo",
+      "objetivo_formativo": "Alinear al personal nuevo con procesos base.",
+      "estado_ruta": "pendiente",
+      "prioridad_ruta": "alta",
+      "responsable_interno": "Laura",
+      "fecha_revision_prevista": "2026-05-08",
+      "observaciones_ruta": "Necesita validacion antes de activarse."
+    },
+    {
+      "identificador_ruta": "RUTA-002",
+      "nombre_ruta": "Herramientas y documentacion interna",
+      "perfil_destinatario": "equipo de soporte interno",
+      "objetivo_formativo": "Unificar uso de herramientas y documentos internos.",
+      "estado_ruta": "activa",
+      "prioridad_ruta": "alta",
+      "responsable_interno": "Sergio",
+      "fecha_revision_prevista": "2026-05-07",
+      "observaciones_ruta": "Tiene módulos disponibles para seguimiento activo."
+    },
+    {
+      "identificador_ruta": "RUTA-003",
+      "nombre_ruta": "Atencion al cliente y comunicacion",
+      "perfil_destinatario": "equipo de atencion al cliente",
+      "objetivo_formativo": "Mejorar la comunicacion con clientes y el trato operativo.",
+      "estado_ruta": "en_revision",
+      "prioridad_ruta": "media",
+      "responsable_interno": "Marta",
+      "fecha_revision_prevista": "2026-05-09",
+      "observaciones_ruta": "Requiere revisar evidencias y contenidos pendientes."
+    },
+    {
+      "identificador_ruta": "RUTA-004",
+      "nombre_ruta": "Buenas practicas operativas",
+      "perfil_destinatario": "coordinacion interna",
+      "objetivo_formativo": "Estandarizar buenas practicas de trabajo interno.",
+      "estado_ruta": "bloqueada",
+      "prioridad_ruta": "alta",
+      "responsable_interno": "Javier",
+      "fecha_revision_prevista": "2026-05-10",
+      "observaciones_ruta": "Depende de la liberacion de un modulo clave."
+    },
+    {
+      "identificador_ruta": "RUTA-005",
+      "nombre_ruta": "Refuerzo de procedimientos clave",
+      "perfil_destinatario": "personal mixto",
+      "objetivo_formativo": "Cerrar y consolidar contenidos transversales.",
+      "estado_ruta": "completada",
+      "prioridad_ruta": "media",
+      "responsable_interno": "Nerea",
+      "fecha_revision_prevista": "2026-05-05",
+      "observaciones_ruta": "La revision final quedo documentada."
+    }
+  ],
+  "modulos_formativos": [
+    {
+      "identificador_modulo": "MOD-001",
+      "identificador_ruta": "RUTA-001",
+      "nombre_modulo": "Procedimiento de alta interna",
+      "descripcion_modulo": "Explica el alta de personal nuevo en procesos internos.",
+      "tipo_contenido": "procedimiento",
+      "estado_modulo": "pendiente",
+      "prioridad_modulo": "alta",
+      "responsable_contenido": "Laura",
+      "observaciones_modulo": "Debe validarse antes de publicarse."
+    },
+    {
+      "identificador_modulo": "MOD-002",
+      "identificador_ruta": "RUTA-002",
+      "nombre_modulo": "Guia de herramientas internas",
+      "descripcion_modulo": "Recoge el uso basico de herramientas internas.",
+      "tipo_contenido": "guia",
+      "estado_modulo": "disponible",
+      "prioridad_modulo": "alta",
+      "responsable_contenido": "Sergio",
+      "observaciones_modulo": "Puede ser consumido por el equipo de soporte."
+    },
+    {
+      "identificador_modulo": "MOD-003",
+      "identificador_ruta": "RUTA-003",
+      "nombre_modulo": "Microleccion de comunicacion con cliente",
+      "descripcion_modulo": "Resumen breve de pautas de comunicacion.",
+      "tipo_contenido": "microleccion",
+      "estado_modulo": "en_revision",
+      "prioridad_modulo": "media",
+      "responsable_contenido": "Marta",
+      "observaciones_modulo": "Queda pendiente una ultima revision."
+    },
+    {
+      "identificador_modulo": "MOD-004",
+      "identificador_ruta": "RUTA-004",
+      "nombre_modulo": "Checklist de revision documental",
+      "descripcion_modulo": "Lista de comprobacion para revisar contenidos.",
+      "tipo_contenido": "checklist",
+      "estado_modulo": "bloqueado",
+      "prioridad_modulo": "alta",
+      "responsable_contenido": "Javier",
+      "observaciones_modulo": "Bloqueado por dependencia interna."
+    },
+    {
+      "identificador_modulo": "MOD-005",
+      "identificador_ruta": "RUTA-005",
+      "nombre_modulo": "Video de buenas practicas",
+      "descripcion_modulo": "Referencia visual de buenas practicas operativas.",
+      "tipo_contenido": "video_referencia",
+      "estado_modulo": "completado",
+      "prioridad_modulo": "media",
+      "responsable_contenido": "Nerea",
+      "observaciones_modulo": "El cierre formativo quedo validado."
+    },
+    {
+      "identificador_modulo": "MOD-006",
+      "identificador_ruta": "RUTA-002",
+      "nombre_modulo": "Practica de cierre operativo",
+      "descripcion_modulo": "Ejercicio guiado para cerrar una tarea interna.",
+      "tipo_contenido": "practica",
+      "estado_modulo": "disponible",
+      "prioridad_modulo": "media",
+      "responsable_contenido": "Sergio",
+      "observaciones_modulo": "Disponible para seguimiento practico."
+    },
+    {
+      "identificador_modulo": "MOD-007",
+      "identificador_ruta": "RUTA-003",
+      "nombre_modulo": "Checklist de atencion basica",
+      "descripcion_modulo": "Lista de verificacion para atencion al cliente.",
+      "tipo_contenido": "checklist",
+      "estado_modulo": "pendiente",
+      "prioridad_modulo": "media",
+      "responsable_contenido": "Marta",
+      "observaciones_modulo": "Aun no se ha cargado la version final."
+    },
+    {
+      "identificador_modulo": "MOD-008",
+      "identificador_ruta": "RUTA-004",
+      "nombre_modulo": "Microleccion de revision interna",
+      "descripcion_modulo": "Contenido breve para revisar buenas practicas.",
+      "tipo_contenido": "microleccion",
+      "estado_modulo": "descartado",
+      "prioridad_modulo": "baja",
+      "responsable_contenido": "Javier",
+      "observaciones_modulo": "Se descarto por duplicidad con otro contenido."
+    }
+  ],
+  "perfiles_internos": [
+    {
+      "identificador_perfil": "PERF-001",
+      "nombre_perfil": "Personal nuevo de operaciones",
+      "area": "operaciones",
+      "necesidades_formativas": "conocer procesos base",
+      "nivel_inicial": "bajo",
+      "ruta_asignada": "RUTA-001",
+      "observaciones_perfil": "Necesita una ruta de entrada clara."
+    },
+    {
+      "identificador_perfil": "PERF-002",
+      "nombre_perfil": "Equipo de soporte interno",
+      "area": "soporte",
+      "necesidades_formativas": "usar herramientas y documentacion",
+      "nivel_inicial": "medio",
+      "ruta_asignada": "RUTA-002",
+      "observaciones_perfil": "Ya trabaja con contenidos base."
+    },
+    {
+      "identificador_perfil": "PERF-003",
+      "nombre_perfil": "Equipo de atencion al cliente",
+      "area": "atencion al cliente",
+      "necesidades_formativas": "mejorar comunicacion y seguimiento",
+      "nivel_inicial": "medio",
+      "ruta_asignada": "RUTA-003",
+      "observaciones_perfil": "Requiere refuerzo de trato operativo."
+    },
+    {
+      "identificador_perfil": "PERF-004",
+      "nombre_perfil": "Coordinacion interna",
+      "area": "coordinacion",
+      "necesidades_formativas": "estandarizar buenas practicas",
+      "nivel_inicial": "alto",
+      "ruta_asignada": "RUTA-004",
+      "observaciones_perfil": "Necesita contenidos de control y revision."
+    }
+  ],
+  "evidencias_formativas": [
+    {
+      "identificador_evidencia": "EVI-001",
+      "identificador_modulo": "MOD-002",
+      "identificador_perfil": "PERF-002",
+      "tipo_evidencia": "revision_manual",
+      "estado_evidencia": "completada",
+      "fecha_evidencia": "2026-05-03",
+      "responsable_revision": "Sergio",
+      "observaciones_evidencia": "La guia fue revisada y aceptada."
+    },
+    {
+      "identificador_evidencia": "EVI-002",
+      "identificador_modulo": "MOD-003",
+      "identificador_perfil": "PERF-003",
+      "tipo_evidencia": "lectura_guiada",
+      "estado_evidencia": "en_revision",
+      "fecha_evidencia": "2026-05-04",
+      "responsable_revision": "Marta",
+      "observaciones_evidencia": "Falta confirmacion final de lectura."
+    },
+    {
+      "identificador_evidencia": "EVI-003",
+      "identificador_modulo": "MOD-006",
+      "identificador_perfil": "PERF-002",
+      "tipo_evidencia": "practica",
+      "estado_evidencia": "completada",
+      "fecha_evidencia": "2026-05-05",
+      "responsable_revision": "Sergio",
+      "observaciones_evidencia": "La practica quedo validada manualmente."
+    },
+    {
+      "identificador_evidencia": "EVI-004",
+      "identificador_modulo": "MOD-004",
+      "identificador_perfil": "PERF-004",
+      "tipo_evidencia": "checklist",
+      "estado_evidencia": "pendiente",
+      "fecha_evidencia": "2026-05-06",
+      "responsable_revision": "Javier",
+      "observaciones_evidencia": "Pendiente de liberar el modulo asociado."
+    },
+    {
+      "identificador_evidencia": "EVI-005",
+      "identificador_modulo": "MOD-005",
+      "identificador_perfil": "PERF-001",
+      "tipo_evidencia": "video_referencia",
+      "estado_evidencia": "completada",
+      "fecha_evidencia": "2026-05-02",
+      "responsable_revision": "Nerea",
+      "observaciones_evidencia": "Referencia cerrada y documentada."
+    }
+  ],
+  "acciones_formativas_siguientes": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_ruta": "RUTA-004",
+      "descripcion_accion": "Liberar el modulo bloqueado antes de activar la ruta.",
+      "responsable_accion": "Javier",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-08",
+      "observaciones_accion": "Depende de una revision interna."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_ruta": "RUTA-003",
+      "descripcion_accion": "Completar la revision de evidencias pendientes.",
+      "responsable_accion": "Marta",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-09",
+      "observaciones_accion": "Se debe confirmar el cierre de lectura guiada."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_ruta": "RUTA-001",
+      "descripcion_accion": "Revisar y publicar el contenido de onboarding.",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-08",
+      "observaciones_accion": "Requiere validacion previa antes de activarse."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_ruta": "RUTA-005",
+      "descripcion_accion": "Cerrar la documentacion final de la ruta.",
+      "responsable_accion": "Nerea",
+      "estado_accion": "completada",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-05",
+      "observaciones_accion": "La ruta ya fue consolidada."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_ruta": "RUTA-002",
+      "descripcion_accion": "Mantener seguimiento de los módulos disponibles.",
+      "responsable_accion": "Sergio",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "Accion de control documental."
+    },
+    {
+      "identificador_accion": "ACC-006",
+      "identificador_ruta": "RUTA-004",
+      "descripcion_accion": "Revisar la evidencia asociada al checklist.",
+      "responsable_accion": "Javier",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2026-05-06",
+      "observaciones_accion": "Se descartó por duplicidad con otro contenido."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten una ruta bloqueada, un modulo bloqueado y evidencias pendientes que requieren seguimiento manual.",
+    "rutas_pendientes": 1,
+    "rutas_bloqueadas": 1,
+    "modulos_bloqueados": 1,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real ni para uso formativo operativo.",
+    "siguiente_paso_recomendado": "Revisar rutas bloqueadas y completar evidencias pendientes."
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "cobros_flujo_caja_ficticios_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2026-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de control de cobros y flujo de caja"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Servicios Profesionales, S.L.",
+    "sector": "servicios",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que controla cobros pendientes, vencimientos y seguimiento operativo con un equipo reducido."
+  },
+  "cobros_pendientes": [
+    {
+      "identificador_cobro": "COB-001",
+      "nombre_cliente": "Cliente Atlas",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Mantenimiento mensual de soporte",
+      "importe_previsto": 1200.0,
+      "fecha_emision": "2026-04-25",
+      "fecha_vencimiento": "2026-05-08",
+      "estado_cobro": "pendiente",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Laura",
+      "riesgo_retraso": "medio",
+      "observaciones_internas": "Pendiente de confirmacion de recepcion por parte del cliente."
+    },
+    {
+      "identificador_cobro": "COB-002",
+      "nombre_cliente": "Grupo Orion",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Consultoria trimestral",
+      "importe_previsto": 2800.0,
+      "fecha_emision": "2026-04-18",
+      "fecha_vencimiento": "2026-05-05",
+      "estado_cobro": "en_revision",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Sergio",
+      "riesgo_retraso": "alto",
+      "observaciones_internas": "La documentacion de cierre necesita revision manual."
+    },
+    {
+      "identificador_cobro": "COB-003",
+      "nombre_cliente": "Servicios Delta",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Instalacion tecnica",
+      "importe_previsto": 950.0,
+      "fecha_emision": "2026-04-10",
+      "fecha_vencimiento": "2026-05-01",
+      "estado_cobro": "vencido",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Marta",
+      "riesgo_retraso": "critico",
+      "observaciones_internas": "El vencimiento ya fue superado y requiere seguimiento prioritario."
+    },
+    {
+      "identificador_cobro": "COB-004",
+      "nombre_cliente": "Cliente Vega",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Ajuste de soporte administrativo",
+      "importe_previsto": 430.0,
+      "fecha_emision": "2026-04-22",
+      "fecha_vencimiento": "2026-04-30",
+      "estado_cobro": "cobrado",
+      "prioridad_seguimiento": "baja",
+      "responsable_interno": "Nerea",
+      "riesgo_retraso": "bajo",
+      "observaciones_internas": "La entrada ya fue confirmada y solo resta cierre documental."
+    },
+    {
+      "identificador_cobro": "COB-005",
+      "nombre_cliente": "Consultora Luma",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Implantacion de mejora interna",
+      "importe_previsto": 1750.0,
+      "fecha_emision": "2026-04-15",
+      "fecha_vencimiento": "2026-04-28",
+      "estado_cobro": "parcialmente_cobrado",
+      "prioridad_seguimiento": "media",
+      "responsable_interno": "Javier",
+      "riesgo_retraso": "alto",
+      "observaciones_internas": "Existe entrada parcial y queda pendiente ajustar el resto."
+    },
+    {
+      "identificador_cobro": "COB-006",
+      "nombre_cliente": "Empresa Nadir",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Renovacion de acompañamiento operativo",
+      "importe_previsto": 3100.0,
+      "fecha_emision": "2026-04-20",
+      "fecha_vencimiento": "2026-05-07",
+      "estado_cobro": "bloqueado",
+      "prioridad_seguimiento": "alta",
+      "responsable_interno": "Marta",
+      "riesgo_retraso": "critico",
+      "observaciones_internas": "La aprobacion interna sigue pendiente."
+    },
+    {
+      "identificador_cobro": "COB-007",
+      "nombre_cliente": "Cliente Senda",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Soporte puntual de seguimiento",
+      "importe_previsto": 210.0,
+      "fecha_emision": "2026-04-12",
+      "fecha_vencimiento": "2026-04-20",
+      "estado_cobro": "descartado",
+      "prioridad_seguimiento": "baja",
+      "responsable_interno": "Lucía",
+      "riesgo_retraso": "bajo",
+      "observaciones_internas": "Se descarto por duplicidad con otra referencia ya cerrada."
+    },
+    {
+      "identificador_cobro": "COB-008",
+      "nombre_cliente": "Cliente Alba",
+      "nombre_empresa": "NexoSur Servicios Profesionales, S.L.",
+      "concepto_cobro": "Revision de cierre de servicios",
+      "importe_previsto": 670.0,
+      "fecha_emision": "2026-04-26",
+      "fecha_vencimiento": "2026-05-10",
+      "estado_cobro": "pendiente",
+      "prioridad_seguimiento": "media",
+      "responsable_interno": "Sergio",
+      "riesgo_retraso": "medio",
+      "observaciones_internas": "Se espera validacion de cierre antes de escalar el seguimiento."
+    }
+  ],
+  "referencias_cobro": [
+    {
+      "identificador_referencia": "REF-001",
+      "identificador_cobro": "COB-001",
+      "numero_referencia_ficticia": "FAC-F-2026-001",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "activa",
+      "fecha_referencia": "2026-04-25",
+      "observaciones_referencia": "Referencia asociada al mantenimiento mensual."
+    },
+    {
+      "identificador_referencia": "REF-002",
+      "identificador_cobro": "COB-002",
+      "numero_referencia_ficticia": "FAC-F-2026-002",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "en_revision",
+      "fecha_referencia": "2026-04-18",
+      "observaciones_referencia": "Referencia pendiente de validacion documental."
+    },
+    {
+      "identificador_referencia": "REF-003",
+      "identificador_cobro": "COB-003",
+      "numero_referencia_ficticia": "FAC-F-2026-003",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "vencida",
+      "fecha_referencia": "2026-04-10",
+      "observaciones_referencia": "Referencia ligada a un cobro vencido."
+    },
+    {
+      "identificador_referencia": "REF-004",
+      "identificador_cobro": "COB-004",
+      "numero_referencia_ficticia": "FAC-F-2026-004",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "cerrada",
+      "fecha_referencia": "2026-04-22",
+      "observaciones_referencia": "Referencia confirmada como cobrada."
+    },
+    {
+      "identificador_referencia": "REF-005",
+      "identificador_cobro": "COB-005",
+      "numero_referencia_ficticia": "FAC-F-2026-005",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "parcial",
+      "fecha_referencia": "2026-04-15",
+      "observaciones_referencia": "Referencia con entrada parcial registrada."
+    },
+    {
+      "identificador_referencia": "REF-006",
+      "identificador_cobro": "COB-006",
+      "numero_referencia_ficticia": "FAC-F-2026-006",
+      "tipo_referencia": "factura ficticia",
+      "estado_referencia": "bloqueada",
+      "fecha_referencia": "2026-04-20",
+      "observaciones_referencia": "Referencia pendiente de aprobacion interna."
+    }
+  ],
+  "acciones_seguimiento": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_cobro": "COB-001",
+      "descripcion_accion": "Solicitar confirmacion de recepcion al cliente.",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "La accion es preventiva y depende de respuesta externa."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_cobro": "COB-002",
+      "descripcion_accion": "Revisar la documentacion antes de continuar el seguimiento.",
+      "responsable_accion": "Sergio",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-05",
+      "observaciones_accion": "La tarea requiere validacion manual previa."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_cobro": "COB-003",
+      "descripcion_accion": "Escalar el cobro vencido para seguimiento prioritario.",
+      "responsable_accion": "Marta",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-06",
+      "observaciones_accion": "La accion debe ejecutarse sin automatizacion real."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_cobro": "COB-004",
+      "descripcion_accion": "Registrar el cierre documental del cobro.",
+      "responsable_accion": "Nerea",
+      "estado_accion": "completada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2026-05-01",
+      "observaciones_accion": "No requiere seguimiento adicional."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_cobro": "COB-006",
+      "descripcion_accion": "Solicitar validacion interna para liberar el cobro.",
+      "responsable_accion": "Marta",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "La accion depende de aprobacion interna."
+    },
+    {
+      "identificador_accion": "ACC-006",
+      "identificador_cobro": "COB-008",
+      "descripcion_accion": "Confirmar cierre de servicios antes de mover el seguimiento.",
+      "responsable_accion": "Sergio",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-10",
+      "observaciones_accion": "Queda a la espera de confirmacion operativa."
+    }
+  ],
+  "riesgos_cobro": [
+    {
+      "identificador_riesgo": "RIE-001",
+      "identificador_cobro": "COB-001",
+      "nivel_riesgo": "medio",
+      "motivo_riesgo": "pendiente de confirmacion del cliente",
+      "impacto_operativo": "puede retrasar la entrada prevista",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "Seguimiento preventivo recomendado."
+    },
+    {
+      "identificador_riesgo": "RIE-002",
+      "identificador_cobro": "COB-003",
+      "nivel_riesgo": "critico",
+      "motivo_riesgo": "vencimiento superado",
+      "impacto_operativo": "afecta a la previsión de entrada inmediata",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "Requiere prioridad alta."
+    },
+    {
+      "identificador_riesgo": "RIE-003",
+      "identificador_cobro": "COB-005",
+      "nivel_riesgo": "alto",
+      "motivo_riesgo": "entrada parcial con saldo pendiente",
+      "impacto_operativo": "reduce la previsión completa de entrada",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "Conviene revisar el tramo restante."
+    },
+    {
+      "identificador_riesgo": "RIE-004",
+      "identificador_cobro": "COB-006",
+      "nivel_riesgo": "critico",
+      "motivo_riesgo": "bloqueo interno pendiente de aprobacion",
+      "impacto_operativo": "impide confirmar la entrada",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "No debe automatizarse el cambio de estado."
+    },
+    {
+      "identificador_riesgo": "RIE-005",
+      "identificador_cobro": "COB-008",
+      "nivel_riesgo": "medio",
+      "motivo_riesgo": "validacion de cierre aun abierta",
+      "impacto_operativo": "puede retrasar el seguimiento",
+      "requiere_revision_humana": true,
+      "observaciones_riesgo": "Pendiente de confirmar cierre de servicios."
+    }
+  ],
+  "previsiones_operativas": [
+    {
+      "identificador_prevision": "PRE-001",
+      "identificador_cobro": "COB-001",
+      "periodo_previsto": "corto_plazo",
+      "importe_previsto": 1200.0,
+      "probabilidad_operativa": 0.7,
+      "estado_prevision": "confirmada",
+      "observaciones_prevision": "Prevista como entrada cercana con seguimiento activo."
+    },
+    {
+      "identificador_prevision": "PRE-002",
+      "identificador_cobro": "COB-003",
+      "periodo_previsto": "inmediato",
+      "importe_previsto": 950.0,
+      "probabilidad_operativa": 0.2,
+      "estado_prevision": "incierta",
+      "observaciones_prevision": "El vencimiento superado reduce la fiabilidad de entrada."
+    },
+    {
+      "identificador_prevision": "PRE-003",
+      "identificador_cobro": "COB-004",
+      "periodo_previsto": "cerrado",
+      "importe_previsto": 430.0,
+      "probabilidad_operativa": 1.0,
+      "estado_prevision": "confirmada",
+      "observaciones_prevision": "La entrada ya esta documentada como cobrada en el seguimiento."
+    },
+    {
+      "identificador_prevision": "PRE-004",
+      "identificador_cobro": "COB-005",
+      "periodo_previsto": "medio_plazo",
+      "importe_previsto": 1750.0,
+      "probabilidad_operativa": 0.5,
+      "estado_prevision": "prevista",
+      "observaciones_prevision": "Solo una parte de la entrada esta confirmada."
+    },
+    {
+      "identificador_prevision": "PRE-005",
+      "identificador_cobro": "COB-006",
+      "periodo_previsto": "incierto",
+      "importe_previsto": 3100.0,
+      "probabilidad_operativa": 0.15,
+      "estado_prevision": "incierta",
+      "observaciones_prevision": "El bloqueo interno impide consolidar la previsión."
+    },
+    {
+      "identificador_prevision": "PRE-006",
+      "identificador_cobro": "COB-007",
+      "periodo_previsto": "no_aplicable",
+      "importe_previsto": 210.0,
+      "probabilidad_operativa": 0.0,
+      "estado_prevision": "descartada",
+      "observaciones_prevision": "La previsión fue descartada al tratarse de un cobro ya cerrado por duplicidad."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten un cobro vencido, un cobro bloqueado y varias previsiones inciertas que requieren seguimiento manual.",
+    "cobros_en_revision": 1,
+    "cobros_vencidos": 1,
+    "cobros_bloqueados": 1,
+    "cobros_parciales": 1,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real ni para uso financiero operativo.",
+    "siguiente_paso_recomendado": "Revisar los cobros prioritarios y volver a validar la cartera."
+  }
+}

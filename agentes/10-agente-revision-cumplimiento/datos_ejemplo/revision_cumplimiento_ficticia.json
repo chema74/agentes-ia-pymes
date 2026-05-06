@@ -1,0 +1,300 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "revision_cumplimiento_ficticia_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2025-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de revision y cumplimiento"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Revisión Interna, S.L.",
+    "sector": "servicios",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que ordena controles internos, evidencias, documentos pendientes y acciones de seguimiento con un equipo reducido."
+  },
+  "controles_internos": [
+    {
+      "identificador_control": "CON-001",
+      "nombre_control": "Revision documental basica",
+      "area_control": "administracion",
+      "descripcion_control": "Comprobacion de que la documentacion interna base esta localizada y actualizada.",
+      "tipo_control": "documental",
+      "estado_control": "revisado",
+      "prioridad_revision": "alta",
+      "responsable_interno": "Laura",
+      "fecha_revision_prevista": "2025-05-07",
+      "observaciones_control": "La base documental se considera validada de forma manual."
+    },
+    {
+      "identificador_control": "CON-002",
+      "nombre_control": "Verificacion de datos personales internos",
+      "area_control": "operaciones",
+      "descripcion_control": "Revisar formularios internos para detectar datos personales y su uso minimo.",
+      "tipo_control": "datos_personales",
+      "estado_control": "en_revision",
+      "prioridad_revision": "alta",
+      "responsable_interno": "Sergio",
+      "fecha_revision_prevista": "2025-05-08",
+      "observaciones_control": "Requiere comprobacion manual adicional."
+    },
+    {
+      "identificador_control": "CON-003",
+      "nombre_control": "Control de documentacion de proveedores",
+      "area_control": "compras",
+      "descripcion_control": "Verificar que la documentacion de proveedores este completa y localizada.",
+      "tipo_control": "proveedores",
+      "estado_control": "pendiente",
+      "prioridad_revision": "media",
+      "responsable_interno": "Marta",
+      "fecha_revision_prevista": "2025-05-09",
+      "observaciones_control": "Faltan anexos de soporte en la carpeta compartida."
+    },
+    {
+      "identificador_control": "CON-004",
+      "nombre_control": "Revision de permisos de acceso",
+      "area_control": "soporte interno",
+      "descripcion_control": "Comprobar accesos a carpetas internas y permisos de revision.",
+      "tipo_control": "permisos",
+      "estado_control": "bloqueado",
+      "prioridad_revision": "alta",
+      "responsable_interno": "Javier",
+      "fecha_revision_prevista": "2025-05-09",
+      "observaciones_control": "Depende de una revision interna previa."
+    },
+    {
+      "identificador_control": "CON-005",
+      "nombre_control": "Revision de proceso interno de cierre mensual",
+      "area_control": "coordinacion",
+      "descripcion_control": "Comprobar que el proceso de cierre mensual deja trazabilidad suficiente.",
+      "tipo_control": "proceso_interno",
+      "estado_control": "revisado",
+      "prioridad_revision": "alta",
+      "responsable_interno": "Nerea",
+      "fecha_revision_prevista": "2025-05-06",
+      "observaciones_control": "La validacion manual quedo registrada."
+    },
+    {
+      "identificador_control": "CON-006",
+      "nombre_control": "Seguridad basica de archivos compartidos",
+      "area_control": "sistemas",
+      "descripcion_control": "Revisar configuracion basica de archivos compartidos y acceso minimo.",
+      "tipo_control": "seguridad_basica",
+      "estado_control": "en_revision",
+      "prioridad_revision": "alta",
+      "responsable_interno": "Lucía",
+      "fecha_revision_prevista": "2025-05-10",
+      "observaciones_control": "Falta confirmar una comprobacion adicional."
+    },
+    {
+      "identificador_control": "CON-007",
+      "nombre_control": "Formacion interna basica de revision",
+      "area_control": "personas",
+      "descripcion_control": "Comprobar que la formacion interna base esta documentada y accesible.",
+      "tipo_control": "formacion",
+      "estado_control": "descartado",
+      "prioridad_revision": "baja",
+      "responsable_interno": "Marta",
+      "fecha_revision_prevista": "2025-05-11",
+      "observaciones_control": "Se descarta por duplicidad con otro material interno."
+    }
+  ],
+  "evidencias_revision": [
+    {
+      "identificador_evidencia": "EVI-001",
+      "identificador_control": "CON-001",
+      "nombre_evidencia": "captura de revision documental",
+      "tipo_evidencia": "registro interno",
+      "estado_evidencia": "completada",
+      "fecha_evidencia": "2025-05-06",
+      "responsable_revision": "Laura",
+      "observaciones_evidencia": "Quedó registrada la comprobacion manual."
+    },
+    {
+      "identificador_evidencia": "EVI-002",
+      "identificador_control": "CON-002",
+      "nombre_evidencia": "listado de formularios revisados",
+      "tipo_evidencia": "listado",
+      "estado_evidencia": "en_revision",
+      "fecha_evidencia": "2025-05-07",
+      "responsable_revision": "Sergio",
+      "observaciones_evidencia": "Pendiente de segunda comprobacion."
+    },
+    {
+      "identificador_evidencia": "EVI-003",
+      "identificador_control": "CON-004",
+      "nombre_evidencia": "captura de permisos",
+      "tipo_evidencia": "captura",
+      "estado_evidencia": "bloqueada",
+      "fecha_evidencia": "2025-05-08",
+      "responsable_revision": "Javier",
+      "observaciones_evidencia": "Depende del desbloqueo del control."
+    },
+    {
+      "identificador_evidencia": "EVI-004",
+      "identificador_control": "CON-005",
+      "nombre_evidencia": "acta interna de cierre mensual",
+      "tipo_evidencia": "acta",
+      "estado_evidencia": "completada",
+      "fecha_evidencia": "2025-05-06",
+      "responsable_revision": "Nerea",
+      "observaciones_evidencia": "La evidencia quedo consolidada."
+    },
+    {
+      "identificador_evidencia": "EVI-005",
+      "identificador_control": "CON-006",
+      "nombre_evidencia": "comprobacion de archivos compartidos",
+      "tipo_evidencia": "registro interno",
+      "estado_evidencia": "pendiente",
+      "fecha_evidencia": "2025-05-10",
+      "responsable_revision": "Lucía",
+      "observaciones_evidencia": "Falta una ultima revision."
+    }
+  ],
+  "hallazgos_internos": [
+    {
+      "identificador_hallazgo": "HLG-001",
+      "identificador_control": "CON-001",
+      "descripcion_hallazgo": "Falta una version consolidada de un documento clave.",
+      "tipo_hallazgo": "documental",
+      "nivel_riesgo_operativo": "medio",
+      "requiere_revision_humana": true,
+      "estado_hallazgo": "en_revision",
+      "observaciones_hallazgo": "Debe cerrarse con revision manual."
+    },
+    {
+      "identificador_hallazgo": "HLG-002",
+      "identificador_control": "CON-002",
+      "descripcion_hallazgo": "Se detecta una revision pendiente de datos personales.",
+      "tipo_hallazgo": "datos_personales",
+      "nivel_riesgo_operativo": "alto",
+      "requiere_revision_humana": true,
+      "estado_hallazgo": "pendiente",
+      "observaciones_hallazgo": "Requiere comprobacion adicional."
+    },
+    {
+      "identificador_hallazgo": "HLG-003",
+      "identificador_control": "CON-004",
+      "descripcion_hallazgo": "El control de permisos sigue bloqueado.",
+      "tipo_hallazgo": "permisos",
+      "nivel_riesgo_operativo": "critico",
+      "requiere_revision_humana": true,
+      "estado_hallazgo": "bloqueado",
+      "observaciones_hallazgo": "No debe avanzar sin validacion humana."
+    },
+    {
+      "identificador_hallazgo": "HLG-004",
+      "identificador_control": "CON-007",
+      "descripcion_hallazgo": "La formacion interna esta duplicada en varias carpetas.",
+      "tipo_hallazgo": "formacion",
+      "nivel_riesgo_operativo": "bajo",
+      "requiere_revision_humana": false,
+      "estado_hallazgo": "descartado",
+      "observaciones_hallazgo": "Se descarta por duplicidad."
+    }
+  ],
+  "documentos_pendientes": [
+    {
+      "identificador_documento": "DOC-001",
+      "identificador_control": "CON-001",
+      "nombre_documento": "política interna de revisión documental",
+      "motivo_pendiente": "pendiente de consolidación interna",
+      "impacto_operativo": "limita el cierre documental",
+      "responsable_revision": "Laura",
+      "estado_documento": "pendiente",
+      "observaciones_documento": "Debe validarse en revisión manual."
+    },
+    {
+      "identificador_documento": "DOC-002",
+      "identificador_control": "CON-002",
+      "nombre_documento": "listado actualizado de datos internos",
+      "motivo_pendiente": "pendiente de verificacion",
+      "impacto_operativo": "afecta la trazabilidad",
+      "responsable_revision": "Sergio",
+      "estado_documento": "en_revision",
+      "observaciones_documento": "Requiere segunda comprobacion."
+    },
+    {
+      "identificador_documento": "DOC-003",
+      "identificador_control": "CON-003",
+      "nombre_documento": "registro consolidado de proveedores",
+      "motivo_pendiente": "falta un anexo interno",
+      "impacto_operativo": "dificulta el cierre del control",
+      "responsable_revision": "Marta",
+      "estado_documento": "bloqueado",
+      "observaciones_documento": "Queda a la espera de revisión."
+    },
+    {
+      "identificador_documento": "DOC-004",
+      "identificador_control": "CON-004",
+      "nombre_documento": "acta final de revision de permisos",
+      "motivo_pendiente": "pendiente de aprobacion interna",
+      "impacto_operativo": "impide cerrar el control de permisos",
+      "responsable_revision": "Javier",
+      "estado_documento": "pendiente",
+      "observaciones_documento": "No debe considerarse cerrado sin validacion."
+    }
+  ],
+  "acciones_seguimiento": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_control": "CON-001",
+      "descripcion_accion": "solicitar consolidacion del documento pendiente",
+      "responsable_accion": "Laura",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-05-07",
+      "observaciones_accion": "Accion prioritaria de cierre."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_control": "CON-002",
+      "descripcion_accion": "revisar los datos personales pendientes",
+      "responsable_accion": "Sergio",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-05-08",
+      "observaciones_accion": "Debe confirmarse por segunda vez."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_control": "CON-004",
+      "descripcion_accion": "resolver el bloqueo de permisos",
+      "responsable_accion": "Javier",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2025-05-09",
+      "observaciones_accion": "Depende de una revisión previa."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_control": "CON-005",
+      "descripcion_accion": "cerrar el acta mensual con revisión humana",
+      "responsable_accion": "Nerea",
+      "estado_accion": "completada",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2025-05-06",
+      "observaciones_accion": "La acción ya quedó registrada."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_control": "CON-007",
+      "descripcion_accion": "depurar la formación duplicada",
+      "responsable_accion": "Marta",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2025-05-06",
+      "observaciones_accion": "No aporta valor adicional."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten un control bloqueado, documentos pendientes y varios hallazgos que requieren seguimiento manual.",
+    "controles_en_revision": 2,
+    "controles_bloqueados": 1,
+    "hallazgos_pendientes": 2,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real ni para uso de cumplimiento operativo.",
+    "siguiente_paso_recomendado": "Revisar controles bloqueados y completar documentos pendientes."
+  }
+}
