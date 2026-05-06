@@ -25,6 +25,7 @@ La V1 implementada del repositorio consiste en una base técnica local verificab
 - Pruebas `unittest` ejecutables por agente.
 - Validación técnica global del repositorio mediante `python scripts/validar_repositorio.py`.
 - Workflow de GitHub Actions para ejecutar esa validación técnica global en `push` y `pull_request`.
+- Lanzador común por consola en `scripts/ejecutar_agente.py` como punto de entrada único para los 10 agentes.
 
 Esta V1 no representa una suite productiva ni un sistema automatizado de agentes en producción. Representa una primera base reproducible de portfolio técnico.
 
