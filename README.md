@@ -58,6 +58,8 @@ El repositorio sirve como evidencia técnica de:
 
 Las evidencias técnicas verificables del repositorio se resumen en `docs/EVIDENCIAS_TECNICAS.md`.
 
+La guía para ejecutar la demo local está en `docs/GUIA_DEMO_LOCAL.md`.
+
 ## V2 futura
 La V2 futura puede explorar, si se prioriza más adelante:
 - automatizaciones internas adicionales,
