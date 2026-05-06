@@ -12,6 +12,7 @@ Cada agente del portfolio debe incluir, como mínimo:
 - un JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) ficticio válido,
 - un script local de consola en Python,
 - pruebas `unittest`,
+- compatibilidad con la validación técnica global del repositorio,
 - mensajes y errores en castellano,
 - revisión humana como parte explícita del flujo.
 
@@ -25,6 +26,9 @@ Cada agente del portfolio debe incluir, como mínimo:
 - Debe existir al menos una prueba de ejecución correcta y pruebas mínimas de error.
 - El agente debe trabajar con datos ficticios y trazables.
 - La documentación debe coincidir con los nombres reales de scripts, tests y JSON.
+- El repositorio debe poder ejecutar una validación técnica global con `python scripts/validar_repositorio.py`.
+- La validación técnica global debe cubrir los tests por agente y la validez de los JSON ficticios principales.
+- La validación técnica global no implica IA (*Artificial Intelligence – Inteligencia Artificial*) funcional ni integración productiva.
 
 ## Criterios de veracidad
 - No inventar capacidades.

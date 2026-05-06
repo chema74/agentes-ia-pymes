@@ -23,8 +23,19 @@ La V1 implementada del repositorio consiste en una base técnica local verificab
 - Reglas mínimas de análisis operativo.
 - Informes en castellano con decisión humana recomendada.
 - Pruebas `unittest` ejecutables por agente.
+- Validación técnica global del repositorio mediante `python scripts/validar_repositorio.py`.
+- Workflow de GitHub Actions para ejecutar esa validación técnica global en `push` y `pull_request`.
 
 Esta V1 no representa una suite productiva ni un sistema automatizado de agentes en producción. Representa una primera base reproducible de portfolio técnico.
+
+## Validacion tecnica global
+El repositorio incluye una capa transversal mínima de validación técnica:
+- `python scripts/validar_repositorio.py`
+- comprobación de los tests `unittest` de los 10 agentes
+- validación de los 10 archivos JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*) de ejemplo
+- ejecución automatizable mediante GitHub Actions
+
+Esta validación global mejora la trazabilidad técnica del portfolio, pero no convierte la V1 en producto terminado ni en automatización real de negocio.
 
 ## Agentes incluidos
 - `01-agente-onboarding-inteligente`: validación local de expedientes ficticios de onboarding.

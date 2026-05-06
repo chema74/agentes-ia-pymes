@@ -8,6 +8,7 @@ Este catálogo resume el alcance real de los 10 agentes del repositorio y difere
 - Los Agentes 02 al 10 disponen de V1 técnica local mínima.
 - Los 10 agentes incluyen documentación base, JSON ficticio, script Python local y pruebas `unittest`.
 - Los scripts actuales actúan como validadores locales por consola.
+- El repositorio incluye una validación técnica global mediante `python scripts/validar_repositorio.py` y un workflow de GitHub Actions.
 - No existen IA (*Artificial Intelligence – Inteligencia Artificial*) funcional, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*), dashboard, Google Workspace ni integraciones reales.
 
 ## Agente 01 — Agente de Onboarding Inteligente
