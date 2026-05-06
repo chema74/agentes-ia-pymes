@@ -141,3 +141,16 @@ URL por defecto del editor local: `http://127.0.0.1:8765/`.
 Solo edita copias locales en `espacio_trabajo/`.
 Los JSON originales en `agentes/*/datos_ejemplo/` no se modifican.
 Es una herramienta local temporal; no es una API productiva ni un dashboard publico.
+
+### Acciones desde el editor local
+El editor local tambien permite ejecutar acciones operativas sobre copias de trabajo:
+
+- ejecutar un agente con datos de `espacio_trabajo/` y guardar su informe local,
+- ejecutar todos los agentes con datos de `espacio_trabajo/`,
+- regenerar `panel_local.html` en el directorio de salidas,
+- consultar el ultimo informe de un agente.
+
+Puedes definir directorios al arrancar:
+`python scripts/editor_espacio_trabajo.py --directorio-trabajo espacio_trabajo --directorio-salidas salidas`
+
+Sigue siendo una herramienta local temporal, no una API productiva ni un dashboard publico.

@@ -27,7 +27,7 @@ def ejecutar(script: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-def iniciar_editor(directorio_trabajo: Path, puerto: int) -> subprocess.Popen:
+def iniciar_editor(directorio_trabajo: Path, directorio_salidas: Path, puerto: int) -> subprocess.Popen:
     entorno = os.environ.copy()
     entorno["PYTHONIOENCODING"] = "utf-8"
     return subprocess.Popen(
@@ -36,6 +36,8 @@ def iniciar_editor(directorio_trabajo: Path, puerto: int) -> subprocess.Popen:
             str(SCRIPT_EDITOR),
             "--directorio-trabajo",
             str(directorio_trabajo),
+            "--directorio-salidas",
+            str(directorio_salidas),
             "--host",
             "127.0.0.1",
             "--puerto",
@@ -50,7 +52,7 @@ def iniciar_editor(directorio_trabajo: Path, puerto: int) -> subprocess.Popen:
     )
 
 
-def esperar_servidor(puerto: int, segundos: float = 5.0) -> None:
+def esperar_servidor(puerto: int, segundos: float = 8.0) -> None:
     inicio = time.time()
     url = f"http://127.0.0.1:{puerto}/api/agentes"
     while time.time() - inicio < segundos:
@@ -60,17 +62,35 @@ def esperar_servidor(puerto: int, segundos: float = 5.0) -> None:
                     return
         except Exception:
             time.sleep(0.15)
-    raise AssertionError("El servidor no arrancó a tiempo.")
+    raise AssertionError("El servidor no arranco a tiempo.")
 
 
 def cerrar_proceso(proceso: subprocess.Popen) -> None:
     if proceso.poll() is None:
         proceso.terminate()
         try:
-            proceso.wait(timeout=3)
+            proceso.wait(timeout=5)
         except subprocess.TimeoutExpired:
             proceso.kill()
-            proceso.wait(timeout=3)
+            proceso.wait(timeout=5)
+
+
+def post_json(url: str, payload: dict | None = None) -> tuple[int, dict]:
+    if payload is None:
+        data = b"{}"
+    else:
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    req = request.Request(
+        url,
+        data=data,
+        method="POST",
+        headers={"Content-Type": "application/json; charset=utf-8"},
+    )
+    try:
+        with request.urlopen(req, timeout=20) as resp:
+            return resp.status, json.loads(resp.read().decode("utf-8"))
+    except error.HTTPError as http_error:
+        return http_error.code, json.loads(http_error.read().decode("utf-8"))
 
 
 def test_error_sin_espacio_trabajo() -> None:
@@ -83,12 +103,13 @@ def test_error_sin_espacio_trabajo() -> None:
 
 
 def test_servidor_lista_agentes() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        trabajo = Path(tmp)
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, 8872)
+        proceso = iniciar_editor(trabajo, salidas, 8872)
         try:
             esperar_servidor(8872)
             with request.urlopen("http://127.0.0.1:8872/api/agentes", timeout=3) as resp:
@@ -99,12 +120,13 @@ def test_servidor_lista_agentes() -> None:
 
 
 def test_servidor_lee_agente() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        trabajo = Path(tmp)
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, 8873)
+        proceso = iniciar_editor(trabajo, salidas, 8873)
         try:
             esperar_servidor(8873)
             with request.urlopen("http://127.0.0.1:8873/api/agente?id=1", timeout=3) as resp:
@@ -116,27 +138,21 @@ def test_servidor_lee_agente() -> None:
 
 
 def test_servidor_guarda_agente() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        trabajo = Path(tmp)
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, 8874)
+        proceso = iniciar_editor(trabajo, salidas, 8874)
         try:
             esperar_servidor(8874)
             with request.urlopen("http://127.0.0.1:8874/api/agente?id=1", timeout=3) as resp:
                 base = json.loads(resp.read().decode("utf-8"))["datos"]
             base["campo_prueba_editor"] = True
 
-            cuerpo = json.dumps({"datos": base}, ensure_ascii=False).encode("utf-8")
-            req = request.Request(
-                "http://127.0.0.1:8874/api/agente?id=1",
-                data=cuerpo,
-                method="POST",
-                headers={"Content-Type": "application/json; charset=utf-8"},
-            )
-            with request.urlopen(req, timeout=3) as resp:
-                guardado = json.loads(resp.read().decode("utf-8"))
+            status, guardado = post_json("http://127.0.0.1:8874/api/agente?id=1", {"datos": base})
+            assert status == 200
             assert "mensaje" in guardado
 
             ruta_archivo = trabajo / "agente-01" / "datos.json"
@@ -147,12 +163,13 @@ def test_servidor_guarda_agente() -> None:
 
 
 def test_servidor_rechaza_json_invalido() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        trabajo = Path(tmp)
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, 8875)
+        proceso = iniciar_editor(trabajo, salidas, 8875)
         try:
             esperar_servidor(8875)
             req = request.Request(
@@ -171,6 +188,64 @@ def test_servidor_rechaza_json_invalido() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_ejecuta_agente() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8876)
+        try:
+            esperar_servidor(8876)
+            status, respuesta = post_json("http://127.0.0.1:8876/api/ejecutar?id=1")
+            assert status == 200
+            assert respuesta.get("ok") is True
+            assert (salidas / "agente-01" / "informe.txt").is_file()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_genera_panel() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8877)
+        try:
+            esperar_servidor(8877)
+            status, respuesta = post_json("http://127.0.0.1:8877/api/generar-panel")
+            assert status == 200
+            assert respuesta.get("ok") is True
+            assert (salidas / "panel_local.html").is_file()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_lee_informe() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8878)
+        try:
+            esperar_servidor(8878)
+            status_ejecutar, respuesta_ejecutar = post_json("http://127.0.0.1:8878/api/ejecutar?id=1")
+            assert status_ejecutar == 200
+            assert respuesta_ejecutar.get("ok") is True
+
+            with request.urlopen("http://127.0.0.1:8878/api/informe?id=1", timeout=10) as resp:
+                informe = json.loads(resp.read().decode("utf-8"))
+            assert informe.get("ok") is True
+            assert bool(informe.get("contenido", "").strip())
+        finally:
+            cerrar_proceso(proceso)
+
+
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
     suite = unittest.TestSuite()
     for funcion in (
@@ -179,6 +254,9 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_lee_agente,
         test_servidor_guarda_agente,
         test_servidor_rechaza_json_invalido,
+        test_servidor_ejecuta_agente,
+        test_servidor_genera_panel,
+        test_servidor_lee_informe,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite
