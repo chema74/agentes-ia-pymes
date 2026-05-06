@@ -1,20 +1,18 @@
 # Catálogo de Agentes IA para PYMES
 
 ## Objetivo del catálogo
-Este archivo resume los agentes previstos dentro del repositorio y su estado real de avance. Su función es ofrecer una vista técnica rápida para entender qué está cerrado en V1 mínima, qué está reservado y qué permanece como evolución futura.
+Este archivo resume los agentes incluidos dentro del repositorio y su estado real de avance. Su función es ofrecer una vista técnica rápida para entender qué está cerrado en V1 mínima, qué tiene documentación V1 preparada y qué permanece como evolución futura.
 
 ## Estado general
 - El repositorio sigue en evolución.
-- La infraestructura documental común ya está creada.
-- El agente 01 tiene una V1 mínima local cerrada.
-- Los agentes 02 al 10 siguen como estructura reservada y desarrollo pendiente.
+- La infraestructura documental común está creada.
+- El agente 01 tiene una V1 mínima local funcional.
+- Los agentes 02 al 10 tienen fase documental V1 preparada.
 - No existe IA funcional, Google Workspace, dashboard, API, automatización productiva ni integración real con clientes.
 
-## Agentes del portfolio
-
-### 01 — Agente de Onboarding Inteligente
+## Agente 01 — V1 mínima local funcional
 - Carpeta: `agentes/01-agente-onboarding-inteligente/`
-- Estado: V1 mínima local cerrada.
+- Estado: V1 mínima local funcional.
 - Objetivo: ordenar el alta inicial de clientes en PYMES mediante validación local de un expediente ficticio, checklist, documentación recibida y revisión manual prevista.
 
 Incluye:
@@ -49,62 +47,73 @@ Evolución V2:
 - Se mantiene como evolución futura.
 - Debe documentarse antes de integrar Google Workspace, dashboard, API o IA.
 
+## Agentes 02 al 10 — Fase documental V1 preparada
+
 ### 02 — Agente Documental Inteligente
 - Carpeta: `agentes/02-agente-documental-inteligente/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: organizar, versionar y priorizar documentación operativa y comercial con criterios homogéneos.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: organizar, versionar y priorizar documentación operativa y comercial con criterios homogéneos.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 03 — Agente de Seguimiento de Clientes
 - Carpeta: `agentes/03-agente-seguimiento-clientes/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: centralizar hitos de seguimiento y próximos pasos de clientes para reducir olvidos operativos.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: centralizar hitos de seguimiento y próximos pasos de clientes para reducir olvidos operativos.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 04 — Agente Generador de Propuestas
 - Carpeta: `agentes/04-agente-generador-propuestas/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: estandarizar la preparación de propuestas comerciales a partir de insumos estructurados.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: estandarizar la preparación de propuestas comerciales a partir de insumos estructurados.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 05 — Agente de Operaciones para PYMES
 - Carpeta: `agentes/05-agente-operaciones-pymes/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: mapear tareas recurrentes de operaciones y establecer trazabilidad mínima de ejecución.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: mapear tareas recurrentes de operaciones y establecer trazabilidad mínima de ejecución.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 06 — Agente de Control de Cobros y Flujo de Caja
 - Carpeta: `agentes/06-agente-control-cobros-flujo-caja/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: ordenar eventos de cobro, alertas básicas y seguimiento de vencimientos para mejorar visibilidad financiera operativa.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: ordenar eventos de cobro, alertas básicas y seguimiento de vencimientos para mejorar visibilidad operativa.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 07 — Agente de Pipeline Comercial
 - Carpeta: `agentes/07-agente-pipeline-comercial/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: definir etapas comerciales, criterios de avance y señales de bloqueo para oportunidades en curso.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: definir etapas comerciales, criterios de avance y señales de bloqueo para oportunidades en curso.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 08 — Agente de Formación Interna
 - Carpeta: `agentes/08-agente-formacion-interna/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: estructurar contenidos internos de capacitación y rutas de aprendizaje por rol.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: estructurar contenidos internos de capacitación y rutas de aprendizaje por rol.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 09 — Agente de Análisis de Mercado
 - Carpeta: `agentes/09-agente-analisis-mercado/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: definir un marco para recopilar y organizar señales de mercado relevantes para decisiones comerciales.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: definir un marco para recopilar y organizar señales de mercado relevantes para decisiones comerciales.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ### 10 — Agente de Revisión y Cumplimiento
 - Carpeta: `agentes/10-agente-revision-cumplimiento/`
-- Estado: estructura reservada, desarrollo pendiente.
-- Propósito previsto: establecer controles de revisión documental y verificación de cumplimiento operativo básico.
-- Nota: no hay funcionalidad implementada todavía.
+- Estado: fase documental V1 preparada.
+- Propósito: establecer controles de revisión documental y verificación de cumplimiento operativo básico.
+- Evidencia disponible: documentación V1 + JSON ficticio.
+- Fuera de alcance actual: código funcional, IA funcional, dashboard, API e integraciones reales.
 
 ## Criterios de activación de un agente
-- Un agente solo pasará de reservado a activo cuando tenga documentación base mínima.
+- Un agente solo pasará de documental a activo cuando tenga documentación base mínima.
 - Debe existir una V1 implementable con alcance verificable.
 - Deben quedar claros los límites de lo que no está implementado.
 - No se debe avanzar a integración externa sin pruebas y documentación previa.
@@ -113,7 +122,7 @@ Evolución V2:
 - Mantener la V1 mínima del agente 01 como referencia inicial.
 - Mejorar pruebas del agente 01 solo si aparecen nuevas reglas.
 - Preparar V2 documental antes de integrar herramientas externas.
-- Mantener los agentes 02 a 10 como reservados hasta activar su ciclo propio.
+- Mantener los agentes 02 a 10 como documentación V1 preparada.
 
 ## 🪪 Licencia y Autoría
 

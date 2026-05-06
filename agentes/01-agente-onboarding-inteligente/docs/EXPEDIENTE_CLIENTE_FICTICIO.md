@@ -211,6 +211,3 @@ Estas opciones no están implementadas todavía.
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
-
-Confirmación: no he creado código funcional.  
-Confirmación: no he ejecutado commit.
