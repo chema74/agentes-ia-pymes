@@ -68,11 +68,11 @@ def esperar_servidor(puerto: int, segundos: float = 8.0) -> None:
 def cerrar_proceso(proceso: subprocess.Popen) -> None:
     if proceso.poll() is None:
         proceso.terminate()
-        try:
-            proceso.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            proceso.kill()
-            proceso.wait(timeout=5)
+    try:
+        proceso.communicate(timeout=5)
+    except subprocess.TimeoutExpired:
+        proceso.kill()
+        proceso.communicate(timeout=5)
 
 
 def post_json(url: str, payload: dict | None = None) -> tuple[int, dict]:
