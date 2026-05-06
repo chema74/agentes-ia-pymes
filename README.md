@@ -56,6 +56,8 @@ El repositorio sirve como evidencia técnica de:
 - capacidad de mantener coherencia entre datos ficticios, scripts y pruebas,
 - capacidad de delimitar con claridad lo implementado y lo no implementado.
 
+Las evidencias técnicas verificables del repositorio se resumen en `docs/EVIDENCIAS_TECNICAS.md`.
+
 ## V2 futura
 La V2 futura puede explorar, si se prioriza más adelante:
 - automatizaciones internas adicionales,
