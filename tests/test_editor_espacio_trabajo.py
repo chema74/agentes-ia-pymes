@@ -287,6 +287,70 @@ def test_catalogo_muestra_nombres_completos() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_resumen_sin_informes() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8881)
+        try:
+            esperar_servidor(8881)
+            with request.urlopen("http://127.0.0.1:8881/api/resumen", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert len(datos["agentes"]) == 10
+            agente_01 = next(a for a in datos["agentes"] if a["id"] == 1)
+            assert agente_01["existe_datos_trabajo"] is True
+            assert agente_01["existe_informe"] is False
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_resumen_con_informe() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        carpeta = salidas / "agente-01"
+        carpeta.mkdir(parents=True, exist_ok=True)
+        (carpeta / "informe.txt").write_text("Decision humana recomendada: bloquear\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8882)
+        try:
+            esperar_servidor(8882)
+            with request.urlopen("http://127.0.0.1:8882/api/resumen", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            agente_01 = next(a for a in datos["agentes"] if a["id"] == 1)
+            assert agente_01["existe_informe"] is True
+            assert "bloquear" in agente_01.get("decision_recomendada", "").lower()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_resumen() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8883)
+        try:
+            esperar_servidor(8883)
+            with request.urlopen("http://127.0.0.1:8883/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Resumen local de agentes" in html
+            assert "Actualizar resumen" in html
+            assert "Seleccionar" in html
+            assert "Ver informe" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
     suite = unittest.TestSuite()
     for funcion in (
@@ -300,6 +364,9 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_lee_informe,
         test_pagina_principal_contiene_acciones,
         test_catalogo_muestra_nombres_completos,
+        test_servidor_resumen_sin_informes,
+        test_servidor_resumen_con_informe,
+        test_pagina_principal_contiene_resumen,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite

@@ -175,6 +175,69 @@ def generar_panel_local(directorio_trabajo: Path, directorio_salidas: Path) -> d
     }
 
 
+def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
+    for linea in texto.splitlines():
+        linea_limpia = linea.strip()
+        for prefijo in prefijos:
+            if linea_limpia.lower().startswith(prefijo.lower()):
+                _, _, resto = linea_limpia.partition(":")
+                valor = resto.strip()
+                if valor:
+                    return valor
+    return ""
+
+
+def construir_resumen_agentes(directorio_trabajo: Path, directorio_salidas: Path) -> list[dict]:
+    resumen = []
+    for agente_id, nombre in AGENTES.items():
+        codigo = f"agente-{agente_id:02d}"
+        ruta_datos = ruta_datos_agente(directorio_trabajo, agente_id)
+        ruta_informe = ruta_informe_agente(directorio_salidas, agente_id)
+        existe_datos = ruta_datos.is_file()
+        existe_informe = ruta_informe.is_file()
+        decision = ""
+        aviso = ""
+        estado = "sin_datos_trabajo" if not existe_datos else "sin_informe"
+
+        if existe_informe:
+            try:
+                texto = ruta_informe.read_text(encoding="utf-8", errors="replace")
+                decision = extraer_valor_por_prefijo(
+                    texto,
+                    [
+                        "Decision humana recomendada",
+                        "Decisión humana recomendada",
+                        "Decision recomendada",
+                        "Decisión recomendada",
+                    ],
+                )
+                aviso = extraer_valor_por_prefijo(texto, ["Aviso", "Limite", "Límite", "Riesgo"])
+                estado = "informe_disponible"
+                if not aviso:
+                    aviso = "Sin avisos identificados en el informe."
+            except Exception:
+                estado = "error_lectura"
+                aviso = "No se pudo leer el informe."
+        else:
+            aviso = "No hay informe generado."
+
+        resumen.append(
+            {
+                "id": agente_id,
+                "codigo": codigo,
+                "nombre": nombre,
+                "existe_datos_trabajo": existe_datos,
+                "ruta_datos_trabajo": str(ruta_datos),
+                "existe_informe": existe_informe,
+                "ruta_informe": str(ruta_informe),
+                "decision_recomendada": decision,
+                "aviso": aviso,
+                "estado_resumen": estado,
+            }
+        )
+    return resumen
+
+
 def html_editor() -> str:
     return """<!doctype html>
 <html lang=\"es\">
@@ -203,6 +266,10 @@ textarea{width:100%;min-height:380px;padding:10px;border:1px solid #c7d0db;borde
 pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:pre-wrap;max-height:280px;overflow:auto}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+.resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.tarjeta-agente{border:1px solid #d7dde7;border-radius:10px;padding:10px;background:#fbfcfe}
+.tarjeta-agente h4{margin:0 0 6px}
+.tag{display:inline-block;padding:2px 6px;border-radius:999px;background:#e5e7eb;font-size:12px}
 </style>
 </head>
 <body>
@@ -211,6 +278,14 @@ pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:
     <h1>Editor local temporal del espacio de trabajo</h1>
     <p>Interfaz local de apoyo para editar datos ficticios y lanzar validaciones.</p>
     <p class=\"nota\">Limites: herramienta local temporal, no API productiva, no dashboard publico, no modifica JSON originales.</p>
+  </div>
+
+  <div class=\"card\">
+    <h2>Resumen local de agentes</h2>
+    <div class=\"row\">
+      <button id=\"actualizarResumen\">Actualizar resumen</button>
+    </div>
+    <div id=\"resumen\" class=\"resumen-grid\"></div>
   </div>
 
   <div class=\"card\">
@@ -257,6 +332,7 @@ const msg=document.getElementById('mensaje');
 const salida=document.getElementById('salida');
 const informe=document.getElementById('informe');
 const rutaInfo=document.getElementById('rutaInfo');
+const resumen=document.getElementById('resumen');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -277,6 +353,28 @@ async function cargarAgentes(){
     o.value=a.id;o.textContent=`${a.id.toString().padStart(2,'0')} - ${a.nombre}`;
     sel.appendChild(o);
   });
+}
+
+function tarjetaResumen(agente){
+  const decision = agente.decision_recomendada || 'No identificada';
+  return `<div class="tarjeta-agente">
+    <h4>${agente.codigo} - ${agente.nombre}</h4>
+    <p><span class="tag">Datos: ${agente.existe_datos_trabajo?'si':'no'}</span>
+    <span class="tag">Informe: ${agente.existe_informe?'si':'no'}</span></p>
+    <p><strong>Decision:</strong> ${decision}</p>
+    <p><strong>Aviso:</strong> ${agente.aviso || 'Sin aviso'}</p>
+    <div class="row">
+      <button data-accion="seleccionar" data-id="${agente.id}">Seleccionar</button>
+      <button data-accion="ejecutar" data-id="${agente.id}">Ejecutar</button>
+      <button data-accion="informe" data-id="${agente.id}">Ver informe</button>
+    </div>
+  </div>`;
+}
+
+async function actualizarResumen(){
+  const r=await pedir('/api/resumen');
+  if(!r.ok){setMsg(r.data.error||'No se pudo actualizar resumen','err');return;}
+  resumen.innerHTML = r.data.agentes.map(tarjetaResumen).join('');
 }
 
 async function cargar(){
@@ -349,6 +447,27 @@ async function verRutaPanel(){
   setMsg('Ruta de panel local consultada.','ok');
 }
 
+async function desdeTarjeta(evento){
+  const boton = evento.target.closest('button[data-accion]');
+  if(!boton){return;}
+  const id = boton.getAttribute('data-id');
+  const accion = boton.getAttribute('data-accion');
+  if(!id || !accion){return;}
+  sel.value = id;
+  if(accion==='seleccionar'){
+    await cargar();
+    return;
+  }
+  if(accion==='ejecutar'){
+    await ejecutarAgente();
+    await actualizarResumen();
+    return;
+  }
+  if(accion==='informe'){
+    await cargarInforme();
+  }
+}
+
 document.getElementById('cargar').addEventListener('click',cargar);
 document.getElementById('formatear').addEventListener('click',formatear);
 document.getElementById('guardar').addEventListener('click',guardar);
@@ -357,8 +476,13 @@ document.getElementById('ejecutarTodos').addEventListener('click',ejecutarTodos)
 document.getElementById('generarPanel').addEventListener('click',regenerarPanel);
 document.getElementById('cargarInforme').addEventListener('click',cargarInforme);
 document.getElementById('rutaPanel').addEventListener('click',verRutaPanel);
+document.getElementById('actualizarResumen').addEventListener('click',actualizarResumen);
+resumen.addEventListener('click',desdeTarjeta);
 
-cargarAgentes().then(cargar).catch(e=>setMsg('Error al iniciar: '+e,'err'));
+cargarAgentes()
+  .then(cargar)
+  .then(actualizarResumen)
+  .catch(e=>setMsg('Error al iniciar: '+e,'err'));
 </script>
 </body>
 </html>
@@ -424,6 +548,10 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
             if url.path == "/api/panel":
                 ruta_panel = directorio_salidas / "panel_local.html"
                 self._enviar_json(200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()})
+                return
+            if url.path == "/api/resumen":
+                agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
+                self._enviar_json(200, {"ok": True, "agentes": agentes})
                 return
             self._enviar_json(404, {"error": "Ruta no encontrada."})
 
