@@ -246,30 +246,33 @@ def html_editor() -> str:
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 <title>Editor local de espacio de trabajo</title>
 <style>
-:root{--fondo:#f3f5f8;--card:#ffffff;--texto:#1f2937;--borde:#d6dbe3;--ok:#065f46;--okf:#d1fae5;--av:#92400e;--avf:#fef3c7;--er:#991b1b;--erf:#fee2e2}
+:root{--fondo:#f3f5f8;--card:#ffffff;--texto:#1f2937;--borde:#d6dbe3;--ok:#065f46;--okf:#d1fae5;--av:#92400e;--avf:#fef3c7;--er:#991b1b;--erf:#fee2e2;--prim:#1d4ed8}
 *{box-sizing:border-box}
-body{font-family:Segoe UI,Tahoma,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#eef2f7,var(--fondo));color:var(--texto)}
-main{max-width:1180px;margin:0 auto;padding:22px}
+body{font-family:Segoe UI,Tahoma,Arial,sans-serif;font-size:16px;margin:0;background:linear-gradient(180deg,#eef2f7,var(--fondo));color:var(--texto)}
+main{max-width:1340px;margin:0 auto;padding:24px}
 .card{background:var(--card);border:1px solid var(--borde);border-radius:12px;padding:16px;margin-bottom:14px}
 .cabecera h1{margin:0 0 8px}
 .nota{margin:6px 0;padding:10px;border-radius:8px;background:var(--avf);color:var(--av)}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-label,select,button{font-size:14px}
-select,button{padding:8px 10px;border:1px solid #c7d0db;border-radius:8px;background:#fff}
+label,select,button{font-size:15px}
+select,button{padding:9px 12px;border:1px solid #c7d0db;border-radius:8px;background:#fff}
 button{cursor:pointer;background:#f9fafb}
 button:hover{background:#f3f4f6}
-textarea{width:100%;min-height:380px;padding:10px;border:1px solid #c7d0db;border-radius:8px;font-family:Consolas,monospace;font-size:13px;line-height:1.45}
+.principal{background:var(--prim);color:#fff;border-color:#1e40af}
+.principal:hover{background:#1e40af}
+textarea{width:100%;min-height:520px;padding:12px;border:1px solid #c7d0db;border-radius:8px;font-family:Consolas,monospace;font-size:14px;line-height:1.5}
 .estado{margin-top:10px;padding:10px;border-radius:8px;background:#eef2ff}
 .estado.ok{background:var(--okf);color:var(--ok)}
 .estado.warn{background:var(--avf);color:var(--av)}
 .estado.err{background:var(--erf);color:var(--er)}
-pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:pre-wrap;max-height:280px;overflow:auto}
+pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:pre-wrap;max-height:340px;overflow:auto}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media (max-width: 900px){.grid{grid-template-columns:1fr}}
-.resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
-.tarjeta-agente{border:1px solid #d7dde7;border-radius:10px;padding:10px;background:#fbfcfe}
+@media (max-width: 980px){.grid{grid-template-columns:1fr}}
+.resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.tarjeta-agente{border:1px solid #d7dde7;border-radius:10px;padding:12px;background:#fbfcfe}
 .tarjeta-agente h4{margin:0 0 6px}
 .tag{display:inline-block;padding:2px 6px;border-radius:999px;background:#e5e7eb;font-size:12px}
+.ruta-panel{font-size:14px;color:#334155}
 </style>
 </head>
 <body>
@@ -292,27 +295,29 @@ pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:
     <div class=\"row\">
       <label for=\"agente\">Agente:</label>
       <select id=\"agente\"></select>
-      <button id=\"cargar\">Cargar JSON</button>
+      <button id=\"cargar\" class=\"principal\">Cargar JSON</button>
       <button id=\"formatear\">Formatear JSON</button>
-      <button id=\"guardar\">Validar y guardar</button>
+      <button id=\"guardar\" class=\"principal\">Validar y guardar</button>
     </div>
     <div class=\"estado\" id=\"mensaje\"></div>
   </div>
 
   <div class=\"grid\">
     <div class=\"card\">
-      <h2>Edicion JSON</h2>
+      <h2>Edición JSON</h2>
       <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
     </div>
     <div class=\"card\">
       <h2>Acciones operativas</h2>
       <div class=\"row\">
-        <button id=\"ejecutar\">Ejecutar agente seleccionado</button>
+        <button id=\"ejecutar\" class=\"principal\">Ejecutar agente seleccionado</button>
         <button id=\"ejecutarTodos\">Ejecutar todos los agentes</button>
         <button id=\"generarPanel\">Regenerar panel local</button>
         <button id=\"cargarInforme\">Cargar ultimo informe</button>
         <button id=\"rutaPanel\">Ver ruta panel local</button>
+        <button id=\"abrirPanel\">Abrir panel local</button>
       </div>
+      <p class=\"ruta-panel\">Ruta por defecto: salidas/panel_local.html</p>
       <h3>Resultados</h3>
       <p id=\"rutaInfo\"></p>
       <pre id=\"salida\"></pre>
@@ -320,8 +325,9 @@ pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card\">
-    <h2>Ultimo informe cargado</h2>
+    <h2>Último informe cargado</h2>
     <small>Usa el boton \"Cargar ultimo informe\" para refrescar esta seccion.</small>
+    <p id=\"agenteInforme\"></p>
     <pre id=\"informe\"></pre>
   </div>
 </main>
@@ -332,11 +338,13 @@ const msg=document.getElementById('mensaje');
 const salida=document.getElementById('salida');
 const informe=document.getElementById('informe');
 const rutaInfo=document.getElementById('rutaInfo');
+const agenteInforme=document.getElementById('agenteInforme');
 const resumen=document.getElementById('resumen');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
 function setInforme(t){informe.textContent=t||'';}
+function setAgenteInforme(t){agenteInforme.textContent=t||'';}
 
 async function pedir(url, opciones={}){
   const r=await fetch(url,opciones);
@@ -436,6 +444,7 @@ async function cargarInforme(){
   setMsg('Informe cargado.','ok');
   setSalida(r.data.contenido||'');
   setInforme(r.data.contenido||'');
+  setAgenteInforme(`Informe cargado para agente ${id}.`);
   rutaInfo.textContent=r.data.ruta_informe?`Informe: ${r.data.ruta_informe}`:'';
 }
 
@@ -445,6 +454,14 @@ async function verRutaPanel(){
   const estado=r.data.existe?'(existe)':'(aun no generado)';
   rutaInfo.textContent=`Panel: ${r.data.ruta_panel} ${estado}`;
   setMsg('Ruta de panel local consultada.','ok');
+}
+
+async function abrirPanelLocal(){
+  const r=await pedir('/api/panel');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo consultar el panel','err');return;}
+  const estado=r.data.existe?'existe':'no existe';
+  rutaInfo.textContent=`Panel local (${estado}): ${r.data.ruta_panel}`;
+  setMsg('El panel local puede abrirse manualmente desde la ruta indicada.','warn');
 }
 
 async function desdeTarjeta(evento){
@@ -476,6 +493,7 @@ document.getElementById('ejecutarTodos').addEventListener('click',ejecutarTodos)
 document.getElementById('generarPanel').addEventListener('click',regenerarPanel);
 document.getElementById('cargarInforme').addEventListener('click',cargarInforme);
 document.getElementById('rutaPanel').addEventListener('click',verRutaPanel);
+document.getElementById('abrirPanel').addEventListener('click',abrirPanelLocal);
 document.getElementById('actualizarResumen').addEventListener('click',actualizarResumen);
 resumen.addEventListener('click',desdeTarjeta);
 

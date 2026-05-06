@@ -351,6 +351,64 @@ def test_pagina_principal_contiene_resumen() -> None:
             cerrar_proceso(proceso)
 
 
+def test_pagina_principal_contiene_boton_panel_local() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8884)
+        try:
+            esperar_servidor(8884)
+            with request.urlopen("http://127.0.0.1:8884/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Abrir panel local" in html
+            assert "salidas" in html
+            assert "panel_local.html" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_mantiene_consola_resumen() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8885)
+        try:
+            esperar_servidor(8885)
+            with request.urlopen("http://127.0.0.1:8885/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Resumen local de agentes" in html
+            assert "Edición JSON" in html
+            assert "Acciones operativas" in html
+            assert "Último informe cargado" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_api_panel_devuelve_estado() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8886)
+        try:
+            esperar_servidor(8886)
+            with request.urlopen("http://127.0.0.1:8886/api/panel", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert "ok" in datos
+            assert "ruta_panel" in datos
+            assert "existe" in datos
+        finally:
+            cerrar_proceso(proceso)
+
+
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
     suite = unittest.TestSuite()
     for funcion in (
@@ -367,6 +425,9 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,
         test_pagina_principal_contiene_resumen,
+        test_pagina_principal_contiene_boton_panel_local,
+        test_pagina_principal_mantiene_consola_resumen,
+        test_api_panel_devuelve_estado,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite
