@@ -1,0 +1,312 @@
+{
+  "metadatos_ejemplo": {
+    "nombre_conjunto": "operaciones_pymes_ficticias_v1",
+    "version_documental": "V1",
+    "estado_documental": "preparada",
+    "fecha_referencia": "2026-05-06",
+    "nota": "Conjunto ficticio para validacion manual del agente de operaciones"
+  },
+  "empresa_ficticia": {
+    "nombre": "NexoSur Servicios Tecnicos, S.L.",
+    "sector": "servicios tecnicos y consultoria interna",
+    "tamano": "pyme",
+    "ubicacion": "Madrid",
+    "descripcion": "Empresa ficticia que coordina incidencias, validaciones, entregas y solicitudes internas con un equipo reducido."
+  },
+  "tareas_operativas": [
+    {
+      "identificador_tarea": "TO-001",
+      "titulo_tarea": "Revisar retraso en la entrega del informe semanal",
+      "descripcion_tarea": "Comprobar por que no ha llegado la informacion de cierre de semana.",
+      "area_operativa": "coordinacion interna",
+      "proceso_relacionado": "PO-002",
+      "estado_tarea": "pendiente",
+      "prioridad": "alta",
+      "responsable_interno": "Laura",
+      "fecha_prevista": "2026-05-08",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "Falta confirmar la recepcion de datos por parte de dos equipos."
+    },
+    {
+      "identificador_tarea": "TO-002",
+      "titulo_tarea": "Actualizar el procedimiento de alta de incidencias",
+      "descripcion_tarea": "Revisar el texto operativo y dejarlo listo para uso interno.",
+      "area_operativa": "soporte interno",
+      "proceso_relacionado": "PO-001",
+      "estado_tarea": "en_progreso",
+      "prioridad": "media",
+      "responsable_interno": "Sergio",
+      "fecha_prevista": "2026-05-09",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "Se esta revisando la version base con el equipo tecnico."
+    },
+    {
+      "identificador_tarea": "TO-003",
+      "titulo_tarea": "Validar la devolucion pendiente de un proveedor",
+      "descripcion_tarea": "Confirmar si la devolucion puede cerrarse o requiere mas informacion.",
+      "area_operativa": "compras y proveedores",
+      "proceso_relacionado": "PO-003",
+      "estado_tarea": "en_revision",
+      "prioridad": "alta",
+      "responsable_interno": "Marta",
+      "fecha_prevista": "2026-05-07",
+      "bloqueo_asociado": "BLQ-001",
+      "observaciones_internas": "La confirmacion formal del proveedor sigue pendiente."
+    },
+    {
+      "identificador_tarea": "TO-004",
+      "titulo_tarea": "Resolver el acceso bloqueado al gestor de tickets",
+      "descripcion_tarea": "Restablecer el acceso para continuar el seguimiento de incidencias.",
+      "area_operativa": "soporte interno",
+      "proceso_relacionado": "PO-001",
+      "estado_tarea": "bloqueada",
+      "prioridad": "alta",
+      "responsable_interno": "Javier",
+      "fecha_prevista": "2026-05-07",
+      "bloqueo_asociado": "BLQ-002",
+      "observaciones_internas": "Depende de una validacion externa de permisos."
+    },
+    {
+      "identificador_tarea": "TO-005",
+      "titulo_tarea": "Cerrar la consolidacion del informe mensual operativo",
+      "descripcion_tarea": "Registrar la version final del informe despues de la revision.",
+      "area_operativa": "reporting",
+      "proceso_relacionado": "PO-002",
+      "estado_tarea": "completada",
+      "prioridad": "media",
+      "responsable_interno": "Nerea",
+      "fecha_prevista": "2026-05-05",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "La revision final quedo documentada y cerrada."
+    },
+    {
+      "identificador_tarea": "TO-006",
+      "titulo_tarea": "Descartar un duplicado de solicitud de compra menor",
+      "descripcion_tarea": "Eliminar una solicitud repetida ya aprobada en otra entrada.",
+      "area_operativa": "compras",
+      "proceso_relacionado": "PO-004",
+      "estado_tarea": "descartada",
+      "prioridad": "baja",
+      "responsable_interno": "Lucia",
+      "fecha_prevista": "2026-05-06",
+      "bloqueo_asociado": null,
+      "observaciones_internas": "La solicitud duplicaba una peticion ya cerrada."
+    },
+    {
+      "identificador_tarea": "TO-007",
+      "titulo_tarea": "Preparar el plan de guardias del mes siguiente",
+      "descripcion_tarea": "Organizar disponibilidad y reparto de turnos para el siguiente mes.",
+      "area_operativa": "coordinacion interna",
+      "proceso_relacionado": "PO-004",
+      "estado_tarea": "pendiente",
+      "prioridad": "media",
+      "responsable_interno": "Andres",
+      "fecha_prevista": "2026-05-10",
+      "bloqueo_asociado": "BLQ-003",
+      "observaciones_internas": "Falta acuerdo final sobre disponibilidad del equipo."
+    }
+  ],
+  "procesos_operativos": [
+    {
+      "identificador_proceso": "PO-001",
+      "nombre_proceso": "Gestion de incidencias internas",
+      "descripcion_proceso": "Agrupa tareas relacionadas con soporte y resolucion de incidencias.",
+      "area_responsable": "soporte interno",
+      "estado_proceso": "activo",
+      "responsable_proceso": "Sergio",
+      "prioridad_proceso": "alta",
+      "observaciones_proceso": "Proceso con demanda constante y dependiente de validaciones rapidas."
+    },
+    {
+      "identificador_proceso": "PO-002",
+      "nombre_proceso": "Validacion y cierre documental",
+      "descripcion_proceso": "Revisa entregas, informes y cierres operativos antes de archivarlos.",
+      "area_responsable": "coordinacion interna",
+      "estado_proceso": "estable",
+      "responsable_proceso": "Laura",
+      "prioridad_proceso": "media",
+      "observaciones_proceso": "Proceso de control para evitar errores de cierre."
+    },
+    {
+      "identificador_proceso": "PO-003",
+      "nombre_proceso": "Seguimiento de proveedores",
+      "descripcion_proceso": "Controla devoluciones, confirmaciones y pendientes externos.",
+      "area_responsable": "compras y proveedores",
+      "estado_proceso": "pendiente_revision",
+      "responsable_proceso": "Marta",
+      "prioridad_proceso": "alta",
+      "observaciones_proceso": "Hay dependencias externas que requieren confirmacion manual."
+    },
+    {
+      "identificador_proceso": "PO-004",
+      "nombre_proceso": "Coordinacion de tareas recurrentes",
+      "descripcion_proceso": "Incluye tareas repetitivas, reparto de turnos y solicitudes menores.",
+      "area_responsable": "coordinacion interna",
+      "estado_proceso": "activo",
+      "responsable_proceso": "Nerea",
+      "prioridad_proceso": "media",
+      "observaciones_proceso": "Requiere control de carga y revisiones periodicas."
+    }
+  ],
+  "bloqueos_operativos": [
+    {
+      "identificador_bloqueo": "BLQ-001",
+      "identificador_tarea": "TO-003",
+      "descripcion_bloqueo": "Falta confirmacion formal del proveedor.",
+      "motivo_bloqueo": "Pendiente de respuesta externa.",
+      "impacto_operativo": "No permite cerrar la revision de la devolucion.",
+      "responsable_revision": "Marta",
+      "prioridad_bloqueo": "alta",
+      "estado_bloqueo": "en_revision",
+      "observaciones_bloqueo": "Se debe verificar si la devolucion sigue vigente."
+    },
+    {
+      "identificador_bloqueo": "BLQ-002",
+      "identificador_tarea": "TO-004",
+      "descripcion_bloqueo": "Acceso no habilitado al gestor de tickets.",
+      "motivo_bloqueo": "Permisos pendientes de validacion.",
+      "impacto_operativo": "Impide continuar con la gestion de incidencias.",
+      "responsable_revision": "Javier",
+      "prioridad_bloqueo": "alta",
+      "estado_bloqueo": "abierto",
+      "observaciones_bloqueo": "Se necesita aprobacion del equipo de sistemas."
+    },
+    {
+      "identificador_bloqueo": "BLQ-003",
+      "identificador_tarea": "TO-007",
+      "descripcion_bloqueo": "No hay fecha aprobada para el plan de guardias.",
+      "motivo_bloqueo": "Falta consenso interno sobre disponibilidad.",
+      "impacto_operativo": "Retrasa la organizacion del siguiente mes.",
+      "responsable_revision": "Laura",
+      "prioridad_bloqueo": "media",
+      "estado_bloqueo": "abierto",
+      "observaciones_bloqueo": "Conviene revisar disponibilidad antes de cerrar el plan."
+    }
+  ],
+  "acciones_siguientes": [
+    {
+      "identificador_accion": "ACC-001",
+      "identificador_tarea": "TO-003",
+      "descripcion_accion": "Solicitar confirmacion final al proveedor.",
+      "responsable_accion": "Marta",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "La accion depende de una respuesta externa."
+    },
+    {
+      "identificador_accion": "ACC-002",
+      "identificador_tarea": "TO-004",
+      "descripcion_accion": "Revisar permisos de acceso del gestor de tickets.",
+      "responsable_accion": "Javier",
+      "estado_accion": "en_revision",
+      "prioridad_accion": "alta",
+      "fecha_prevista": "2026-05-07",
+      "observaciones_accion": "Debe confirmarse con sistemas antes de avanzar."
+    },
+    {
+      "identificador_accion": "ACC-003",
+      "identificador_tarea": "TO-005",
+      "descripcion_accion": "Archivar la version final del informe mensual.",
+      "responsable_accion": "Nerea",
+      "estado_accion": "completada",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-05",
+      "observaciones_accion": "La accion ya quedo cerrada."
+    },
+    {
+      "identificador_accion": "ACC-004",
+      "identificador_tarea": "TO-006",
+      "descripcion_accion": "Marcar la solicitud repetida como descartada.",
+      "responsable_accion": "Lucia",
+      "estado_accion": "descartada",
+      "prioridad_accion": "baja",
+      "fecha_prevista": "2026-05-06",
+      "observaciones_accion": "No requiere mas seguimiento."
+    },
+    {
+      "identificador_accion": "ACC-005",
+      "identificador_tarea": "TO-007",
+      "descripcion_accion": "Coordinar disponibilidad del equipo para el plan de guardias.",
+      "responsable_accion": "Andres",
+      "estado_accion": "pendiente",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-10",
+      "observaciones_accion": "Pendiente de acuerdo interno."
+    },
+    {
+      "identificador_accion": "ACC-006",
+      "identificador_tarea": "TO-002",
+      "descripcion_accion": "Revisar la version final del procedimiento de incidencias.",
+      "responsable_accion": "Sergio",
+      "estado_accion": "bloqueada",
+      "prioridad_accion": "media",
+      "fecha_prevista": "2026-05-09",
+      "observaciones_accion": "Espera la validacion de coordinacion."
+    }
+  ],
+  "revisiones_operativas": [
+    {
+      "identificador_revision": "REV-001",
+      "identificador_tarea": "TO-003",
+      "responsable_revision": "Marta",
+      "estado_revision": "pendiente",
+      "aspectos_revisados": [
+        "coherencia de fechas",
+        "impacto operativo",
+        "confirmacion externa"
+      ],
+      "decision_revision": "pedir_informacion",
+      "observaciones_revision": "Falta respuesta del proveedor antes de decidir el cierre."
+    },
+    {
+      "identificador_revision": "REV-002",
+      "identificador_tarea": "TO-004",
+      "responsable_revision": "Laura",
+      "estado_revision": "completada",
+      "aspectos_revisados": [
+        "estado del acceso",
+        "riesgo de continuidad",
+        "responsable de soporte"
+      ],
+      "decision_revision": "bloquear",
+      "observaciones_revision": "La tarea debe seguir bloqueada hasta resolver permisos."
+    },
+    {
+      "identificador_revision": "REV-003",
+      "identificador_tarea": "TO-005",
+      "responsable_revision": "Nerea",
+      "estado_revision": "completada",
+      "aspectos_revisados": [
+        "version final",
+        "validacion documental",
+        "cierre de observaciones"
+      ],
+      "decision_revision": "avanzar",
+      "observaciones_revision": "La consolidacion mensual puede darse por cerrada."
+    },
+    {
+      "identificador_revision": "REV-004",
+      "identificador_tarea": "TO-007",
+      "responsable_revision": "Laura",
+      "estado_revision": "en_revision",
+      "aspectos_revisados": [
+        "disponibilidad del equipo",
+        "dependencia de guardias",
+        "prioridad del plan"
+      ],
+      "decision_revision": "revisar_de_nuevo",
+      "observaciones_revision": "Se necesita confirmar disponibilidad antes de avanzar."
+    }
+  ],
+  "resultado_validacion_manual": {
+    "estado_general": "pendiente_revision",
+    "decision_humana": "pedir_informacion",
+    "motivo": "Persisten dos bloqueos operativos abiertos y una tarea pendiente de confirmacion externa.",
+    "tareas_con_estado_pendiente": 2,
+    "tareas_con_bloqueo_abierto": 2,
+    "tareas_en_revision": 1,
+    "observaciones_finales": "El conjunto es coherente para una validacion manual, pero no esta listo para automatizacion real.",
+    "siguiente_paso_recomendado": "Revisar la informacion externa y volver a validar el tablero."
+  }
+}
