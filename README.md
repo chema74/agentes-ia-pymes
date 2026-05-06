@@ -119,3 +119,14 @@ Se puede generar un panel HTML local a partir de los informes del lanzador comun
 El panel se guarda por defecto en `salidas/panel_local.html`.
 La carpeta `salidas/` esta ignorada por Git.
 Este panel es local y estatico; no es un dashboard productivo.
+
+## Espacio de trabajo local editable
+Se puede preparar una copia editable de los datos ficticios sin tocar los JSON originales del repositorio.
+
+- `python scripts/preparar_espacio_trabajo.py`
+- `python scripts/ejecutar_agente.py --agente 1 --usar-datos-trabajo`
+- `python scripts/ejecutar_agente.py --todos --usar-datos-trabajo --guardar-salida`
+- `python scripts/generar_panel_local.py --generar-informes --usar-datos-trabajo`
+
+Las copias se guardan en `espacio_trabajo/` y esta carpeta esta ignorada por Git.
+Los JSON originales de `agentes/*/datos_ejemplo/` no se modifican.

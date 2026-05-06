@@ -36,6 +36,16 @@ def construir_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Si se indica, genera informes antes de construir el panel.",
     )
+    parser.add_argument(
+        "--usar-datos-trabajo",
+        action="store_true",
+        help="Usa JSON editables del espacio de trabajo al generar informes.",
+    )
+    parser.add_argument(
+        "--directorio-trabajo",
+        default="espacio_trabajo",
+        help="Directorio del espacio de trabajo editable (por defecto: espacio_trabajo).",
+    )
     return parser
 
 
@@ -43,7 +53,12 @@ def obtener_raiz_repositorio() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def ejecutar_lanzador_todos(directorio_salidas: Path, raiz: Path) -> subprocess.CompletedProcess[str]:
+def ejecutar_lanzador_todos(
+    directorio_salidas: Path,
+    raiz: Path,
+    usar_datos_trabajo: bool,
+    directorio_trabajo: Path,
+) -> subprocess.CompletedProcess[str]:
     entorno = os.environ.copy()
     entorno["PYTHONIOENCODING"] = "utf-8"
     comando = [
@@ -54,6 +69,9 @@ def ejecutar_lanzador_todos(directorio_salidas: Path, raiz: Path) -> subprocess.
         "--directorio-salidas",
         str(directorio_salidas),
     ]
+    if usar_datos_trabajo:
+        comando.extend(["--usar-datos-trabajo", "--directorio-trabajo", str(directorio_trabajo)])
+
     return subprocess.run(
         comando,
         cwd=raiz,
@@ -66,54 +84,24 @@ def ejecutar_lanzador_todos(directorio_salidas: Path, raiz: Path) -> subprocess.
     )
 
 
-def ejecutar_lanzador_individual(numero: int, raiz: Path) -> subprocess.CompletedProcess[str]:
-    entorno = os.environ.copy()
-    entorno["PYTHONIOENCODING"] = "utf-8"
-    comando = [
-        sys.executable,
-        str(raiz / "scripts" / "ejecutar_agente.py"),
-        "--agente",
-        str(numero),
-    ]
-    return subprocess.run(
-        comando,
-        cwd=raiz,
-        text=True,
-        capture_output=True,
-        check=False,
-        encoding="utf-8",
-        errors="replace",
-        env=entorno,
-    )
-
-
-def generar_informes_con_lanzador(directorio_salidas: Path, raiz: Path) -> int:
+def generar_informes_con_lanzador(
+    directorio_salidas: Path,
+    raiz: Path,
+    usar_datos_trabajo: bool,
+    directorio_trabajo: Path,
+) -> int:
     directorio_salidas.mkdir(parents=True, exist_ok=True)
-
-    resultado_todos = ejecutar_lanzador_todos(directorio_salidas, raiz)
-    if resultado_todos.returncode == 0:
-        return 0
-
-    # Compatibilidad: si el lanzador aun no soporta --todos/--guardar-salida,
-    # generamos informes ejecutando cada agente por separado con el lanzador comun.
-    salida_error = (resultado_todos.stdout or "") + (resultado_todos.stderr or "")
-    if "--todos" not in salida_error and "argument" not in salida_error.lower():
+    resultado_todos = ejecutar_lanzador_todos(
+        directorio_salidas,
+        raiz,
+        usar_datos_trabajo,
+        directorio_trabajo,
+    )
+    if resultado_todos.returncode != 0:
+        salida = ((resultado_todos.stdout or "") + "\n" + (resultado_todos.stderr or "")).strip()
+        if salida:
+            print(salida)
         return 1
-
-    for numero, _nombre in AGENTES:
-        resultado = ejecutar_lanzador_individual(numero, raiz)
-        if resultado.returncode != 0:
-            print(f"Error al ejecutar el agente {numero:02d}.")
-            return 1
-
-        carpeta_agente = directorio_salidas / f"agente-{numero:02d}"
-        carpeta_agente.mkdir(parents=True, exist_ok=True)
-        informe = carpeta_agente / "informe.txt"
-        contenido = (resultado.stdout or "").strip()
-        if not contenido:
-            contenido = "No se recibio salida del lanzador para este agente."
-        informe.write_text(contenido + "\n", encoding="utf-8")
-
     return 0
 
 
@@ -129,7 +117,7 @@ def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
     return "No identificado en el informe."
 
 
-def construir_tarjeta_html(numero: int, nombre: str, informe_ruta: Path, base: Path) -> tuple[str, bool]:
+def construir_tarjeta_html(nombre: str, informe_ruta: Path, base: Path) -> tuple[str, bool]:
     existe = informe_ruta.is_file()
     ruta_relativa = informe_ruta.relative_to(base) if informe_ruta.is_absolute() else informe_ruta
 
@@ -172,7 +160,7 @@ def construir_html(directorio_salidas: Path) -> tuple[str, int]:
 
     for numero, nombre in AGENTES:
         informe = directorio_salidas / f"agente-{numero:02d}" / "informe.txt"
-        tarjeta, existe = construir_tarjeta_html(numero, nombre, informe, directorio_salidas)
+        tarjeta, existe = construir_tarjeta_html(nombre, informe, directorio_salidas)
         if existe:
             encontrados += 1
         tarjetas.append(tarjeta)
@@ -269,8 +257,17 @@ def main(argv: list[str] | None = None) -> int:
         if not directorio_salidas.is_absolute():
             directorio_salidas = raiz / directorio_salidas
 
+        directorio_trabajo = Path(args.directorio_trabajo)
+        if not directorio_trabajo.is_absolute():
+            directorio_trabajo = raiz / directorio_trabajo
+
         if args.generar_informes:
-            resultado = generar_informes_con_lanzador(directorio_salidas, raiz)
+            resultado = generar_informes_con_lanzador(
+                directorio_salidas,
+                raiz,
+                args.usar_datos_trabajo,
+                directorio_trabajo,
+            )
             if resultado != 0:
                 print("Error: no se pudieron generar los informes con el lanzador comun.")
                 return 1

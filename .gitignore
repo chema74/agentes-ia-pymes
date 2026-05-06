@@ -13,3 +13,7 @@ __pycache__/
 # Artefactos de sistema
 .DS_Store
 Thumbs.db
+
+# Salidas y espacio de trabajo local
+salidas/
+espacio_trabajo/
