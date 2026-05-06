@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -81,10 +82,14 @@ def ejecutar_agente(numero: int) -> int:
     print(f"Agente seleccionado: {nombre}")
     print(f"Script ejecutado: {ruta_script.relative_to(raiz)}")
 
+    entorno = os.environ.copy()
+    entorno["PYTHONIOENCODING"] = "utf-8"
+
     resultado = subprocess.run(
         [sys.executable, str(ruta_script)],
         cwd=raiz,
         check=False,
+        env=entorno,
     )
 
     if resultado.returncode != 0:

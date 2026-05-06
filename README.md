@@ -109,3 +109,13 @@ El valor actual del repositorio está en la veracidad del alcance: cada agente m
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
+## Panel HTML local estatico
+Se puede generar un panel HTML local a partir de los informes del lanzador comun:
+
+- `python scripts/generar_panel_local.py --generar-informes`
+- `python scripts/generar_panel_local.py --directorio-salidas salidas`
+
+El panel se guarda por defecto en `salidas/panel_local.html`.
+La carpeta `salidas/` esta ignorada por Git.
+Este panel es local y estatico; no es un dashboard productivo.

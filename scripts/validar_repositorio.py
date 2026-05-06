@@ -113,6 +113,16 @@ def validar_tests(raiz_repositorio, agentes):
     return total
 
 
+def validar_tests_transversales(raiz_repositorio):
+    ruta_tests = raiz_repositorio / "tests"
+    if not ruta_tests.exists():
+        print("No se encontraron tests transversales en tests/.")
+        return 0
+    print("Ejecutando tests transversales: tests/")
+    ejecutar_tests(ruta_tests, "tests transversales", raiz_repositorio)
+    return 1
+
+
 def main():
     try:
         raiz_repositorio = obtener_raiz_repositorio()
@@ -120,10 +130,12 @@ def main():
 
         json_validados = validar_jsons(raiz_repositorio, agentes)
         tests_ejecutados = validar_tests(raiz_repositorio, agentes)
+        tests_transversales = validar_tests_transversales(raiz_repositorio)
 
         print("")
         print("Resumen final")
-        print(f"Tests ejecutados: {tests_ejecutados}")
+        print(f"Tests por agente ejecutados: {tests_ejecutados}")
+        print(f"Tests transversales ejecutados: {tests_transversales}")
         print(f"JSON validados: {json_validados}")
         print("Resultado final: validacion global correcta.")
         return 0
