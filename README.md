@@ -130,3 +130,14 @@ Se puede preparar una copia editable de los datos ficticios sin tocar los JSON o
 
 Las copias se guardan en `espacio_trabajo/` y esta carpeta esta ignorada por Git.
 Los JSON originales de `agentes/*/datos_ejemplo/` no se modifican.
+
+## Editor local del espacio de trabajo
+Para editar los JSON de trabajo sin tocar los originales:
+
+- `python scripts/preparar_espacio_trabajo.py`
+- `python scripts/editor_espacio_trabajo.py`
+
+URL por defecto del editor local: `http://127.0.0.1:8765/`.
+Solo edita copias locales en `espacio_trabajo/`.
+Los JSON originales en `agentes/*/datos_ejemplo/` no se modifican.
+Es una herramienta local temporal; no es una API productiva ni un dashboard publico.
