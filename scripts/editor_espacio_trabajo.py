@@ -23,6 +23,19 @@ AGENTES = {
     10: "Agente de Revision y Cumplimiento",
 }
 
+FORMULARIO_AGENTE_01 = [
+    ("cliente.nombre_cliente", "Nombre del cliente"),
+    ("cliente.nombre_empresa", "Nombre de la empresa"),
+    ("cliente.correo_contacto", "Correo de contacto"),
+    ("cliente.telefono_contacto", "Telefono de contacto"),
+    ("cliente.tipo_servicio_solicitado", "Tipo de servicio solicitado"),
+    ("cliente.necesidad_principal", "Necesidad principal"),
+    ("cliente.prioridad_inicial", "Prioridad inicial"),
+    ("cliente.estado_onboarding", "Estado del onboarding"),
+    ("cliente.responsable_interno", "Responsable interno"),
+    ("cliente.observaciones_internas", "Observaciones internas"),
+]
+
 
 def obtener_raiz_repositorio() -> Path:
     return Path(__file__).resolve().parents[1]
@@ -89,6 +102,69 @@ def guardar_json_agente(directorio_trabajo: Path, agente_id: int, texto_json: st
 
     contenido = json.dumps(datos, ensure_ascii=False, indent=2)
     ruta.write_text(contenido + "\n", encoding="utf-8")
+
+
+def obtener_valor_por_ruta(datos: dict, ruta_json: str) -> str:
+    actual = datos
+    for segmento in ruta_json.split("."):
+        if not isinstance(actual, dict) or segmento not in actual:
+            return ""
+        actual = actual[segmento]
+    if actual is None:
+        return ""
+    return str(actual)
+
+
+def asignar_valor_por_ruta(datos: dict, ruta_json: str, valor: str) -> None:
+    segmentos = ruta_json.split(".")
+    actual = datos
+    for segmento in segmentos[:-1]:
+        siguiente = actual.get(segmento)
+        if not isinstance(siguiente, dict):
+            siguiente = {}
+            actual[segmento] = siguiente
+        actual = siguiente
+    actual[segmentos[-1]] = valor
+
+
+def construir_formulario_agente_01(directorio_trabajo: Path) -> dict:
+    datos = leer_json_agente(directorio_trabajo, 1)
+    campos = []
+    for clave, etiqueta in FORMULARIO_AGENTE_01:
+        campos.append(
+            {
+                "clave": clave.split(".")[-1],
+                "etiqueta": etiqueta,
+                "valor": obtener_valor_por_ruta(datos, clave),
+                "ruta_json": clave,
+            }
+        )
+    return {
+        "ok": True,
+        "agente": 1,
+        "campos": campos,
+        "mensaje": "Formulario guiado del Agente 01 cargado correctamente.",
+    }
+
+
+def guardar_formulario_agente_01(directorio_trabajo: Path, payload: dict) -> dict:
+    datos = leer_json_agente(directorio_trabajo, 1)
+    valores = payload.get("campos")
+    if not isinstance(valores, dict):
+        raise ValueError("La peticion del formulario debe incluir un objeto 'campos'.")
+
+    for ruta_json, _etiqueta in FORMULARIO_AGENTE_01:
+        if ruta_json in valores:
+            asignar_valor_por_ruta(datos, ruta_json, str(valores[ruta_json]))
+
+    ruta = ruta_datos_agente(directorio_trabajo, 1)
+    contenido = json.dumps(datos, ensure_ascii=False, indent=2)
+    ruta.write_text(contenido + "\n", encoding="utf-8")
+
+    return {
+        "ok": True,
+        "mensaje": "Edicion guiada del Agente 01 guardada correctamente.",
+    }
 
 
 def ejecutar_comando_local(argumentos: list[str]) -> tuple[int, str]:
@@ -273,6 +349,12 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
 .tarjeta-agente h4{margin:0 0 6px}
 .tag{display:inline-block;padding:2px 6px;border-radius:999px;background:#e5e7eb;font-size:12px}
 .ruta-panel{font-size:14px;color:#334155}
+.guiada{display:none}
+.guiada.activa{display:block}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo input,.campo textarea{padding:9px 10px;border:1px solid #c7d0db;border-radius:8px;font:inherit}
+.campo textarea{min-height:90px;resize:vertical}
 </style>
 </head>
 <body>
@@ -300,6 +382,16 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
       <button id=\"guardar\" class=\"principal\">Validar y guardar</button>
     </div>
     <div class=\"estado\" id=\"mensaje\"></div>
+  </div>
+
+  <div class=\"card guiada\" id=\"bloqueGuiado\">
+    <h2>Edición guiada del Agente 01</h2>
+    <p>Seccion piloto para modificar campos clave sin editar directamente el JSON crudo.</p>
+    <div class=\"row\">
+      <button id=\"cargarGuiado\">Cargar edición guiada</button>
+      <button id=\"guardarGuiado\" class=\"principal\">Guardar edición guiada</button>
+    </div>
+    <div id=\"formularioGuiado\" class=\"form-grid\"></div>
   </div>
 
   <div class=\"grid\">
@@ -340,11 +432,25 @@ const informe=document.getElementById('informe');
 const rutaInfo=document.getElementById('rutaInfo');
 const agenteInforme=document.getElementById('agenteInforme');
 const resumen=document.getElementById('resumen');
+const bloqueGuiado=document.getElementById('bloqueGuiado');
+const formularioGuiado=document.getElementById('formularioGuiado');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
 function setInforme(t){informe.textContent=t||'';}
 function setAgenteInforme(t){agenteInforme.textContent=t||'';}
+function escaparHtml(texto){
+  return String(texto ?? '')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;');
+}
+
+function actualizarVisibilidadGuiada(){
+  const activo = String(sel.value) === '1';
+  bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
+}
 
 async function pedir(url, opciones={}){
   const r=await fetch(url,opciones);
@@ -391,6 +497,7 @@ async function cargar(){
   if(!r.ok){setMsg(r.data.error||'Error al cargar','err');return;}
   txt.value=JSON.stringify(r.data.datos,null,2);
   setMsg(`Agente ${id} cargado.`,'ok');
+  actualizarVisibilidadGuiada();
 }
 
 function formatear(){
@@ -464,6 +571,36 @@ async function abrirPanelLocal(){
   setMsg('El panel local puede abrirse manualmente desde la ruta indicada.','warn');
 }
 
+function renderFormularioGuiado(campos){
+  formularioGuiado.innerHTML = campos.map((campo) => {
+    const multilinea = campo.ruta_json === 'cliente.necesidad_principal' || campo.ruta_json === 'cliente.observaciones_internas';
+    if (multilinea) {
+      return `<label class="campo"><span>${escaparHtml(campo.etiqueta)}</span><textarea data-ruta="${escaparHtml(campo.ruta_json)}">${escaparHtml(campo.valor || '')}</textarea></label>`;
+    }
+    return `<label class="campo"><span>${escaparHtml(campo.etiqueta)}</span><input data-ruta="${escaparHtml(campo.ruta_json)}" value="${escaparHtml(campo.valor || '')}"></label>`;
+  }).join('');
+}
+
+async function cargarGuiado(){
+  if(String(sel.value)!=='1'){setMsg('La edición guiada piloto solo está disponible para el Agente 01.','warn');return;}
+  const r=await pedir('/api/formulario/agente-01');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edición guiada','err');return;}
+  renderFormularioGuiado(r.data.campos || []);
+  setMsg(r.data.mensaje || 'Edición guiada cargada.','ok');
+}
+
+async function guardarGuiado(){
+  if(String(sel.value)!=='1'){setMsg('La edición guiada piloto solo está disponible para el Agente 01.','warn');return;}
+  const campos = {};
+  formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
+    campos[nodo.getAttribute('data-ruta')] = nodo.value;
+  });
+  const r=await pedir('/api/formulario/agente-01',{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edición guiada','err');return;}
+  setMsg(r.data.mensaje || 'Edición guiada guardada.','ok');
+  await cargar();
+}
+
 async function desdeTarjeta(evento){
   const boton = evento.target.closest('button[data-accion]');
   if(!boton){return;}
@@ -471,6 +608,7 @@ async function desdeTarjeta(evento){
   const accion = boton.getAttribute('data-accion');
   if(!id || !accion){return;}
   sel.value = id;
+  actualizarVisibilidadGuiada();
   if(accion==='seleccionar'){
     await cargar();
     return;
@@ -495,6 +633,9 @@ document.getElementById('cargarInforme').addEventListener('click',cargarInforme)
 document.getElementById('rutaPanel').addEventListener('click',verRutaPanel);
 document.getElementById('abrirPanel').addEventListener('click',abrirPanelLocal);
 document.getElementById('actualizarResumen').addEventListener('click',actualizarResumen);
+document.getElementById('cargarGuiado').addEventListener('click',cargarGuiado);
+document.getElementById('guardarGuiado').addEventListener('click',guardarGuiado);
+sel.addEventListener('change',actualizarVisibilidadGuiada);
 resumen.addEventListener('click',desdeTarjeta);
 
 cargarAgentes()
@@ -567,9 +708,20 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 ruta_panel = directorio_salidas / "panel_local.html"
                 self._enviar_json(200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()})
                 return
+            if url.path == "/api/formulario/agente-01":
+                try:
+                    self._enviar_json(200, construir_formulario_agente_01(directorio_trabajo))
+                except FileNotFoundError as error:
+                    self._enviar_json(404, {"ok": False, "error": str(error)})
+                except Exception as error:
+                    self._enviar_json(500, {"ok": False, "error": f"Error al cargar el formulario: {error}"})
+                return
             if url.path == "/api/resumen":
                 agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
+                return
+            if url.path.startswith("/api/formulario/"):
+                self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                 return
             self._enviar_json(404, {"error": "Ruta no encontrada."})
 
@@ -597,6 +749,15 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
 
                 if url.path == "/api/generar-panel":
                     self._enviar_json(200, generar_panel_local(directorio_trabajo, directorio_salidas))
+                    return
+
+                if url.path == "/api/formulario/agente-01":
+                    payload = self._leer_json_post()
+                    self._enviar_json(200, guardar_formulario_agente_01(directorio_trabajo, payload))
+                    return
+
+                if url.path.startswith("/api/formulario/"):
+                    self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                     return
 
                 self._enviar_json(404, {"error": "Ruta no encontrada."})

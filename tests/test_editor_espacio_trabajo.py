@@ -409,6 +409,87 @@ def test_api_panel_devuelve_estado() -> None:
             cerrar_proceso(proceso)
 
 
+def test_formulario_agente_01_devuelve_campos() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8887)
+        try:
+            esperar_servidor(8887)
+            with request.urlopen("http://127.0.0.1:8887/api/formulario/agente-01", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert isinstance(datos.get("campos"), list)
+            rutas = [campo.get("ruta_json") for campo in datos["campos"]]
+            assert "cliente.nombre_cliente" in rutas or "cliente.nombre_empresa" in rutas
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_01_guarda_cambio() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8888)
+        try:
+            esperar_servidor(8888)
+            payload = {"campos": {"cliente.nombre_empresa": "Empresa Piloto Editada"}}
+            status, respuesta = post_json("http://127.0.0.1:8888/api/formulario/agente-01", payload)
+            assert status == 200
+            assert respuesta.get("ok") is True
+
+            ruta_archivo = trabajo / "agente-01" / "datos.json"
+            datos = json.loads(ruta_archivo.read_text(encoding="utf-8"))
+            assert datos["cliente"]["nombre_empresa"] == "Empresa Piloto Editada"
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_edicion_guiada() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8889)
+        try:
+            esperar_servidor(8889)
+            with request.urlopen("http://127.0.0.1:8889/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Edición guiada del Agente 01" in html or "Edici" in html and "Agente 01" in html
+            assert "Cargar edición guiada" in html or "Cargar edici" in html
+            assert "Guardar edición guiada" in html or "Guardar edici" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_no_permitido() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8890)
+        try:
+            esperar_servidor(8890)
+            try:
+                request.urlopen("http://127.0.0.1:8890/api/formulario/agente-02", timeout=5)
+                assert False, "Se esperaba error controlado para formulario no permitido"
+            except error.HTTPError as http_error:
+                assert http_error.code == 404
+            assert proceso.poll() is None
+        finally:
+            cerrar_proceso(proceso)
+
+
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
     suite = unittest.TestSuite()
     for funcion in (
@@ -428,6 +509,10 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_pagina_principal_contiene_boton_panel_local,
         test_pagina_principal_mantiene_consola_resumen,
         test_api_panel_devuelve_estado,
+        test_formulario_agente_01_devuelve_campos,
+        test_formulario_agente_01_guarda_cambio,
+        test_pagina_principal_contiene_edicion_guiada,
+        test_formulario_agente_no_permitido,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite

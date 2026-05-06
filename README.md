@@ -80,6 +80,7 @@ Es una herramienta local temporal; no es una API productiva ni un dashboard publ
 El editor local permite:
 
 - cargar JSON de trabajo,
+- usar una edicion guiada piloto para campos clave del Agente 01,
 - editar datos ficticios,
 - formatear JSON,
 - validar y guardar,
