@@ -62,6 +62,7 @@ La guía para ejecutar la demo local está en `docs/GUIA_DEMO_LOCAL.md`.
 El documento de cierre técnico V1 está en `docs/CIERRE_TECNICO_V1.md` y recoge el estado de cierre de la V1 técnica local.
 
 ## V2 futura
+El `CHANGELOG.md` recoge el historial de cierre y evolución del repositorio.
 La ficha de portfolio reutilizable estÃ¡ en `docs/FICHA_PORTFOLIO.md` y resume el proyecto para una futura web de portfolio.
 El índice documental del repositorio está en `docs/INDICE_DOCUMENTAL.md` y sirve como guía de navegación documental.
 La V2 futura puede explorar, si se prioriza más adelante:
