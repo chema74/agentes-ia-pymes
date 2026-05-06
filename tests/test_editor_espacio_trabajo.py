@@ -246,6 +246,47 @@ def test_servidor_lee_informe() -> None:
             cerrar_proceso(proceso)
 
 
+def test_pagina_principal_contiene_acciones() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8879)
+        try:
+            esperar_servidor(8879)
+            with request.urlopen("http://127.0.0.1:8879/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Formatear JSON" in html
+            assert "Ejecutar agente seleccionado" in html
+            assert "Ejecutar todos los agentes" in html
+            assert "Regenerar panel local" in html
+            assert "Cargar ultimo informe" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_catalogo_muestra_nombres_completos() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8880)
+        try:
+            esperar_servidor(8880)
+            with request.urlopen("http://127.0.0.1:8880/api/agentes", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert len(datos["agentes"]) == 10
+            nombres = [agente["nombre"] for agente in datos["agentes"]]
+            assert any("Onboarding Inteligente" in nombre for nombre in nombres)
+            assert any("Revision y Cumplimiento" in nombre for nombre in nombres)
+        finally:
+            cerrar_proceso(proceso)
+
+
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
     suite = unittest.TestSuite()
     for funcion in (
@@ -257,6 +298,8 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_ejecuta_agente,
         test_servidor_genera_panel,
         test_servidor_lee_informe,
+        test_pagina_principal_contiene_acciones,
+        test_catalogo_muestra_nombres_completos,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite

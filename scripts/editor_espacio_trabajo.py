@@ -10,7 +10,18 @@ import sys
 from urllib.parse import parse_qs, urlparse
 import webbrowser
 
-AGENTES = {i: f"Agente {i:02d}" for i in range(1, 11)}
+AGENTES = {
+    1: "Agente de Onboarding Inteligente",
+    2: "Agente Documental Inteligente",
+    3: "Agente de Seguimiento de Clientes",
+    4: "Agente Generador de Propuestas",
+    5: "Agente de Operaciones para PYMES",
+    6: "Agente de Control de Cobros y Flujo de Caja",
+    7: "Agente de Pipeline Comercial",
+    8: "Agente de Formacion Interna",
+    9: "Agente de Analisis de Mercado",
+    10: "Agente de Revision y Cumplimiento",
+}
 
 
 def obtener_raiz_repositorio() -> Path:
@@ -172,23 +183,34 @@ def html_editor() -> str:
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 <title>Editor local de espacio de trabajo</title>
 <style>
-body{font-family:Segoe UI,Tahoma,Arial,sans-serif;margin:0;background:#f4f6f8;color:#1f2937}
-main{max-width:1100px;margin:0 auto;padding:20px}
-.card{background:#fff;border:1px solid #d1d5db;border-radius:10px;padding:16px;margin-bottom:14px}
+:root{--fondo:#f3f5f8;--card:#ffffff;--texto:#1f2937;--borde:#d6dbe3;--ok:#065f46;--okf:#d1fae5;--av:#92400e;--avf:#fef3c7;--er:#991b1b;--erf:#fee2e2}
+*{box-sizing:border-box}
+body{font-family:Segoe UI,Tahoma,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#eef2f7,var(--fondo));color:var(--texto)}
+main{max-width:1180px;margin:0 auto;padding:22px}
+.card{background:var(--card);border:1px solid var(--borde);border-radius:12px;padding:16px;margin-bottom:14px}
+.cabecera h1{margin:0 0 8px}
+.nota{margin:6px 0;padding:10px;border-radius:8px;background:var(--avf);color:var(--av)}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 label,select,button{font-size:14px}
-textarea{width:100%;min-height:380px;font-family:Consolas,monospace;font-size:13px}
-.msg{margin-top:10px;padding:8px;border-radius:8px;background:#eef2ff}
-.err{background:#fee2e2}
-pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:pre-wrap}
+select,button{padding:8px 10px;border:1px solid #c7d0db;border-radius:8px;background:#fff}
+button{cursor:pointer;background:#f9fafb}
+button:hover{background:#f3f4f6}
+textarea{width:100%;min-height:380px;padding:10px;border:1px solid #c7d0db;border-radius:8px;font-family:Consolas,monospace;font-size:13px;line-height:1.45}
+.estado{margin-top:10px;padding:10px;border-radius:8px;background:#eef2ff}
+.estado.ok{background:var(--okf);color:var(--ok)}
+.estado.warn{background:var(--avf);color:var(--av)}
+.estado.err{background:var(--erf);color:var(--er)}
+pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:pre-wrap;max-height:280px;overflow:auto}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width: 900px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
-  <div class=\"card\">
+  <div class=\"card cabecera\">
     <h1>Editor local temporal del espacio de trabajo</h1>
-    <p>Interfaz local de apoyo. No es una API productiva ni un dashboard publico.</p>
-    <p>Solo edita copias en <code>espacio_trabajo/</code> y salidas en <code>salidas/</code>.</p>
+    <p>Interfaz local de apoyo para editar datos ficticios y lanzar validaciones.</p>
+    <p class=\"nota\">Limites: herramienta local temporal, no API productiva, no dashboard publico, no modifica JSON originales.</p>
   </div>
 
   <div class=\"card\">
@@ -196,24 +218,36 @@ pre{background:#0b1020;color:#d1e7ff;padding:10px;border-radius:8px;white-space:
       <label for=\"agente\">Agente:</label>
       <select id=\"agente\"></select>
       <button id=\"cargar\">Cargar JSON</button>
+      <button id=\"formatear\">Formatear JSON</button>
       <button id=\"guardar\">Validar y guardar</button>
     </div>
-    <div class=\"msg\" id=\"mensaje\"></div>
+    <div class=\"estado\" id=\"mensaje\"></div>
   </div>
 
-  <div class=\"card\">
-    <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
-  </div>
-
-  <div class=\"card\">
-    <div class=\"row\">
-      <button id=\"ejecutar\">Ejecutar agente seleccionado</button>
-      <button id=\"ejecutarTodos\">Ejecutar todos los agentes</button>
-      <button id=\"generarPanel\">Regenerar panel local</button>
-      <button id=\"cargarInforme\">Cargar ultimo informe del agente</button>
+  <div class=\"grid\">
+    <div class=\"card\">
+      <h2>Edicion JSON</h2>
+      <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
     </div>
-    <p id=\"rutaInfo\"></p>
-    <pre id=\"salida\"></pre>
+    <div class=\"card\">
+      <h2>Acciones operativas</h2>
+      <div class=\"row\">
+        <button id=\"ejecutar\">Ejecutar agente seleccionado</button>
+        <button id=\"ejecutarTodos\">Ejecutar todos los agentes</button>
+        <button id=\"generarPanel\">Regenerar panel local</button>
+        <button id=\"cargarInforme\">Cargar ultimo informe</button>
+        <button id=\"rutaPanel\">Ver ruta panel local</button>
+      </div>
+      <h3>Resultados</h3>
+      <p id=\"rutaInfo\"></p>
+      <pre id=\"salida\"></pre>
+    </div>
+  </div>
+
+  <div class=\"card\">
+    <h2>Ultimo informe cargado</h2>
+    <small>Usa el boton \"Cargar ultimo informe\" para refrescar esta seccion.</small>
+    <pre id=\"informe\"></pre>
   </div>
 </main>
 <script>
@@ -221,10 +255,12 @@ const sel=document.getElementById('agente');
 const txt=document.getElementById('contenido');
 const msg=document.getElementById('mensaje');
 const salida=document.getElementById('salida');
+const informe=document.getElementById('informe');
 const rutaInfo=document.getElementById('rutaInfo');
 
-function setMsg(t,e=false){msg.textContent=t;msg.className=e?'msg err':'msg';}
+function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
+function setInforme(t){informe.textContent=t||'';}
 
 async function pedir(url, opciones={}){
   const r=await fetch(url,opciones);
@@ -234,7 +270,7 @@ async function pedir(url, opciones={}){
 
 async function cargarAgentes(){
   const r=await pedir('/api/agentes');
-  if(!r.ok){setMsg(r.data.error||'Error al cargar agentes',true);return;}
+  if(!r.ok){setMsg(r.data.error||'Error al cargar agentes','err');return;}
   sel.innerHTML='';
   r.data.agentes.forEach(a=>{
     const o=document.createElement('option');
@@ -246,41 +282,51 @@ async function cargarAgentes(){
 async function cargar(){
   const id=sel.value;
   const r=await pedir(`/api/agente?id=${id}`);
-  if(!r.ok){setMsg(r.data.error||'Error al cargar',true);return;}
+  if(!r.ok){setMsg(r.data.error||'Error al cargar','err');return;}
   txt.value=JSON.stringify(r.data.datos,null,2);
-  setMsg(`Agente ${id} cargado.`);
+  setMsg(`Agente ${id} cargado.`,'ok');
+}
+
+function formatear(){
+  try{
+    const obj=JSON.parse(txt.value);
+    txt.value=JSON.stringify(obj,null,2);
+    setMsg('JSON formateado en pantalla.','ok');
+  }catch(e){
+    setMsg('JSON invalido para formatear: '+e,'err');
+  }
 }
 
 async function guardar(){
   const id=sel.value;
   let obj;
-  try{obj=JSON.parse(txt.value);}catch(e){setMsg('JSON invalido en el editor: '+e,true);return;}
+  try{obj=JSON.parse(txt.value);}catch(e){setMsg('JSON invalido en el editor: '+e,'err');return;}
   const r=await pedir(`/api/agente?id=${id}`,{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({datos:obj})});
-  if(!r.ok){setMsg(r.data.error||'Error al guardar',true);return;}
+  if(!r.ok){setMsg(r.data.error||'Error al guardar','err');return;}
   txt.value=JSON.stringify(r.data.datos,null,2);
-  setMsg(r.data.mensaje||'Guardado correcto.');
+  setMsg(r.data.mensaje||'Guardado correcto.','ok');
 }
 
 async function ejecutarAgente(){
   const id=sel.value;
-  setMsg('Ejecutando agente...');
+  setMsg('Ejecutando agente...','warn');
   const r=await pedir(`/api/ejecutar?id=${id}`,{method:'POST'});
-  setMsg(r.data.mensaje||'Operacion finalizada',!r.data.ok);
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
   setSalida(r.data.salida_consola||'');
   rutaInfo.textContent=r.data.ruta_informe?`Informe: ${r.data.ruta_informe}`:'';
 }
 
 async function ejecutarTodos(){
-  setMsg('Ejecutando todos los agentes...');
+  setMsg('Ejecutando todos los agentes...','warn');
   const r=await pedir('/api/ejecutar-todos',{method:'POST'});
-  setMsg(r.data.mensaje||'Operacion finalizada',!r.data.ok);
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
   setSalida(r.data.salida_consola||'');
 }
 
 async function regenerarPanel(){
-  setMsg('Regenerando panel local...');
+  setMsg('Regenerando panel local...','warn');
   const r=await pedir('/api/generar-panel',{method:'POST'});
-  setMsg(r.data.mensaje||'Operacion finalizada',!r.data.ok);
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
   setSalida(r.data.salida_consola||'');
   rutaInfo.textContent=r.data.ruta_panel?`Panel: ${r.data.ruta_panel}`:'';
 }
@@ -288,20 +334,31 @@ async function regenerarPanel(){
 async function cargarInforme(){
   const id=sel.value;
   const r=await pedir(`/api/informe?id=${id}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo leer informe',true);return;}
-  setMsg('Informe cargado.');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo leer informe','err');return;}
+  setMsg('Informe cargado.','ok');
   setSalida(r.data.contenido||'');
+  setInforme(r.data.contenido||'');
   rutaInfo.textContent=r.data.ruta_informe?`Informe: ${r.data.ruta_informe}`:'';
 }
 
+async function verRutaPanel(){
+  const r=await pedir('/api/panel');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo obtener la ruta del panel','err');return;}
+  const estado=r.data.existe?'(existe)':'(aun no generado)';
+  rutaInfo.textContent=`Panel: ${r.data.ruta_panel} ${estado}`;
+  setMsg('Ruta de panel local consultada.','ok');
+}
+
 document.getElementById('cargar').addEventListener('click',cargar);
+document.getElementById('formatear').addEventListener('click',formatear);
 document.getElementById('guardar').addEventListener('click',guardar);
 document.getElementById('ejecutar').addEventListener('click',ejecutarAgente);
 document.getElementById('ejecutarTodos').addEventListener('click',ejecutarTodos);
 document.getElementById('generarPanel').addEventListener('click',regenerarPanel);
 document.getElementById('cargarInforme').addEventListener('click',cargarInforme);
+document.getElementById('rutaPanel').addEventListener('click',verRutaPanel);
 
-cargarAgentes().then(cargar).catch(e=>setMsg('Error al iniciar: '+e,true));
+cargarAgentes().then(cargar).catch(e=>setMsg('Error al iniciar: '+e,'err'));
 </script>
 </body>
 </html>
