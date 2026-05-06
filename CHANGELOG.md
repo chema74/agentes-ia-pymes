@@ -1,65 +1,67 @@
 # Registro de Cambios
 
-## v1.0.0 — V1 técnica local
+## v1.1.0 - Capa local interactiva
 
-Esta versión representa el cierre de la primera versión técnica local del repositorio `agentes-ia-pymes`.
+Esta version amplia la V1 tecnica local con una capa local interactiva orientada a revision humana, manipulacion controlada de datos ficticios y visualizacion local reproducible.
 
 ## Añadido
 
-- Estructura modular de 10 agentes para PYMES.
-- Documentación V1 por agente.
-- Datos ficticios en JSON (*JavaScript Object Notation – Notación de Objetos de JavaScript*).
-- Scripts locales de consola.
-- Pruebas `unittest` por agente.
-- Validación técnica global.
-- Workflow de GitHub Actions.
-- Documentos de evidencias técnicas.
-- Guía de demo local.
-- Cierre técnico V1.
-- Índice documental.
-- Ficha de portfolio.
+- lanzador comun,
+- salidas locales,
+- panel HTML local,
+- espacio de trabajo editable,
+- editor/consola local,
+- resumen local de agentes.
+
+## Límites de la versión
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web pública.
+- No hay Google Workspace.
+- No hay integraciones reales.
+
+## v1.0.0 - V1 técnica local
+
+Esta version representa el cierre de la primera version tecnica local del repositorio `agentes-ia-pymes`.
+
+## Añadido
+
+- estructura modular de 10 agentes para PYMES,
+- documentacion V1 por agente,
+- datos ficticios en JSON (*JavaScript Object Notation - Notacion de Objetos de JavaScript*),
+- scripts locales de consola,
+- pruebas `unittest` por agente,
+- validacion tecnica global,
+- workflow de GitHub Actions,
+- documentos de evidencias tecnicas,
+- guia de demo local,
+- cierre tecnico V1,
+- indice documental,
+- ficha de portfolio.
 
 ## Validación
 
-La versión se valida con:
+La version se valida con:
 
 ```powershell
 python scripts/validar_repositorio.py
 ```
 
-Este comando valida:
-
-- 10 JSON de ejemplo.
-- Tests `unittest` de los 10 agentes.
-- 40 pruebas si cada agente mantiene 4 tests.
-
 ## Límites de la versión
 
-- No hay IA (*Artificial Intelligence – Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) real.
-- No hay dashboard.
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay dashboard productivo.
 - No hay Google Workspace.
 - No hay integraciones reales.
-- No hay RAG (*Retrieval-Augmented Generation – Generación Aumentada por Recuperación*) real.
-- No hay OCR (*Optical Character Recognition – Reconocimiento Óptico de Caracteres*) real.
 - No se trabaja con datos reales.
 - No sustituye revisión humana.
 
-## Próximas líneas de evolución
-
-- CLI (*Command Line Interface – Interfaz de Línea de Comandos*) común.
-- API local.
-- Dashboard.
-- Integración con Google Workspace.
-- IA funcional.
-- RAG real.
-- OCR real.
-- Demo web.
-- Empaquetado técnico.
-
 ## Criterio de cierre
 
-La versión puede considerarse cerrada cuando la validación global devuelve:
+La version puede considerarse cerrada cuando la validacion global devuelve:
 
 `Resultado final: validacion global correcta.`
 
