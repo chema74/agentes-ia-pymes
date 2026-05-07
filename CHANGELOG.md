@@ -1,5 +1,28 @@
 ﻿# Registro de Cambios
 
+## v1.7.0 - Demo local reproducible
+
+Esta version cierra la fase V1.7 incorporando un orquestador local para ejecutar la cadena completa de demo con un solo flujo reproducible.
+
+## Añadido
+
+- orquestador local de demo reproducible,
+- cadena local completa sobre espacio de trabajo, agentes, panel, consolidado y evidencias,
+- generacion de panel local,
+- generacion de informe consolidado,
+- exportacion de evidencias,
+- ZIP local opcional,
+- integracion con editor/consola local,
+- pruebas transversales de la demo local.
+
+## Limites de la version
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web publica.
+- No hay Google Workspace.
+- No hay integraciones reales.
 ## v1.6.0 - Paquete local de evidencias de demo
 
 Esta version cierra la fase V1.6 incorporando un paquete local de evidencias de demo para revision humana en entorno local temporal.
@@ -174,6 +197,7 @@ La version puede considerarse cerrada cuando la validacion global devuelve:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
 
 
 
