@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import argparse
+import difflib
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import os
@@ -213,9 +214,9 @@ def resolver_archivo_historico(directorio_salidas: Path, agente_id: int, nombre_
     if not nombre_archivo:
         raise ValueError("Debes indicar el nombre del archivo historico.")
     if Path(nombre_archivo).name != nombre_archivo:
-        raise ValueError("Nombre de archivo historico no valido.")
+        raise ValueError("Archivo no valido: ruta no permitida para historico.")
     if ".." in nombre_archivo or "/" in nombre_archivo or "\\" in nombre_archivo:
-        raise ValueError("Ruta de archivo historico no permitida.")
+        raise ValueError("Ruta no permitida para archivo historico.")
     if not nombre_archivo.endswith("-informe.txt"):
         raise ValueError("El archivo historico debe terminar en -informe.txt.")
 
@@ -225,6 +226,80 @@ def resolver_archivo_historico(directorio_salidas: Path, agente_id: int, nombre_
     if not str(ruta).startswith(str(base) + os.sep):
         raise ValueError("Ruta fuera de historico no permitida.")
     return ruta
+
+
+def extraer_decision_recomendada(texto: str) -> str:
+    prefijos = [
+        "decision humana recomendada",
+        "decisión humana recomendada",
+        "decision recomendada",
+        "decisión recomendada",
+    ]
+    for linea in texto.splitlines():
+        limpia = linea.strip()
+        for prefijo in prefijos:
+            if limpia.lower().startswith(prefijo):
+                _, _, resto = limpia.partition(":")
+                valor = resto.strip()
+                if valor:
+                    return valor
+    return "No identificada"
+
+
+def construir_comparacion_informes(directorio_salidas: Path, agente_id: int, archivo_historico: str) -> dict:
+    ruta_historica = resolver_archivo_historico(directorio_salidas, agente_id, archivo_historico)
+    ruta_actual = ruta_informe_agente(directorio_salidas, agente_id)
+    if not ruta_actual.is_file():
+        raise FileNotFoundError(f"No existe el ultimo informe del agente {agente_id:02d}: {ruta_actual}")
+    if not ruta_historica.is_file():
+        raise FileNotFoundError(f"No existe el informe historico solicitado: {ruta_historica}")
+
+    texto_actual = ruta_actual.read_text(encoding="utf-8", errors="replace")
+    texto_historico = ruta_historica.read_text(encoding="utf-8", errors="replace")
+
+    lineas_actual = texto_actual.splitlines()
+    lineas_historico = texto_historico.splitlines()
+    diff = list(
+        difflib.unified_diff(
+            lineas_historico,
+            lineas_actual,
+            fromfile="historico",
+            tofile="actual",
+            lineterm="",
+        )
+    )
+    diff_texto = "\n".join(diff) if diff else "Sin diferencias textuales."
+
+    añadidas = 0
+    eliminadas = 0
+    for linea in difflib.ndiff(lineas_historico, lineas_actual):
+        if linea.startswith("+ "):
+            añadidas += 1
+        elif linea.startswith("- "):
+            eliminadas += 1
+    sin_cambios = max(len(lineas_historico), len(lineas_actual)) - max(añadidas, eliminadas)
+    if sin_cambios < 0:
+        sin_cambios = 0
+
+    decision_actual = extraer_decision_recomendada(texto_actual)
+    decision_historica = extraer_decision_recomendada(texto_historico)
+    decision_cambiada = decision_actual != decision_historica
+
+    return {
+        "ok": True,
+        "agente": f"agente-{agente_id:02d}",
+        "archivo_historico": ruta_historica.name,
+        "decision_actual": decision_actual,
+        "decision_historica": decision_historica,
+        "decision_cambiada": decision_cambiada,
+        "resumen": {
+            "lineas_añadidas": añadidas,
+            "lineas_eliminadas": eliminadas,
+            "lineas_sin_cambios_aprox": sin_cambios,
+        },
+        "diff": diff_texto,
+        "mensaje": "Comparacion local completada.",
+    }
 
 
 def validar_agente_id(texto: str | None) -> int:
@@ -615,7 +690,7 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card\">
-    <h2>Ãšltimo informe cargado</h2>
+    <h2>Último informe cargado</h2>
     <small>Usa el boton \"Cargar ultimo informe\" para refrescar esta seccion.</small>
     <p id=\"agenteInforme\"></p>
     <pre id=\"informe\"></pre>
@@ -627,9 +702,13 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
       <button id=\"actualizarHistorico\">Actualizar historico</button>
       <select id=\"archivoHistorico\"></select>
       <button id=\"cargarHistorico\">Cargar informe historico</button>
+      <button id=\"compararHistorico\">Comparar con ultimo informe</button>
     </div>
     <p id=\"historicoInfo\"></p>
     <pre id=\"informeHistorico\"></pre>
+    <h3>ComparaciÃ³n local</h3>
+    <p id=\"comparacionDecision\"></p>
+    <pre id=\"comparacionDiff\"></pre>
   </div>
 </main>
 <script>
@@ -646,6 +725,8 @@ const formularioGuiado=document.getElementById('formularioGuiado');
 const archivoHistorico=document.getElementById('archivoHistorico');
 const historicoInfo=document.getElementById('historicoInfo');
 const informeHistorico=document.getElementById('informeHistorico');
+const comparacionDecision=document.getElementById('comparacionDecision');
+const comparacionDiff=document.getElementById('comparacionDiff');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -653,6 +734,8 @@ function setInforme(t){informe.textContent=t||'';}
 function setAgenteInforme(t){agenteInforme.textContent=t||'';}
 function setHistoricoInfo(t){historicoInfo.textContent=t||'';}
 function setInformeHistorico(t){informeHistorico.textContent=t||'';}
+function setComparacionDecision(t){comparacionDecision.textContent=t||'';}
+function setComparacionDiff(t){comparacionDiff.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -812,6 +895,20 @@ async function cargarInformeHistorico(){
   setMsg('Informe historico cargado.','ok');
 }
 
+async function compararInformeHistorico(){
+  const id=sel.value;
+  const archivo=archivoHistorico.value;
+  if(!archivo){setMsg('No hay archivo historico seleccionado.','warn');return;}
+  const r=await pedir(`/api/comparar?id=${id}&archivo=${encodeURIComponent(archivo)}`);
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo comparar informe historico','err');return;}
+  const cambio=r.data.decision_cambiada?'si':'no';
+  setComparacionDecision(
+    `Decision actual: ${r.data.decision_actual} | Decision historica: ${r.data.decision_historica} | Cambio: ${cambio}`
+  );
+  setComparacionDiff(r.data.diff||'');
+  setMsg('Comparacion local completada.','ok');
+}
+
 async function verRutaPanel(){
   const r=await pedir('/api/panel');
   if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo obtener la ruta del panel','err');return;}
@@ -896,6 +993,7 @@ document.getElementById('cargarGuiado').addEventListener('click',cargarGuiado);
 document.getElementById('guardarGuiado').addEventListener('click',guardarGuiado);
 document.getElementById('actualizarHistorico').addEventListener('click',actualizarHistorico);
 document.getElementById('cargarHistorico').addEventListener('click',cargarInformeHistorico);
+document.getElementById('compararHistorico').addEventListener('click',compararInformeHistorico);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
 sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
@@ -996,6 +1094,18 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(200, {"ok": True, "agente": f"agente-{agente_id:02d}", "archivo": ruta.name, "contenido": contenido, "ruta_informe": str(ruta)})
                 except ValueError as error:
                     self._enviar_json(400, {"ok": False, "error": str(error)})
+                return
+            if url.path == "/api/comparar":
+                try:
+                    query = parse_qs(url.query)
+                    agente_id = validar_agente_id(query.get("id", [None])[0])
+                    archivo = query.get("archivo", [""])[0]
+                    resultado = construir_comparacion_informes(directorio_salidas, agente_id, archivo)
+                    self._enviar_json(200, resultado)
+                except ValueError as error:
+                    self._enviar_json(400, {"ok": False, "error": str(error)})
+                except FileNotFoundError as error:
+                    self._enviar_json(404, {"ok": False, "error": str(error)})
                 return
             if url.path == "/api/panel":
                 ruta_panel = directorio_salidas / "panel_local.html"
@@ -1123,6 +1233,7 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
 
 
 

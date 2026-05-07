@@ -75,6 +75,15 @@ El lanzador comun permite conservar informes anteriores con marca temporal sin p
 Las copias historicas se guardan en `salidas/agente-XX/historico/`.
 La carpeta `salidas/` esta ignorada por Git.
 
+## Comparador local de informes
+
+Se puede comparar el ultimo informe de un agente frente a un informe historico:
+
+- `python scripts/comparar_informes.py --agente 1 --archivo-historico NOMBRE_ARCHIVO`
+
+Compara `salidas/agente-XX/informe.txt` contra `salidas/agente-XX/historico/`.
+Esta comparacion tambien esta disponible desde la consola local (`scripts/editor_espacio_trabajo.py`).
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:

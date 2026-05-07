@@ -312,6 +312,53 @@ def test_servidor_rechaza_historico_con_ruta_arbitraria() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_compara_informe_historico() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        base = salidas / "agente-01"
+        historico = base / "historico"
+        historico.mkdir(parents=True, exist_ok=True)
+        (base / "informe.txt").write_text("Decision recomendada: aprobar\nActual\n", encoding="utf-8")
+        nombre = "20260507-120000-informe.txt"
+        (historico / nombre).write_text("Decision recomendada: bloquear\nHistorico\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8916)
+        try:
+            esperar_servidor(8916)
+            with request.urlopen(f"http://127.0.0.1:8916/api/comparar?id=1&archivo={nombre}", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert "decision_actual" in datos
+            assert "decision_historica" in datos
+            assert "diff" in datos
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_rechaza_comparacion_ruta_arbitraria() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8917)
+        try:
+            esperar_servidor(8917)
+            try:
+                request.urlopen("http://127.0.0.1:8917/api/comparar?id=1&archivo=../secreto.txt", timeout=5)
+                assert False, "Se esperaba error controlado por ruta arbitraria en comparacion"
+            except error.HTTPError as http_error:
+                assert http_error.code == 400
+            assert proceso.poll() is None
+        finally:
+            cerrar_proceso(proceso)
+
+
 def test_pagina_principal_contiene_acciones() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
@@ -348,6 +395,24 @@ def test_pagina_principal_contiene_historico() -> None:
             assert "Historico local de ejecuciones" in html
             assert "Actualizar historico" in html
             assert "Cargar informe historico" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_comparador() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8918)
+        try:
+            esperar_servidor(8918)
+            with request.urlopen("http://127.0.0.1:8918/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Comparar con ultimo informe" in html
+            assert "Comparaci" in html and "local" in html
         finally:
             cerrar_proceso(proceso)
 
@@ -1019,8 +1084,11 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_lista_historico,
         test_servidor_lee_informe_historico,
         test_servidor_rechaza_historico_con_ruta_arbitraria,
+        test_servidor_compara_informe_historico,
+        test_servidor_rechaza_comparacion_ruta_arbitraria,
         test_pagina_principal_contiene_acciones,
         test_pagina_principal_contiene_historico,
+        test_pagina_principal_contiene_comparador,
         test_catalogo_muestra_nombres_completos,
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,
