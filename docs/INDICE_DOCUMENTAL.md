@@ -26,6 +26,7 @@ Este documento ordena la documentación del repositorio para que una revisión t
 - `CATALOGO.md`: catálogo técnico de los 10 agentes.
 - `docs/VISION_GENERAL.md`: visión general del proyecto.
 - `docs/CRITERIOS_PORTFOLIO.md`: criterios de presentación del portfolio.
+- `docs/FICHA_PORTFOLIO.md`: ficha resumida de presentación del repositorio.
 - `docs/EVIDENCIAS_TECNICAS.md`: capacidades demostrables hoy.
 - `docs/GUIA_DEMO_LOCAL.md`: guía de ejecución de la demo local.
 - `docs/CIERRE_TECNICO_V1.md`: cierre técnico de la V1 local.

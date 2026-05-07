@@ -48,6 +48,16 @@ URL local del editor:
 3. Abrir la consola local con `python scripts/editor_espacio_trabajo.py`.
 4. Revisar `salidas/` para panel, informes, evidencias y guion.
 
+## Demo local completa
+
+La demo local completa es el recorrido recomendado para explicar el valor del repositorio en menos de dos minutos:
+
+- `python scripts/validar_repositorio.py`
+- `python scripts/ejecutar_demo_local.py --crear-zip`
+- `python scripts/editor_espacio_trabajo.py`
+
+La salida principal se revisa desde la consola local en `http://127.0.0.1:8765/`.
+
 ## Salidas locales
 
 Las salidas locales se generan en:
