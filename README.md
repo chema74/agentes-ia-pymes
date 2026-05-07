@@ -152,6 +152,7 @@ Puedes definir directorios al arrancar:
 - `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
 - `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`
 - `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`
+- `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`
 - `docs/INDICE_DOCUMENTAL.md`
 
 El cierre de la capa local interactiva queda documentado en `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`.
@@ -162,6 +163,8 @@ El cierre de la fase V1.4 de comparador local de ejecuciones queda documentado e
 El comparador local por CLI usa `scripts/comparar_informes.py`.
 El cierre de la fase V1.5 de informe consolidado local queda documentado en `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`.
 La generacion por CLI del informe consolidado local usa `scripts/generar_informe_consolidado.py`.
+El cierre de la fase V1.6 de paquete local de evidencias de demo queda documentado en `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`.
+La exportacion por CLI del paquete local de evidencias usa `scripts/exportar_evidencias_demo.py`.
 
 ## Fuera de alcance actual
 

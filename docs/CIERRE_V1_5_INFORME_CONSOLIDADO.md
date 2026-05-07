@@ -138,6 +138,8 @@ La V1.5 queda cerrada cuando:
 - el panel local sigue funcionando,
 - la validación global devuelve “Resultado final: validacion global correcta.”
 
+La evolucion posterior de esta linea local queda recogida en `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`.
+
 ## 🪪 Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  

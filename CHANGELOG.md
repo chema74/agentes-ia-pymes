@@ -1,5 +1,28 @@
 ﻿# Registro de Cambios
 
+## v1.6.0 - Paquete local de evidencias de demo
+
+Esta version cierra la fase V1.6 incorporando un paquete local de evidencias de demo para revision humana en entorno local temporal.
+
+## Añadido
+
+- exportador local de evidencias,
+- indice Markdown de evidencias,
+- indice HTML local de evidencias,
+- copia de panel local e informe consolidado,
+- copia de informes disponibles,
+- ZIP local opcional,
+- integracion con editor/consola local,
+- pruebas transversales del paquete de evidencias.
+
+## Limites de la version
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web publica.
+- No hay Google Workspace.
+- No hay integraciones reales.
 ## v1.5.0 - Informe consolidado local
 
 Esta version cierra la fase V1.5 incorporando consolidacion local de los ultimos informes de los 10 agentes dentro de la consola local temporal.
@@ -151,5 +174,6 @@ La version puede considerarse cerrada cuando la validacion global devuelve:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
 
 
