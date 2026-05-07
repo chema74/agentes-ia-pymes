@@ -588,6 +588,7 @@ def test_servidor_genera_guion_demo() -> None:
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "guion_demo_local.md").is_file()
+            assert (salidas / "guion_demo_local.html").is_file()
         finally:
             cerrar_proceso(proceso)
 
@@ -608,6 +609,7 @@ def test_servidor_lee_guion_demo() -> None:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "Guion local de demo guiada" in datos.get("contenido_markdown", "")
+            assert str(salidas / "guion_demo_local.md") == datos.get("ruta_markdown")
         finally:
             cerrar_proceso(proceso)
 
@@ -627,6 +629,7 @@ def test_pagina_principal_contiene_guion_demo() -> None:
             assert "Guion local de demo" in html
             assert "Generar guion de demo" in html
             assert "Cargar guion de demo" in html
+            assert "rutas, comandos y limites" in html
         finally:
             cerrar_proceso(proceso)
 

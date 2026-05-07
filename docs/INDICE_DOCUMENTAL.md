@@ -79,7 +79,7 @@ Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON fict
 - Para revisar la fase V1.5: `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`.
 - Para revisar la fase V1.6: `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`.
 - Para revisar la fase V1.7: `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`.
-- Para revisar el cierre global V1 local completa: `docs/CIERRE_V1_LOCAL_COMPLETA.md`.
+- Para revisar el cierre global V1 local completa y el criterio final de demo reproducible: `docs/CIERRE_V1_LOCAL_COMPLETA.md`.
 
 ## LÃ­mites del repositorio actual
 

@@ -29,15 +29,22 @@ def test_generar_guion_demo_markdown() -> None:
         base = Path(tmp)
         (base / "panel_local.html").write_text("<html><body>panel</body></html>\n", encoding="utf-8")
         (base / "informe_consolidado.md").write_text("# Informe consolidado local\n", encoding="utf-8")
+        (base / "informe_consolidado.html").write_text("<html><body>consolidado</body></html>\n", encoding="utf-8")
 
         resultado = ejecutar_comando("--directorio-salidas", str(base))
         assert resultado.returncode == 0, resultado.stdout + resultado.stderr
-        ruta_md = base / "guion_demo_local.md"
-        assert ruta_md.is_file()
-        contenido = ruta_md.read_text(encoding="utf-8", errors="replace")
+
+        ruta_markdown = base / "guion_demo_local.md"
+        assert ruta_markdown.is_file()
+        contenido = ruta_markdown.read_text(encoding="utf-8", errors="replace")
         assert "Guion local de demo guiada" in contenido
+        assert "Fecha y hora de generacion:" in contenido
+        assert "python scripts/validar_repositorio.py" in contenido
         assert "python scripts/ejecutar_demo_local.py --crear-zip" in contenido
+        assert "python scripts/editor_espacio_trabajo.py" in contenido
         assert "http://127.0.0.1:8765/" in contenido
+        assert "salidas/panel_local.html" in contenido
+        assert "salidas/evidencias_demo.zip" in contenido
 
 
 def test_generar_guion_demo_html() -> None:
@@ -48,11 +55,14 @@ def test_generar_guion_demo_html() -> None:
 
         resultado = ejecutar_comando("--directorio-salidas", str(base), "--generar-html")
         assert resultado.returncode == 0, resultado.stdout + resultado.stderr
+
         ruta_html = base / "guion_demo_local.html"
         assert ruta_html.is_file()
         contenido = ruta_html.read_text(encoding="utf-8", errors="replace")
-        assert "html" in contenido.lower()
+        assert "<html" in contenido.lower()
         assert "Guion local de demo guiada" in contenido
+        assert "Fase 3 - Comandos recomendados" in contenido
+        assert "salidas/informe_consolidado.html" in contenido
 
 
 def test_guion_demo_no_falla_sin_evidencias() -> None:
@@ -60,9 +70,10 @@ def test_guion_demo_no_falla_sin_evidencias() -> None:
         base = Path(tmp)
         resultado = ejecutar_comando("--directorio-salidas", str(base))
         assert resultado.returncode == 0, resultado.stdout + resultado.stderr
-        ruta_md = base / "guion_demo_local.md"
-        assert ruta_md.is_file()
-        contenido = ruta_md.read_text(encoding="utf-8", errors="replace").lower()
+
+        ruta_markdown = base / "guion_demo_local.md"
+        assert ruta_markdown.is_file()
+        contenido = ruta_markdown.read_text(encoding="utf-8", errors="replace").lower()
         assert "pendiente de generar" in contenido or "no disponible todavia" in contenido
 
 

@@ -834,7 +834,7 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
 
   <div class=\"card\">
     <h2>Guion local de demo</h2>
-    <small>Genera y carga un guion local de presentacion tecnica guiada.</small>
+    <small>Genera y carga un guion local de demostracion guiada con rutas, comandos y limites.</small>
     <div class=\"row\">
       <button id=\"generarGuionDemo\">Generar guion de demo</button>
       <button id=\"cargarGuionDemo\">Cargar guion de demo</button>

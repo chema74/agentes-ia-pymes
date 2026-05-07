@@ -135,11 +135,13 @@ Tambien puede generarse desde la consola local (`scripts/editor_espacio_trabajo.
 
 ## Demo local completa
 
-Secuencia recomendada de cierre local:
+Secuencia recomendada para cerrar y explicar la demo local completa:
 
 - `python scripts/ejecutar_demo_local.py --crear-zip`
 - `python scripts/editor_espacio_trabajo.py`
 - `python scripts/generar_guion_demo_local.py --generar-html`
+
+Esta secuencia deja panel local, informe consolidado, paquete de evidencias y guion de demo en entorno local temporal, sin tocar JSON originales ni web publica.
 
 Documentacion de cierre global:
 
