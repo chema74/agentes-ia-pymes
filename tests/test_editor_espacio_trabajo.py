@@ -417,6 +417,62 @@ def test_pagina_principal_contiene_comparador() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_genera_informe_consolidado() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8919)
+        try:
+            esperar_servidor(8919)
+            status, respuesta = post_json("http://127.0.0.1:8919/api/generar-informe-consolidado")
+            assert status == 200
+            assert respuesta.get("ok") is True
+            assert (salidas / "informe_consolidado.md").is_file()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_lee_informe_consolidado() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+        (salidas / "informe_consolidado.md").write_text("Informe consolidado local\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8920)
+        try:
+            esperar_servidor(8920)
+            with request.urlopen("http://127.0.0.1:8920/api/informe-consolidado", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert "Informe consolidado local" in datos.get("contenido", "")
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_informe_consolidado() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8921)
+        try:
+            esperar_servidor(8921)
+            with request.urlopen("http://127.0.0.1:8921/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Informe consolidado local" in html
+            assert "Generar informe consolidado" in html
+            assert "Cargar informe consolidado" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
 def test_catalogo_muestra_nombres_completos() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
@@ -1086,9 +1142,12 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_rechaza_historico_con_ruta_arbitraria,
         test_servidor_compara_informe_historico,
         test_servidor_rechaza_comparacion_ruta_arbitraria,
+        test_servidor_genera_informe_consolidado,
+        test_servidor_lee_informe_consolidado,
         test_pagina_principal_contiene_acciones,
         test_pagina_principal_contiene_historico,
         test_pagina_principal_contiene_comparador,
+        test_pagina_principal_contiene_informe_consolidado,
         test_catalogo_muestra_nombres_completos,
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,

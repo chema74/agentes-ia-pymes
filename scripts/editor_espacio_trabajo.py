@@ -522,6 +522,29 @@ def generar_panel_local(directorio_trabajo: Path, directorio_salidas: Path) -> d
     }
 
 
+def generar_informe_consolidado_local(directorio_salidas: Path) -> dict:
+    comando = [
+        sys.executable,
+        str(obtener_raiz_repositorio() / "scripts" / "generar_informe_consolidado.py"),
+        "--directorio-salidas",
+        str(directorio_salidas),
+        "--generar-html",
+    ]
+    codigo, salida = ejecutar_comando_local(comando)
+    ruta_md = directorio_salidas / "informe_consolidado.md"
+    ruta_html = directorio_salidas / "informe_consolidado.html"
+    return {
+        "ok": codigo == 0,
+        "codigo_salida": codigo,
+        "mensaje": "Informe consolidado local generado." if codigo == 0 else "Error al generar el informe consolidado local.",
+        "salida_consola": salida,
+        "ruta_markdown": str(ruta_md),
+        "ruta_html": str(ruta_html),
+        "existe_markdown": ruta_md.is_file(),
+        "existe_html": ruta_html.is_file(),
+    }
+
+
 def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
     for linea in texto.splitlines():
         linea_limpia = linea.strip()
@@ -710,6 +733,17 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <p id=\"comparacionDecision\"></p>
     <pre id=\"comparacionDiff\"></pre>
   </div>
+
+  <div class=\"card\">
+    <h2>Informe consolidado local</h2>
+    <small>Genera y consulta una consolidacion de informes de agente-01 a agente-10.</small>
+    <div class=\"row\">
+      <button id=\"generarConsolidado\">Generar informe consolidado</button>
+      <button id=\"cargarConsolidado\">Cargar informe consolidado</button>
+    </div>
+    <p id=\"rutaConsolidado\"></p>
+    <pre id=\"informeConsolidado\"></pre>
+  </div>
 </main>
 <script>
 const sel=document.getElementById('agente');
@@ -727,6 +761,8 @@ const historicoInfo=document.getElementById('historicoInfo');
 const informeHistorico=document.getElementById('informeHistorico');
 const comparacionDecision=document.getElementById('comparacionDecision');
 const comparacionDiff=document.getElementById('comparacionDiff');
+const rutaConsolidado=document.getElementById('rutaConsolidado');
+const informeConsolidado=document.getElementById('informeConsolidado');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -736,6 +772,8 @@ function setHistoricoInfo(t){historicoInfo.textContent=t||'';}
 function setInformeHistorico(t){informeHistorico.textContent=t||'';}
 function setComparacionDecision(t){comparacionDecision.textContent=t||'';}
 function setComparacionDiff(t){comparacionDiff.textContent=t||'';}
+function setRutaConsolidado(t){rutaConsolidado.textContent=t||'';}
+function setInformeConsolidado(t){informeConsolidado.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -925,6 +963,28 @@ async function abrirPanelLocal(){
   setMsg('El panel local puede abrirse manualmente desde la ruta indicada.','warn');
 }
 
+async function generarInformeConsolidado(){
+  setMsg('Generando informe consolidado local...','warn');
+  const r=await pedir('/api/generar-informe-consolidado',{method:'POST'});
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
+  setSalida(r.data.salida_consola||'');
+  if(r.data.ruta_markdown || r.data.ruta_html){
+    const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
+    const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
+    setRutaConsolidado(md + html);
+  }
+}
+
+async function cargarInformeConsolidado(){
+  const r=await pedir('/api/informe-consolidado');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar el informe consolidado','err');return;}
+  setMsg('Informe consolidado cargado.','ok');
+  setInformeConsolidado(r.data.contenido||'');
+  const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
+  const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
+  setRutaConsolidado(md + html);
+}
+
 function renderFormularioGuiado(campos){
   formularioGuiado.innerHTML = campos.map((campo) => {
     const multilinea = Boolean(campo.multilinea);
@@ -994,6 +1054,8 @@ document.getElementById('guardarGuiado').addEventListener('click',guardarGuiado)
 document.getElementById('actualizarHistorico').addEventListener('click',actualizarHistorico);
 document.getElementById('cargarHistorico').addEventListener('click',cargarInformeHistorico);
 document.getElementById('compararHistorico').addEventListener('click',compararInformeHistorico);
+document.getElementById('generarConsolidado').addEventListener('click',generarInformeConsolidado);
+document.getElementById('cargarConsolidado').addEventListener('click',cargarInformeConsolidado);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
 sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
@@ -1111,6 +1173,32 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 ruta_panel = directorio_salidas / "panel_local.html"
                 self._enviar_json(200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()})
                 return
+            if url.path == "/api/informe-consolidado":
+                ruta_md = directorio_salidas / "informe_consolidado.md"
+                ruta_html = directorio_salidas / "informe_consolidado.html"
+                if not ruta_md.is_file():
+                    self._enviar_json(
+                        404,
+                        {
+                            "ok": False,
+                            "mensaje": "Informe consolidado no encontrado.",
+                            "ruta_markdown": str(ruta_md),
+                            "ruta_html": str(ruta_html),
+                        },
+                    )
+                    return
+                contenido = ruta_md.read_text(encoding="utf-8", errors="replace")
+                self._enviar_json(
+                    200,
+                    {
+                        "ok": True,
+                        "contenido": contenido,
+                        "ruta_markdown": str(ruta_md),
+                        "ruta_html": str(ruta_html),
+                        "existe_html": ruta_html.is_file(),
+                    },
+                )
+                return
             if url.path == "/api/resumen":
                 agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
@@ -1156,6 +1244,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
 
                 if url.path == "/api/generar-panel":
                     self._enviar_json(200, generar_panel_local(directorio_trabajo, directorio_salidas))
+                    return
+                if url.path == "/api/generar-informe-consolidado":
+                    self._enviar_json(200, generar_informe_consolidado_local(directorio_salidas))
                     return
 
                 if url.path.startswith("/api/formulario/"):

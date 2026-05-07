@@ -84,6 +84,20 @@ Se puede comparar el ultimo informe de un agente frente a un informe historico:
 Compara `salidas/agente-XX/informe.txt` contra `salidas/agente-XX/historico/`.
 Esta comparacion tambien esta disponible desde la consola local (`scripts/editor_espacio_trabajo.py`).
 
+## Informe consolidado local
+
+Se puede generar un informe consolidado de los 10 agentes a partir de `salidas/agente-XX/informe.txt`:
+
+- `python scripts/generar_informe_consolidado.py`
+- `python scripts/generar_informe_consolidado.py --generar-html`
+
+Salidas por defecto:
+
+- `salidas/informe_consolidado.md`
+- `salidas/informe_consolidado.html` (si se usa `--generar-html`)
+
+Esta consolidacion tambien esta disponible desde la consola local (`scripts/editor_espacio_trabajo.py`).
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:
