@@ -1,18 +1,18 @@
-﻿# Cierre V1 - Demo Local Completa
+# Cierre V1 - Demo Local Completa
 
 ## Estado de cierre
 
-La V1 local completa queda cerrada como demo tecnica manipulable, reproducible y validada. El repositorio puede explicarse, ejecutarse y revisarse en local sin tocar la web publica y sin depender de servicios externos.
+La V1 local completa queda cerrada como demo técnica manipulable, reproducible y validada. El repositorio puede explicarse y revisarse en local sin tocar la web pública y sin depender de servicios externos.
 
 ## Capacidades incluidas
 
 - 10 agentes locales.
 - scripts por agente.
 - tests por agente.
-- validacion global.
+- validación global.
 - consola local.
-- edicion guiada.
-- historico local.
+- edición guiada.
+- histórico local.
 - comparador local.
 - informe consolidado.
 - paquete de evidencias.
@@ -21,7 +21,7 @@ La V1 local completa queda cerrada como demo tecnica manipulable, reproducible y
 
 ## Flujo de uso recomendado
 
-El flujo recomendado para probar la demo es validar primero el repositorio, ejecutar despues la demo local completa con un solo comando y abrir por ultimo la consola local para recorrer edicion, informes, historico, comparador, evidencias y guion. Este flujo mantiene separacion entre datos originales y datos de trabajo, y deja una ruta clara para explicar el alcance tecnico real.
+El flujo recomendado consiste en validar primero el repositorio, ejecutar después la demo local completa con un solo comando y abrir por último la consola local para recorrer edición, informes, histórico, comparador, evidencias y guion. Ese recorrido deja clara la separación entre datos originales y datos de trabajo.
 
 ## Comando principal de demo
 
@@ -49,34 +49,34 @@ Abrir:
 - `salidas/guion_demo_local.md`
 - `salidas/guion_demo_local.html`
 
-## Validacion
+## Validación
 
 ```powershell
 python scripts/validar_repositorio.py
 ```
 
-La validacion comprueba:
+La validación comprueba:
 
 - JSON originales,
 - tests por agente,
 - tests transversales.
 
-## Limites actuales
+## Límites actuales
 
 - no hay IA funcional,
 - no hay API productiva,
 - no hay dashboard productivo,
-- no hay web publica,
+- no hay web pública,
 - no hay Google Workspace,
 - no hay integraciones reales,
 - no se usan datos reales,
-- no sustituye revision humana.
+- no sustituye revisión humana.
 
 ## Valor para portfolio
 
-Esta V1 demuestra arquitectura local, automatizacion reproducible, trazabilidad, separacion entre datos originales y datos de trabajo, evidencias revisables, pruebas, control de alcance y madurez tecnica sin humo.
+Esta V1 demuestra arquitectura local, automatización reproducible, trazabilidad, separación entre datos originales y datos de trabajo, evidencias revisables, pruebas, control de alcance y madurez técnica sin ruido comercial.
 
-## Que queda fuera de alcance
+## Qué queda fuera de alcance
 
 - datos reales,
 - IA funcional,
@@ -86,28 +86,28 @@ Esta V1 demuestra arquitectura local, automatizacion reproducible, trazabilidad,
 - Google Workspace,
 - integraciones reales.
 
-## Proximas fases posibles
+## Próximas fases posibles
 
 - capturas para portfolio,
 - README final de alto impacto,
-- panel ejecutivo local mas visual,
-- exportacion PDF,
+- panel ejecutivo local más visual,
+- exportación PDF,
 - API local real,
 - dashboard productivo,
 - IA funcional,
 - Google Workspace,
-- publicacion web cuando el sistema este suficientemente maduro.
+- publicación web cuando el sistema esté suficientemente maduro.
 
-## Decision de cierre
+## Decisión de cierre
 
 La V1 local queda cerrada cuando:
 
 - la demo local se ejecuta con un solo comando,
 - genera panel, informe consolidado, evidencias y guion,
 - no toca JSON originales,
-- la validacion global devuelve `Resultado final: validacion global correcta.`
+- la validación global devuelve `Resultado final: validacion global correcta.`
 
-## 🪪 Licencia y Autoría
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.

@@ -1,10 +1,10 @@
-﻿# Ãndice Documental del Repositorio
+# Índice Documental del Repositorio
 
-## PropÃ³sito del Ã­ndice
+## Propósito del índice
 
-Este documento sirve como guia de lectura y navegacion del repositorio. Su objetivo es ayudar a cualquier revisor a localizar rapido la documentacion global, la documentacion por agente, las evidencias tecnicas, la demo local y los documentos de cierre.
+Este documento ordena la documentación del repositorio para que una revisión técnica local pueda encontrar rápido el contexto general, los cierres de fase, las evidencias y la documentación por agente.
 
-## Lectura recomendada para revisiÃ³n rÃ¡pida
+## Lectura recomendada para revisión rápida
 
 1. `README.md`
 2. `CATALOGO.md`
@@ -20,87 +20,51 @@ Este documento sirve como guia de lectura y navegacion del repositorio. Su objet
 12. `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`
 13. `docs/CIERRE_V1_LOCAL_COMPLETA.md`
 
-## DocumentaciÃ³n global
+## Documentación global
 
-### `README.md`
+- `README.md`: puerta de entrada del repositorio y resumen ejecutivo.
+- `CATALOGO.md`: catálogo técnico de los 10 agentes.
+- `docs/VISION_GENERAL.md`: visión general del proyecto.
+- `docs/CRITERIOS_PORTFOLIO.md`: criterios de presentación del portfolio.
+- `docs/EVIDENCIAS_TECNICAS.md`: capacidades demostrables hoy.
+- `docs/GUIA_DEMO_LOCAL.md`: guía de ejecución de la demo local.
+- `docs/CIERRE_TECNICO_V1.md`: cierre técnico de la V1 local.
+- `docs/CIERRE_V1_LOCAL_COMPLETA.md`: cierre final de la V1 local completa.
 
-Es la puerta de entrada del repositorio. Resume el enfoque general, el alcance actual y las referencias principales para entender la estructura del portfolio.
+## Documentación por fase
 
-### `CATALOGO.md`
+- `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`: consola local y espacio de trabajo editable.
+- `docs/CIERRE_V1_2_EDICION_GUIADA.md`: edición guiada local.
+- `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`: histórico local de ejecuciones.
+- `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`: comparador local.
+- `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`: informe consolidado local.
+- `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`: paquete local de evidencias.
+- `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`: demo local reproducible.
+- `docs/CIERRE_V1_LOCAL_COMPLETA.md`: cierre técnico final de la demo local completa.
 
-Recoge el catalogo funcional y documental del repositorio. Sirve para ubicar los agentes y entender la organizacion general antes de entrar en la documentacion especifica.
+## Documentación por agente
 
-### `docs/VISION_GENERAL.md`
+Cada carpeta dentro de `agentes/` contiene documentación V1, JSON ficticio, script local y pruebas `unittest` del agente correspondiente.
 
-Expone la vision general del proyecto y su marco tecnico. Aporta contexto de alto nivel para interpretar que pretende mostrar el repositorio y que no.
+## Referencias de uso
 
-### `docs/CRITERIOS_PORTFOLIO.md`
-
-Define los criterios de presentacion del portfolio. Ayuda a mantener coherencia entre evidencia tecnica, limites actuales y forma de comunicar el trabajo.
-
-### `docs/EVIDENCIAS_TECNICAS.md`
-
-Resume que puede demostrarse hoy en el repositorio. Sirve para verificar scripts locales, pruebas `unittest`, JSON de ejemplo, validacion global y ausencia de dependencias externas.
-
-### `docs/GUIA_DEMO_LOCAL.md`
-
-Explica como ejecutar la demo local paso a paso. Es la guia practica para un revisor que quiera validar el repositorio desde la terminal.
-
-### `docs/CIERRE_TECNICO_V1.md`
-
-Describe el cierre tecnico de la V1 local. Deja constancia de lo que queda implementado, que limites mantiene el repositorio y como se separa la V1 de una futura evolucion.
-
-### `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
-
-Documenta el cierre de la capa local interactiva aÃ±adida sobre la V1 tecnica local. Resume consola local, espacio de trabajo editable, informes, panel HTML local, flujo operativo y limites actuales de esta fase.
-
-## DocumentaciÃ³n por agente
-
-Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON ficticio, script local y pruebas `unittest` del agente correspondiente.
-
-## Documentos de evidencia y validaciÃ³n
-
-- `docs/EVIDENCIAS_TECNICAS.md` resume que puede demostrarse hoy y deja constancia de las evidencias tecnicas verificables.
-- `docs/GUIA_DEMO_LOCAL.md` explica como ejecutar la demo local y como revisar el comportamiento minimo del repositorio.
-- `scripts/validar_repositorio.py` valida los tests y los JSON de ejemplo, ademas de la coherencia tecnica minima del repositorio.
-- `.github/workflows/validacion.yml` ejecuta la validacion tecnica en GitHub Actions para `push` y `pull_request`.
-
-## QuÃ© leer segÃºn el objetivo del revisor
-
-- Para entender el proyecto completo: `README.md` y `CATALOGO.md`.
-- Para comprobar evidencias tecnicas: `docs/EVIDENCIAS_TECNICAS.md`.
+- Para entender el alcance completo: `README.md` y `CATALOGO.md`.
+- Para revisar evidencias: `docs/EVIDENCIAS_TECNICAS.md`.
 - Para ejecutar la demo local: `docs/GUIA_DEMO_LOCAL.md`.
-- Para revisar un agente concreto: la carpeta de ese agente dentro de `agentes/`.
-- Para comprobar limites y fuera de alcance: `docs/CIERRE_TECNICO_V1.md`.
-- Para revisar la capa local interactiva: `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`. 
-- Para revisar la fase V1.2: `docs/CIERRE_V1_2_EDICION_GUIADA.md`.
-- Para revisar la fase V1.3: `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`.
-- Para revisar la fase V1.4: `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`.
-- Para revisar la fase V1.5: `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`.
-- Para revisar la fase V1.6: `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`.
-- Para revisar la fase V1.7: `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`.
-- Para revisar el cierre global V1 local completa y el criterio final de demo reproducible: `docs/CIERRE_V1_LOCAL_COMPLETA.md`.
+- Para revisar límites y cierre: `docs/CIERRE_TECNICO_V1.md` y `docs/CIERRE_V1_LOCAL_COMPLETA.md`.
+- Para revisar una fase concreta: los documentos `docs/CIERRE_V1_*.md`.
 
-## LÃ­mites del repositorio actual
+## Límites del repositorio actual
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de ProgramaciÃ³n de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
 - No hay dashboard productivo.
 - No hay Google Workspace.
 - No hay integraciones reales.
 - No se trabaja con datos reales.
-- No sustituye revision humana.
+- No sustituye revisión humana.
 
-## Cierre
-
-Este indice debe mantenerse actualizado si se aÃ±aden nuevas fases, scripts, documentacion o capas de interaccion local. Su funcion es ordenar la lectura documental y evitar interpretaciones confusas sobre el alcance actual.
-
-## ðŸªª Licencia y AutorÃ­a
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
-Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
-
-
-
-
-
+© 2025 – Txema Ríos. Todos los derechos compartidos.

@@ -1,103 +1,108 @@
-﻿# Registro de Cambios
+# Registro de cambios
 
 ## v1-local-completa - Demo local completa
 
-Esta version de cierre deja la V1 local completa como demo tecnica reproducible, explicable, validada y documentada en entorno local temporal.
+Esta versión deja cerrada la V1 local completa como demo técnica reproducible, explicable, validada y documentada en entorno local temporal.
 
-## Anadido
+## Añadido
 
 - consola local temporal,
-- edicion guiada local,
-- historico local,
+- edición guiada local,
+- histórico local,
 - comparador local,
 - informe consolidado local,
 - paquete local de evidencias,
 - demo local reproducible,
 - guion local de demo.
 
-## Limites de la version
+## Límites de la versión
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
 - No hay dashboard productivo.
-- No hay web publica.
+- No hay web pública.
 - No hay Google Workspace.
-- No hay integraciones reales.## v1.7.0 - Demo local reproducible
+- No hay integraciones reales.
 
-Esta version cierra la fase V1.7 incorporando un orquestador local para ejecutar la cadena completa de demo con un solo flujo reproducible.
+## v1.7.0 - Demo local reproducible
+
+Esta versión cerró la fase V1.7 con un orquestador local para ejecutar la cadena completa de demo con un solo flujo reproducible.
 
 ## Añadido
 
 - orquestador local de demo reproducible,
 - cadena local completa sobre espacio de trabajo, agentes, panel, consolidado y evidencias,
-- generacion de panel local,
-- generacion de informe consolidado,
-- exportacion de evidencias,
+- generación de panel local,
+- generación de informe consolidado,
+- exportación de evidencias,
 - ZIP local opcional,
-- integracion con editor/consola local,
+- integración con editor y consola local,
 - pruebas transversales de la demo local.
 
-## Limites de la version
+## Límites de la versión
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
 - No hay dashboard productivo.
-- No hay web publica.
+- No hay web pública.
 - No hay Google Workspace.
 - No hay integraciones reales.
+
 ## v1.6.0 - Paquete local de evidencias de demo
 
-Esta version cierra la fase V1.6 incorporando un paquete local de evidencias de demo para revision humana en entorno local temporal.
+Esta versión incorporó un paquete local de evidencias de demo para revisión humana en entorno local temporal.
 
 ## Añadido
 
 - exportador local de evidencias,
-- indice Markdown de evidencias,
-- indice HTML local de evidencias,
+- índice Markdown de evidencias,
+- índice HTML local de evidencias,
 - copia de panel local e informe consolidado,
 - copia de informes disponibles,
 - ZIP local opcional,
-- integracion con editor/consola local,
+- integración con editor y consola local,
 - pruebas transversales del paquete de evidencias.
 
-## Limites de la version
+## Límites de la versión
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
 - No hay dashboard productivo.
-- No hay web publica.
+- No hay web pública.
 - No hay Google Workspace.
 - No hay integraciones reales.
+
 ## v1.5.0 - Informe consolidado local
 
-Esta version cierra la fase V1.5 incorporando consolidacion local de los ultimos informes de los 10 agentes dentro de la consola local temporal.
+Esta versión incorporó consolidación local de los últimos informes de los 10 agentes dentro de la consola local temporal.
 
 ## Añadido
 
 - generador de informe consolidado,
 - salida Markdown local,
 - salida HTML local,
-- integracion con editor/consola local,
+- integración con editor y consola local,
 - pruebas transversales del informe consolidado.
 
-## Limites de la version
+## Límites de la versión
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
 - No hay dashboard productivo.
-- No hay web publica.
+- No hay web pública.
 - No hay Google Workspace.
 - No hay integraciones reales.
+
 ## v1.4.0 - Comparador local de ejecuciones
 
-Esta version cierra la fase V1.4 incorporando comparacion local entre el ultimo informe y los informes historicos por agente, dentro de la consola local temporal.
+Esta versión incorporó comparación local entre el último informe y los informes históricos por agente, dentro de la consola local temporal.
 
 ## Añadido
 
 - comparador local de informes,
-- comparacion del ultimo informe con historicos,
-- deteccion de cambio de decision recomendada,
-- integracion con editor/consola local,
+- comparación del último informe con históricos,
+- detección de cambio de decisión recomendada,
+- integración con editor y consola local,
 - pruebas transversales del comparador.
 
 ## Límites de la versión
@@ -108,9 +113,10 @@ Esta version cierra la fase V1.4 incorporando comparacion local entre el ultimo 
 - No hay web pública.
 - No hay Google Workspace.
 - No hay integraciones reales.
+
 ## v1.3.0 - Histórico local de ejecuciones
 
-Esta versión cierra la fase V1.3 con conservación y consulta de informes históricos locales por agente, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
+Esta versión incorporó conservación y consulta de informes históricos locales por agente, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
 
 ## Añadido
 
@@ -118,7 +124,7 @@ Esta versión cierra la fase V1.3 con conservación y consulta de informes hist�
 - conservación del último informe en `salidas/agente-XX/informe.txt`,
 - consulta de histórico desde consola local,
 - ejecución con `--guardar-historico` en el lanzador común,
-- integración del histórico en el editor/consola local.
+- integración del histórico en el editor y la consola local.
 
 ## Límites de la versión
 
@@ -129,17 +135,17 @@ Esta versión cierra la fase V1.3 con conservación y consulta de informes hist�
 - No hay Google Workspace.
 - No hay integraciones reales.
 
-## v1.2.0 - Edicion guiada local completa
+## v1.2.0 - Edición guiada local completa
 
-Esta version completa la fase V1.2 como capa de edicion guiada local para los 10 agentes del repositorio, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
+Esta versión completó la fase V1.2 como capa de edición guiada local para los 10 agentes del repositorio, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
 
 ## Añadido
 
-- edicion guiada para los 10 agentes,
+- edición guiada para los 10 agentes,
 - formularios locales por agente,
-- ejecucion con datos editados en el espacio de trabajo,
-- conservacion de JSON originales en `agentes/*/datos_ejemplo/`,
-- integracion con consola local, informes y panel HTML local.
+- ejecución con datos editados en el espacio de trabajo,
+- conservación de JSON originales en `agentes/*/datos_ejemplo/`,
+- integración con consola local, informes y panel HTML local.
 
 ## Límites de la versión
 
@@ -152,15 +158,15 @@ Esta version completa la fase V1.2 como capa de edicion guiada local para los 10
 
 ## v1.1.0 - Capa local interactiva
 
-Esta version amplia la V1 tecnica local con una capa local interactiva orientada a revision humana, manipulacion controlada de datos ficticios y visualizacion local reproducible.
+Esta versión amplió la V1 técnica local con una capa local interactiva orientada a revisión humana, manipulación controlada de datos ficticios y visualización local reproducible.
 
 ## Añadido
 
-- lanzador comun,
+- lanzador común,
 - salidas locales,
 - panel HTML local,
 - espacio de trabajo editable,
-- editor/consola local,
+- editor y consola local,
 - resumen local de agentes.
 
 ## Límites de la versión
@@ -174,26 +180,26 @@ Esta version amplia la V1 tecnica local con una capa local interactiva orientada
 
 ## v1.0.0 - V1 técnica local
 
-Esta version representa el cierre de la primera version tecnica local del repositorio `agentes-ia-pymes`.
+Esta versión representa el cierre de la primera versión técnica local del repositorio `agentes-ia-pymes`.
 
 ## Añadido
 
 - estructura modular de 10 agentes para PYMES,
-- documentacion V1 por agente,
-- datos ficticios en JSON (*JavaScript Object Notation - Notacion de Objetos de JavaScript*),
+- documentación V1 por agente,
+- datos ficticios en JSON (*JavaScript Object Notation - Notación de Objetos de JavaScript*),
 - scripts locales de consola,
 - pruebas `unittest` por agente,
-- validacion tecnica global,
+- validación técnica global,
 - workflow de GitHub Actions,
-- documentos de evidencias tecnicas,
-- guia de demo local,
-- cierre tecnico V1,
-- indice documental,
+- documentos de evidencias técnicas,
+- guía de demo local,
+- cierre técnico V1,
+- índice documental,
 - ficha de portfolio.
 
 ## Validación
 
-La version se valida con:
+La versión se valida con:
 
 ```powershell
 python scripts/validar_repositorio.py
@@ -211,17 +217,11 @@ python scripts/validar_repositorio.py
 
 ## Criterio de cierre
 
-La version puede considerarse cerrada cuando la validacion global devuelve:
+La versión puede considerarse cerrada cuando la validación global devuelve:
 
 `Resultado final: validacion global correcta.`
 
-## 🪪 Licencia y Autoría
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
-
-
-
-
-
-
