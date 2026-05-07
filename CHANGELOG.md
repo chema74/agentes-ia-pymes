@@ -1,5 +1,25 @@
 ﻿# Registro de Cambios
 
+## v1.5.0 - Informe consolidado local
+
+Esta version cierra la fase V1.5 incorporando consolidacion local de los ultimos informes de los 10 agentes dentro de la consola local temporal.
+
+## Añadido
+
+- generador de informe consolidado,
+- salida Markdown local,
+- salida HTML local,
+- integracion con editor/consola local,
+- pruebas transversales del informe consolidado.
+
+## Limites de la version
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web publica.
+- No hay Google Workspace.
+- No hay integraciones reales.
 ## v1.4.0 - Comparador local de ejecuciones
 
 Esta version cierra la fase V1.4 incorporando comparacion local entre el ultimo informe y los informes historicos por agente, dentro de la consola local temporal.
@@ -131,4 +151,5 @@ La version puede considerarse cerrada cuando la validacion global devuelve:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
 

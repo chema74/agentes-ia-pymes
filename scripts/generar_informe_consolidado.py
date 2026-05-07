@@ -107,18 +107,19 @@ def construir_markdown(informes: list[dict], fecha: str) -> str:
         lineas.append(
             f"- agente-{info['id']:02d}: {info['nombre']} | estado: {info['estado']} | decision recomendada: {info['decision']}"
         )
-    lineas.extend(
-        [
-            "",
-            "## Informes disponibles",
-            *[f"- agente-{i['id']:02d}" for i in disponibles] if disponibles else ["- Ninguno"],
-            "",
-            "## Informes no disponibles",
-            *[f"- agente-{i['id']:02d} (informe no disponible)" for i in no_disponibles] if no_disponibles else ["- Ninguno"],
-            "",
-            "## Detalle por agente",
-        ]
-    )
+    lineas.extend(["", "## Informes disponibles"])
+    if disponibles:
+        lineas.extend([f"- agente-{i['id']:02d}" for i in disponibles])
+    else:
+        lineas.append("- Ninguno")
+
+    lineas.extend(["", "## Informes no disponibles"])
+    if no_disponibles:
+        lineas.extend([f"- agente-{i['id']:02d} (informe no disponible)" for i in no_disponibles])
+    else:
+        lineas.append("- Ninguno")
+
+    lineas.extend(["", "## Detalle por agente"])
     for info in informes:
         lineas.extend(
             [
@@ -200,12 +201,28 @@ def construir_html(informes: list[dict], fecha: str) -> str:
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = construir_parser().parse_args(argv)
+    args_lista = list(argv) if argv is not None else sys.argv[1:]
+    args = construir_parser().parse_args(args_lista)
     try:
         raiz = obtener_raiz_repositorio()
         directorio_salidas = resolver_ruta(args.directorio_salidas, raiz)
-        salida_markdown = resolver_ruta(args.salida_markdown, raiz)
-        salida_html = resolver_ruta(args.salida_html, raiz)
+
+        salida_markdown_explicitada = any(
+            arg == "--salida-markdown" or arg.startswith("--salida-markdown=") for arg in args_lista
+        )
+        salida_html_explicitada = any(
+            arg == "--salida-html" or arg.startswith("--salida-html=") for arg in args_lista
+        )
+
+        if salida_markdown_explicitada:
+            salida_markdown = resolver_ruta(args.salida_markdown, raiz)
+        else:
+            salida_markdown = directorio_salidas / "informe_consolidado.md"
+
+        if salida_html_explicitada:
+            salida_html = resolver_ruta(args.salida_html, raiz)
+        else:
+            salida_html = directorio_salidas / "informe_consolidado.html"
 
         directorio_salidas.mkdir(parents=True, exist_ok=True)
         salida_markdown.parent.mkdir(parents=True, exist_ok=True)

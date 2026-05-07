@@ -15,6 +15,7 @@ Este documento sirve como guia de lectura y navegacion del repositorio. Su objet
 7. `docs/CIERRE_V1_2_EDICION_GUIADA.md`
 8. `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
 9. `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`
+10. `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`
 
 ## DocumentaciÃ³n global
 
@@ -72,6 +73,7 @@ Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON fict
 - Para revisar la fase V1.2: `docs/CIERRE_V1_2_EDICION_GUIADA.md`.
 - Para revisar la fase V1.3: `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`.
 - Para revisar la fase V1.4: `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`.
+- Para revisar la fase V1.5: `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`.
 
 ## LÃ­mites del repositorio actual
 
