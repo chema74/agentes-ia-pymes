@@ -91,6 +91,54 @@ FORMULARIOS_GUIADOS = {
         {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
         {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
     ],
+    7: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general del pipeline", "rutas_json": ["pipeline.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["pipeline.prioridad_general"], "multilinea": False},
+        {"clave": "oportunidad_destacada", "etiqueta": "Oportunidad destacada", "rutas_json": ["pipeline.oportunidad_destacada"], "multilinea": True},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
+    8: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general de formacion", "rutas_json": ["formacion.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["formacion.prioridad_general"], "multilinea": False},
+        {"clave": "ruta_destacada", "etiqueta": "Ruta destacada", "rutas_json": ["formacion.ruta_destacada"], "multilinea": True},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
+    9: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general del analisis", "rutas_json": ["analisis_mercado.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "prioridad_exploracion", "etiqueta": "Prioridad de exploracion", "rutas_json": ["analisis_mercado.prioridad_exploracion"], "multilinea": False},
+        {"clave": "oportunidad_destacada", "etiqueta": "Oportunidad destacada", "rutas_json": ["analisis_mercado.oportunidad_destacada"], "multilinea": True},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
+    10: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general de revision", "rutas_json": ["revision_cumplimiento.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "prioridad_revision", "etiqueta": "Prioridad de revision", "rutas_json": ["revision_cumplimiento.prioridad_revision"], "multilinea": False},
+        {"clave": "riesgo_operativo", "etiqueta": "Riesgo operativo", "rutas_json": ["revision_cumplimiento.riesgo_operativo"], "multilinea": False},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
 }
 
 
@@ -541,7 +589,7 @@ function escaparHtml(texto){
 }
 
 function actualizarVisibilidadGuiada(){
-  const activo = ['1','2','3','4','5','6'].includes(String(sel.value));
+  const activo = ['1','2','3','4','5','6','7','8','9','10'].includes(String(sel.value));
   bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
   if(!activo){
     formularioGuiado.innerHTML = '<p>EdiciÃ³n guiada todavÃ­a no disponible para este agente.</p>';
@@ -679,7 +727,7 @@ function renderFormularioGuiado(campos){
 
 async function cargarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`);
   if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la ediciÃ³n guiada','err');return;}
   renderFormularioGuiado(r.data.campos || []);
@@ -688,7 +736,7 @@ async function cargarGuiado(){
 
 async function guardarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
   const campos = {};
   formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
     campos[nodo.getAttribute('data-ruta')] = nodo.value;
@@ -928,4 +976,5 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
 
