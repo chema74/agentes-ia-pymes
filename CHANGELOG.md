@@ -1,5 +1,25 @@
 ﻿# Registro de Cambios
 
+## v1.4.0 - Comparador local de ejecuciones
+
+Esta version cierra la fase V1.4 incorporando comparacion local entre el ultimo informe y los informes historicos por agente, dentro de la consola local temporal.
+
+## Añadido
+
+- comparador local de informes,
+- comparacion del ultimo informe con historicos,
+- deteccion de cambio de decision recomendada,
+- integracion con editor/consola local,
+- pruebas transversales del comparador.
+
+## Límites de la versión
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web pública.
+- No hay Google Workspace.
+- No hay integraciones reales.
 ## v1.3.0 - Histórico local de ejecuciones
 
 Esta versión cierra la fase V1.3 con conservación y consulta de informes históricos locales por agente, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
@@ -111,3 +131,4 @@ La version puede considerarse cerrada cuando la validacion global devuelve:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+

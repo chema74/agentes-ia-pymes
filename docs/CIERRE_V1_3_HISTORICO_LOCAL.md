@@ -117,3 +117,4 @@ La V1.3 queda cerrada cuando:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
