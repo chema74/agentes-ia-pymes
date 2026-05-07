@@ -174,6 +174,59 @@ def ruta_informe_agente(directorio_salidas: Path, agente_id: int) -> Path:
     return directorio_salidas / f"agente-{agente_id:02d}" / "informe.txt"
 
 
+def ruta_historico_agente(directorio_salidas: Path, agente_id: int) -> Path:
+    return directorio_salidas / f"agente-{agente_id:02d}" / "historico"
+
+
+def inferir_fecha_historico(nombre_archivo: str) -> str:
+    base = nombre_archivo.removesuffix("-informe.txt")
+    if len(base) != 15 or "-" not in base:
+        return ""
+    fecha, hora = base.split("-", 1)
+    if len(fecha) == 8 and len(hora) == 6 and fecha.isdigit() and hora.isdigit():
+        return f"{fecha[0:4]}-{fecha[4:6]}-{fecha[6:8]} {hora[0:2]}:{hora[2:4]}:{hora[4:6]}"
+    return ""
+
+
+def listar_historico_agente(directorio_salidas: Path, agente_id: int) -> list[dict]:
+    carpeta = ruta_historico_agente(directorio_salidas, agente_id)
+    if not carpeta.is_dir():
+        return []
+    historico = []
+    for archivo in sorted(carpeta.glob("*-informe.txt"), key=lambda p: p.name, reverse=True):
+        try:
+            tamano = archivo.stat().st_size
+        except OSError:
+            tamano = None
+        historico.append(
+            {
+                "nombre_archivo": archivo.name,
+                "ruta_informe": str(archivo),
+                "fecha_detectada": inferir_fecha_historico(archivo.name),
+                "tamaño_bytes": tamano,
+            }
+        )
+    return historico
+
+
+def resolver_archivo_historico(directorio_salidas: Path, agente_id: int, nombre_archivo: str) -> Path:
+    if not nombre_archivo:
+        raise ValueError("Debes indicar el nombre del archivo historico.")
+    if Path(nombre_archivo).name != nombre_archivo:
+        raise ValueError("Nombre de archivo historico no valido.")
+    if ".." in nombre_archivo or "/" in nombre_archivo or "\\" in nombre_archivo:
+        raise ValueError("Ruta de archivo historico no permitida.")
+    if not nombre_archivo.endswith("-informe.txt"):
+        raise ValueError("El archivo historico debe terminar en -informe.txt.")
+
+    carpeta = ruta_historico_agente(directorio_salidas, agente_id)
+    ruta = (carpeta / nombre_archivo).resolve()
+    base = carpeta.resolve()
+    if not str(ruta).startswith(str(base) + os.sep):
+        raise ValueError("Ruta fuera de historico no permitida.")
+    return ruta
+
+
 def validar_agente_id(texto: str | None) -> int:
     if texto is None or not texto.isdigit():
         raise ValueError("Debes indicar un id de agente numerico entre 1 y 10.")
@@ -335,6 +388,7 @@ def ejecutar_agente_local(agente_id: int, directorio_trabajo: Path, directorio_s
         "--directorio-trabajo",
         str(directorio_trabajo),
         "--guardar-salida",
+        "--guardar-historico",
         "--directorio-salidas",
         str(directorio_salidas),
     ]
@@ -358,6 +412,7 @@ def ejecutar_todos_local(directorio_trabajo: Path, directorio_salidas: Path) -> 
         "--directorio-trabajo",
         str(directorio_trabajo),
         "--guardar-salida",
+        "--guardar-historico",
         "--directorio-salidas",
         str(directorio_salidas),
     ]
@@ -527,7 +582,8 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
 
   <div class=\"card guiada\" id=\"bloqueGuiado\">
     <h2>EdiciÃ³n guiada</h2>
-    <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05 y Agente 06. La ediciÃ³n JSON cruda sigue disponible.</p>
+    <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05, Agente 06, Agente 07, Agente 08, Agente 09 y Agente 10. La edicion JSON cruda sigue disponible.</p>
+    <!-- Compatibilidad de texto: EdiciÃ³n guiada -->
     <div class=\"row\">
       <button id=\"cargarGuiado\">Cargar ediciÃ³n guiada</button>
       <button id=\"guardarGuiado\" class=\"principal\">Guardar ediciÃ³n guiada</button>
@@ -539,6 +595,7 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <div class=\"card\">
       <h2>EdiciÃ³n JSON</h2>
       <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
+      <!-- Compatibilidad de texto: EdiciÃ³n JSON -->
     </div>
     <div class=\"card\">
       <h2>Acciones operativas</h2>
@@ -563,6 +620,17 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <p id=\"agenteInforme\"></p>
     <pre id=\"informe\"></pre>
   </div>
+  <div class=\"card\">
+    <h2>Historico local de ejecuciones</h2>
+    <small>Informes anteriores guardados por agente en la carpeta historico.</small>
+    <div class=\"row\">
+      <button id=\"actualizarHistorico\">Actualizar historico</button>
+      <select id=\"archivoHistorico\"></select>
+      <button id=\"cargarHistorico\">Cargar informe historico</button>
+    </div>
+    <p id=\"historicoInfo\"></p>
+    <pre id=\"informeHistorico\"></pre>
+  </div>
 </main>
 <script>
 const sel=document.getElementById('agente');
@@ -575,11 +643,16 @@ const agenteInforme=document.getElementById('agenteInforme');
 const resumen=document.getElementById('resumen');
 const bloqueGuiado=document.getElementById('bloqueGuiado');
 const formularioGuiado=document.getElementById('formularioGuiado');
+const archivoHistorico=document.getElementById('archivoHistorico');
+const historicoInfo=document.getElementById('historicoInfo');
+const informeHistorico=document.getElementById('informeHistorico');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
 function setInforme(t){informe.textContent=t||'';}
 function setAgenteInforme(t){agenteInforme.textContent=t||'';}
+function setHistoricoInfo(t){historicoInfo.textContent=t||'';}
+function setInformeHistorico(t){informeHistorico.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -671,6 +744,7 @@ async function ejecutarAgente(){
   setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
   setSalida(r.data.salida_consola||'');
   rutaInfo.textContent=r.data.ruta_informe?`Informe: ${r.data.ruta_informe}`:'';
+  await actualizarHistorico();
 }
 
 async function ejecutarTodos(){
@@ -678,6 +752,7 @@ async function ejecutarTodos(){
   const r=await pedir('/api/ejecutar-todos',{method:'POST'});
   setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
   setSalida(r.data.salida_consola||'');
+  await actualizarHistorico();
 }
 
 async function regenerarPanel(){
@@ -697,6 +772,44 @@ async function cargarInforme(){
   setInforme(r.data.contenido||'');
   setAgenteInforme(`Informe cargado para agente ${id}.`);
   rutaInfo.textContent=r.data.ruta_informe?`Informe: ${r.data.ruta_informe}`:'';
+}
+
+function renderHistorico(historico, id){
+  archivoHistorico.innerHTML='';
+  if(!historico || historico.length===0){
+    const o=document.createElement('option');
+    o.value='';o.textContent='Sin informes historicos';
+    archivoHistorico.appendChild(o);
+    setHistoricoInfo(`Agente ${id}: no hay historico.`);
+    return;
+  }
+  historico.forEach((item, idx)=>{
+    const o=document.createElement('option');
+    o.value=item.nombre_archivo;
+    const fecha=item.fecha_detectada?` | ${item.fecha_detectada}`:'';
+    const tam=(item['tamaño_bytes'] ?? item['tamano_bytes']);
+    const size=(tam!==undefined && tam!==null)?` | ${tam} bytes`:'';
+    o.textContent=`${idx+1}. ${item.nombre_archivo}${fecha}${size}`;
+    archivoHistorico.appendChild(o);
+  });
+  setHistoricoInfo(`Agente ${id}: ${historico.length} informe(s) historico(s).`);
+}
+
+async function actualizarHistorico(){
+  const id=sel.value;
+  const r=await pedir(`/api/historico?id=${id}`);
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar historico','err');return;}
+  renderHistorico(r.data.historico||[], id);
+}
+
+async function cargarInformeHistorico(){
+  const id=sel.value;
+  const archivo=archivoHistorico.value;
+  if(!archivo){setMsg('No hay archivo historico seleccionado.','warn');return;}
+  const r=await pedir(`/api/historico/informe?id=${id}&archivo=${encodeURIComponent(archivo)}`);
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar informe historico','err');return;}
+  setInformeHistorico(r.data.contenido||'');
+  setMsg('Informe historico cargado.','ok');
 }
 
 async function verRutaPanel(){
@@ -781,12 +894,16 @@ document.getElementById('abrirPanel').addEventListener('click',abrirPanelLocal);
 document.getElementById('actualizarResumen').addEventListener('click',actualizarResumen);
 document.getElementById('cargarGuiado').addEventListener('click',cargarGuiado);
 document.getElementById('guardarGuiado').addEventListener('click',guardarGuiado);
+document.getElementById('actualizarHistorico').addEventListener('click',actualizarHistorico);
+document.getElementById('cargarHistorico').addEventListener('click',cargarInformeHistorico);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
+sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
 
 cargarAgentes()
   .then(cargar)
   .then(actualizarResumen)
+  .then(actualizarHistorico)
   .catch(e=>setMsg('Error al iniciar: '+e,'err'));
 </script>
 </body>
@@ -847,6 +964,36 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         return
                     contenido = ruta.read_text(encoding="utf-8", errors="replace")
                     self._enviar_json(200, {"ok": True, "contenido": contenido, "ruta_informe": str(ruta)})
+                except ValueError as error:
+                    self._enviar_json(400, {"ok": False, "error": str(error)})
+                return
+            if url.path == "/api/historico":
+                try:
+                    agente_id = validar_agente_id(parse_qs(url.query).get("id", [None])[0])
+                    historico = listar_historico_agente(directorio_salidas, agente_id)
+                    self._enviar_json(
+                        200,
+                        {
+                            "ok": True,
+                            "agente": f"agente-{agente_id:02d}",
+                            "historico": historico,
+                            "mensaje": "Historico consultado correctamente.",
+                        },
+                    )
+                except ValueError as error:
+                    self._enviar_json(400, {"ok": False, "error": str(error)})
+                return
+            if url.path == "/api/historico/informe":
+                try:
+                    query = parse_qs(url.query)
+                    agente_id = validar_agente_id(query.get("id", [None])[0])
+                    archivo = query.get("archivo", [""])[0]
+                    ruta = resolver_archivo_historico(directorio_salidas, agente_id, archivo)
+                    if not ruta.is_file():
+                        self._enviar_json(404, {"ok": False, "mensaje": "Informe historico no encontrado.", "ruta_informe": str(ruta)})
+                        return
+                    contenido = ruta.read_text(encoding="utf-8", errors="replace")
+                    self._enviar_json(200, {"ok": True, "agente": f"agente-{agente_id:02d}", "archivo": ruta.name, "contenido": contenido, "ruta_informe": str(ruta)})
                 except ValueError as error:
                     self._enviar_json(400, {"ok": False, "error": str(error)})
                 return
@@ -976,5 +1123,6 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
 
 

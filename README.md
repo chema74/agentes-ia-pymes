@@ -58,10 +58,22 @@ Se puede preparar una copia editable de los datos ficticios sin tocar los JSON o
 - `python scripts/preparar_espacio_trabajo.py`
 - `python scripts/ejecutar_agente.py --agente 1 --usar-datos-trabajo`
 - `python scripts/ejecutar_agente.py --todos --usar-datos-trabajo --guardar-salida`
+- `python scripts/ejecutar_agente.py --agente 1 --guardar-historico`
+- `python scripts/ejecutar_agente.py --todos --usar-datos-trabajo --guardar-historico`
 - `python scripts/generar_panel_local.py --generar-informes --usar-datos-trabajo`
 
 Las copias se guardan en `espacio_trabajo/` y esta carpeta esta ignorada por Git.
 Los JSON originales de `agentes/*/datos_ejemplo/` no se modifican.
+
+## Historico local de informes
+
+El lanzador comun permite conservar informes anteriores con marca temporal sin perder `informe.txt` como ultimo informe:
+
+- `python scripts/ejecutar_agente.py --agente 1 --guardar-historico`
+- `python scripts/ejecutar_agente.py --todos --usar-datos-trabajo --guardar-historico`
+
+Las copias historicas se guardan en `salidas/agente-XX/historico/`.
+La carpeta `salidas/` esta ignorada por Git.
 
 ## Editor local del espacio de trabajo
 

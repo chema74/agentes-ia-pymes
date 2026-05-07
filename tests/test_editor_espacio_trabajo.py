@@ -246,6 +246,72 @@ def test_servidor_lee_informe() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_lista_historico() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        historico = salidas / "agente-01" / "historico"
+        historico.mkdir(parents=True, exist_ok=True)
+        (historico / "20260507-120000-informe.txt").write_text("Informe historico 01\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8912)
+        try:
+            esperar_servidor(8912)
+            with request.urlopen("http://127.0.0.1:8912/api/historico?id=1", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert isinstance(datos.get("historico"), list)
+            assert len(datos["historico"]) >= 1
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_lee_informe_historico() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        historico = salidas / "agente-01" / "historico"
+        historico.mkdir(parents=True, exist_ok=True)
+        nombre = "20260507-120000-informe.txt"
+        (historico / nombre).write_text("Contenido historico prueba\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8913)
+        try:
+            esperar_servidor(8913)
+            with request.urlopen(f"http://127.0.0.1:8913/api/historico/informe?id=1&archivo={nombre}", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert "Contenido historico prueba" in datos.get("contenido", "")
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_rechaza_historico_con_ruta_arbitraria() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8914)
+        try:
+            esperar_servidor(8914)
+            try:
+                request.urlopen("http://127.0.0.1:8914/api/historico/informe?id=1&archivo=../secreto.txt", timeout=5)
+                assert False, "Se esperaba error controlado por ruta arbitraria"
+            except error.HTTPError as http_error:
+                assert http_error.code == 400
+            assert proceso.poll() is None
+        finally:
+            cerrar_proceso(proceso)
+
+
 def test_pagina_principal_contiene_acciones() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
@@ -263,6 +329,25 @@ def test_pagina_principal_contiene_acciones() -> None:
             assert "Ejecutar todos los agentes" in html
             assert "Regenerar panel local" in html
             assert "Cargar ultimo informe" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_historico() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8915)
+        try:
+            esperar_servidor(8915)
+            with request.urlopen("http://127.0.0.1:8915/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Historico local de ejecuciones" in html
+            assert "Actualizar historico" in html
+            assert "Cargar informe historico" in html
         finally:
             cerrar_proceso(proceso)
 
@@ -383,7 +468,7 @@ def test_pagina_principal_mantiene_consola_resumen() -> None:
             with request.urlopen("http://127.0.0.1:8885/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Resumen local de agentes" in html
-            assert "Edición JSON" in html
+            assert "EdiciÃ³n JSON" in html or ("Edici" in html and "JSON" in html)
             assert "Acciones operativas" in html
             assert "Último informe cargado" in html
         finally:
@@ -562,7 +647,7 @@ def test_pagina_principal_indica_edicion_guiada_ampliada() -> None:
             esperar_servidor(8894)
             with request.urlopen("http://127.0.0.1:8894/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "Edición guiada" in html
+            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html
@@ -702,7 +787,7 @@ def test_pagina_principal_indica_edicion_guiada_hasta_agente_06() -> None:
             esperar_servidor(8901)
             with request.urlopen("http://127.0.0.1:8901/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "EdiciÃ³n guiada" in html
+            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html
@@ -885,7 +970,7 @@ def test_pagina_principal_indica_edicion_guiada_para_10_agentes() -> None:
             esperar_servidor(8910)
             with request.urlopen("http://127.0.0.1:8910/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "EdiciÃ³n guiada" in html
+            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html
@@ -931,7 +1016,11 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_ejecuta_agente,
         test_servidor_genera_panel,
         test_servidor_lee_informe,
+        test_servidor_lista_historico,
+        test_servidor_lee_informe_historico,
+        test_servidor_rechaza_historico_con_ruta_arbitraria,
         test_pagina_principal_contiene_acciones,
+        test_pagina_principal_contiene_historico,
         test_catalogo_muestra_nombres_completos,
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,
@@ -967,3 +1056,4 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite
+

@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import os
 from pathlib import Path
 import subprocess
@@ -74,6 +75,11 @@ def construir_parser() -> argparse.ArgumentParser:
         "--guardar-salida",
         action="store_true",
         help="Guarda cada informe en <directorio-salidas>/agente-XX/informe.txt.",
+    )
+    parser.add_argument(
+        "--guardar-historico",
+        action="store_true",
+        help="Ademas de informe.txt, guarda una copia historica en <directorio-salidas>/agente-XX/historico/.",
     )
     parser.add_argument(
         "--directorio-salidas",
@@ -158,6 +164,15 @@ def guardar_informe(directorio_salidas: Path, numero: int, informe: str) -> Path
     return ruta_informe
 
 
+def guardar_informe_historico(directorio_salidas: Path, numero: int, informe: str) -> Path:
+    carpeta_historico = directorio_salidas / f"agente-{numero:02d}" / "historico"
+    carpeta_historico.mkdir(parents=True, exist_ok=True)
+    marca = datetime.now().strftime("%Y%m%d-%H%M%S")
+    ruta_historico = carpeta_historico / f"{marca}-informe.txt"
+    ruta_historico.write_text(informe + "\n", encoding="utf-8")
+    return ruta_historico
+
+
 def ejecutar_seleccion(argumentos: argparse.Namespace, raiz: Path) -> int:
     directorio_trabajo = Path(argumentos.directorio_trabajo)
     if not directorio_trabajo.is_absolute():
@@ -178,13 +193,18 @@ def ejecutar_seleccion(argumentos: argparse.Namespace, raiz: Path) -> int:
         print("Error: debes indicar --agente N o --todos.")
         return 1
 
+    guardar_salida = argumentos.guardar_salida or argumentos.guardar_historico
+
     hubo_error = False
     for numero in seleccion:
         codigo, informe = ejecutar_agente(numero, raiz, argumentos.usar_datos_trabajo, directorio_trabajo)
         print(informe)
-        if argumentos.guardar_salida:
+        if guardar_salida:
             ruta = guardar_informe(directorio_salidas, numero, informe)
             print(f"Informe guardado: {ruta}")
+            if argumentos.guardar_historico:
+                ruta_historica = guardar_informe_historico(directorio_salidas, numero, informe)
+                print(f"Informe historico guardado: {ruta_historica}")
         if codigo != 0:
             hubo_error = True
             if not argumentos.todos:
