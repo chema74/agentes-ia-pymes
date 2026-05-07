@@ -1,5 +1,28 @@
 ﻿# Registro de Cambios
 
+## v1-local-completa - Demo local completa
+
+Esta version de cierre resume la V1 local completa como demo tecnica reproducible, explicable y validable en entorno local temporal.
+
+## Añadido
+
+- consola local temporal,
+- edicion guiada local,
+- historico local,
+- comparador local,
+- informe consolidado local,
+- paquete local de evidencias,
+- demo local reproducible,
+- guion local de demo.
+
+## Limites de la version
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programacion de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web publica.
+- No hay Google Workspace.
+- No hay integraciones reales.
 ## v1.7.0 - Demo local reproducible
 
 Esta version cierra la fase V1.7 incorporando un orquestador local para ejecutar la cadena completa de demo con un solo flujo reproducible.
@@ -197,6 +220,7 @@ La version puede considerarse cerrada cuando la validacion global devuelve:
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
 
 
 

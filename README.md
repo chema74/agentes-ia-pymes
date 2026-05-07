@@ -133,6 +133,18 @@ Genera:
 
 Tambien puede generarse desde la consola local (`scripts/editor_espacio_trabajo.py`).
 
+## Demo local completa
+
+Secuencia recomendada de cierre local:
+
+- `python scripts/ejecutar_demo_local.py --crear-zip`
+- `python scripts/editor_espacio_trabajo.py`
+- `python scripts/generar_guion_demo_local.py --generar-html`
+
+Documentacion de cierre global:
+
+- `docs/CIERRE_V1_LOCAL_COMPLETA.md`
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:
