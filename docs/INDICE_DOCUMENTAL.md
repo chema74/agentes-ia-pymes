@@ -13,6 +13,7 @@ Este documento sirve como guia de lectura y navegacion del repositorio. Su objet
 5. `docs/CIERRE_TECNICO_V1.md`
 6. `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
 7. `docs/CIERRE_V1_2_EDICION_GUIADA.md`
+8. `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
 
 ## DocumentaciÃ³n global
 
@@ -66,7 +67,9 @@ Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON fict
 - Para ejecutar la demo local: `docs/GUIA_DEMO_LOCAL.md`.
 - Para revisar un agente concreto: la carpeta de ese agente dentro de `agentes/`.
 - Para comprobar limites y fuera de alcance: `docs/CIERRE_TECNICO_V1.md`.
-- Para revisar la capa local interactiva: `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`.
+- Para revisar la capa local interactiva: `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`. 
+- Para revisar la fase V1.2: `docs/CIERRE_V1_2_EDICION_GUIADA.md`.
+- Para revisar la fase V1.3: `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`.
 
 ## LÃ­mites del repositorio actual
 
@@ -86,4 +89,7 @@ Este indice debe mantenerse actualizado si se aÃ±aden nuevas fases, scripts, d
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
+
+
+
 

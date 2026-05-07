@@ -1,4 +1,4 @@
-# Repositorio Tecnico agentes-ia-pymes
+﻿# Repositorio Tecnico agentes-ia-pymes
 
 ## Descripcion breve
 
@@ -113,10 +113,13 @@ Puedes definir directorios al arrancar:
 - `docs/CIERRE_TECNICO_V1.md`
 - `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
 - `docs/CIERRE_V1_2_EDICION_GUIADA.md`
+- `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
 - `docs/INDICE_DOCUMENTAL.md`
 
 El cierre de la capa local interactiva queda documentado en `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`.
-El cierre de la fase de edicion guiada local completa queda documentado en `docs/CIERRE_V1_2_EDICION_GUIADA.md`.
+El cierre de la fase de edicion guiada local completa queda documentado en `docs/CIERRE_V1_2_EDICION_GUIADA.md`. 
+El cierre de la fase V1.3 de historico local de ejecuciones queda documentado en `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`. 
+Los historicos locales de informes se guardan en `salidas/agente-XX/historico/`.
 
 ## Fuera de alcance actual
 
@@ -127,7 +130,9 @@ El cierre de la fase de edicion guiada local completa queda documentado en `docs
 - Servicios en red productivos.
 - Uso de dependencias externas.
 
-## 🪪 Licencia y Autoría
+## ðŸªª Licencia y AutorÃ­a
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
-© 2025 – Txema Ríos. Todos los derechos compartidos.
+Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
+
+

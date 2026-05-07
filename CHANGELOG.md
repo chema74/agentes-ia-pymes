@@ -1,4 +1,25 @@
-# Registro de Cambios
+﻿# Registro de Cambios
+
+## v1.3.0 - Histórico local de ejecuciones
+
+Esta versión cierra la fase V1.3 con conservación y consulta de informes históricos locales por agente, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
+
+## Añadido
+
+- histórico local de informes por agente,
+- conservación del último informe en `salidas/agente-XX/informe.txt`,
+- consulta de histórico desde consola local,
+- ejecución con `--guardar-historico` en el lanzador común,
+- integración del histórico en el editor/consola local.
+
+## Límites de la versión
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web pública.
+- No hay Google Workspace.
+- No hay integraciones reales.
 
 ## v1.2.0 - Edicion guiada local completa
 
