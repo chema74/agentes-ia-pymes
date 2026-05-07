@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -53,6 +53,43 @@ FORMULARIOS_GUIADOS = {
         {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
         {"clave": "estado", "etiqueta": "Estado", "rutas_json": ["metadatos_ejemplo.estado"], "multilinea": False},
         {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia"], "multilinea": True},
+    ],
+    4: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre", "propuesta.nombre_empresa"], "multilinea": False},
+        {"clave": "nombre_cliente", "etiqueta": "Nombre del cliente", "rutas_json": ["cliente_ficticio.nombre_cliente", "propuesta.nombre_cliente"], "multilinea": False},
+        {"clave": "estado_propuesta", "etiqueta": "Estado de la propuesta", "rutas_json": ["propuesta.estado", "propuesta.estado_propuesta"], "multilinea": False},
+        {"clave": "objetivo", "etiqueta": "Objetivo", "rutas_json": ["propuesta.objetivo", "propuesta.necesidad_principal"], "multilinea": True},
+        {"clave": "alcance", "etiqueta": "Alcance", "rutas_json": ["propuesta.alcance", "propuesta.alcance_preliminar"], "multilinea": True},
+        {"clave": "plazo_estimado", "etiqueta": "Plazo estimado", "rutas_json": ["propuesta.plazo_estimado"], "multilinea": False},
+        {"clave": "importe_estimado", "etiqueta": "Importe estimado", "rutas_json": ["propuesta.importe_estimado", "propuesta.importe"], "multilinea": False},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
+    5: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general de operaciones", "rutas_json": ["operaciones.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["operaciones.prioridad_general"], "multilinea": False},
+        {"clave": "bloqueo_principal", "etiqueta": "Bloqueo principal", "rutas_json": ["operaciones.bloqueo_principal"], "multilinea": True},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+    ],
+    6: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "estado_general", "etiqueta": "Estado general de control operativo", "rutas_json": ["control_cobros.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
+        {"clave": "riesgo_operativo", "etiqueta": "Riesgo operativo", "rutas_json": ["control_cobros.riesgo_operativo"], "multilinea": False},
+        {"clave": "prioridad_revision", "etiqueta": "Prioridad de revision", "rutas_json": ["control_cobros.prioridad_revision"], "multilinea": False},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
+        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
     ],
 }
 
@@ -163,7 +200,7 @@ def obtener_id_formulario_desde_ruta(ruta_api: str) -> int | None:
 
 def obtener_definicion_formulario_por_agente(agente_id: int) -> list[dict]:
     if not agente_con_edicion_guiada(agente_id):
-        raise ValueError("Edición guiada todavía no disponible para este agente.")
+        raise ValueError("EdiciÃ³n guiada todavÃ­a no disponible para este agente.")
     return FORMULARIOS_GUIADOS[agente_id]
 
 
@@ -338,12 +375,12 @@ def construir_resumen_agentes(directorio_trabajo: Path, directorio_salidas: Path
                     texto,
                     [
                         "Decision humana recomendada",
-                        "Decisión humana recomendada",
+                        "DecisiÃ³n humana recomendada",
                         "Decision recomendada",
-                        "Decisión recomendada",
+                        "DecisiÃ³n recomendada",
                     ],
                 )
-                aviso = extraer_valor_por_prefijo(texto, ["Aviso", "Limite", "Límite", "Riesgo"])
+                aviso = extraer_valor_por_prefijo(texto, ["Aviso", "Limite", "LÃ­mite", "Riesgo"])
                 estado = "informe_disponible"
                 if not aviso:
                     aviso = "Sin avisos identificados en el informe."
@@ -441,18 +478,18 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card guiada\" id=\"bloqueGuiado\">
-    <h2>Edición guiada</h2>
-    <p>Disponible para Agente 01, Agente 02 y Agente 03. La edición JSON cruda sigue disponible.</p>
+    <h2>EdiciÃ³n guiada</h2>
+    <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05 y Agente 06. La ediciÃ³n JSON cruda sigue disponible.</p>
     <div class=\"row\">
-      <button id=\"cargarGuiado\">Cargar edición guiada</button>
-      <button id=\"guardarGuiado\" class=\"principal\">Guardar edición guiada</button>
+      <button id=\"cargarGuiado\">Cargar ediciÃ³n guiada</button>
+      <button id=\"guardarGuiado\" class=\"principal\">Guardar ediciÃ³n guiada</button>
     </div>
     <div id=\"formularioGuiado\" class=\"form-grid\"></div>
   </div>
 
   <div class=\"grid\">
     <div class=\"card\">
-      <h2>Edición JSON</h2>
+      <h2>EdiciÃ³n JSON</h2>
       <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
     </div>
     <div class=\"card\">
@@ -473,7 +510,7 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card\">
-    <h2>Último informe cargado</h2>
+    <h2>Ãšltimo informe cargado</h2>
     <small>Usa el boton \"Cargar ultimo informe\" para refrescar esta seccion.</small>
     <p id=\"agenteInforme\"></p>
     <pre id=\"informe\"></pre>
@@ -504,10 +541,10 @@ function escaparHtml(texto){
 }
 
 function actualizarVisibilidadGuiada(){
-  const activo = ['1','2','3'].includes(String(sel.value));
+  const activo = ['1','2','3','4','5','6'].includes(String(sel.value));
   bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
   if(!activo){
-    formularioGuiado.innerHTML = '<p>Edición guiada todavía no disponible para este agente.</p>';
+    formularioGuiado.innerHTML = '<p>EdiciÃ³n guiada todavÃ­a no disponible para este agente.</p>';
   }
 }
 
@@ -642,23 +679,23 @@ function renderFormularioGuiado(campos){
 
 async function cargarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edición guiada','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la ediciÃ³n guiada','err');return;}
   renderFormularioGuiado(r.data.campos || []);
-  setMsg(r.data.mensaje || 'Edición guiada cargada.','ok');
+  setMsg(r.data.mensaje || 'EdiciÃ³n guiada cargada.','ok');
 }
 
 async function guardarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
   const campos = {};
   formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
     campos[nodo.getAttribute('data-ruta')] = nodo.value;
   });
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`,{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edición guiada','err');return;}
-  setMsg(r.data.mensaje || 'Edición guiada guardada.','ok');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la ediciÃ³n guiada','err');return;}
+  setMsg(r.data.mensaje || 'EdiciÃ³n guiada guardada.','ok');
   await cargar();
 }
 
@@ -779,7 +816,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                     return
                 if not agente_con_edicion_guiada(agente_id):
-                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "EdiciÃ³n guiada todavÃ­a no disponible para este agente."})
                     return
                 try:
                     self._enviar_json(200, construir_formulario_por_agente(directorio_trabajo, agente_id))
@@ -822,7 +859,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                         return
                     if not agente_con_edicion_guiada(agente_id):
-                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "EdiciÃ³n guiada todavÃ­a no disponible para este agente."})
                         return
                     payload = self._leer_json_post()
                     self._enviar_json(200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload))
@@ -891,3 +928,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
