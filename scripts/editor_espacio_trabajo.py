@@ -591,6 +591,27 @@ def ejecutar_demo_local(directorio_trabajo: Path, directorio_salidas: Path) -> d
     }
 
 
+def generar_guion_demo_local(directorio_salidas: Path) -> dict:
+    comando = [
+        sys.executable,
+        str(obtener_raiz_repositorio() / "scripts" / "generar_guion_demo_local.py"),
+        "--directorio-salidas",
+        str(directorio_salidas),
+        "--generar-html",
+    ]
+    codigo, salida = ejecutar_comando_local(comando)
+    ruta_md = directorio_salidas / "guion_demo_local.md"
+    ruta_html = directorio_salidas / "guion_demo_local.html"
+    return {
+        "ok": codigo == 0,
+        "codigo_salida": codigo,
+        "mensaje": "Guion local de demo generado." if codigo == 0 else "Error al generar guion local de demo.",
+        "salida_consola": salida,
+        "ruta_markdown": str(ruta_md),
+        "ruta_html": str(ruta_html),
+    }
+
+
 def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
     for linea in texto.splitlines():
         linea_limpia = linea.strip()
@@ -810,6 +831,17 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     </div>
     <p id=\"rutaDemo\"></p>
   </div>
+
+  <div class=\"card\">
+    <h2>Guion local de demo</h2>
+    <small>Genera y carga un guion local de presentacion tecnica guiada.</small>
+    <div class=\"row\">
+      <button id=\"generarGuionDemo\">Generar guion de demo</button>
+      <button id=\"cargarGuionDemo\">Cargar guion de demo</button>
+    </div>
+    <p id=\"rutaGuionDemo\"></p>
+    <pre id=\"guionDemoMarkdown\"></pre>
+  </div>
 </main>
 <script>
 const sel=document.getElementById('agente');
@@ -832,6 +864,8 @@ const informeConsolidado=document.getElementById('informeConsolidado');
 const rutaEvidencias=document.getElementById('rutaEvidencias');
 const evidenciasMarkdown=document.getElementById('evidenciasMarkdown');
 const rutaDemo=document.getElementById('rutaDemo');
+const rutaGuionDemo=document.getElementById('rutaGuionDemo');
+const guionDemoMarkdown=document.getElementById('guionDemoMarkdown');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -846,6 +880,8 @@ function setInformeConsolidado(t){informeConsolidado.textContent=t||'';}
 function setRutaEvidencias(t){rutaEvidencias.textContent=t||'';}
 function setEvidenciasMarkdown(t){evidenciasMarkdown.textContent=t||'';}
 function setRutaDemo(t){rutaDemo.textContent=t||'';}
+function setRutaGuionDemo(t){rutaGuionDemo.textContent=t||'';}
+function setGuionDemoMarkdown(t){guionDemoMarkdown.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -1091,6 +1127,26 @@ async function ejecutarDemoLocalCompleta(){
   setRutaDemo(panel + consolidado + evidencias + zip);
 }
 
+async function generarGuionDemo(){
+  setMsg('Generando guion local de demo...','warn');
+  const r=await pedir('/api/generar-guion-demo',{method:'POST'});
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
+  setSalida(r.data.salida_consola||'');
+  const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
+  const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
+  setRutaGuionDemo(md + html);
+}
+
+async function cargarGuionDemo(){
+  const r=await pedir('/api/guion-demo');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar guion de demo','err');return;}
+  setMsg('Guion de demo cargado.','ok');
+  setGuionDemoMarkdown(r.data.contenido_markdown||'');
+  const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
+  const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
+  setRutaGuionDemo(md + html);
+}
+
 function renderFormularioGuiado(campos){
   formularioGuiado.innerHTML = campos.map((campo) => {
     const multilinea = Boolean(campo.multilinea);
@@ -1165,6 +1221,8 @@ document.getElementById('cargarConsolidado').addEventListener('click',cargarInfo
 document.getElementById('exportarEvidencias').addEventListener('click',exportarEvidenciasDemo);
 document.getElementById('cargarEvidencias').addEventListener('click',cargarEvidenciasDemo);
 document.getElementById('ejecutarDemoLocal').addEventListener('click',ejecutarDemoLocalCompleta);
+document.getElementById('generarGuionDemo').addEventListener('click',generarGuionDemo);
+document.getElementById('cargarGuionDemo').addEventListener('click',cargarGuionDemo);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
 sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
@@ -1330,6 +1388,25 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     },
                 )
                 return
+            if url.path == "/api/guion-demo":
+                ruta_md = directorio_salidas / "guion_demo_local.md"
+                ruta_html = directorio_salidas / "guion_demo_local.html"
+                contenido = ""
+                if ruta_md.is_file():
+                    contenido = ruta_md.read_text(encoding="utf-8", errors="replace")
+                self._enviar_json(
+                    200,
+                    {
+                        "ok": True,
+                        "contenido_markdown": contenido,
+                        "ruta_markdown": str(ruta_md),
+                        "ruta_html": str(ruta_html),
+                        "existe_markdown": ruta_md.is_file(),
+                        "existe_html": ruta_html.is_file(),
+                        "mensaje": "Guion de demo disponible." if ruta_md.is_file() else "Guion de demo no disponible todavia.",
+                    },
+                )
+                return
             if url.path == "/api/resumen":
                 agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
@@ -1384,6 +1461,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     return
                 if url.path == "/api/ejecutar-demo-local":
                     self._enviar_json(200, ejecutar_demo_local(directorio_trabajo, directorio_salidas))
+                    return
+                if url.path == "/api/generar-guion-demo":
+                    self._enviar_json(200, generar_guion_demo_local(directorio_salidas))
                     return
 
                 if url.path.startswith("/api/formulario/"):

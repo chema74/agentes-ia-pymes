@@ -120,6 +120,19 @@ Se puede ejecutar la cadena local completa con un solo comando:
 Esta demo local reproducible prepara `espacio_trabajo/`, ejecuta los 10 agentes, genera panel local, informe consolidado y evidencias de demo en `salidas/`.
 No modifica JSON originales y no toca la web publica.
 
+## Guion local de demo
+
+Se puede generar un guion local de demo guiada:
+
+- `python scripts/generar_guion_demo_local.py --generar-html`
+
+Genera:
+
+- `salidas/guion_demo_local.md`
+- `salidas/guion_demo_local.html`
+
+Tambien puede generarse desde la consola local (`scripts/editor_espacio_trabajo.py`).
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:
