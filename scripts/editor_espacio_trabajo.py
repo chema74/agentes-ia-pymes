@@ -545,6 +545,29 @@ def generar_informe_consolidado_local(directorio_salidas: Path) -> dict:
     }
 
 
+def exportar_evidencias_demo_local(directorio_salidas: Path) -> dict:
+    comando = [
+        sys.executable,
+        str(obtener_raiz_repositorio() / "scripts" / "exportar_evidencias_demo.py"),
+        "--directorio-salidas",
+        str(directorio_salidas),
+        "--crear-zip",
+    ]
+    codigo, salida = ejecutar_comando_local(comando)
+    ruta_directorio = directorio_salidas / "evidencias_demo"
+    ruta_indice_html = ruta_directorio / "INDICE_EVIDENCIAS.html"
+    ruta_zip = directorio_salidas / "evidencias_demo.zip"
+    return {
+        "ok": codigo == 0,
+        "codigo_salida": codigo,
+        "mensaje": "Paquete local de evidencias exportado." if codigo == 0 else "Error al exportar paquete local de evidencias.",
+        "salida_consola": salida,
+        "ruta_directorio_evidencias": str(ruta_directorio),
+        "ruta_indice_html": str(ruta_indice_html),
+        "ruta_zip": str(ruta_zip),
+    }
+
+
 def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
     for linea in texto.splitlines():
         linea_limpia = linea.strip()
@@ -744,6 +767,17 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <p id=\"rutaConsolidado\"></p>
     <pre id=\"informeConsolidado\"></pre>
   </div>
+
+  <div class=\"card\">
+    <h2>Paquete local de evidencias</h2>
+    <small>Exporta un paquete local de demo con indice e informes disponibles.</small>
+    <div class=\"row\">
+      <button id=\"exportarEvidencias\">Exportar evidencias de demo</button>
+      <button id=\"cargarEvidencias\">Cargar indice de evidencias</button>
+    </div>
+    <p id=\"rutaEvidencias\"></p>
+    <pre id=\"evidenciasMarkdown\"></pre>
+  </div>
 </main>
 <script>
 const sel=document.getElementById('agente');
@@ -763,6 +797,8 @@ const comparacionDecision=document.getElementById('comparacionDecision');
 const comparacionDiff=document.getElementById('comparacionDiff');
 const rutaConsolidado=document.getElementById('rutaConsolidado');
 const informeConsolidado=document.getElementById('informeConsolidado');
+const rutaEvidencias=document.getElementById('rutaEvidencias');
+const evidenciasMarkdown=document.getElementById('evidenciasMarkdown');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -774,6 +810,8 @@ function setComparacionDecision(t){comparacionDecision.textContent=t||'';}
 function setComparacionDiff(t){comparacionDiff.textContent=t||'';}
 function setRutaConsolidado(t){rutaConsolidado.textContent=t||'';}
 function setInformeConsolidado(t){informeConsolidado.textContent=t||'';}
+function setRutaEvidencias(t){rutaEvidencias.textContent=t||'';}
+function setEvidenciasMarkdown(t){evidenciasMarkdown.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -985,6 +1023,28 @@ async function cargarInformeConsolidado(){
   setRutaConsolidado(md + html);
 }
 
+async function exportarEvidenciasDemo(){
+  setMsg('Exportando paquete local de evidencias...','warn');
+  const r=await pedir('/api/exportar-evidencias-demo',{method:'POST'});
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
+  setSalida(r.data.salida_consola||'');
+  const dir = r.data.ruta_directorio_evidencias ? `Directorio: ${r.data.ruta_directorio_evidencias}` : '';
+  const html = r.data.ruta_indice_html ? ` | Indice HTML: ${r.data.ruta_indice_html}` : '';
+  const zip = r.data.ruta_zip ? ` | ZIP: ${r.data.ruta_zip}` : '';
+  setRutaEvidencias(dir + html + zip);
+}
+
+async function cargarEvidenciasDemo(){
+  const r=await pedir('/api/evidencias-demo');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar indice de evidencias','err');return;}
+  setMsg('Indice de evidencias cargado.','ok');
+  setEvidenciasMarkdown(r.data.contenido_markdown||'');
+  const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
+  const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
+  const zip = r.data.ruta_zip ? ` | ZIP: ${r.data.ruta_zip}` : '';
+  setRutaEvidencias(md + html + zip);
+}
+
 function renderFormularioGuiado(campos){
   formularioGuiado.innerHTML = campos.map((campo) => {
     const multilinea = Boolean(campo.multilinea);
@@ -1056,6 +1116,8 @@ document.getElementById('cargarHistorico').addEventListener('click',cargarInform
 document.getElementById('compararHistorico').addEventListener('click',compararInformeHistorico);
 document.getElementById('generarConsolidado').addEventListener('click',generarInformeConsolidado);
 document.getElementById('cargarConsolidado').addEventListener('click',cargarInformeConsolidado);
+document.getElementById('exportarEvidencias').addEventListener('click',exportarEvidenciasDemo);
+document.getElementById('cargarEvidencias').addEventListener('click',cargarEvidenciasDemo);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
 sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
@@ -1199,6 +1261,28 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     },
                 )
                 return
+            if url.path == "/api/evidencias-demo":
+                ruta_md = directorio_salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.md"
+                ruta_html = directorio_salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.html"
+                ruta_zip = directorio_salidas / "evidencias_demo.zip"
+                contenido = ""
+                if ruta_md.is_file():
+                    contenido = ruta_md.read_text(encoding="utf-8", errors="replace")
+                self._enviar_json(
+                    200,
+                    {
+                        "ok": True,
+                        "contenido_markdown": contenido,
+                        "ruta_markdown": str(ruta_md),
+                        "ruta_html": str(ruta_html),
+                        "ruta_zip": str(ruta_zip),
+                        "existe_markdown": ruta_md.is_file(),
+                        "existe_html": ruta_html.is_file(),
+                        "existe_zip": ruta_zip.is_file(),
+                        "mensaje": "Indice de evidencias disponible." if ruta_md.is_file() else "Indice de evidencias no encontrado.",
+                    },
+                )
+                return
             if url.path == "/api/resumen":
                 agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
@@ -1247,6 +1331,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     return
                 if url.path == "/api/generar-informe-consolidado":
                     self._enviar_json(200, generar_informe_consolidado_local(directorio_salidas))
+                    return
+                if url.path == "/api/exportar-evidencias-demo":
+                    self._enviar_json(200, exportar_evidencias_demo_local(directorio_salidas))
                     return
 
                 if url.path.startswith("/api/formulario/"):

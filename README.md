@@ -98,6 +98,19 @@ Salidas por defecto:
 
 Esta consolidacion tambien esta disponible desde la consola local (`scripts/editor_espacio_trabajo.py`).
 
+## Paquete local de evidencias de demo
+
+Se puede exportar un paquete local de evidencias de demo:
+
+- `python scripts/exportar_evidencias_demo.py --crear-zip`
+
+Genera:
+
+- `salidas/evidencias_demo/`
+- `salidas/evidencias_demo.zip`
+
+Tambien puede generarse desde la consola local (`scripts/editor_espacio_trabajo.py`).
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:

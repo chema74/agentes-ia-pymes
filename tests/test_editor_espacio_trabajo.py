@@ -473,6 +473,71 @@ def test_pagina_principal_contiene_informe_consolidado() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_exporta_evidencias_demo() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        (salidas / "panel_local.html").write_text("<html><body>panel</body></html>\n", encoding="utf-8")
+        (salidas / "informe_consolidado.md").write_text("# Informe consolidado local\n", encoding="utf-8")
+        (salidas / "informe_consolidado.html").write_text("<html><body>consolidado</body></html>\n", encoding="utf-8")
+        (salidas / "agente-01").mkdir(parents=True, exist_ok=True)
+        (salidas / "agente-01" / "informe.txt").write_text("Informe agente 01\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8922)
+        try:
+            esperar_servidor(8922)
+            status, respuesta = post_json("http://127.0.0.1:8922/api/exportar-evidencias-demo")
+            assert status == 200
+            assert respuesta.get("ok") is True
+            assert (salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.md").is_file()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_servidor_lee_evidencias_demo() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        carpeta = salidas / "evidencias_demo"
+        carpeta.mkdir(parents=True, exist_ok=True)
+        (carpeta / "INDICE_EVIDENCIAS.md").write_text("# Paquete local de evidencias de demo\n", encoding="utf-8")
+
+        proceso = iniciar_editor(trabajo, salidas, 8923)
+        try:
+            esperar_servidor(8923)
+            with request.urlopen("http://127.0.0.1:8923/api/evidencias-demo", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert "Paquete local de evidencias de demo" in datos.get("contenido_markdown", "")
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_evidencias_demo() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8924)
+        try:
+            esperar_servidor(8924)
+            with request.urlopen("http://127.0.0.1:8924/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Paquete local de evidencias" in html
+            assert "Exportar evidencias de demo" in html
+            assert "Cargar indice de evidencias" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
 def test_catalogo_muestra_nombres_completos() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
@@ -1144,10 +1209,13 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_rechaza_comparacion_ruta_arbitraria,
         test_servidor_genera_informe_consolidado,
         test_servidor_lee_informe_consolidado,
+        test_servidor_exporta_evidencias_demo,
+        test_servidor_lee_evidencias_demo,
         test_pagina_principal_contiene_acciones,
         test_pagina_principal_contiene_historico,
         test_pagina_principal_contiene_comparador,
         test_pagina_principal_contiene_informe_consolidado,
+        test_pagina_principal_contiene_evidencias_demo,
         test_catalogo_muestra_nombres_completos,
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,
