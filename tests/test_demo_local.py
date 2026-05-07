@@ -47,6 +47,8 @@ def test_demo_local_completa_temporal() -> None:
         assert (base / "informe_consolidado.html").is_file()
         assert (base / "evidencias_demo" / "INDICE_EVIDENCIAS.md").is_file()
         assert (base / "evidencias_demo.zip").is_file()
+        assert (base / "guion_demo_local.md").is_file()
+        assert (base / "guion_demo_local.html").is_file()
 
 
 def test_demo_local_sin_historico() -> None:

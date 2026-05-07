@@ -57,6 +57,7 @@ def validar_entorno(raiz: Path, directorio_trabajo: Path, directorio_salidas: Pa
         raiz / "scripts" / "generar_panel_local.py",
         raiz / "scripts" / "generar_informe_consolidado.py",
         raiz / "scripts" / "exportar_evidencias_demo.py",
+        raiz / "scripts" / "generar_guion_demo_local.py",
         raiz / "scripts" / "editor_espacio_trabajo.py",
     ]
     faltantes = [ruta for ruta in requeridos if not ruta.is_file()]
@@ -85,6 +86,8 @@ def construir_resumen(directorio_trabajo: Path, directorio_salidas: Path, crear_
     informe_html = directorio_salidas / "informe_consolidado.html"
     evidencias = directorio_salidas / "evidencias_demo"
     zip_path = directorio_salidas / "evidencias_demo.zip"
+    guion_md = directorio_salidas / "guion_demo_local.md"
+    guion_html = directorio_salidas / "guion_demo_local.html"
 
     lineas = [
         "",
@@ -95,6 +98,8 @@ def construir_resumen(directorio_trabajo: Path, directorio_salidas: Path, crear_
         f"- Informe consolidado Markdown: {informe_md}",
         f"- Informe consolidado HTML: {informe_html}",
         f"- Carpeta de evidencias: {evidencias}",
+        f"- Guion de demo Markdown: {guion_md}",
+        f"- Guion de demo HTML: {guion_html}",
     ]
     if crear_zip:
         lineas.append(f"- ZIP de evidencias: {zip_path}")
@@ -181,6 +186,18 @@ def main(argv: list[str] | None = None) -> int:
     if args.crear_zip:
         comando_evidencias.append("--crear-zip")
     pasos.append(("Exportar evidencias de demo", comando_evidencias))
+    pasos.append(
+        (
+            "Generar guion local de demo",
+            [
+                sys.executable,
+                str(raiz / "scripts" / "generar_guion_demo_local.py"),
+                "--directorio-salidas",
+                str(directorio_salidas),
+                "--generar-html",
+            ],
+        )
+    )
 
     for nombre, comando in pasos:
         paso_ok, salida = ejecutar_paso(nombre, comando, raiz)
