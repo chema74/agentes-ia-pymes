@@ -470,7 +470,7 @@ def test_pagina_principal_contiene_edicion_guiada() -> None:
             cerrar_proceso(proceso)
 
 
-def test_formulario_agente_no_permitido() -> None:
+def test_formulario_agente_02_devuelve_campos() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
         salidas = Path(tmp_salidas)
@@ -480,9 +480,109 @@ def test_formulario_agente_no_permitido() -> None:
         proceso = iniciar_editor(trabajo, salidas, 8890)
         try:
             esperar_servidor(8890)
+            with request.urlopen("http://127.0.0.1:8890/api/formulario/agente-02", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert isinstance(datos.get("campos"), list)
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_02_guarda_cambio() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8891)
+        try:
+            esperar_servidor(8891)
+            payload = {"campos": {"empresa_ficticia.nombre_empresa": "Empresa Documental Editada"}}
+            status, respuesta = post_json("http://127.0.0.1:8891/api/formulario/agente-02", payload)
+            assert status == 200
+            assert respuesta.get("ok") is True
+
+            ruta_archivo = trabajo / "agente-02" / "datos.json"
+            datos = json.loads(ruta_archivo.read_text(encoding="utf-8"))
+            assert datos["empresa_ficticia"]["nombre_empresa"] == "Empresa Documental Editada"
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_03_devuelve_campos() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8892)
+        try:
+            esperar_servidor(8892)
+            with request.urlopen("http://127.0.0.1:8892/api/formulario/agente-03", timeout=5) as resp:
+                datos = json.loads(resp.read().decode("utf-8"))
+            assert datos.get("ok") is True
+            assert isinstance(datos.get("campos"), list)
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_03_guarda_cambio() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8893)
+        try:
+            esperar_servidor(8893)
+            payload = {"campos": {"empresa_ficticia.nombre_empresa": "Empresa Seguimiento Editada"}}
+            status, respuesta = post_json("http://127.0.0.1:8893/api/formulario/agente-03", payload)
+            assert status == 200
+            assert respuesta.get("ok") is True
+
+            ruta_archivo = trabajo / "agente-03" / "datos.json"
+            datos = json.loads(ruta_archivo.read_text(encoding="utf-8"))
+            assert datos["empresa_ficticia"]["nombre_empresa"] == "Empresa Seguimiento Editada"
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_indica_edicion_guiada_ampliada() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8894)
+        try:
+            esperar_servidor(8894)
+            with request.urlopen("http://127.0.0.1:8894/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Edición guiada" in html
+            assert "Agente 01" in html
+            assert "Agente 02" in html
+            assert "Agente 03" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_formulario_agente_04_no_disponible() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8895)
+        try:
+            esperar_servidor(8895)
             try:
-                request.urlopen("http://127.0.0.1:8890/api/formulario/agente-02", timeout=5)
-                assert False, "Se esperaba error controlado para formulario no permitido"
+                request.urlopen("http://127.0.0.1:8895/api/formulario/agente-04", timeout=5)
+                assert False, "Se esperaba error controlado para formulario no disponible"
             except error.HTTPError as http_error:
                 assert http_error.code == 404
             assert proceso.poll() is None
@@ -512,7 +612,12 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_formulario_agente_01_devuelve_campos,
         test_formulario_agente_01_guarda_cambio,
         test_pagina_principal_contiene_edicion_guiada,
-        test_formulario_agente_no_permitido,
+        test_formulario_agente_02_devuelve_campos,
+        test_formulario_agente_02_guarda_cambio,
+        test_formulario_agente_03_devuelve_campos,
+        test_formulario_agente_03_guarda_cambio,
+        test_pagina_principal_indica_edicion_guiada_ampliada,
+        test_formulario_agente_04_no_disponible,
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite

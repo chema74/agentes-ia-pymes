@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -23,18 +23,38 @@ AGENTES = {
     10: "Agente de Revision y Cumplimiento",
 }
 
-FORMULARIO_AGENTE_01 = [
-    ("cliente.nombre_cliente", "Nombre del cliente"),
-    ("cliente.nombre_empresa", "Nombre de la empresa"),
-    ("cliente.correo_contacto", "Correo de contacto"),
-    ("cliente.telefono_contacto", "Telefono de contacto"),
-    ("cliente.tipo_servicio_solicitado", "Tipo de servicio solicitado"),
-    ("cliente.necesidad_principal", "Necesidad principal"),
-    ("cliente.prioridad_inicial", "Prioridad inicial"),
-    ("cliente.estado_onboarding", "Estado del onboarding"),
-    ("cliente.responsable_interno", "Responsable interno"),
-    ("cliente.observaciones_internas", "Observaciones internas"),
-]
+FORMULARIOS_GUIADOS = {
+    1: [
+        {"clave": "nombre_cliente", "etiqueta": "Nombre del cliente", "rutas_json": ["cliente.nombre_cliente"], "multilinea": False},
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["cliente.nombre_empresa"], "multilinea": False},
+        {"clave": "correo_contacto", "etiqueta": "Correo de contacto", "rutas_json": ["cliente.correo_contacto"], "multilinea": False},
+        {"clave": "telefono_contacto", "etiqueta": "Telefono de contacto", "rutas_json": ["cliente.telefono_contacto"], "multilinea": False},
+        {"clave": "tipo_servicio_solicitado", "etiqueta": "Tipo de servicio solicitado", "rutas_json": ["cliente.tipo_servicio_solicitado"], "multilinea": False},
+        {"clave": "necesidad_principal", "etiqueta": "Necesidad principal", "rutas_json": ["cliente.necesidad_principal"], "multilinea": True},
+        {"clave": "prioridad_inicial", "etiqueta": "Prioridad inicial", "rutas_json": ["cliente.prioridad_inicial"], "multilinea": False},
+        {"clave": "estado_onboarding", "etiqueta": "Estado del onboarding", "rutas_json": ["cliente.estado_onboarding"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["cliente.responsable_interno"], "multilinea": False},
+        {"clave": "observaciones_internas", "etiqueta": "Observaciones internas", "rutas_json": ["cliente.observaciones_internas"], "multilinea": True},
+    ],
+    2: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
+        {"clave": "estado", "etiqueta": "Estado", "rutas_json": ["metadatos_ejemplo.estado"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia"], "multilinea": True},
+    ],
+    3: [
+        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa"], "multilinea": False},
+        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"], "multilinea": False},
+        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
+        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
+        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
+        {"clave": "estado", "etiqueta": "Estado", "rutas_json": ["metadatos_ejemplo.estado"], "multilinea": False},
+        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia"], "multilinea": True},
+    ],
+}
 
 
 def obtener_raiz_repositorio() -> Path:
@@ -127,43 +147,79 @@ def asignar_valor_por_ruta(datos: dict, ruta_json: str, valor: str) -> None:
     actual[segmentos[-1]] = valor
 
 
-def construir_formulario_agente_01(directorio_trabajo: Path) -> dict:
-    datos = leer_json_agente(directorio_trabajo, 1)
+def agente_con_edicion_guiada(agente_id: int) -> bool:
+    return agente_id in FORMULARIOS_GUIADOS
+
+
+def obtener_id_formulario_desde_ruta(ruta_api: str) -> int | None:
+    prefijo = "/api/formulario/agente-"
+    if not ruta_api.startswith(prefijo):
+        return None
+    texto_id = ruta_api.replace(prefijo, "", 1)
+    if len(texto_id) != 2 or not texto_id.isdigit():
+        return None
+    return int(texto_id)
+
+
+def obtener_definicion_formulario_por_agente(agente_id: int) -> list[dict]:
+    if not agente_con_edicion_guiada(agente_id):
+        raise ValueError("Edición guiada todavía no disponible para este agente.")
+    return FORMULARIOS_GUIADOS[agente_id]
+
+
+def resolver_ruta_formulario_disponible(datos: dict, rutas_json: list[str]) -> str:
+    for ruta_json in rutas_json:
+        if obtener_valor_por_ruta(datos, ruta_json) != "":
+            return ruta_json
+    return rutas_json[0]
+
+
+def construir_formulario_por_agente(directorio_trabajo: Path, agente_id: int) -> dict:
+    definicion = obtener_definicion_formulario_por_agente(agente_id)
+    datos = leer_json_agente(directorio_trabajo, agente_id)
     campos = []
-    for clave, etiqueta in FORMULARIO_AGENTE_01:
+    for campo in definicion:
+        ruta_json = resolver_ruta_formulario_disponible(datos, campo["rutas_json"])
         campos.append(
             {
-                "clave": clave.split(".")[-1],
-                "etiqueta": etiqueta,
-                "valor": obtener_valor_por_ruta(datos, clave),
-                "ruta_json": clave,
+                "clave": campo["clave"],
+                "etiqueta": campo["etiqueta"],
+                "valor": obtener_valor_por_ruta(datos, ruta_json),
+                "ruta_json": ruta_json,
+                "multilinea": bool(campo.get("multilinea")),
             }
         )
     return {
         "ok": True,
-        "agente": 1,
+        "agente": f"agente-{agente_id:02d}",
         "campos": campos,
-        "mensaje": "Formulario guiado del Agente 01 cargado correctamente.",
+        "mensaje": f"Formulario guiado del Agente {agente_id:02d} cargado correctamente.",
     }
 
 
-def guardar_formulario_agente_01(directorio_trabajo: Path, payload: dict) -> dict:
-    datos = leer_json_agente(directorio_trabajo, 1)
+def guardar_formulario_por_agente(directorio_trabajo: Path, agente_id: int, payload: dict) -> dict:
+    definicion = obtener_definicion_formulario_por_agente(agente_id)
+    datos = leer_json_agente(directorio_trabajo, agente_id)
     valores = payload.get("campos")
     if not isinstance(valores, dict):
         raise ValueError("La peticion del formulario debe incluir un objeto 'campos'.")
 
-    for ruta_json, _etiqueta in FORMULARIO_AGENTE_01:
-        if ruta_json in valores:
-            asignar_valor_por_ruta(datos, ruta_json, str(valores[ruta_json]))
+    rutas_permitidas = set()
+    for campo in definicion:
+        for ruta_json in campo["rutas_json"]:
+            rutas_permitidas.add(ruta_json)
 
-    ruta = ruta_datos_agente(directorio_trabajo, 1)
+    for ruta_json, valor in valores.items():
+        if ruta_json in rutas_permitidas:
+            asignar_valor_por_ruta(datos, ruta_json, str(valor))
+
+    ruta = ruta_datos_agente(directorio_trabajo, agente_id)
     contenido = json.dumps(datos, ensure_ascii=False, indent=2)
     ruta.write_text(contenido + "\n", encoding="utf-8")
 
     return {
         "ok": True,
-        "mensaje": "Edicion guiada del Agente 01 guardada correctamente.",
+        "mensaje": f"Edicion guiada del Agente {agente_id:02d} guardada correctamente.",
     }
 
 
@@ -385,8 +441,8 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card guiada\" id=\"bloqueGuiado\">
-    <h2>Edición guiada del Agente 01</h2>
-    <p>Seccion piloto para modificar campos clave sin editar directamente el JSON crudo.</p>
+    <h2>Edición guiada</h2>
+    <p>Disponible para Agente 01, Agente 02 y Agente 03. La edición JSON cruda sigue disponible.</p>
     <div class=\"row\">
       <button id=\"cargarGuiado\">Cargar edición guiada</button>
       <button id=\"guardarGuiado\" class=\"principal\">Guardar edición guiada</button>
@@ -448,8 +504,11 @@ function escaparHtml(texto){
 }
 
 function actualizarVisibilidadGuiada(){
-  const activo = String(sel.value) === '1';
+  const activo = ['1','2','3'].includes(String(sel.value));
   bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
+  if(!activo){
+    formularioGuiado.innerHTML = '<p>Edición guiada todavía no disponible para este agente.</p>';
+  }
 }
 
 async function pedir(url, opciones={}){
@@ -573,7 +632,7 @@ async function abrirPanelLocal(){
 
 function renderFormularioGuiado(campos){
   formularioGuiado.innerHTML = campos.map((campo) => {
-    const multilinea = campo.ruta_json === 'cliente.necesidad_principal' || campo.ruta_json === 'cliente.observaciones_internas';
+    const multilinea = Boolean(campo.multilinea);
     if (multilinea) {
       return `<label class="campo"><span>${escaparHtml(campo.etiqueta)}</span><textarea data-ruta="${escaparHtml(campo.ruta_json)}">${escaparHtml(campo.valor || '')}</textarea></label>`;
     }
@@ -582,20 +641,22 @@ function renderFormularioGuiado(campos){
 }
 
 async function cargarGuiado(){
-  if(String(sel.value)!=='1'){setMsg('La edición guiada piloto solo está disponible para el Agente 01.','warn');return;}
-  const r=await pedir('/api/formulario/agente-01');
+  const idTexto = String(sel.value);
+  if(!['1','2','3'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
+  const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`);
   if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edición guiada','err');return;}
   renderFormularioGuiado(r.data.campos || []);
   setMsg(r.data.mensaje || 'Edición guiada cargada.','ok');
 }
 
 async function guardarGuiado(){
-  if(String(sel.value)!=='1'){setMsg('La edición guiada piloto solo está disponible para el Agente 01.','warn');return;}
+  const idTexto = String(sel.value);
+  if(!['1','2','3'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
   const campos = {};
   formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
     campos[nodo.getAttribute('data-ruta')] = nodo.value;
   });
-  const r=await pedir('/api/formulario/agente-01',{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
+  const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`,{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
   if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edición guiada','err');return;}
   setMsg(r.data.mensaje || 'Edición guiada guardada.','ok');
   await cargar();
@@ -708,20 +769,24 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 ruta_panel = directorio_salidas / "panel_local.html"
                 self._enviar_json(200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()})
                 return
-            if url.path == "/api/formulario/agente-01":
-                try:
-                    self._enviar_json(200, construir_formulario_agente_01(directorio_trabajo))
-                except FileNotFoundError as error:
-                    self._enviar_json(404, {"ok": False, "error": str(error)})
-                except Exception as error:
-                    self._enviar_json(500, {"ok": False, "error": f"Error al cargar el formulario: {error}"})
-                return
             if url.path == "/api/resumen":
                 agentes = construir_resumen_agentes(directorio_trabajo, directorio_salidas)
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
                 return
             if url.path.startswith("/api/formulario/"):
-                self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                agente_id = obtener_id_formulario_desde_ruta(url.path)
+                if agente_id is None:
+                    self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                    return
+                if not agente_con_edicion_guiada(agente_id):
+                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                    return
+                try:
+                    self._enviar_json(200, construir_formulario_por_agente(directorio_trabajo, agente_id))
+                except FileNotFoundError as error:
+                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": str(error)})
+                except Exception as error:
+                    self._enviar_json(500, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": f"Error al cargar el formulario: {error}"})
                 return
             self._enviar_json(404, {"error": "Ruta no encontrada."})
 
@@ -751,13 +816,16 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(200, generar_panel_local(directorio_trabajo, directorio_salidas))
                     return
 
-                if url.path == "/api/formulario/agente-01":
-                    payload = self._leer_json_post()
-                    self._enviar_json(200, guardar_formulario_agente_01(directorio_trabajo, payload))
-                    return
-
                 if url.path.startswith("/api/formulario/"):
-                    self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                    agente_id = obtener_id_formulario_desde_ruta(url.path)
+                    if agente_id is None:
+                        self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                        return
+                    if not agente_con_edicion_guiada(agente_id):
+                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                        return
+                    payload = self._leer_json_post()
+                    self._enviar_json(200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload))
                     return
 
                 self._enviar_json(404, {"error": "Ruta no encontrada."})
