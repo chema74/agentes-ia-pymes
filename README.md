@@ -111,6 +111,15 @@ Genera:
 
 Tambien puede generarse desde la consola local (`scripts/editor_espacio_trabajo.py`).
 
+## Demo local reproducible
+
+Se puede ejecutar la cadena local completa con un solo comando:
+
+- `python scripts/ejecutar_demo_local.py --crear-zip`
+
+Esta demo local reproducible prepara `espacio_trabajo/`, ejecuta los 10 agentes, genera panel local, informe consolidado y evidencias de demo en `salidas/`.
+No modifica JSON originales y no toca la web publica.
+
 ## Editor local del espacio de trabajo
 
 Para editar los JSON de trabajo sin tocar los originales:

@@ -568,6 +568,29 @@ def exportar_evidencias_demo_local(directorio_salidas: Path) -> dict:
     }
 
 
+def ejecutar_demo_local(directorio_trabajo: Path, directorio_salidas: Path) -> dict:
+    comando = [
+        sys.executable,
+        str(obtener_raiz_repositorio() / "scripts" / "ejecutar_demo_local.py"),
+        "--directorio-trabajo",
+        str(directorio_trabajo),
+        "--directorio-salidas",
+        str(directorio_salidas),
+        "--crear-zip",
+    ]
+    codigo, salida = ejecutar_comando_local(comando)
+    return {
+        "ok": codigo == 0,
+        "codigo_salida": codigo,
+        "mensaje": "Demo local reproducible completada." if codigo == 0 else "Error al ejecutar la demo local reproducible.",
+        "salida_consola": salida,
+        "ruta_panel": str(directorio_salidas / "panel_local.html"),
+        "ruta_informe_consolidado": str(directorio_salidas / "informe_consolidado.md"),
+        "ruta_evidencias": str(directorio_salidas / "evidencias_demo"),
+        "ruta_zip": str(directorio_salidas / "evidencias_demo.zip"),
+    }
+
+
 def extraer_valor_por_prefijo(texto: str, prefijos: list[str]) -> str:
     for linea in texto.splitlines():
         linea_limpia = linea.strip()
@@ -778,6 +801,15 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <p id=\"rutaEvidencias\"></p>
     <pre id=\"evidenciasMarkdown\"></pre>
   </div>
+
+  <div class=\"card\">
+    <h2>Demo local reproducible</h2>
+    <small>Ejecuta cadena completa local: espacio de trabajo, agentes, panel, consolidado y evidencias.</small>
+    <div class=\"row\">
+      <button id=\"ejecutarDemoLocal\">Ejecutar demo local completa</button>
+    </div>
+    <p id=\"rutaDemo\"></p>
+  </div>
 </main>
 <script>
 const sel=document.getElementById('agente');
@@ -799,6 +831,7 @@ const rutaConsolidado=document.getElementById('rutaConsolidado');
 const informeConsolidado=document.getElementById('informeConsolidado');
 const rutaEvidencias=document.getElementById('rutaEvidencias');
 const evidenciasMarkdown=document.getElementById('evidenciasMarkdown');
+const rutaDemo=document.getElementById('rutaDemo');
 
 function setMsg(t,tipo='warn'){msg.textContent=t;msg.className='estado '+tipo;}
 function setSalida(t){salida.textContent=t||'';}
@@ -812,6 +845,7 @@ function setRutaConsolidado(t){rutaConsolidado.textContent=t||'';}
 function setInformeConsolidado(t){informeConsolidado.textContent=t||'';}
 function setRutaEvidencias(t){rutaEvidencias.textContent=t||'';}
 function setEvidenciasMarkdown(t){evidenciasMarkdown.textContent=t||'';}
+function setRutaDemo(t){rutaDemo.textContent=t||'';}
 function escaparHtml(texto){
   return String(texto ?? '')
     .replaceAll('&','&amp;')
@@ -1045,6 +1079,18 @@ async function cargarEvidenciasDemo(){
   setRutaEvidencias(md + html + zip);
 }
 
+async function ejecutarDemoLocalCompleta(){
+  setMsg('Ejecutando demo local reproducible...','warn');
+  const r=await pedir('/api/ejecutar-demo-local',{method:'POST'});
+  setMsg(r.data.mensaje||'Operacion finalizada',r.data.ok?'ok':'err');
+  setSalida(r.data.salida_consola||'');
+  const panel = r.data.ruta_panel ? `Panel: ${r.data.ruta_panel}` : '';
+  const consolidado = r.data.ruta_informe_consolidado ? ` | Consolidado: ${r.data.ruta_informe_consolidado}` : '';
+  const evidencias = r.data.ruta_evidencias ? ` | Evidencias: ${r.data.ruta_evidencias}` : '';
+  const zip = r.data.ruta_zip ? ` | ZIP: ${r.data.ruta_zip}` : '';
+  setRutaDemo(panel + consolidado + evidencias + zip);
+}
+
 function renderFormularioGuiado(campos){
   formularioGuiado.innerHTML = campos.map((campo) => {
     const multilinea = Boolean(campo.multilinea);
@@ -1118,6 +1164,7 @@ document.getElementById('generarConsolidado').addEventListener('click',generarIn
 document.getElementById('cargarConsolidado').addEventListener('click',cargarInformeConsolidado);
 document.getElementById('exportarEvidencias').addEventListener('click',exportarEvidenciasDemo);
 document.getElementById('cargarEvidencias').addEventListener('click',cargarEvidenciasDemo);
+document.getElementById('ejecutarDemoLocal').addEventListener('click',ejecutarDemoLocalCompleta);
 sel.addEventListener('change',actualizarVisibilidadGuiada);
 sel.addEventListener('change',actualizarHistorico);
 resumen.addEventListener('click',desdeTarjeta);
@@ -1334,6 +1381,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     return
                 if url.path == "/api/exportar-evidencias-demo":
                     self._enviar_json(200, exportar_evidencias_demo_local(directorio_salidas))
+                    return
+                if url.path == "/api/ejecutar-demo-local":
+                    self._enviar_json(200, ejecutar_demo_local(directorio_trabajo, directorio_salidas))
                     return
 
                 if url.path.startswith("/api/formulario/"):

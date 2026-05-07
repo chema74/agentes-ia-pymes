@@ -538,6 +538,42 @@ def test_pagina_principal_contiene_evidencias_demo() -> None:
             cerrar_proceso(proceso)
 
 
+def test_servidor_ejecuta_demo_local() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8925)
+        try:
+            esperar_servidor(8925)
+            status, respuesta = post_json("http://127.0.0.1:8925/api/ejecutar-demo-local")
+            assert status == 200
+            assert respuesta.get("ok") is True
+            assert (salidas / "panel_local.html").is_file() or (salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.md").is_file()
+        finally:
+            cerrar_proceso(proceso)
+
+
+def test_pagina_principal_contiene_demo_local() -> None:
+    with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
+        trabajo = Path(tmp_trabajo)
+        salidas = Path(tmp_salidas)
+        preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
+        assert preparado.returncode == 0, preparado.stdout + preparado.stderr
+
+        proceso = iniciar_editor(trabajo, salidas, 8926)
+        try:
+            esperar_servidor(8926)
+            with request.urlopen("http://127.0.0.1:8926/", timeout=5) as resp:
+                html = resp.read().decode("utf-8", errors="replace")
+            assert "Demo local reproducible" in html
+            assert "Ejecutar demo local completa" in html
+        finally:
+            cerrar_proceso(proceso)
+
+
 def test_catalogo_muestra_nombres_completos() -> None:
     with tempfile.TemporaryDirectory() as tmp_trabajo, tempfile.TemporaryDirectory() as tmp_salidas:
         trabajo = Path(tmp_trabajo)
@@ -1211,11 +1247,13 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
         test_servidor_lee_informe_consolidado,
         test_servidor_exporta_evidencias_demo,
         test_servidor_lee_evidencias_demo,
+        test_servidor_ejecuta_demo_local,
         test_pagina_principal_contiene_acciones,
         test_pagina_principal_contiene_historico,
         test_pagina_principal_contiene_comparador,
         test_pagina_principal_contiene_informe_consolidado,
         test_pagina_principal_contiene_evidencias_demo,
+        test_pagina_principal_contiene_demo_local,
         test_catalogo_muestra_nombres_completos,
         test_servidor_resumen_sin_informes,
         test_servidor_resumen_con_informe,
