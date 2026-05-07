@@ -1,10 +1,10 @@
-# Índice Documental del Repositorio
+﻿# Ãndice Documental del Repositorio
 
-## Propósito del índice
+## PropÃ³sito del Ã­ndice
 
 Este documento sirve como guia de lectura y navegacion del repositorio. Su objetivo es ayudar a cualquier revisor a localizar rapido la documentacion global, la documentacion por agente, las evidencias tecnicas, la demo local y los documentos de cierre.
 
-## Lectura recomendada para revisión rápida
+## Lectura recomendada para revisiÃ³n rÃ¡pida
 
 1. `README.md`
 2. `CATALOGO.md`
@@ -12,8 +12,9 @@ Este documento sirve como guia de lectura y navegacion del repositorio. Su objet
 4. `docs/GUIA_DEMO_LOCAL.md`
 5. `docs/CIERRE_TECNICO_V1.md`
 6. `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
+7. `docs/CIERRE_V1_2_EDICION_GUIADA.md`
 
-## Documentación global
+## DocumentaciÃ³n global
 
 ### `README.md`
 
@@ -45,20 +46,20 @@ Describe el cierre tecnico de la V1 local. Deja constancia de lo que queda imple
 
 ### `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
 
-Documenta el cierre de la capa local interactiva añadida sobre la V1 tecnica local. Resume consola local, espacio de trabajo editable, informes, panel HTML local, flujo operativo y limites actuales de esta fase.
+Documenta el cierre de la capa local interactiva aÃ±adida sobre la V1 tecnica local. Resume consola local, espacio de trabajo editable, informes, panel HTML local, flujo operativo y limites actuales de esta fase.
 
-## Documentación por agente
+## DocumentaciÃ³n por agente
 
 Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON ficticio, script local y pruebas `unittest` del agente correspondiente.
 
-## Documentos de evidencia y validación
+## Documentos de evidencia y validaciÃ³n
 
 - `docs/EVIDENCIAS_TECNICAS.md` resume que puede demostrarse hoy y deja constancia de las evidencias tecnicas verificables.
 - `docs/GUIA_DEMO_LOCAL.md` explica como ejecutar la demo local y como revisar el comportamiento minimo del repositorio.
 - `scripts/validar_repositorio.py` valida los tests y los JSON de ejemplo, ademas de la coherencia tecnica minima del repositorio.
 - `.github/workflows/validacion.yml` ejecuta la validacion tecnica en GitHub Actions para `push` y `pull_request`.
 
-## Qué leer según el objetivo del revisor
+## QuÃ© leer segÃºn el objetivo del revisor
 
 - Para entender el proyecto completo: `README.md` y `CATALOGO.md`.
 - Para comprobar evidencias tecnicas: `docs/EVIDENCIAS_TECNICAS.md`.
@@ -67,10 +68,10 @@ Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON fict
 - Para comprobar limites y fuera de alcance: `docs/CIERRE_TECNICO_V1.md`.
 - Para revisar la capa local interactiva: `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`.
 
-## Límites del repositorio actual
+## LÃ­mites del repositorio actual
 
 - No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
-- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay API (*Application Programming Interface - Interfaz de ProgramaciÃ³n de Aplicaciones*) productiva.
 - No hay dashboard productivo.
 - No hay Google Workspace.
 - No hay integraciones reales.
@@ -79,9 +80,10 @@ Cada carpeta dentro de `agentes/` contiene `README`, documentacion V1, JSON fict
 
 ## Cierre
 
-Este indice debe mantenerse actualizado si se añaden nuevas fases, scripts, documentacion o capas de interaccion local. Su funcion es ordenar la lectura documental y evitar interpretaciones confusas sobre el alcance actual.
+Este indice debe mantenerse actualizado si se aÃ±aden nuevas fases, scripts, documentacion o capas de interaccion local. Su funcion es ordenar la lectura documental y evitar interpretaciones confusas sobre el alcance actual.
 
-## 🪪 Licencia y Autoría
+## ðŸªª Licencia y AutorÃ­a
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
-© 2025 – Txema Ríos. Todos los derechos compartidos.
+Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
+

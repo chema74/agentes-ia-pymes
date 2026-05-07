@@ -1,5 +1,26 @@
 # Registro de Cambios
 
+## v1.2.0 - Edicion guiada local completa
+
+Esta version completa la fase V1.2 como capa de edicion guiada local para los 10 agentes del repositorio, manteniendo la consola local como herramienta temporal de trabajo con datos ficticios.
+
+## Añadido
+
+- edicion guiada para los 10 agentes,
+- formularios locales por agente,
+- ejecucion con datos editados en el espacio de trabajo,
+- conservacion de JSON originales en `agentes/*/datos_ejemplo/`,
+- integracion con consola local, informes y panel HTML local.
+
+## Límites de la versión
+
+- No hay IA (*Artificial Intelligence - Inteligencia Artificial*) funcional.
+- No hay API (*Application Programming Interface - Interfaz de Programación de Aplicaciones*) productiva.
+- No hay dashboard productivo.
+- No hay web pública.
+- No hay Google Workspace.
+- No hay integraciones reales.
+
 ## v1.1.0 - Capa local interactiva
 
 Esta version amplia la V1 tecnica local con una capa local interactiva orientada a revision humana, manipulacion controlada de datos ficticios y visualizacion local reproducible.

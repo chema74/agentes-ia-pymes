@@ -100,9 +100,11 @@ Puedes definir directorios al arrancar:
 - `docs/GUIA_DEMO_LOCAL.md`
 - `docs/CIERRE_TECNICO_V1.md`
 - `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
+- `docs/CIERRE_V1_2_EDICION_GUIADA.md`
 - `docs/INDICE_DOCUMENTAL.md`
 
 El cierre de la capa local interactiva queda documentado en `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`.
+El cierre de la fase de edicion guiada local completa queda documentado en `docs/CIERRE_V1_2_EDICION_GUIADA.md`.
 
 ## Fuera de alcance actual
 
