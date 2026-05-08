@@ -377,6 +377,10 @@ def test_pagina_principal_contiene_acciones() -> None:
             assert '<meta charset="utf-8">' in html
             assert "Edición guiada" in html
             assert "Edición JSON" in html
+            assert "Comparación local" in html
+            assert "Ã" not in html
+            assert "Â" not in html
+            assert "�" not in html
             assert "Formatear JSON" in html
             assert "Ejecutar agente seleccionado" in html
             assert "Ejecutar todos los agentes" in html

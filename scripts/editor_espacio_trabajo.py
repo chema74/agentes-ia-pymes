@@ -298,7 +298,7 @@ def construir_comparacion_informes(directorio_salidas: Path, agente_id: int, arc
             "lineas_sin_cambios_aprox": sin_cambios,
         },
         "diff": diff_texto,
-        "mensaje": "Comparacion local completada.",
+        "mensaje": "Comparaci\u00f3n local completada.",
     }
 
 
@@ -432,7 +432,7 @@ def guardar_formulario_por_agente(directorio_trabajo: Path, agente_id: int, payl
 
     return {
         "ok": True,
-        "mensaje": f"Edicion guiada del Agente {agente_id:02d} guardada correctamente.",
+        "mensaje": f"Edici\u00f3n guiada del Agente {agente_id:02d} guardada correctamente.",
     }
 
 
@@ -746,21 +746,21 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card guiada\" id=\"bloqueGuiado\">
-    <h2>Edición guiada</h2>
-    <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05, Agente 06, Agente 07, Agente 08, Agente 09 y Agente 10. La edicion JSON cruda sigue disponible.</p>
-    <!-- Compatibilidad de texto: Edición guiada -->
+    <h2>Edici\u00f3n guiada</h2>
+    <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05, Agente 06, Agente 07, Agente 08, Agente 09 y Agente 10. La edici\u00f3n JSON cruda sigue disponible.</p>
+    <!-- Compatibilidad de texto: Edici\u00f3n guiada -->
     <div class=\"row\">
-      <button id=\"cargarGuiado\">Cargar edición guiada</button>
-      <button id=\"guardarGuiado\" class=\"principal\">Guardar edición guiada</button>
+      <button id=\"cargarGuiado\">Cargar edici\u00f3n guiada</button>
+      <button id=\"guardarGuiado\" class=\"principal\">Guardar edici\u00f3n guiada</button>
     </div>
     <div id=\"formularioGuiado\" class=\"form-grid\"></div>
   </div>
 
   <div class=\"grid\">
     <div class=\"card\">
-      <h2>Edición JSON</h2>
+      <h2>Edici\u00f3n JSON</h2>
       <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
-      <!-- Compatibilidad de texto: Edición JSON -->
+      <!-- Compatibilidad de texto: Edici\u00f3n JSON -->
     </div>
     <div class=\"card\">
       <h2>Acciones operativas</h2>
@@ -780,23 +780,23 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card\">
-    <h2>Último informe cargado</h2>
-    <small>Usa el boton \"Cargar ultimo informe\" para refrescar esta seccion.</small>
+    <h2>\u00daltimo informe cargado</h2>
+    <small>Usa el bot\u00f3n \"Cargar ultimo informe\" para refrescar esta secci\u00f3n.</small>
     <p id=\"agenteInforme\"></p>
     <pre id=\"informe\"></pre>
   </div>
   <div class=\"card\">
-    <h2>Histórico local de ejecuciones</h2>
-    <small>Informes anteriores guardados por agente en la carpeta historico.</small>
+    <h2>Hist\u00f3rico local de ejecuciones</h2>
+    <small>Informes anteriores guardados por agente en la carpeta hist\u00f3rico.</small>
     <div class=\"row\">
-      <button id=\"actualizarHistorico\">Actualizar histórico</button>
+      <button id=\"actualizarHistorico\">Actualizar hist\u00f3rico</button>
       <select id=\"archivoHistorico\"></select>
-      <button id=\"cargarHistorico\">Cargar informe histórico</button>
-      <button id=\"compararHistorico\">Comparar con último informe</button>
+      <button id=\"cargarHistorico\">Cargar informe hist\u00f3rico</button>
+      <button id=\"compararHistorico\">Comparar con \u00faltimo informe</button>
     </div>
     <p id=\"historicoInfo\"></p>
     <pre id=\"informeHistorico\"></pre>
-    <h3>Comparación local</h3>
+    <h3>Comparaci\u00f3n local</h3>
     <p id=\"comparacionDecision\"></p>
     <pre id=\"comparacionDiff\"></pre>
   </div>
@@ -894,7 +894,7 @@ function actualizarVisibilidadGuiada(){
   const activo = ['1','2','3','4','5','6','7','8','9','10'].includes(String(sel.value));
   bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
   if(!activo){
-    formularioGuiado.innerHTML = '<p>Edición guiada todavía no disponible para este agente.</p>';
+    formularioGuiado.innerHTML = '<p>Edici\u00f3n guiada todav\u00eda no disponible para este agente.</p>';
   }
 }
 
@@ -1009,7 +1009,7 @@ function renderHistorico(historico, id){
     const o=document.createElement('option');
     o.value='';o.textContent='Sin informes históricos';
     archivoHistorico.appendChild(o);
-    setHistoricoInfo(`Agente ${id}: no hay histórico.`);
+    setHistoricoInfo(`Agente ${id}: no hay hist\u00f3rico.`);
     return;
   }
   historico.forEach((item, idx)=>{
@@ -1021,38 +1021,38 @@ function renderHistorico(historico, id){
     o.textContent=`${idx+1}. ${item.nombre_archivo}${fecha}${size}`;
     archivoHistorico.appendChild(o);
   });
-  setHistoricoInfo(`Agente ${id}: ${historico.length} informe(s) histórico(s).`);
+  setHistoricoInfo(`Agente ${id}: ${historico.length} informe(s) hist\u00f3rico(s).`);
 }
 
 async function actualizarHistorico(){
   const id=sel.value;
   const r=await pedir(`/api/historico?id=${id}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar histórico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar hist\u00f3rico','err');return;}
   renderHistorico(r.data.historico||[], id);
 }
 
 async function cargarInformeHistorico(){
   const id=sel.value;
   const archivo=archivoHistorico.value;
-  if(!archivo){setMsg('No hay archivo histórico seleccionado.','warn');return;}
+  if(!archivo){setMsg('No hay archivo hist\u00f3rico seleccionado.','warn');return;}
   const r=await pedir(`/api/historico/informe?id=${id}&archivo=${encodeURIComponent(archivo)}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar informe histórico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar informe hist\u00f3rico','err');return;}
   setInformeHistorico(r.data.contenido||'');
-  setMsg('Informe histórico cargado.','ok');
+  setMsg('Informe hist\u00f3rico cargado.','ok');
 }
 
 async function compararInformeHistorico(){
   const id=sel.value;
   const archivo=archivoHistorico.value;
-  if(!archivo){setMsg('No hay archivo histórico seleccionado.','warn');return;}
+  if(!archivo){setMsg('No hay archivo hist\u00f3rico seleccionado.','warn');return;}
   const r=await pedir(`/api/comparar?id=${id}&archivo=${encodeURIComponent(archivo)}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo comparar informe histórico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo comparar informe hist\u00f3rico','err');return;}
   const cambio=r.data.decision_cambiada?'si':'no';
   setComparacionDecision(
-    `Decisión actual: ${r.data.decision_actual} | Decisión histórica: ${r.data.decision_historica} | Cambio: ${cambio}`
+    `Decisi\u00f3n actual: ${r.data.decision_actual} | Decisi\u00f3n hist\u00f3rica: ${r.data.decision_historica} | Cambio: ${cambio}`
   );
   setComparacionDiff(r.data.diff||'');
-  setMsg('Comparación local completada.','ok');
+  setMsg('Comparaci\u00f3n local completada.','ok');
 }
 
 async function verRutaPanel(){
@@ -1159,23 +1159,23 @@ function renderFormularioGuiado(campos){
 
 async function cargarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edici\u00f3n guiada todav\u00eda no disponible para este agente.','warn');return;}
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edición guiada','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edici\u00f3n guiada','err');return;}
   renderFormularioGuiado(r.data.campos || []);
-  setMsg(r.data.mensaje || 'Edición guiada cargada.','ok');
+  setMsg(r.data.mensaje || 'Edici\u00f3n guiada cargada.','ok');
 }
 
 async function guardarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edici\u00f3n guiada todav\u00eda no disponible para este agente.','warn');return;}
   const campos = {};
   formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
     campos[nodo.getAttribute('data-ruta')] = nodo.value;
   });
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`,{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edición guiada','err');return;}
-  setMsg(r.data.mensaje || 'Edición guiada guardada.','ok');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edici\u00f3n guiada','err');return;}
+  setMsg(r.data.mensaje || 'Edici\u00f3n guiada guardada.','ok');
   await cargar();
 }
 
@@ -1304,7 +1304,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                             "ok": True,
                             "agente": f"agente-{agente_id:02d}",
                             "historico": historico,
-                            "mensaje": "Histórico consultado correctamente.",
+                            "mensaje": "Hist\u00f3rico consultado correctamente.",
                         },
                     )
                 except ValueError as error:
@@ -1317,7 +1317,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     archivo = query.get("archivo", [""])[0]
                     ruta = resolver_archivo_historico(directorio_salidas, agente_id, archivo)
                     if not ruta.is_file():
-                        self._enviar_json(404, {"ok": False, "mensaje": "Informe histórico no encontrado.", "ruta_informe": str(ruta)})
+                        self._enviar_json(404, {"ok": False, "mensaje": "Informe hist\u00f3rico no encontrado.", "ruta_informe": str(ruta)})
                         return
                     contenido = ruta.read_text(encoding="utf-8", errors="replace")
                     self._enviar_json(200, {"ok": True, "agente": f"agente-{agente_id:02d}", "archivo": ruta.name, "contenido": contenido, "ruta_informe": str(ruta)})
@@ -1417,7 +1417,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                     return
                 if not agente_con_edicion_guiada(agente_id):
-                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente."})
                     return
                 try:
                     self._enviar_json(200, construir_formulario_por_agente(directorio_trabajo, agente_id))
@@ -1472,7 +1472,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                         return
                     if not agente_con_edicion_guiada(agente_id):
-                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
+                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente."})
                         return
                     payload = self._leer_json_post()
                     self._enviar_json(200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload))
