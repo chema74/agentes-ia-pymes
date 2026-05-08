@@ -111,6 +111,8 @@ El repositorio es relevante para portfolio porque enseña:
 ## Documentación principal
 
 - `docs/EVIDENCIAS_TECNICAS.md`
+- `docs/GUIA_PRESENTACION_PORTFOLIO.md`
+- `docs/CAPTURAS_RECOMENDADAS.md`
 - `docs/GUIA_DEMO_LOCAL.md`
 - `docs/CIERRE_TECNICO_V1.md`
 - `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`

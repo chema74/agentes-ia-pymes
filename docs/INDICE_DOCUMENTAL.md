@@ -8,17 +8,19 @@ Este documento ordena la documentación del repositorio para que una revisión t
 
 1. `README.md`
 2. `CATALOGO.md`
-3. `docs/EVIDENCIAS_TECNICAS.md`
-4. `docs/GUIA_DEMO_LOCAL.md`
-5. `docs/CIERRE_TECNICO_V1.md`
-6. `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
-7. `docs/CIERRE_V1_2_EDICION_GUIADA.md`
-8. `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
-9. `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`
-10. `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`
-11. `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`
-12. `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`
-13. `docs/CIERRE_V1_LOCAL_COMPLETA.md`
+3. `docs/GUIA_PRESENTACION_PORTFOLIO.md`
+4. `docs/CAPTURAS_RECOMENDADAS.md`
+5. `docs/EVIDENCIAS_TECNICAS.md`
+6. `docs/GUIA_DEMO_LOCAL.md`
+7. `docs/CIERRE_TECNICO_V1.md`
+8. `docs/CIERRE_V1_1_LOCAL_INTERACTIVA.md`
+9. `docs/CIERRE_V1_2_EDICION_GUIADA.md`
+10. `docs/CIERRE_V1_3_HISTORICO_LOCAL.md`
+11. `docs/CIERRE_V1_4_COMPARADOR_LOCAL.md`
+12. `docs/CIERRE_V1_5_INFORME_CONSOLIDADO.md`
+13. `docs/CIERRE_V1_6_EVIDENCIAS_DEMO.md`
+14. `docs/CIERRE_V1_7_DEMO_LOCAL_REPRODUCIBLE.md`
+15. `docs/CIERRE_V1_LOCAL_COMPLETA.md`
 
 ## Documentación global
 
@@ -27,6 +29,8 @@ Este documento ordena la documentación del repositorio para que una revisión t
 - `docs/VISION_GENERAL.md`: visión general del proyecto.
 - `docs/CRITERIOS_PORTFOLIO.md`: criterios de presentación del portfolio.
 - `docs/FICHA_PORTFOLIO.md`: ficha resumida de presentación del repositorio.
+- `docs/GUIA_PRESENTACION_PORTFOLIO.md`: guía de presentación técnica para revisión o conversación profesional.
+- `docs/CAPTURAS_RECOMENDADAS.md`: listado de capturas recomendadas para enseñar el proyecto sin exagerar alcance.
 - `docs/EVIDENCIAS_TECNICAS.md`: capacidades demostrables hoy.
 - `docs/GUIA_DEMO_LOCAL.md`: guía de ejecución de la demo local.
 - `docs/CIERRE_TECNICO_V1.md`: cierre técnico de la V1 local.
