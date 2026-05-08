@@ -370,7 +370,13 @@ def test_pagina_principal_contiene_acciones() -> None:
         try:
             esperar_servidor(8879)
             with request.urlopen("http://127.0.0.1:8879/", timeout=5) as resp:
+                content_type = resp.headers.get("Content-Type", "")
                 html = resp.read().decode("utf-8", errors="replace")
+            assert "text/html" in content_type
+            assert "charset=utf-8" in content_type.lower()
+            assert '<meta charset="utf-8">' in html
+            assert "Edición guiada" in html
+            assert "Edición JSON" in html
             assert "Formatear JSON" in html
             assert "Ejecutar agente seleccionado" in html
             assert "Ejecutar todos los agentes" in html
@@ -392,9 +398,9 @@ def test_pagina_principal_contiene_historico() -> None:
             esperar_servidor(8915)
             with request.urlopen("http://127.0.0.1:8915/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "Historico local de ejecuciones" in html
-            assert "Actualizar historico" in html
-            assert "Cargar informe historico" in html
+            assert "Histórico local de ejecuciones" in html
+            assert "Actualizar histórico" in html
+            assert "Cargar informe histórico" in html
         finally:
             cerrar_proceso(proceso)
 
@@ -411,7 +417,7 @@ def test_pagina_principal_contiene_comparador() -> None:
             esperar_servidor(8918)
             with request.urlopen("http://127.0.0.1:8918/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "Comparar con ultimo informe" in html
+            assert "Comparar con último informe" in html
             assert "Comparaci" in html and "local" in html
         finally:
             cerrar_proceso(proceso)
@@ -750,7 +756,7 @@ def test_pagina_principal_mantiene_consola_resumen() -> None:
             with request.urlopen("http://127.0.0.1:8885/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Resumen local de agentes" in html
-            assert "EdiciÃ³n JSON" in html or ("Edici" in html and "JSON" in html)
+            assert "Edición JSON" in html
             assert "Acciones operativas" in html
             assert "Último informe cargado" in html
         finally:
@@ -929,7 +935,7 @@ def test_pagina_principal_indica_edicion_guiada_ampliada() -> None:
             esperar_servidor(8894)
             with request.urlopen("http://127.0.0.1:8894/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
+            assert "Edición guiada" in html
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html
@@ -1069,7 +1075,7 @@ def test_pagina_principal_indica_edicion_guiada_hasta_agente_06() -> None:
             esperar_servidor(8901)
             with request.urlopen("http://127.0.0.1:8901/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
+            assert "Edición guiada" in html
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html
@@ -1252,7 +1258,7 @@ def test_pagina_principal_indica_edicion_guiada_para_10_agentes() -> None:
             esperar_servidor(8910)
             with request.urlopen("http://127.0.0.1:8910/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
-            assert "EdiciÃ³n guiada" in html or ("Edici" in html and "guiada" in html)
+            assert "Edición guiada" in html
             assert "Agente 01" in html
             assert "Agente 02" in html
             assert "Agente 03" in html

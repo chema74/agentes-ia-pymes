@@ -894,7 +894,7 @@ function actualizarVisibilidadGuiada(){
   const activo = ['1','2','3','4','5','6','7','8','9','10'].includes(String(sel.value));
   bloqueGuiado.className = activo ? 'card guiada activa' : 'card guiada';
   if(!activo){
-    formularioGuiado.innerHTML = '<p>EdiciÃ³n guiada todavÃ­a no disponible para este agente.</p>';
+    formularioGuiado.innerHTML = '<p>Edición guiada todavía no disponible para este agente.</p>';
   }
 }
 
@@ -1417,7 +1417,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                     return
                 if not agente_con_edicion_guiada(agente_id):
-                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "EdiciÃ³n guiada todavÃ­a no disponible para este agente."})
+                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
                     return
                 try:
                     self._enviar_json(200, construir_formulario_por_agente(directorio_trabajo, agente_id))
@@ -1472,7 +1472,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
                         return
                     if not agente_con_edicion_guiada(agente_id):
-                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "EdiciÃ³n guiada todavÃ­a no disponible para este agente."})
+                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edición guiada todavía no disponible para este agente."})
                         return
                     payload = self._leer_json_post()
                     self._enviar_json(200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload))
