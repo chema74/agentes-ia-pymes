@@ -206,6 +206,16 @@ Queda fuera del alcance actual:
 - sustitución de revisión humana.
 
 ---
+## 🖼️ Material de portfolio
+
+Este repositorio incluye una ficha pública y una selección de capturas preparadas para presentar la V1 local completa como proyecto técnico de portfolio.
+
+- Ficha pública del proyecto: [`docs/FICHA_PUBLICA_PORTFOLIO.md`](docs/FICHA_PUBLICA_PORTFOLIO.md)
+- Capturas de portfolio: [`docs/assets/capturas_portfolio/`](docs/assets/capturas_portfolio/)
+
+Las capturas muestran la validación global, la consola local, la edición guiada, la ejecución de agentes, el informe consolidado y el paquete local de evidencias.
+
+Este material tiene alcance demostrativo. El proyecto no incluye IA (*Artificial Intelligence – Inteligencia Artificial*) funcional, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) productiva, dashboard productivo, Google Workspace, integraciones reales ni datos reales.
 
 ## 🪪 Licencia y Autoría
 
