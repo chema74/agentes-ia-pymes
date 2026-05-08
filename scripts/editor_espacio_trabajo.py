@@ -376,7 +376,7 @@ def obtener_id_formulario_desde_ruta(ruta_api: str) -> int | None:
 
 def obtener_definicion_formulario_por_agente(agente_id: int) -> list[dict]:
     if not agente_con_edicion_guiada(agente_id):
-        raise ValueError("EdiciÃ³n guiada todavÃ­a no disponible para este agente.")
+        raise ValueError("Edición guiada todavía no disponible para este agente.")
     return FORMULARIOS_GUIADOS[agente_id]
 
 
@@ -643,12 +643,12 @@ def construir_resumen_agentes(directorio_trabajo: Path, directorio_salidas: Path
                     texto,
                     [
                         "Decision humana recomendada",
-                        "DecisiÃ³n humana recomendada",
+                        "Decisión humana recomendada",
                         "Decision recomendada",
-                        "DecisiÃ³n recomendada",
+                        "Decisión recomendada",
                     ],
                 )
-                aviso = extraer_valor_por_prefijo(texto, ["Aviso", "Limite", "LÃ­mite", "Riesgo"])
+                aviso = extraer_valor_por_prefijo(texto, ["Aviso", "Limite", "Límite", "Riesgo"])
                 estado = "informe_disponible"
                 if not aviso:
                     aviso = "Sin avisos identificados en el informe."
@@ -746,21 +746,21 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
   </div>
 
   <div class=\"card guiada\" id=\"bloqueGuiado\">
-    <h2>EdiciÃ³n guiada</h2>
+    <h2>Edición guiada</h2>
     <p>Disponible para Agente 01, Agente 02, Agente 03, Agente 04, Agente 05, Agente 06, Agente 07, Agente 08, Agente 09 y Agente 10. La edicion JSON cruda sigue disponible.</p>
-    <!-- Compatibilidad de texto: EdiciÃ³n guiada -->
+    <!-- Compatibilidad de texto: Edición guiada -->
     <div class=\"row\">
-      <button id=\"cargarGuiado\">Cargar ediciÃ³n guiada</button>
-      <button id=\"guardarGuiado\" class=\"principal\">Guardar ediciÃ³n guiada</button>
+      <button id=\"cargarGuiado\">Cargar edición guiada</button>
+      <button id=\"guardarGuiado\" class=\"principal\">Guardar edición guiada</button>
     </div>
     <div id=\"formularioGuiado\" class=\"form-grid\"></div>
   </div>
 
   <div class=\"grid\">
     <div class=\"card\">
-      <h2>EdiciÃ³n JSON</h2>
+      <h2>Edición JSON</h2>
       <textarea id=\"contenido\" spellcheck=\"false\"></textarea>
-      <!-- Compatibilidad de texto: EdiciÃ³n JSON -->
+      <!-- Compatibilidad de texto: Edición JSON -->
     </div>
     <div class=\"card\">
       <h2>Acciones operativas</h2>
@@ -786,17 +786,17 @@ pre{background:#0b1020;color:#d1e7ff;padding:12px;border-radius:8px;white-space:
     <pre id=\"informe\"></pre>
   </div>
   <div class=\"card\">
-    <h2>Historico local de ejecuciones</h2>
+    <h2>Histórico local de ejecuciones</h2>
     <small>Informes anteriores guardados por agente en la carpeta historico.</small>
     <div class=\"row\">
-      <button id=\"actualizarHistorico\">Actualizar historico</button>
+      <button id=\"actualizarHistorico\">Actualizar histórico</button>
       <select id=\"archivoHistorico\"></select>
-      <button id=\"cargarHistorico\">Cargar informe historico</button>
-      <button id=\"compararHistorico\">Comparar con ultimo informe</button>
+      <button id=\"cargarHistorico\">Cargar informe histórico</button>
+      <button id=\"compararHistorico\">Comparar con último informe</button>
     </div>
     <p id=\"historicoInfo\"></p>
     <pre id=\"informeHistorico\"></pre>
-    <h3>ComparaciÃ³n local</h3>
+    <h3>Comparación local</h3>
     <p id=\"comparacionDecision\"></p>
     <pre id=\"comparacionDiff\"></pre>
   </div>
@@ -1007,9 +1007,9 @@ function renderHistorico(historico, id){
   archivoHistorico.innerHTML='';
   if(!historico || historico.length===0){
     const o=document.createElement('option');
-    o.value='';o.textContent='Sin informes historicos';
+    o.value='';o.textContent='Sin informes históricos';
     archivoHistorico.appendChild(o);
-    setHistoricoInfo(`Agente ${id}: no hay historico.`);
+    setHistoricoInfo(`Agente ${id}: no hay histórico.`);
     return;
   }
   historico.forEach((item, idx)=>{
@@ -1021,38 +1021,38 @@ function renderHistorico(historico, id){
     o.textContent=`${idx+1}. ${item.nombre_archivo}${fecha}${size}`;
     archivoHistorico.appendChild(o);
   });
-  setHistoricoInfo(`Agente ${id}: ${historico.length} informe(s) historico(s).`);
+  setHistoricoInfo(`Agente ${id}: ${historico.length} informe(s) histórico(s).`);
 }
 
 async function actualizarHistorico(){
   const id=sel.value;
   const r=await pedir(`/api/historico?id=${id}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar historico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar histórico','err');return;}
   renderHistorico(r.data.historico||[], id);
 }
 
 async function cargarInformeHistorico(){
   const id=sel.value;
   const archivo=archivoHistorico.value;
-  if(!archivo){setMsg('No hay archivo historico seleccionado.','warn');return;}
+  if(!archivo){setMsg('No hay archivo histórico seleccionado.','warn');return;}
   const r=await pedir(`/api/historico/informe?id=${id}&archivo=${encodeURIComponent(archivo)}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar informe historico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar informe histórico','err');return;}
   setInformeHistorico(r.data.contenido||'');
-  setMsg('Informe historico cargado.','ok');
+  setMsg('Informe histórico cargado.','ok');
 }
 
 async function compararInformeHistorico(){
   const id=sel.value;
   const archivo=archivoHistorico.value;
-  if(!archivo){setMsg('No hay archivo historico seleccionado.','warn');return;}
+  if(!archivo){setMsg('No hay archivo histórico seleccionado.','warn');return;}
   const r=await pedir(`/api/comparar?id=${id}&archivo=${encodeURIComponent(archivo)}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo comparar informe historico','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo comparar informe histórico','err');return;}
   const cambio=r.data.decision_cambiada?'si':'no';
   setComparacionDecision(
-    `Decision actual: ${r.data.decision_actual} | Decision historica: ${r.data.decision_historica} | Cambio: ${cambio}`
+    `Decisión actual: ${r.data.decision_actual} | Decisión histórica: ${r.data.decision_historica} | Cambio: ${cambio}`
   );
   setComparacionDiff(r.data.diff||'');
-  setMsg('Comparacion local completada.','ok');
+  setMsg('Comparación local completada.','ok');
 }
 
 async function verRutaPanel(){
@@ -1106,8 +1106,8 @@ async function exportarEvidenciasDemo(){
 
 async function cargarEvidenciasDemo(){
   const r=await pedir('/api/evidencias-demo');
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar indice de evidencias','err');return;}
-  setMsg('Indice de evidencias cargado.','ok');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||r.data.mensaje||'No se pudo cargar índice de evidencias','err');return;}
+  setMsg('Índice de evidencias cargado.','ok');
   setEvidenciasMarkdown(r.data.contenido_markdown||'');
   const md = r.data.ruta_markdown ? `Markdown: ${r.data.ruta_markdown}` : '';
   const html = r.data.ruta_html ? ` | HTML: ${r.data.ruta_html}` : '';
@@ -1159,23 +1159,23 @@ function renderFormularioGuiado(campos){
 
 async function cargarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`);
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la ediciÃ³n guiada','err');return;}
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo cargar la edición guiada','err');return;}
   renderFormularioGuiado(r.data.campos || []);
-  setMsg(r.data.mensaje || 'EdiciÃ³n guiada cargada.','ok');
+  setMsg(r.data.mensaje || 'Edición guiada cargada.','ok');
 }
 
 async function guardarGuiado(){
   const idTexto = String(sel.value);
-  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('EdiciÃ³n guiada todavÃ­a no disponible para este agente.','warn');return;}
+  if(!['1','2','3','4','5','6','7','8','9','10'].includes(idTexto)){setMsg('Edición guiada todavía no disponible para este agente.','warn');return;}
   const campos = {};
   formularioGuiado.querySelectorAll('[data-ruta]').forEach((nodo) => {
     campos[nodo.getAttribute('data-ruta')] = nodo.value;
   });
   const r=await pedir(`/api/formulario/agente-${idTexto.padStart(2,'0')}`,{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({campos})});
-  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la ediciÃ³n guiada','err');return;}
-  setMsg(r.data.mensaje || 'EdiciÃ³n guiada guardada.','ok');
+  if(!r.ok||!r.data.ok){setMsg(r.data.error||'No se pudo guardar la edición guiada','err');return;}
+  setMsg(r.data.mensaje || 'Edición guiada guardada.','ok');
   await cargar();
 }
 
@@ -1304,7 +1304,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                             "ok": True,
                             "agente": f"agente-{agente_id:02d}",
                             "historico": historico,
-                            "mensaje": "Historico consultado correctamente.",
+                            "mensaje": "Histórico consultado correctamente.",
                         },
                     )
                 except ValueError as error:
@@ -1317,7 +1317,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     archivo = query.get("archivo", [""])[0]
                     ruta = resolver_archivo_historico(directorio_salidas, agente_id, archivo)
                     if not ruta.is_file():
-                        self._enviar_json(404, {"ok": False, "mensaje": "Informe historico no encontrado.", "ruta_informe": str(ruta)})
+                        self._enviar_json(404, {"ok": False, "mensaje": "Informe histórico no encontrado.", "ruta_informe": str(ruta)})
                         return
                     contenido = ruta.read_text(encoding="utf-8", errors="replace")
                     self._enviar_json(200, {"ok": True, "agente": f"agente-{agente_id:02d}", "archivo": ruta.name, "contenido": contenido, "ruta_informe": str(ruta)})
@@ -1384,7 +1384,7 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         "existe_markdown": ruta_md.is_file(),
                         "existe_html": ruta_html.is_file(),
                         "existe_zip": ruta_zip.is_file(),
-                        "mensaje": "Indice de evidencias disponible." if ruta_md.is_file() else "Indice de evidencias no encontrado.",
+                        "mensaje": "Índice de evidencias disponible." if ruta_md.is_file() else "Índice de evidencias no encontrado.",
                     },
                 )
                 return
