@@ -1248,13 +1248,13 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
             self.end_headers()
             self.wfile.write(contenido)
 
-        def _enviar_html(self, codigo: int, contenido: str) -> None:
-            data = contenido.encode("utf-8")
+        def _enviar_html(self, codigo: int, html: str) -> None:
+            contenido = html.encode("utf-8")
             self.send_response(codigo)
             self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Content-Length", str(len(contenido)))
             self.end_headers()
-            self.wfile.write(data)
+            self.wfile.write(contenido)
 
         def _leer_json_post(self) -> dict:
             longitud = int(self.headers.get("Content-Length", "0"))
