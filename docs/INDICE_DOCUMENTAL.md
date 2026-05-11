@@ -51,6 +51,7 @@ Este documento ordena la documentación del repositorio para que una revisión t
 - `docs/RESUMEN_EJECUTIVO_EMPRESAS_V2.md`: lectura empresarial del repositorio.
 - `docs/CHECKLIST_VALIDACION_V2.md`: checklist de cierre técnico y documental V2.
 - `docs/REGISTRO_EJECUCION_V2.md`: registro de ejecución local V2, demo reproducible, evidencias generadas y estado Git posterior.
+- `docs/CIERRE_TECNICO_V2_PROVISIONAL.md`: cierre técnico provisional de la fase V2 documental y de ejecución local.
 
 ## Documentación por fase
 
@@ -77,6 +78,7 @@ Cada carpeta dentro de `agentes/` contiene documentación V1, JSON ficticio, scr
 - Para revisar límites y alcance V2: `docs/LIMITES_ALCANCE_V2.md`.
 - Para validar el cierre V2: `docs/CHECKLIST_VALIDACION_V2.md`.
 - Para revisar la ejecución real V2: `docs/REGISTRO_EJECUCION_V2.md`.
+- Para revisar el cierre provisional V2: `docs/CIERRE_TECNICO_V2_PROVISIONAL.md`.
 - Para revisar evidencias V1: `docs/EVIDENCIAS_TECNICAS.md`.
 - Para ejecutar la demo local V1: `docs/GUIA_DEMO_LOCAL.md`.
 - Para revisar límites y cierre V1: `docs/CIERRE_TECNICO_V1.md` y `docs/CIERRE_V1_LOCAL_COMPLETA.md`.
