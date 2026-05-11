@@ -191,6 +191,28 @@ Tags relevantes:
 
 ---
 
+## Estado V2 en preparación
+
+El repositorio ha iniciado una fase V2 en la rama `v2-agentes-ia-pymes`.
+
+Esta fase no convierte el proyecto en un producto SaaS (*Software as a Service – Software como Servicio*) ni en una plataforma productiva. Su objetivo es reforzar la documentación, la ejecución local, el mapa de evidencias, los límites declarados y la lectura empresarial del proyecto.
+
+Documentación V2 disponible:
+
+- `docs/PLAN_V2_AGENTES_IA_PYMES.md`
+- `docs/MAPA_EVIDENCIAS_V2.md`
+- `docs/GUIA_EJECUCION_V2.md`
+- `docs/LIMITES_ALCANCE_V2.md`
+- `docs/RESUMEN_EJECUTIVO_EMPRESAS_V2.md`
+- `docs/CHECKLIST_VALIDACION_V2.md`
+
+Lectura recomendada:
+
+La V1 demuestra la base local funcional y reproducible.  
+La V2 profesionaliza la presentación, las evidencias, los límites y la lectura empresarial sin exagerar el alcance real del repositorio.
+
+---
+
 ## Uso recomendado en portfolio
 
 Usar como proyecto principal de arquitectura de agentes locales.
