@@ -238,6 +238,8 @@ Las capturas muestran la validación global, la consola local, la edición guiad
 
 Este material tiene alcance demostrativo. El proyecto no incluye IA (*Artificial Intelligence – Inteligencia Artificial*) funcional, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) productiva, dashboard productivo, Google Workspace, integraciones reales ni datos reales.
 
+
+
 ## 🪪 Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
