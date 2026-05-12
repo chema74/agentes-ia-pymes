@@ -1,2 +1,1 @@
-﻿# Pendiente de definición en fase de implementación funcional.
-
+# Sin dependencias externas — este agente usa solo biblioteca estándar de Python.

@@ -1,5 +1,9 @@
 # Repositorio Técnico agentes-ia-pymes
 
+[![CI](https://github.com/chema74/agentes-ia-pymes/actions/workflows/validacion.yml/badge.svg)](https://github.com/chema74/agentes-ia-pymes/actions/workflows/validacion.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 Portfolio técnico con 10 agentes locales para PYMES, construido en castellano y orientado a demostrar arquitectura modular, validación, trazabilidad, edición guiada, generación de evidencias y demo local reproducible.
 
 El proyecto no pretende simular una plataforma productiva ni vender una automatización inexistente. Su objetivo es mostrar una base técnica manipulable, verificable y honesta: agentes locales, datos ficticios, pruebas, consola local, informes y evidencias generadas de forma reproducible.
@@ -22,21 +26,23 @@ Este repositorio demuestra:
 
 ## Inicio rápido
 
-Validar el repositorio:
+Requisito: **Python 3.11 o superior**. No hay dependencias externas — solo biblioteca estándar.
 
-`python scripts/validar_repositorio.py`
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/chema74/agentes-ia-pymes.git
+cd agentes-ia-pymes
 
-Ejecutar la demo local completa:
+# 2. Validar que todo está en orden
+python scripts/validar_repositorio.py
 
-`python scripts/ejecutar_demo_local.py --crear-zip`
+# 3. Ejecutar la demo local completa
+python scripts/ejecutar_demo_local.py --crear-zip
 
-Abrir la consola local:
-
-`python scripts/editor_espacio_trabajo.py`
-
-URL local del editor:
-
-`http://127.0.0.1:8765/`
+# 4. Abrir la consola local de edición
+python scripts/editor_espacio_trabajo.py
+# → Disponible en http://127.0.0.1:8765/
+```
 
 ---
 
@@ -63,43 +69,35 @@ El repositorio incluye:
 
 ## Cómo usarlo
 
-El flujo recomendado es:
+```bash
+# Paso 1 — Validar estructura y tests
+python scripts/validar_repositorio.py
 
-1. Validar el repositorio con:
+# Paso 2 — Demo completa con ZIP de evidencias
+python scripts/ejecutar_demo_local.py --crear-zip
 
-`python scripts/validar_repositorio.py`
+# Paso 3 — Consola local de edición guiada
+python scripts/editor_espacio_trabajo.py
 
-2. Ejecutar la demo local completa con:
-
-`python scripts/ejecutar_demo_local.py --crear-zip`
-
-3. Abrir la consola local con:
-
-`python scripts/editor_espacio_trabajo.py`
-
-4. Revisar la carpeta:
-
-`salidas/`
-
-Ahí se generan el panel local, los informes, el informe consolidado, el paquete de evidencias y el guion de demostración.
+# Paso 4 — Revisar salidas generadas
+# salidas/panel_local.html          → panel visual
+# salidas/informe_consolidado.html  → informe unificado
+# salidas/evidencias_demo.zip       → paquete de evidencias
+# salidas/guion_demo_local.md       → guion de presentación
+```
 
 ---
 
 ## Demo local completa
 
-La demo local completa es el recorrido recomendado para explicar el valor técnico del repositorio en menos de dos minutos.
+Recorrido recomendado para explicar el valor técnico del repositorio en menos de dos minutos:
 
-Comandos principales:
-
-`python scripts/validar_repositorio.py`
-
-`python scripts/ejecutar_demo_local.py --crear-zip`
-
-`python scripts/editor_espacio_trabajo.py`
-
-La salida principal se revisa desde la consola local:
-
-`http://127.0.0.1:8765/`
+```bash
+python scripts/validar_repositorio.py
+python scripts/ejecutar_demo_local.py --crear-zip
+python scripts/editor_espacio_trabajo.py
+# → http://127.0.0.1:8765/
+```
 
 ---
 
