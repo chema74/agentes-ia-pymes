@@ -98,3 +98,7 @@ Cada carpeta dentro de `agentes/` contiene documentación V1, JSON ficticio, scr
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
+## Guía adicional de revisión V2
+
+- docs/GUIA_REVISION_EVIDENCIAS_V2.md — Guía para revisar evidencias V2 (Version 2 – Versión 2) con criterio ejecutivo, técnico y profesional.
