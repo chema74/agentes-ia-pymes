@@ -163,6 +163,27 @@ Este repositorio es relevante como pieza de portfolio porque muestra:
 
 ---
 
+## Estado V2 en preparación
+
+Este repositorio ha iniciado una fase V2 orientada a reforzar su valor como laboratorio local, demostrable y comprensible para empresas.
+
+La V2 no convierte el proyecto en un producto SaaS (*Software as a Service – Software como Servicio*) ni en una plataforma productiva. Su objetivo es mejorar documentación, evidencias, ejecución local, límites declarados y lectura empresarial.
+
+Documentación V2 inicial:
+
+- Plan V2: [`docs/PLAN_V2_AGENTES_IA_PYMES.md`](docs/PLAN_V2_AGENTES_IA_PYMES.md)
+- Mapa de evidencias V2: [`docs/MAPA_EVIDENCIAS_V2.md`](docs/MAPA_EVIDENCIAS_V2.md)
+- Guía de ejecución V2: [`docs/GUIA_EJECUCION_V2.md`](docs/GUIA_EJECUCION_V2.md)
+- Límites y alcance V2: [`docs/LIMITES_ALCANCE_V2.md`](docs/LIMITES_ALCANCE_V2.md)
+- Resumen ejecutivo para empresas V2: [`docs/RESUMEN_EJECUTIVO_EMPRESAS_V2.md`](docs/RESUMEN_EJECUTIVO_EMPRESAS_V2.md)
+- Checklist de validación V2: [`docs/CHECKLIST_VALIDACION_V2.md`](docs/CHECKLIST_VALIDACION_V2.md)
+
+La rama de trabajo asociada es:
+
+`v2-agentes-ia-pymes`
+
+---
+
 ## Enlaces clave
 
 - Cierre V1 local completa: `docs/CIERRE_V1_LOCAL_COMPLETA.md`
@@ -214,6 +235,8 @@ Este repositorio incluye una ficha pública y una selección de capturas prepara
 Las capturas muestran la validación global, la consola local, la edición guiada, la ejecución de agentes, el informe consolidado y el paquete local de evidencias.
 
 Este material tiene alcance demostrativo. El proyecto no incluye IA (*Artificial Intelligence – Inteligencia Artificial*) funcional, API (*Application Programming Interface – Interfaz de Programación de Aplicaciones*) productiva, dashboard productivo, Google Workspace, integraciones reales ni datos reales.
+
+
 
 ## 🪪 Licencia y Autoría
 
