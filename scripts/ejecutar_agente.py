@@ -1,64 +1,86 @@
 ﻿from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 from datetime import datetime
 import os
 from pathlib import Path
 import subprocess
 import sys
 
-AGENTES = {
-    1: (
+
+@dataclass(frozen=True)
+class ConfigAgente:
+    numero: int
+    nombre: str
+    script: Path
+    datos: Path
+
+
+AGENTES: list[ConfigAgente] = [
+    ConfigAgente(
+        1,
         "Agente 01 - Onboarding Inteligente",
         Path("agentes/01-agente-onboarding-inteligente/src/validar_expediente.py"),
         Path("agentes/01-agente-onboarding-inteligente/datos_ejemplo/cliente_onboarding_ficticio.json"),
     ),
-    2: (
+    ConfigAgente(
+        2,
         "Agente 02 - Documental Inteligente",
         Path("agentes/02-agente-documental-inteligente/src/validar_inventario_documental.py"),
         Path("agentes/02-agente-documental-inteligente/datos_ejemplo/inventario_documental_ficticio.json"),
     ),
-    3: (
+    ConfigAgente(
+        3,
         "Agente 03 - Seguimiento de Clientes",
         Path("agentes/03-agente-seguimiento-clientes/src/validar_cartera_clientes.py"),
         Path("agentes/03-agente-seguimiento-clientes/datos_ejemplo/cartera_clientes_ficticia.json"),
     ),
-    4: (
+    ConfigAgente(
+        4,
         "Agente 04 - Generador de Propuestas",
         Path("agentes/04-agente-generador-propuestas/src/validar_propuesta.py"),
         Path("agentes/04-agente-generador-propuestas/datos_ejemplo/propuesta_ficticia.json"),
     ),
-    5: (
+    ConfigAgente(
+        5,
         "Agente 05 - Operaciones para PYMES",
         Path("agentes/05-agente-operaciones-pymes/src/validar_operaciones.py"),
         Path("agentes/05-agente-operaciones-pymes/datos_ejemplo/operaciones_pymes_ficticias.json"),
     ),
-    6: (
+    ConfigAgente(
+        6,
         "Agente 06 - Control de Cobros y Flujo de Caja",
         Path("agentes/06-agente-control-cobros-flujo-caja/src/validar_cobros_flujo_caja.py"),
         Path("agentes/06-agente-control-cobros-flujo-caja/datos_ejemplo/cobros_flujo_caja_ficticios.json"),
     ),
-    7: (
+    ConfigAgente(
+        7,
         "Agente 07 - Pipeline Comercial",
         Path("agentes/07-agente-pipeline-comercial/src/validar_pipeline_comercial.py"),
         Path("agentes/07-agente-pipeline-comercial/datos_ejemplo/pipeline_comercial_ficticio.json"),
     ),
-    8: (
+    ConfigAgente(
+        8,
         "Agente 08 - Formacion Interna",
         Path("agentes/08-agente-formacion-interna/src/validar_formacion_interna.py"),
         Path("agentes/08-agente-formacion-interna/datos_ejemplo/formacion_interna_ficticia.json"),
     ),
-    9: (
+    ConfigAgente(
+        9,
         "Agente 09 - Analisis de Mercado",
         Path("agentes/09-agente-analisis-mercado/src/validar_analisis_mercado.py"),
         Path("agentes/09-agente-analisis-mercado/datos_ejemplo/analisis_mercado_ficticio.json"),
     ),
-    10: (
+    ConfigAgente(
+        10,
         "Agente 10 - Revision y Cumplimiento",
         Path("agentes/10-agente-revision-cumplimiento/src/validar_revision_cumplimiento.py"),
         Path("agentes/10-agente-revision-cumplimiento/datos_ejemplo/revision_cumplimiento_ficticia.json"),
     ),
-}
+]
+
+_AGENTES_POR_NUMERO: dict[int, ConfigAgente] = {a.numero: a for a in AGENTES}
 
 
 def obtener_raiz_repositorio() -> Path:
@@ -100,9 +122,9 @@ def construir_parser() -> argparse.ArgumentParser:
 
 
 def obtener_ruta_datos(numero: int, raiz: Path, usar_datos_trabajo: bool, directorio_trabajo: Path) -> tuple[Path, str | None]:
-    _nombre, _script, ruta_json_original = AGENTES[numero]
+    agente = _AGENTES_POR_NUMERO[numero]
     if not usar_datos_trabajo:
-        return raiz / ruta_json_original, None
+        return raiz / agente.datos, None
 
     ruta_trabajo = directorio_trabajo / f"agente-{numero:02d}" / "datos.json"
     if not ruta_trabajo.is_file():
@@ -114,8 +136,8 @@ def obtener_ruta_datos(numero: int, raiz: Path, usar_datos_trabajo: bool, direct
 
 
 def ejecutar_agente(numero: int, raiz: Path, usar_datos_trabajo: bool, directorio_trabajo: Path) -> tuple[int, str]:
-    nombre, ruta_script_relativa, _ruta_json_original = AGENTES[numero]
-    ruta_script = raiz / ruta_script_relativa
+    agente = _AGENTES_POR_NUMERO[numero]
+    ruta_script = raiz / agente.script
 
     if not ruta_script.is_file():
         return 1, f"No se encontro el script del agente: {ruta_script}"
@@ -140,7 +162,7 @@ def ejecutar_agente(numero: int, raiz: Path, usar_datos_trabajo: bool, directori
     )
 
     salida = []
-    salida.append(f"Agente seleccionado: {nombre}")
+    salida.append(f"Agente seleccionado: {agente.nombre}")
     salida.append(f"Script ejecutado: {ruta_script.relative_to(raiz)}")
     salida.append(f"Ruta de datos usada: {ruta_datos}")
     if resultado.stdout:
@@ -183,9 +205,9 @@ def ejecutar_seleccion(argumentos: argparse.Namespace, raiz: Path) -> int:
         directorio_salidas = raiz / directorio_salidas
 
     if argumentos.todos:
-        seleccion = list(AGENTES.keys())
+        seleccion = [a.numero for a in AGENTES]
     elif argumentos.agente is not None:
-        if argumentos.agente not in AGENTES:
+        if argumentos.agente not in _AGENTES_POR_NUMERO:
             print("Opcion invalida.")
             return 1
         seleccion = [argumentos.agente]

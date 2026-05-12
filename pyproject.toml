@@ -1,0 +1,6 @@
+[project]
+name = "agentes-ia-pymes"
+version = "1.0.0"
+requires-python = ">=3.11"
+description = "10 agentes IA locales para PYMES - portfolio tecnico"
+license = { text = "CC BY-SA 4.0" }

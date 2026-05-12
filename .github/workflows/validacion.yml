@@ -19,3 +19,8 @@ jobs:
 
       - name: Ejecutar validacion global
         run: python scripts/validar_repositorio.py
+
+      - name: Ejecutar tests transversales con pytest
+        run: |
+          pip install pytest
+          python -m pytest tests/ -v

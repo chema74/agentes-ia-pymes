@@ -24,70 +24,56 @@ def ejecutar_comando(*argumentos: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-def test_ejecutar_agente_01_por_argumento() -> None:
-    resultado = ejecutar_comando("--agente", "1")
-    assert resultado.returncode == 0
-    assert "Agente 01" in resultado.stdout
+class TestEjecutarAgente(unittest.TestCase):
+    def test_ejecutar_agente_01_por_argumento(self) -> None:
+        resultado = ejecutar_comando("--agente", "1")
+        self.assertEqual(resultado.returncode, 0)
+        self.assertIn("Agente 01", resultado.stdout)
+
+    def test_ejecutar_agente_10_por_argumento(self) -> None:
+        resultado = ejecutar_comando("--agente", "10")
+        self.assertEqual(resultado.returncode, 0)
+        self.assertIn("Agente 10", resultado.stdout)
+
+    def test_error_agente_invalido(self) -> None:
+        resultado = ejecutar_comando("--agente", "99")
+        self.assertEqual(resultado.returncode, 1)
+        salida = resultado.stdout + resultado.stderr
+        self.assertIn("Opcion invalida", salida)
+
+    def test_mostrar_ayuda(self) -> None:
+        resultado = ejecutar_comando("--help")
+        self.assertEqual(resultado.returncode, 0)
+        self.assertIn("--agente", resultado.stdout)
+
+    def test_guardar_historico_agente_01(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            resultado = ejecutar_comando(
+                "--agente",
+                "1",
+                "--guardar-historico",
+                "--directorio-salidas",
+                tmp,
+            )
+            self.assertEqual(resultado.returncode, 0, resultado.stdout + resultado.stderr)
+            base = Path(tmp) / "agente-01"
+            self.assertTrue((base / "informe.txt").is_file())
+            carpeta_historico = base / "historico"
+            self.assertTrue(carpeta_historico.is_dir())
+            self.assertTrue(any(carpeta_historico.glob("*-informe.txt")))
+
+    def test_guardar_historico_todos(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            resultado = ejecutar_comando(
+                "--todos",
+                "--guardar-historico",
+                "--directorio-salidas",
+                tmp,
+            )
+            self.assertEqual(resultado.returncode, 0, resultado.stdout + resultado.stderr)
+            self.assertTrue(any((Path(tmp) / "agente-01" / "historico").glob("*-informe.txt")))
+            self.assertTrue(any((Path(tmp) / "agente-10" / "historico").glob("*-informe.txt")))
 
 
-def test_ejecutar_agente_10_por_argumento() -> None:
-    resultado = ejecutar_comando("--agente", "10")
-    assert resultado.returncode == 0
-    assert "Agente 10" in resultado.stdout
-
-
-def test_error_agente_invalido() -> None:
-    resultado = ejecutar_comando("--agente", "99")
-    assert resultado.returncode == 1
-    salida = resultado.stdout + resultado.stderr
-    assert "Opcion invalida" in salida
-
-
-def test_mostrar_ayuda() -> None:
-    resultado = ejecutar_comando("--help")
-    assert resultado.returncode == 0
-    assert "--agente" in resultado.stdout
-
-
-def test_guardar_historico_agente_01() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        resultado = ejecutar_comando(
-            "--agente",
-            "1",
-            "--guardar-historico",
-            "--directorio-salidas",
-            tmp,
-        )
-        assert resultado.returncode == 0, resultado.stdout + resultado.stderr
-        base = Path(tmp) / "agente-01"
-        assert (base / "informe.txt").is_file()
-        carpeta_historico = base / "historico"
-        assert carpeta_historico.is_dir()
-        assert any(carpeta_historico.glob("*-informe.txt"))
-
-
-def test_guardar_historico_todos() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        resultado = ejecutar_comando(
-            "--todos",
-            "--guardar-historico",
-            "--directorio-salidas",
-            tmp,
-        )
-        assert resultado.returncode == 0, resultado.stdout + resultado.stderr
-        assert any((Path(tmp) / "agente-01" / "historico").glob("*-informe.txt"))
-        assert any((Path(tmp) / "agente-10" / "historico").glob("*-informe.txt"))
-
-
-def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None):
-    suite = unittest.TestSuite()
-    for funcion in (
-        test_ejecutar_agente_01_por_argumento,
-        test_ejecutar_agente_10_por_argumento,
-        test_error_agente_invalido,
-        test_mostrar_ayuda,
-        test_guardar_historico_agente_01,
-        test_guardar_historico_todos,
-    ):
-        suite.addTest(unittest.FunctionTestCase(funcion))
-    return suite
+if __name__ == "__main__":
+    unittest.main()
