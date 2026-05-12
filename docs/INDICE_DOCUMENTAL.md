@@ -102,3 +102,7 @@ Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.
 ## Guía adicional de revisión V2
 
 - docs/GUIA_REVISION_EVIDENCIAS_V2.md — Guía para revisar evidencias V2 (Version 2 – Versión 2) con criterio ejecutivo, técnico y profesional.
+
+## Cierre técnico actualizado V2
+
+- docs/CIERRE_TECNICO_V2_ACTUALIZADO.md — Cierre técnico actualizado de la V2 (Version 2 – Versión 2), con validación, evidencias y estado remoto sincronizado.
