@@ -242,3 +242,13 @@ Este material tiene alcance demostrativo. El proyecto no incluye IA (*Artificial
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 Â© 2025 â€“ Txema RÃ­os. Todos los derechos compartidos.
+
+---
+
+## Agentes incorporados (V2)
+
+Los siguientes agentes fueron incorporados desde repositorios independientes durante la reorganizacion de mayo 2026:
+
+- **a11-esg-reporting** — Generacion automatizada de informes ESG para PYMES con trazabilidad y cumplimiento CSRD. Origen: agente-esg-reporting.
+- **a12-finanzas-anomalias** — Deteccion de anomalias financieras y explicabilidad XAI para PYMES. Origen: agente-finanzas-pyme.
+

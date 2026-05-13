@@ -1,0 +1,1001 @@
+transaction_id,user_id,timestamp,amount,merchant_category,merchant_name,location,payment_method,user_risk_score,is_fraud
+TXN-000001,33,2026-03-07 10:35:08.244536,34.35,supermarket,Banco Monreal y asociados S.A.T.,Girona,transfer,0.19,False
+TXN-000002,35,2026-02-11 11:04:08.244536,199.97,online_shopping,Grupo Villa S.A.,Ourense,credit_card,0.16,False
+TXN-000003,11,2026-03-13 16:25:08.244536,49.9,utilities,Distribuciones Globales S.L.,Cantabria,debit_card,0.19,False
+TXN-000004,4,2026-04-04 11:57:08.244536,30.54,online_shopping,Murcia & Asociados S.Coop.,Cantabria,debit_card,0.13,False
+TXN-000005,19,2026-04-27 13:52:08.244536,120.58,utilities,Gimeno y asociados S.L.,Huesca,transfer,0.17,False
+TXN-000006,42,2026-02-15 22:00:08.244536,135.82,restaurant,Hnos Pina S.L.N.E,Granada,transfer,0.17,False
+TXN-000007,5,2026-02-20 20:03:08.244536,187.12,supermarket,Minería Figueroa y asociados S.L.N.E,Salamanca,credit_card,0.23,False
+TXN-000008,0,2026-04-09 22:53:08.244536,102.41,gas_station,Familia Rosado S.A.,Madrid,debit_card,0.18,False
+TXN-000009,32,2026-03-23 22:19:08.244536,184.61,restaurant,Transportes Iberia S.L.L.,Lleida,credit_card,0.2,False
+TXN-000010,44,2026-04-12 19:19:08.244536,146.01,utilities,Soluciones LWTL S.L.,Ciudad,transfer,0.14,False
+TXN-000011,29,2026-05-02 23:16:08.244536,128.03,utilities,Desarrollo Morell S.A.,Álava,credit_card,0.13,False
+TXN-000012,15,2026-05-05 02:26:08.244536,65.89,restaurant,Reyes & Asociados S.Com.,Granada,transfer,0.16,False
+TXN-000013,23,2026-03-21 03:29:08.244536,152.03,supermarket,Hnos Tejero S.Com.,Barcelona,credit_card,0.24,False
+TXN-000014,19,2026-03-02 09:12:08.244536,184.28,restaurant,Banco Laguna S.L.,Huesca,transfer,0.1,False
+TXN-000015,25,2026-04-10 23:27:08.244536,96.22,supermarket,Amaya Martorell Arana S.Com.,Lugo,transfer,0.2,False
+TXN-000016,22,2026-03-01 09:15:08.244536,99.85,supermarket,Leyre Gual Ropero S.L.L.,León,debit_card,0.05,False
+TXN-000017,21,2026-04-21 18:15:08.244536,180.17,restaurant,Juan Pablo Gelabert Ávila S.L.,Cuenca,debit_card,0.28,False
+TXN-000018,34,2026-03-10 07:48:08.244536,218.82,utilities,Manufacturas VX S.Coop.,Vizcaya,debit_card,0.05,False
+TXN-000019,5,2026-03-23 05:43:08.244536,170.61,supermarket,Quiroga y Porras S.C.P,Salamanca,debit_card,0.2,False
+TXN-000020,29,2026-03-14 09:20:08.244536,104.25,utilities,Sotelo y asociados S.Com.,Álava,transfer,0.2,False
+TXN-000021,1,2026-02-28 06:03:08.244536,68.09,gas_station,Inmobiliaria Corominas & Asociados S.A.,Baleares,transfer,0.17,False
+TXN-000022,17,2026-03-08 19:44:08.244536,72.45,restaurant,Grau y Checa S.L.L.,Santa Cruz de Tenerife,debit_card,0.27,False
+TXN-000023,44,2026-04-07 01:21:08.244536,148.4,gas_station,Hnos Casals S.Coop.,Ciudad,debit_card,0.12,False
+TXN-000024,30,2026-03-02 14:18:08.244536,96.33,online_shopping,Ulises Figueras Mendoza S.L.N.E,Albacete,debit_card,0.23,False
+TXN-000025,25,2026-03-18 17:25:08.244536,105.45,gas_station,Nazaret Pinto Borja S.Com.,Lugo,transfer,0.25,False
+TXN-000026,0,2026-03-08 17:11:08.244536,244.58,utilities,Barros y asociados S.L.,Madrid,transfer,0.12,False
+TXN-000027,7,2026-02-28 05:10:08.244536,36.86,online_shopping,Manufacturas QXHQ S.Coop.,Ourense,debit_card,0.19,False
+TXN-000028,25,2026-04-23 10:20:08.244536,136.11,gas_station,Ojeda y asociados S.Com.,Lugo,transfer,0.08,False
+TXN-000029,11,2026-03-08 02:45:08.244536,29.93,online_shopping,Cortés & Asociados S.Coop.,Cantabria,credit_card,0.25,False
+TXN-000030,19,2026-02-22 10:29:08.244536,162.96,utilities,Palau & Asociados S.L.L.,Huesca,credit_card,0.2,False
+TXN-000031,30,2026-04-11 04:09:08.244536,132.02,gas_station,Tecnologías Iborra y asociados S.A.,Albacete,credit_card,0.1,False
+TXN-000032,45,2026-03-21 12:44:08.244536,7.03,restaurant,Grupo Linares S.Com.,Málaga,transfer,0.12,False
+TXN-000033,26,2026-04-29 11:09:08.244536,81.29,utilities,Hnos Gracia S.L.,León,transfer,0.28,False
+TXN-000034,19,2026-02-26 06:51:08.244536,143.89,utilities,Haroldo Parejo Barragán S.L.N.E,Huesca,credit_card,0.16,False
+TXN-000035,37,2026-02-26 14:20:08.244536,57.52,restaurant,Comercial QVE S.L.,Castellón,debit_card,0.25,False
+TXN-000036,4,2026-04-24 14:02:08.244536,15.24,online_shopping,Fabiola Merino Barón S.A.,Cantabria,debit_card,0.12,False
+TXN-000037,33,2026-05-08 08:08:08.244536,58.3,gas_station,Hotel Castellana S.Coop.,Girona,credit_card,0.1,False
+TXN-000038,12,2026-04-04 13:26:08.244536,128.14,supermarket,Minería del Norte S.A.,Castellón,transfer,0.26,False
+TXN-000039,6,2026-03-30 18:06:08.244536,126.77,supermarket,Campos y asociados S.A.,Barcelona,debit_card,0.1,False
+TXN-000040,10,2026-03-21 19:34:08.244536,101.21,online_shopping,Construcción del Norte S.L.,León,credit_card,0.11,False
+TXN-000041,8,2026-05-03 15:43:08.244536,164.54,supermarket,Hotel Guitart S.Coop.,Zamora,debit_card,0.21,False
+TXN-000042,10,2026-04-17 10:44:08.244536,168.09,online_shopping,Jose Luis Recio Tormo S.L.N.E,León,transfer,0.21,False
+TXN-000043,35,2026-03-24 01:03:08.244536,157.44,restaurant,Aguiló y asociados S.Com.,Ourense,debit_card,0.1,False
+TXN-000044,31,2026-04-19 17:45:08.244536,163.09,online_shopping,Tadeo Saez Falcón S.L.N.E,Almería,debit_card,0.09,False
+TXN-000045,20,2026-04-17 22:03:08.244536,122.02,utilities,Barranco y asociados S.Coop.,Vizcaya,transfer,0.08,False
+TXN-000046,24,2026-03-27 09:53:08.244536,126.27,supermarket,Comas y asociados S.Com.,Las Palmas,debit_card,0.08,False
+TXN-000047,46,2026-02-27 05:47:08.244536,134.83,online_shopping,Clara Iborra Valencia S.Coop.,La Coruña,debit_card,0.27,False
+TXN-000048,13,2026-03-03 07:35:08.244536,128.43,restaurant,Carreño y asociados S.A.,Melilla,credit_card,0.08,False
+TXN-000049,4,2026-03-23 02:58:08.244536,90.71,online_shopping,Fábrica Cerdán S.L.,Cantabria,transfer,0.29,False
+TXN-000050,24,2026-05-07 19:16:08.244536,126.46,gas_station,Suministros QTS S.Com.,Las Palmas,transfer,0.14,False
+TXN-000051,2,2026-04-20 11:50:08.244536,152.56,restaurant,Familia Huertas S.A.,Valladolid,transfer,0.13,False
+TXN-000052,3,2026-03-15 09:41:08.244536,136.75,supermarket,Finanzas Escobar y asociados S.Com.,Murcia,transfer,0.18,False
+TXN-000053,32,2026-04-19 12:34:08.244536,207.7,gas_station,Inversiones HW S.A.,Lleida,credit_card,0.17,False
+TXN-000054,4,2026-04-21 15:19:08.244536,12.6,supermarket,David Bermejo Frías S.L.,Cantabria,transfer,0.27,False
+TXN-000055,30,2026-03-24 22:49:08.244536,123.61,online_shopping,Minería Acuña S.L.N.E,Albacete,debit_card,0.2,False
+TXN-000056,27,2026-05-01 23:43:08.244536,134.19,gas_station,Industrias SI S.L.L.,Málaga,debit_card,0.2,False
+TXN-000057,36,2026-02-13 00:57:08.244536,190.25,gas_station,Hotel Naranjo S.L.N.E,Pontevedra,credit_card,0.25,False
+TXN-000058,22,2026-02-25 19:12:08.244536,45.93,supermarket,Servicios Avanzadas S.A.,León,debit_card,0.13,False
+TXN-000059,18,2026-05-08 14:54:08.244536,135.61,restaurant,Pagès & Asociados S.A.,Almería,credit_card,0.3,False
+TXN-000060,28,2026-05-13 01:31:08.244536,30.27,restaurant,Industrias Integrales S.L.,Cuenca,debit_card,0.21,False
+TXN-000061,29,2026-03-23 08:23:08.244536,145.87,utilities,Finanzas Castrillo S.A.,Álava,credit_card,0.2,False
+TXN-000062,19,2026-04-19 11:31:08.244536,172.57,utilities,Ríos & Asociados S.L.,Huesca,debit_card,0.28,False
+TXN-000063,22,2026-03-12 13:52:08.244536,51.65,supermarket,Gallardo & Asociados S.L.N.E,León,credit_card,0.17,False
+TXN-000064,18,2026-02-11 18:11:08.244536,115.91,restaurant,Restauración Uriarte S.Com.,Almería,debit_card,0.22,False
+TXN-000065,4,2026-03-19 04:37:08.244536,55.1,online_shopping,Arranz y Calleja S.Com.,Cantabria,debit_card,0.14,False
+TXN-000066,40,2026-03-30 06:29:08.244536,93.96,utilities,Grupo Torrijos S.Coop.,Navarra,transfer,0.26,False
+TXN-000067,20,2026-03-01 03:37:08.244536,104.99,supermarket,Despacho Maza S.Coop.,Vizcaya,debit_card,0.23,False
+TXN-000068,8,2026-03-14 09:04:08.244536,149.51,restaurant,Hermanos Gálvez S.L.N.E,Zamora,transfer,0.17,False
+TXN-000069,6,2026-03-23 00:16:08.244536,45.42,supermarket,Tamarit y asociados S.A.U,Barcelona,debit_card,0.09,False
+TXN-000070,3,2026-02-15 16:38:08.244536,173.6,utilities,Linares & Asociados S.L.,Murcia,credit_card,0.27,False
+TXN-000071,15,2026-03-22 04:30:08.244536,113.73,utilities,Transportes Ibérica S.L.,Granada,transfer,0.19,False
+TXN-000072,30,2026-04-30 12:22:08.244536,114.27,online_shopping,Comercial Lamas S.Coop.,Albacete,transfer,0.1,False
+TXN-000073,2,2026-04-23 08:04:08.244536,149.47,restaurant,Hermanos Aguilar S.Coop.,Valladolid,credit_card,0.23,False
+TXN-000074,26,2026-03-30 15:46:08.244536,70.03,supermarket,Familia Segarra S.A.,León,credit_card,0.14,False
+TXN-000075,45,2026-03-13 04:46:08.244536,65.22,gas_station,Aroca y Cadenas S.L.N.E,Málaga,debit_card,0.26,False
+TXN-000076,36,2026-03-29 15:24:08.244536,177.94,gas_station,Fábrica Hoz S.Coop.,Pontevedra,transfer,0.13,False
+TXN-000077,11,2026-02-25 16:32:08.244536,84.62,utilities,Jesús Villaverde Alegria S.L.,Cantabria,transfer,0.18,False
+TXN-000078,24,2026-05-05 01:32:08.244536,187.71,gas_station,Rosales y asociados S.C.P,Las Palmas,transfer,0.15,False
+TXN-000079,23,2026-05-09 05:19:08.244536,134.28,utilities,Manufacturas Globales S.A.,Barcelona,credit_card,0.07,False
+TXN-000080,10,2026-03-17 16:13:08.244536,119.11,supermarket,Hermanos Bernal S.Com.,León,transfer,0.12,False
+TXN-000081,46,2026-02-28 10:40:08.244536,151.38,online_shopping,Tecnologías Marín y asociados S.A.,La Coruña,transfer,0.27,False
+TXN-000082,13,2026-03-01 00:04:08.244536,144.62,restaurant,Begoña Agustín Navarrete S.L.N.E,Melilla,debit_card,0.27,False
+TXN-000083,2,2026-04-26 09:04:08.244536,157.27,restaurant,Infraestructuras WMX S.Coop.,Valladolid,debit_card,0.23,False
+TXN-000084,47,2026-03-22 06:20:08.244536,131.75,gas_station,Arrieta y Puga S.L.,Cuenca,transfer,0.21,False
+TXN-000085,23,2026-03-03 21:41:08.244536,46.45,supermarket,Alimentación Integrales S.Coop.,Barcelona,credit_card,0.24,False
+TXN-000086,32,2026-05-10 10:25:08.244536,174.19,gas_station,Aranda & Asociados S.Coop.,Lleida,debit_card,0.14,False
+TXN-000087,25,2026-04-28 23:06:08.244536,74.36,supermarket,Pineda & Asociados S.Com.,Lugo,transfer,0.22,False
+TXN-000088,47,2026-03-12 04:17:08.244536,98.61,gas_station,Felicidad Arnal Sarabia S.L.N.E,Cuenca,credit_card,0.14,False
+TXN-000089,21,2026-03-24 16:09:08.244536,193.24,restaurant,Vizcaíno y Cal S.Coop.,Cuenca,credit_card,0.22,False
+TXN-000090,28,2026-03-13 02:25:08.244536,46.61,supermarket,Patricia Noguera Ayala S.Coop.,Cuenca,debit_card,0.11,False
+TXN-000091,33,2026-03-24 18:18:08.244536,104.09,supermarket,Gracia Barragán Bilbao S.A.U,Girona,credit_card,0.21,False
+TXN-000092,46,2026-03-31 13:47:08.244536,202.0,utilities,Talleres Esteve & Asociados S.Coop.,La Coruña,credit_card,0.23,False
+TXN-000093,0,2026-02-21 23:55:08.244536,216.07,utilities,Alegre y Castells S.Com.,Madrid,credit_card,0.17,False
+TXN-000094,16,2026-04-10 19:09:08.244536,121.62,supermarket,Comercial Novoa y asociados S.L.L.,Murcia,credit_card,0.17,False
+TXN-000095,39,2026-03-26 23:18:08.244536,113.67,restaurant,Distribuciones Urrutia y asociados S.L.,Zaragoza,transfer,0.19,False
+TXN-000096,41,2026-03-13 12:14:08.244536,101.87,supermarket,Hotel KMOG S.L.,Burgos,credit_card,0.17,False
+TXN-000097,24,2026-02-24 16:17:08.244536,149.34,supermarket,Zorrilla y Roselló S.Com.,Las Palmas,credit_card,0.23,False
+TXN-000098,44,2026-05-08 23:28:08.244536,163.62,utilities,Manufacturas Cuenca y asociados S.A.,Ciudad,debit_card,0.27,False
+TXN-000099,41,2026-03-03 06:11:08.244536,60.91,supermarket,Despacho Catalá & Asociados S.A.,Burgos,debit_card,0.14,False
+TXN-000100,31,2026-03-16 20:47:08.244536,186.68,online_shopping,Minería Río S.Coop.,Almería,debit_card,0.27,False
+TXN-000101,42,2026-04-30 01:02:08.244536,115.85,restaurant,Zamora y asociados S.Com.,Granada,transfer,0.12,False
+TXN-000102,44,2026-04-24 12:55:08.244536,165.52,utilities,Corral y Anaya S.Com.,Ciudad,transfer,0.16,False
+TXN-000103,27,2026-04-19 09:58:08.244536,156.44,gas_station,Servicios Española S.Coop.,Málaga,debit_card,0.12,False
+TXN-000104,20,2026-03-02 13:15:08.244536,5.0,utilities,María Belén Lara Priego S.Com.,Vizcaya,credit_card,0.09,False
+TXN-000105,37,2026-03-11 18:12:08.244536,116.21,gas_station,Salvà y asociados S.Com.,Castellón,credit_card,0.16,False
+TXN-000106,28,2026-05-03 01:22:08.244536,32.52,supermarket,Banco Angulo S.L.,Cuenca,transfer,0.19,False
+TXN-000107,15,2026-05-02 20:55:08.244536,62.9,utilities,Rios y Pardo S.L.,Granada,transfer,0.27,False
+TXN-000108,5,2026-05-11 05:18:08.244536,181.95,supermarket,Promociones Avanzadas S.L.,Salamanca,credit_card,0.27,False
+TXN-000109,1,2026-05-07 11:30:08.244536,22.59,gas_station,Hnos Vicente S.Com.,Baleares,debit_card,0.28,False
+TXN-000110,8,2026-04-24 20:58:08.244536,165.8,restaurant,Distribuciones VNLJ S.Com.,Zamora,credit_card,0.28,False
+TXN-000111,34,2026-03-13 09:07:08.244536,155.8,online_shopping,Amo y Mendez S.A.,Vizcaya,debit_card,0.29,False
+TXN-000112,39,2026-03-04 05:39:08.244536,92.97,supermarket,Desarrollo Sierra S.Coop.,Zaragoza,debit_card,0.23,False
+TXN-000113,23,2026-05-08 11:33:08.244536,106.04,supermarket,Distribuciones Correa & Asociados S.Coop.,Barcelona,debit_card,0.09,False
+TXN-000114,0,2026-02-17 01:21:08.244536,164.03,gas_station,Manufacturas Avanzadas S.L.N.E,Madrid,transfer,0.15,False
+TXN-000115,5,2026-02-19 00:13:08.244536,1896.15,luxury,Restauración Ibéricos S.Coop.,Afganistán,credit_card,0.72,True
+TXN-000116,1,2026-02-22 18:32:08.244536,23.01,supermarket,Manufacturas del Mediterráneo S.L.N.E,Baleares,credit_card,0.24,False
+TXN-000117,35,2026-04-01 22:55:08.244536,172.94,online_shopping,Martina Carnero Serna S.L.L.,Ourense,debit_card,0.23,False
+TXN-000118,18,2026-03-17 14:19:08.244536,119.09,online_shopping,Despacho Torrecilla & Asociados S.L.N.E,Almería,transfer,0.08,False
+TXN-000119,24,2026-02-28 21:21:08.244536,163.59,supermarket,Manufacturas Amorós S.Com.,Las Palmas,transfer,0.28,False
+TXN-000120,14,2026-04-10 22:27:08.244536,174.98,utilities,Infraestructuras Asensio & Asociados S.Coop.,Melilla,transfer,0.28,False
+TXN-000121,7,2026-02-14 06:11:08.244536,5.0,restaurant,Manufacturas Company S.L.L.,Ourense,debit_card,0.22,False
+TXN-000122,13,2026-04-01 09:23:08.244536,130.7,online_shopping,Familia Barco S.A.T.,Melilla,credit_card,0.22,False
+TXN-000123,18,2026-02-17 14:02:08.244536,170.73,online_shopping,Hermanos Vigil S.L.L.,Almería,transfer,0.22,False
+TXN-000124,11,2026-04-25 02:51:08.244536,45.5,online_shopping,Antón y Pinilla S.L.N.E,Cantabria,debit_card,0.05,False
+TXN-000125,34,2026-04-20 03:27:08.244536,232.39,online_shopping,Manufacturas Alsina y asociados S.L.,Vizcaya,credit_card,0.05,False
+TXN-000126,33,2026-04-02 00:06:08.244536,70.54,supermarket,Instalaciones Batlle y asociados S.C.P,Girona,debit_card,0.29,False
+TXN-000127,3,2026-03-04 13:43:08.244536,124.38,utilities,Soluciones GHF S.L.N.E,Murcia,transfer,0.06,False
+TXN-000128,5,2026-02-19 18:56:08.244536,171.62,restaurant,Infraestructuras Bermudez & Asociados S.L.N.E,Salamanca,transfer,0.28,False
+TXN-000129,33,2026-04-15 12:54:08.244536,383.11,gambling,Ferrández y Falcón S.Com.,Panamá,debit_card,0.86,True
+TXN-000130,24,2026-02-28 04:32:08.244536,101.08,gas_station,Andrés y Manjón S.Coop.,Las Palmas,transfer,0.24,False
+TXN-000131,19,2026-03-20 22:03:08.244536,1640.62,cryptocurrency,Comercial Barragán S.Coop.,Japón,debit_card,0.91,True
+TXN-000132,22,2026-04-21 19:11:08.244536,71.02,supermarket,Inmobiliaria Priego & Asociados S.A.,León,credit_card,0.2,False
+TXN-000133,12,2026-03-03 09:56:08.244536,150.31,supermarket,Farmaceútica Cordero & Asociados S.C.P,Castellón,credit_card,0.19,False
+TXN-000134,12,2026-03-13 05:18:08.244536,153.22,restaurant,Hermanos Ramirez S.Coop.,Castellón,credit_card,0.23,False
+TXN-000135,45,2026-04-18 23:33:08.244536,49.8,restaurant,Consultoría NQKX S.L.N.E,Málaga,transfer,0.15,False
+TXN-000136,19,2026-03-29 03:58:08.244536,209.63,restaurant,Rey y Armas S.Com.,Huesca,debit_card,0.1,False
+TXN-000137,33,2026-04-06 21:10:08.244536,5.0,supermarket,Hnos Garrido S.A.,Girona,credit_card,0.11,False
+TXN-000138,2,2026-02-20 01:35:08.244536,152.75,utilities,Alimentación Gimenez & Asociados S.A.,Valladolid,debit_card,0.08,False
+TXN-000139,6,2026-02-28 18:08:08.244536,88.21,supermarket,Banco del Levante S.L.L.,Barcelona,debit_card,0.18,False
+TXN-000140,15,2026-03-04 00:54:08.244536,64.89,utilities,Supermercados Bertrán & Asociados S.C.P,Granada,credit_card,0.23,False
+TXN-000141,0,2026-03-24 12:00:08.244536,245.03,gas_station,Promociones Moles & Asociados S.L.,Madrid,transfer,0.26,False
+TXN-000142,20,2026-02-13 14:31:08.244536,124.44,utilities,Solé y Padilla S.L.,Vizcaya,transfer,0.15,False
+TXN-000143,44,2026-04-28 09:57:08.244536,159.85,utilities,Hotel BJMB S.A.,Ciudad,credit_card,0.15,False
+TXN-000144,32,2026-05-10 21:09:08.244536,226.19,gas_station,Godofredo Garmendia Zamorano S.L.L.,Lleida,transfer,0.28,False
+TXN-000145,37,2026-04-14 08:09:08.244536,60.28,restaurant,Banco Castellana S.L.,Castellón,debit_card,0.29,False
+TXN-000146,2,2026-04-12 14:11:08.244536,139.08,restaurant,Ignacio Villena Enríquez S.Coop.,Valladolid,credit_card,0.06,False
+TXN-000147,18,2026-04-12 20:57:08.244536,136.32,restaurant,Llabrés y Canet S.L.N.E,Almería,credit_card,0.22,False
+TXN-000148,15,2026-04-14 10:16:08.244536,113.7,utilities,Llamas y asociados S.C.P,Granada,credit_card,0.16,False
+TXN-000149,26,2026-03-05 03:27:08.244536,84.75,utilities,Finanzas Noguera y asociados S.Coop.,León,debit_card,0.22,False
+TXN-000150,14,2026-03-28 10:24:08.244536,175.53,supermarket,Ayllón y Oller S.L.U.,Melilla,transfer,0.17,False
+TXN-000151,24,2026-04-09 14:00:08.244536,169.79,gas_station,Laguna y Rico S.L.L.,Las Palmas,credit_card,0.25,False
+TXN-000152,43,2026-03-26 20:12:08.244536,186.97,online_shopping,Ofelia Burgos Polo S.A.,Asturias,transfer,0.05,False
+TXN-000153,21,2026-02-27 01:06:08.244536,166.34,utilities,Vilanova y Pombo S.A.,Cuenca,credit_card,0.13,False
+TXN-000154,33,2026-03-15 11:09:08.244536,16.04,supermarket,Hermanos Vargas S.C.P,Girona,transfer,0.17,False
+TXN-000155,32,2026-02-15 17:17:08.244536,137.68,restaurant,Instalaciones Inteligentes S.A.,Lleida,debit_card,0.17,False
+TXN-000156,32,2026-04-30 04:21:08.244536,243.04,restaurant,Minería Iborra S.Coop.,Lleida,transfer,0.22,False
+TXN-000157,1,2026-03-12 15:10:08.244536,114.5,supermarket,Industrias OW S.L.,Baleares,transfer,0.24,False
+TXN-000158,45,2026-03-05 07:38:08.244536,36.66,restaurant,Industrias del Mediterráneo S.L.,Málaga,credit_card,0.19,False
+TXN-000159,1,2026-04-29 22:47:08.244536,80.91,supermarket,Fábrica Godoy y asociados S.Com.,Baleares,credit_card,0.24,False
+TXN-000160,46,2026-02-15 14:27:08.244536,150.17,online_shopping,Restauración ULV S.L.L.,La Coruña,debit_card,0.08,False
+TXN-000161,43,2026-03-01 17:09:08.244536,188.21,online_shopping,Supermercados del Sur S.A.,Asturias,debit_card,0.23,False
+TXN-000162,8,2026-04-16 02:29:08.244536,184.06,supermarket,Hnos Romeu S.Com.,Zamora,debit_card,0.06,False
+TXN-000163,20,2026-05-08 10:55:08.244536,157.65,supermarket,Morales y Querol S.L.N.E,Vizcaya,credit_card,0.14,False
+TXN-000164,18,2026-03-05 13:33:08.244536,152.82,online_shopping,González & Asociados S.A.,Almería,transfer,0.09,False
+TXN-000165,10,2026-05-07 04:32:08.244536,126.0,online_shopping,Macias y Teruel S.L.,León,transfer,0.19,False
+TXN-000166,29,2026-04-11 05:03:08.244536,145.72,utilities,Industrias YAPG S.Coop.,Álava,debit_card,0.07,False
+TXN-000167,46,2026-03-23 07:39:08.244536,157.38,utilities,Felicia Mateu Ramis S.L.N.E,La Coruña,debit_card,0.13,False
+TXN-000168,34,2026-05-02 15:41:08.244536,242.24,online_shopping,Hermanos Comas S.L.,Vizcaya,credit_card,0.1,False
+TXN-000169,24,2026-04-06 05:30:08.244536,129.75,supermarket,Guerra y Ortiz S.A.,Las Palmas,credit_card,0.21,False
+TXN-000170,33,2026-02-24 20:10:08.244536,37.57,gas_station,Faustino Mariscal Beltran S.C.P,Girona,debit_card,0.21,False
+TXN-000171,38,2026-02-24 08:27:08.244536,2653.83,luxury,Soluciones Integrales S.L.,Argelia,transfer,0.93,True
+TXN-000172,27,2026-04-09 17:11:08.244536,153.63,gas_station,Lino Español Francisco S.L.,Málaga,transfer,0.24,False
+TXN-000173,31,2026-05-10 15:50:08.244536,147.89,online_shopping,Talleres del Sur S.A.,Almería,debit_card,0.21,False
+TXN-000174,38,2026-03-21 19:03:08.244536,211.86,utilities,Porras y Samper S.Coop.,Pontevedra,credit_card,0.2,False
+TXN-000175,43,2026-03-05 04:49:08.244536,209.66,restaurant,Crespi y asociados S.L.,Asturias,credit_card,0.22,False
+TXN-000176,18,2026-03-09 10:55:08.244536,147.0,online_shopping,Luján y Iglesia S.Coop.,Almería,transfer,0.17,False
+TXN-000177,40,2026-04-22 21:20:08.244536,100.5,gas_station,Familia Anglada S.A.,Navarra,credit_card,0.24,False
+TXN-000178,3,2026-02-25 11:08:08.244536,116.53,utilities,Díaz y asociados S.A.,Murcia,debit_card,0.23,False
+TXN-000179,11,2026-04-20 01:54:08.244536,12.87,online_shopping,Promociones Pintor & Asociados S.A.,Cantabria,transfer,0.27,False
+TXN-000180,46,2026-03-07 12:25:08.244536,151.74,online_shopping,Construcción PQ S.Com.,La Coruña,debit_card,0.14,False
+TXN-000181,40,2026-04-15 01:49:08.244536,93.68,utilities,Grupo Sevilla S.L.N.E,Navarra,debit_card,0.2,False
+TXN-000182,26,2026-03-23 22:52:08.244536,75.6,supermarket,Jose Miguel Colom Roldán S.A.,León,transfer,0.2,False
+TXN-000183,32,2026-04-15 20:12:08.244536,101.92,gas_station,Ros y Borrego S.Com.,Lleida,credit_card,0.05,False
+TXN-000184,47,2026-05-05 19:58:08.244536,62.13,restaurant,Fábrica Soto y asociados S.Com.,Cuenca,debit_card,0.08,False
+TXN-000185,7,2026-03-30 04:20:08.244536,22.36,restaurant,Geraldo Vázquez Suarez S.L.,Ourense,credit_card,0.06,False
+TXN-000186,47,2026-04-14 01:06:08.244536,18.39,gas_station,Transportes Gárate y asociados S.L.L.,Cuenca,credit_card,0.27,False
+TXN-000187,36,2026-03-28 20:18:08.244536,155.7,gas_station,Calzada y Monreal S.L.U.,Pontevedra,transfer,0.14,False
+TXN-000188,13,2026-02-14 18:56:08.244536,125.37,restaurant,Talleres Bru y asociados S.A.T.,Melilla,credit_card,0.2,False
+TXN-000189,21,2026-03-09 22:58:08.244536,192.43,restaurant,Distribuciones Castells & Asociados S.L.,Cuenca,transfer,0.1,False
+TXN-000190,33,2026-04-03 03:13:08.244536,47.89,gas_station,Tecnologías León & Asociados S.Com.,Girona,credit_card,0.05,False
+TXN-000191,34,2026-03-24 18:56:08.244536,180.74,utilities,Tecnologías Checa S.Com.,Vizcaya,debit_card,0.07,False
+TXN-000192,16,2026-02-27 09:31:08.244536,156.22,supermarket,Instalaciones ZQDK S.A.,Murcia,transfer,0.21,False
+TXN-000193,39,2026-04-12 15:07:08.244536,126.12,supermarket,Despacho Marín S.Com.,Zaragoza,transfer,0.25,False
+TXN-000194,11,2026-05-04 05:31:08.244536,86.96,online_shopping,Consultoría Ibéricos S.L.,Cantabria,debit_card,0.06,False
+TXN-000195,17,2026-05-10 17:18:08.244536,107.88,restaurant,Banca Privada del Norte S.Com.,Santa Cruz de Tenerife,credit_card,0.18,False
+TXN-000196,31,2026-04-25 22:40:08.244536,183.73,utilities,Distribuciones Juárez S.L.,Almería,transfer,0.13,False
+TXN-000197,22,2026-04-19 06:54:08.244536,43.17,supermarket,Compañía Acevedo & Asociados S.Com.,León,transfer,0.12,False
+TXN-000198,27,2026-04-16 07:01:08.244536,170.63,gas_station,Dolores Córdoba Ferrándiz S.Coop.,Málaga,debit_card,0.26,False
+TXN-000199,40,2026-02-12 11:21:08.244536,109.48,utilities,Banca Privada ERJZ S.A.,Navarra,transfer,0.16,False
+TXN-000200,19,2026-04-14 21:54:08.244536,171.29,utilities,Hermanos Castrillo S.Com.,Huesca,credit_card,0.17,False
+TXN-000201,7,2026-03-31 08:10:08.244536,63.96,online_shopping,Nevado & Asociados S.Coop.,Ourense,transfer,0.21,False
+TXN-000202,41,2026-04-24 03:38:08.244536,76.67,restaurant,Albero y asociados S.Coop.,Burgos,debit_card,0.14,False
+TXN-000203,0,2026-03-16 10:46:08.244536,152.64,gas_station,Fábrica Arribas y asociados S.L.,Madrid,transfer,0.14,False
+TXN-000204,7,2026-04-27 21:53:08.244536,12.03,restaurant,Familia Mateo S.L.,Ourense,transfer,0.06,False
+TXN-000205,9,2026-02-16 01:09:08.244536,39.35,gas_station,Morell y asociados S.L.L.,Pontevedra,debit_card,0.17,False
+TXN-000206,23,2026-03-22 01:44:08.244536,587.01,wire_transfer,Instalaciones Alvarado S.A.,Nigeria,debit_card,0.77,True
+TXN-000207,33,2026-02-14 07:05:08.244536,53.58,supermarket,Rodolfo Garmendia Trillo S.Com.,Girona,transfer,0.12,False
+TXN-000208,30,2026-02-14 03:03:08.244536,84.83,gas_station,Alimentación Moreno S.Coop.,Albacete,debit_card,0.17,False
+TXN-000209,11,2026-05-08 04:32:08.244536,65.82,online_shopping,Talleres Martín S.L.,Cantabria,transfer,0.29,False
+TXN-000210,45,2026-02-19 20:10:08.244536,27.01,gas_station,Sola y Mateo S.Coop.,Málaga,credit_card,0.14,False
+TXN-000211,17,2026-05-01 07:44:08.244536,114.19,utilities,Fortunato Amores Cabo S.L.,Santa Cruz de Tenerife,debit_card,0.2,False
+TXN-000212,33,2026-05-03 21:57:08.244536,5.0,supermarket,Tecnologías Castellana S.A.T.,Girona,transfer,0.27,False
+TXN-000213,43,2026-05-07 03:29:08.244536,202.27,restaurant,Comercializadora del Norte S.Coop.,Asturias,debit_card,0.21,False
+TXN-000214,16,2026-03-01 21:16:08.244536,101.2,supermarket,Grupo Araujo S.L.,Murcia,credit_card,0.2,False
+TXN-000215,13,2026-04-20 04:55:08.244536,52.04,restaurant,Minería Zurita S.L.L.,Melilla,debit_card,0.11,False
+TXN-000216,42,2026-03-17 03:07:08.244536,16.4,utilities,Manso y asociados S.Com.,Granada,transfer,0.19,False
+TXN-000217,41,2026-02-21 09:57:08.244536,41.27,supermarket,Farmaceútica Inteligentes S.L.N.E,Burgos,credit_card,0.06,False
+TXN-000218,2,2026-04-28 17:42:08.244536,136.86,restaurant,Oliver y Bolaños S.L.U.,Valladolid,transfer,0.23,False
+TXN-000219,32,2026-05-03 21:52:08.244536,159.6,gas_station,Hnos Pons S.L.,Lleida,credit_card,0.23,False
+TXN-000220,15,2026-04-16 12:14:08.244536,8.73,restaurant,Olivera y Oliveras S.A.,Granada,credit_card,0.24,False
+TXN-000221,33,2026-04-16 16:19:08.244536,10.05,supermarket,Infraestructuras Falcón S.A.,Girona,transfer,0.07,False
+TXN-000222,28,2026-04-23 06:36:08.244536,12.2,restaurant,Promociones del Mediterráneo S.Com.,Cuenca,transfer,0.24,False
+TXN-000223,15,2026-03-05 00:30:08.244536,115.11,utilities,Banca Privada Española S.A.,Granada,transfer,0.22,False
+TXN-000224,11,2026-05-12 01:13:08.244536,105.37,utilities,Compañía Ibérica S.Com.,Cantabria,credit_card,0.08,False
+TXN-000225,34,2026-05-09 19:03:08.244536,153.03,utilities,Mur y Navas S.L.,Vizcaya,debit_card,0.18,False
+TXN-000226,16,2026-04-15 16:34:08.244536,107.22,supermarket,Cuenca y Collado S.A.,Murcia,credit_card,0.18,False
+TXN-000227,15,2026-03-03 13:04:08.244536,40.91,utilities,Jurado y Dalmau S.L.N.E,Granada,transfer,0.21,False
+TXN-000228,46,2026-02-25 07:30:08.244536,139.51,online_shopping,Alejandra Escrivá Tovar S.Com.,La Coruña,transfer,0.1,False
+TXN-000229,34,2026-03-18 12:10:08.244536,55.48,online_shopping,Inmobiliaria Española S.A.,Vizcaya,transfer,0.14,False
+TXN-000230,7,2026-04-08 23:06:08.244536,47.06,restaurant,Nevado & Asociados S.L.N.E,Ourense,debit_card,0.06,False
+TXN-000231,23,2026-04-21 06:46:08.244536,96.77,supermarket,Grupo Fabregat S.L.N.E,Barcelona,debit_card,0.14,False
+TXN-000232,6,2026-02-17 12:37:08.244536,181.71,supermarket,Suministros Castellana S.A.,Barcelona,debit_card,0.11,False
+TXN-000233,23,2026-04-15 22:27:08.244536,46.8,supermarket,Consultoría Ibérica S.L.,Barcelona,credit_card,0.07,False
+TXN-000234,31,2026-05-02 02:10:08.244536,116.7,online_shopping,María Manuela Palomar Landa S.A.,Almería,debit_card,0.07,False
+TXN-000235,48,2026-03-18 08:09:08.244536,69.64,online_shopping,Compañía Españolas S.A.,Granada,debit_card,0.24,False
+TXN-000236,6,2026-03-04 15:25:08.244536,26.79,restaurant,Noriega y asociados S.L.,Barcelona,debit_card,0.15,False
+TXN-000237,13,2026-03-20 09:21:08.244536,134.34,online_shopping,Tecnologías Cuadrado S.Com.,Melilla,debit_card,0.2,False
+TXN-000238,40,2026-03-30 12:33:08.244536,97.34,gas_station,Leyre Villalobos Esteban S.L.N.E,Navarra,transfer,0.11,False
+TXN-000239,12,2026-02-15 03:31:08.244536,151.75,supermarket,Manufacturas Aller S.L.,Castellón,transfer,0.26,False
+TXN-000240,40,2026-03-31 10:56:08.244536,92.2,utilities,Banco Ibérica S.Com.,Navarra,transfer,0.17,False
+TXN-000241,26,2026-03-25 11:42:08.244536,229.54,supermarket,Hermanos González S.Com.,León,transfer,0.27,False
+TXN-000242,9,2026-02-12 03:44:08.244536,29.1,gas_station,Compañía FU S.Coop.,Pontevedra,credit_card,0.05,False
+TXN-000243,39,2026-03-19 12:23:08.244536,145.15,restaurant,Promociones Pallarès S.A.,Zaragoza,transfer,0.07,False
+TXN-000244,8,2026-04-10 22:24:08.244536,148.47,supermarket,Manrique y asociados S.Com.,Zamora,transfer,0.18,False
+TXN-000245,45,2026-02-22 17:04:08.244536,32.32,restaurant,Banca Privada Sanjuan y asociados S.L.N.E,Málaga,transfer,0.24,False
+TXN-000246,39,2026-05-02 10:29:08.244536,102.2,restaurant,Servicios del Sur S.L.L.,Zaragoza,debit_card,0.28,False
+TXN-000247,20,2026-05-11 19:18:08.244536,211.04,utilities,Comercializadora Española S.Com.,Vizcaya,transfer,0.13,False
+TXN-000248,11,2026-03-23 18:58:08.244536,60.19,utilities,Comercial Pastor S.L.L.,Cantabria,transfer,0.13,False
+TXN-000249,48,2026-04-23 18:29:08.244536,130.22,online_shopping,Suministros García S.Coop.,Granada,transfer,0.07,False
+TXN-000250,12,2026-03-04 16:08:08.244536,184.29,restaurant,Loida Sanz Gimenez S.A.T.,Castellón,credit_card,0.06,False
+TXN-000251,27,2026-03-16 12:49:08.244536,162.42,utilities,Tecnologías Aguilar & Asociados S.Coop.,Málaga,debit_card,0.06,False
+TXN-000252,23,2026-04-09 16:37:08.244536,53.43,utilities,Hermanos Miguel S.L.N.E,Barcelona,debit_card,0.2,False
+TXN-000253,19,2026-05-05 17:43:08.244536,185.95,utilities,Talleres del Sur S.L.,Huesca,debit_card,0.21,False
+TXN-000254,2,2026-03-19 03:57:08.244536,138.47,restaurant,Banca Privada Borrás S.L.,Valladolid,credit_card,0.12,False
+TXN-000255,31,2026-04-10 05:58:08.244536,85.33,utilities,Prada & Asociados S.L.,Almería,credit_card,0.23,False
+TXN-000256,24,2026-03-28 04:35:08.244536,170.6,gas_station,Saura y asociados S.Com.,Las Palmas,debit_card,0.14,False
+TXN-000257,36,2026-03-12 03:25:08.244536,196.89,gas_station,Manufacturas Villanueva & Asociados S.C.P,Pontevedra,transfer,0.29,False
+TXN-000258,15,2026-05-12 18:41:08.244536,61.35,restaurant,Hermanos Carrillo S.L.,Granada,transfer,0.07,False
+TXN-000259,8,2026-05-10 10:37:08.244536,172.02,restaurant,Fábrica Globales S.Coop.,Zamora,debit_card,0.12,False
+TXN-000260,9,2026-02-16 06:40:08.244536,130.81,gas_station,Promociones Españolas S.A.,Pontevedra,credit_card,0.29,False
+TXN-000261,15,2026-05-02 01:51:08.244536,28.84,utilities,Talleres Iglesias S.A.T.,Granada,credit_card,0.24,False
+TXN-000262,23,2026-05-03 07:02:08.244536,72.07,supermarket,Promociones Gallego y asociados S.L.L.,Barcelona,credit_card,0.23,False
+TXN-000263,11,2026-04-22 06:43:08.244536,73.65,utilities,Teófilo Solís Soria S.L.,Cantabria,transfer,0.22,False
+TXN-000264,3,2026-05-01 22:06:08.244536,124.68,supermarket,Desarrollo RBR S.L.,Murcia,debit_card,0.22,False
+TXN-000265,40,2026-02-18 08:16:08.244536,94.95,utilities,Talleres del Sur S.Coop.,Navarra,credit_card,0.1,False
+TXN-000266,48,2026-02-20 15:00:08.244536,128.19,utilities,Soluciones Ibéricos S.A.,Granada,debit_card,0.22,False
+TXN-000267,18,2026-05-05 22:42:08.244536,167.51,restaurant,Gámez y Garzón S.L.N.E,Almería,transfer,0.21,False
+TXN-000268,41,2026-02-16 19:15:08.244536,66.94,restaurant,Comercializadora Losada S.L.,Burgos,debit_card,0.27,False
+TXN-000269,46,2026-05-02 19:18:08.244536,166.47,utilities,Talleres Jaén & Asociados S.Com.,La Coruña,credit_card,0.11,False
+TXN-000270,39,2026-04-04 07:11:08.244536,161.39,supermarket,Pazos y asociados S.L.,Zaragoza,transfer,0.19,False
+TXN-000271,0,2026-04-08 23:29:08.244536,152.47,utilities,Tecnologías Prat S.Coop.,Madrid,credit_card,0.05,False
+TXN-000272,24,2026-02-18 14:18:08.244536,102.84,gas_station,Banco Burgos S.A.U,Las Palmas,debit_card,0.07,False
+TXN-000273,19,2026-05-11 12:31:08.244536,156.66,utilities,Emiliano Nevado Espada S.L.,Huesca,debit_card,0.24,False
+TXN-000274,28,2026-03-25 19:57:08.244536,68.92,restaurant,Alimentación Moreno y asociados S.A.,Cuenca,transfer,0.28,False
+TXN-000275,47,2026-05-04 15:49:08.244536,973.84,cryptocurrency,Soluciones Agustí y asociados S.A.,Santa Lucía,transfer,0.75,True
+TXN-000276,28,2026-03-12 19:01:08.244536,53.66,restaurant,Transportes Avanzadas S.L.L.,Cuenca,transfer,0.1,False
+TXN-000277,8,2026-02-12 04:59:08.244536,172.46,restaurant,Consultoría Martorell S.C.P,Zamora,debit_card,0.28,False
+TXN-000278,49,2026-03-27 04:43:08.244536,131.65,restaurant,Castrillo y Pavón S.Coop.,Salamanca,credit_card,0.17,False
+TXN-000279,6,2026-02-25 16:43:08.244536,98.49,restaurant,Pazos y Pedro S.L.N.E,Barcelona,credit_card,0.06,False
+TXN-000280,29,2026-04-07 17:18:08.244536,158.28,online_shopping,Tecnologías del Sur S.L.,Álava,credit_card,0.08,False
+TXN-000281,15,2026-03-09 03:28:08.244536,75.53,restaurant,Minería Iberia S.A.,Granada,transfer,0.28,False
+TXN-000282,12,2026-05-04 05:41:08.244536,148.47,restaurant,Infraestructuras Castellana S.C.P,Castellón,credit_card,0.12,False
+TXN-000283,12,2026-02-27 16:27:08.244536,141.91,supermarket,Instalaciones WGZG S.A.,Castellón,transfer,0.24,False
+TXN-000284,6,2026-04-10 00:06:08.244536,78.59,supermarket,Hnos Solana S.L.L.,Barcelona,transfer,0.23,False
+TXN-000285,9,2026-03-04 22:10:08.244536,5.0,supermarket,Hermanos Losada S.Com.,Pontevedra,credit_card,0.06,False
+TXN-000286,43,2026-04-13 10:00:08.244536,177.86,restaurant,Pina y Galvez S.L.N.E,Asturias,transfer,0.1,False
+TXN-000287,47,2026-02-12 20:09:08.244536,98.59,restaurant,Compañía Arnau S.L.,Cuenca,credit_card,0.23,False
+TXN-000288,0,2026-04-11 13:02:08.244536,142.05,gas_station,Compañía Rodríguez & Asociados S.L.N.E,Madrid,debit_card,0.13,False
+TXN-000289,24,2026-03-04 05:46:08.244536,134.4,gas_station,Tecnologías Blazquez y asociados S.A.,Las Palmas,transfer,0.25,False
+TXN-000290,5,2026-03-19 05:36:08.244536,155.9,supermarket,Hermanos Jove S.L.L.,Salamanca,credit_card,0.27,False
+TXN-000291,22,2026-03-18 07:36:08.244536,76.89,online_shopping,Manufacturas Blanca S.C.P,León,credit_card,0.26,False
+TXN-000292,22,2026-03-13 23:48:08.244536,77.23,online_shopping,Luque y Ayala S.L.L.,León,transfer,0.18,False
+TXN-000293,24,2026-02-11 23:43:08.244536,159.42,supermarket,Transportes UAN S.L.,Las Palmas,credit_card,0.21,False
+TXN-000294,24,2026-04-09 06:29:08.244536,133.63,gas_station,Segovia & Asociados S.L.,Las Palmas,debit_card,0.19,False
+TXN-000295,33,2026-05-07 09:31:08.244536,5.0,gas_station,Alimentación Tejero S.A.,Girona,transfer,0.17,False
+TXN-000296,41,2026-02-19 20:52:08.244536,96.97,supermarket,Duarte y asociados S.L.U.,Burgos,transfer,0.21,False
+TXN-000297,19,2026-02-20 08:55:08.244536,145.38,restaurant,Múgica y Lucas S.A.T.,Huesca,debit_card,0.28,False
+TXN-000298,43,2026-03-22 17:16:08.244536,165.09,restaurant,Farmaceútica Mas y asociados S.A.,Asturias,transfer,0.23,False
+TXN-000299,49,2026-03-02 12:26:08.244536,61.5,gas_station,Enríquez y asociados S.A.,Salamanca,credit_card,0.2,False
+TXN-000300,4,2026-02-16 08:33:08.244536,71.32,online_shopping,Aristides Montes Cabanillas S.C.P,Cantabria,credit_card,0.18,False
+TXN-000301,30,2026-04-19 17:51:08.244536,130.33,online_shopping,Ariadna Pou Valls S.L.,Albacete,transfer,0.11,False
+TXN-000302,9,2026-05-07 23:06:08.244536,93.08,gas_station,Fábrica YE S.L.,Pontevedra,transfer,0.17,False
+TXN-000303,48,2026-03-29 12:56:08.244536,109.6,utilities,Godoy y Núñez S.L.N.E,Granada,transfer,0.19,False
+TXN-000304,48,2026-04-10 05:12:08.244536,159.12,online_shopping,Fábrica Sancho S.A.,Granada,debit_card,0.3,False
+TXN-000305,25,2026-04-07 12:27:08.244536,144.9,gas_station,Palma y Zurita S.A.D,Lugo,debit_card,0.3,False
+TXN-000306,30,2026-03-07 03:56:08.244536,98.08,gas_station,Familia Soria S.C.P,Albacete,credit_card,0.15,False
+TXN-000307,6,2026-04-23 18:51:08.244536,1058.4,wire_transfer,Construcción Ledesma S.L.,Letonia,debit_card,0.92,True
+TXN-000308,41,2026-03-05 03:20:08.244536,72.17,restaurant,Rueda y asociados S.L.L.,Burgos,credit_card,0.22,False
+TXN-000309,23,2026-04-15 07:28:08.244536,124.94,supermarket,Despacho Tello y asociados S.A.,Barcelona,credit_card,0.3,False
+TXN-000310,29,2026-04-03 21:09:08.244536,134.09,utilities,Rita Ropero Palmer S.C.P,Álava,transfer,0.23,False
+TXN-000311,22,2026-03-19 12:04:08.244536,133.2,online_shopping,Grupo Trillo S.Com.,León,credit_card,0.26,False
+TXN-000312,24,2026-04-08 06:51:08.244536,171.72,supermarket,Fábrica Alcolea y asociados S.A.T.,Las Palmas,transfer,0.05,False
+TXN-000313,33,2026-02-20 17:34:08.244536,32.03,supermarket,Dominga Mármol Nicolás S.L.,Girona,transfer,0.21,False
+TXN-000314,5,2026-05-04 02:53:08.244536,166.94,restaurant,Mínguez y Pomares S.L.U.,Salamanca,credit_card,0.16,False
+TXN-000315,24,2026-02-11 12:15:08.244536,149.61,supermarket,Despacho Globales S.L.,Las Palmas,transfer,0.21,False
+TXN-000316,44,2026-03-13 18:11:08.244536,142.67,utilities,Mínguez & Asociados S.Com.,Ciudad,transfer,0.16,False
+TXN-000317,1,2026-05-03 03:27:08.244536,38.57,supermarket,Suministros Sotelo y asociados S.A.T.,Baleares,transfer,0.07,False
+TXN-000318,44,2026-03-19 09:20:08.244536,193.19,utilities,Grupo Garay S.Coop.,Ciudad,transfer,0.19,False
+TXN-000319,45,2026-03-11 06:27:08.244536,24.28,restaurant,Grupo Cánovas S.L.,Málaga,debit_card,0.06,False
+TXN-000320,21,2026-05-12 21:30:08.244536,166.67,restaurant,Desarrollo Robledo & Asociados S.C.P,Cuenca,transfer,0.19,False
+TXN-000321,13,2026-04-10 23:29:08.244536,85.83,online_shopping,Novoa & Asociados S.Com.,Melilla,credit_card,0.1,False
+TXN-000322,25,2026-03-29 06:19:08.244536,130.53,gas_station,Jesús Costa Baeza S.Coop.,Lugo,transfer,0.24,False
+TXN-000323,34,2026-02-26 16:29:08.244536,181.19,online_shopping,Infraestructuras Santiago S.L.,Vizcaya,credit_card,0.18,False
+TXN-000324,20,2026-03-15 04:27:08.244536,175.92,supermarket,Talleres Castellana S.Com.,Vizcaya,transfer,0.15,False
+TXN-000325,45,2026-03-07 22:46:08.244536,30.71,gas_station,Apolonia Lillo Pacheco S.Coop.,Málaga,credit_card,0.22,False
+TXN-000326,13,2026-04-16 08:36:08.244536,88.67,restaurant,Logística UPL S.Coop.,Melilla,debit_card,0.27,False
+TXN-000327,48,2026-04-05 15:17:08.244536,146.6,online_shopping,Hermanos Arco S.L.L.,Granada,transfer,0.23,False
+TXN-000328,47,2026-03-27 03:36:08.244536,170.92,restaurant,Tecnologías LEF S.Com.,Cuenca,credit_card,0.23,False
+TXN-000329,46,2026-04-01 17:17:08.244536,65.49,online_shopping,Inversiones Escribano & Asociados S.A.,La Coruña,transfer,0.16,False
+TXN-000330,35,2026-02-20 22:58:08.244536,181.47,restaurant,Banco Quiroga y asociados S.Com.,Ourense,credit_card,0.2,False
+TXN-000331,49,2026-05-03 01:52:08.244536,123.88,gas_station,Hermanos Navarro S.L.N.E,Salamanca,transfer,0.27,False
+TXN-000332,34,2026-04-11 18:34:08.244536,199.78,utilities,Hoyos y asociados S.Coop.,Vizcaya,transfer,0.1,False
+TXN-000333,48,2026-03-27 14:17:08.244536,152.84,online_shopping,Infraestructuras PA S.Com.,Granada,credit_card,0.18,False
+TXN-000334,35,2026-05-05 16:18:08.244536,160.49,online_shopping,Jordi Flor Rosa S.A.,Ourense,credit_card,0.13,False
+TXN-000335,33,2026-04-06 11:32:08.244536,34.09,supermarket,Barberá & Asociados S.Coop.,Girona,transfer,0.25,False
+TXN-000336,8,2026-03-04 12:13:08.244536,133.14,supermarket,Grupo Carmona S.C.P,Zamora,credit_card,0.17,False
+TXN-000337,42,2026-04-15 18:14:08.244536,64.39,utilities,Llanos y Cañete S.L.N.E,Granada,debit_card,0.25,False
+TXN-000338,35,2026-03-21 13:38:08.244536,156.23,online_shopping,Farmaceútica Matas y asociados S.L.U.,Ourense,debit_card,0.27,False
+TXN-000339,42,2026-04-21 03:23:08.244536,77.46,utilities,Finanzas Andrés S.Coop.,Granada,transfer,0.12,False
+TXN-000340,31,2026-04-26 04:31:08.244536,110.94,utilities,Construcción Ibéricos S.A.U,Almería,credit_card,0.22,False
+TXN-000341,46,2026-04-01 18:46:08.244536,165.21,utilities,Hermanos Arjona S.Coop.,La Coruña,credit_card,0.06,False
+TXN-000342,16,2026-04-01 12:06:08.244536,160.0,restaurant,Amando Tejedor Huguet S.Com.,Murcia,transfer,0.29,False
+TXN-000343,1,2026-04-17 15:41:08.244536,84.46,gas_station,Hnos Águila S.Coop.,Baleares,transfer,0.06,False
+TXN-000344,13,2026-02-21 13:50:08.244536,131.91,restaurant,Comercializadora Borrego S.L.,Melilla,transfer,0.28,False
+TXN-000345,24,2026-04-18 01:35:08.244536,143.32,supermarket,Calderon & Asociados S.L.,Las Palmas,transfer,0.11,False
+TXN-000346,9,2026-03-22 09:47:08.244536,71.25,supermarket,Talleres Integrales S.A.,Pontevedra,credit_card,0.21,False
+TXN-000347,43,2026-02-26 23:27:08.244536,217.08,online_shopping,Valverde y asociados S.A.,Asturias,credit_card,0.15,False
+TXN-000348,3,2026-02-28 05:49:08.244536,202.69,supermarket,Rincón y Roman S.Coop.,Murcia,debit_card,0.27,False
+TXN-000349,1,2026-04-12 20:00:08.244536,84.15,supermarket,Banco Inteligentes S.Coop.,Baleares,transfer,0.17,False
+TXN-000350,38,2026-04-02 13:51:08.244536,255.22,supermarket,Talavera y Quintero S.Com.,Pontevedra,transfer,0.09,False
+TXN-000351,27,2026-03-18 00:40:08.244536,1663.67,wire_transfer,Manufacturas JQNV S.L.,Iraq,transfer,0.72,True
+TXN-000352,24,2026-03-14 01:48:08.244536,148.49,supermarket,Despacho Jurado y asociados S.Com.,Las Palmas,transfer,0.26,False
+TXN-000353,38,2026-03-17 02:36:08.244536,207.46,utilities,Tecnologías XF S.A.T.,Pontevedra,transfer,0.1,False
+TXN-000354,39,2026-02-22 09:31:08.244536,114.37,restaurant,Hermanos Pujadas S.L.N.E,Zaragoza,transfer,0.27,False
+TXN-000355,15,2026-02-14 10:33:08.244536,86.95,utilities,Inmobiliaria Escalona S.L.L.,Granada,credit_card,0.23,False
+TXN-000356,40,2026-03-24 23:26:08.244536,114.17,gas_station,Grupo Nogués S.A.,Navarra,debit_card,0.11,False
+TXN-000357,18,2026-03-03 09:18:08.244536,137.79,online_shopping,Seco y Cuenca S.A.,Almería,transfer,0.13,False
+TXN-000358,29,2026-03-25 23:21:08.244536,134.81,utilities,Construcción Estrada S.A.,Álava,credit_card,0.16,False
+TXN-000359,19,2026-02-22 06:11:08.244536,111.84,restaurant,Grupo Baeza S.Coop.,Huesca,debit_card,0.1,False
+TXN-000360,13,2026-03-21 02:01:08.244536,97.6,online_shopping,Transportes del Norte S.L.N.E,Melilla,debit_card,0.12,False
+TXN-000361,24,2026-05-05 08:04:08.244536,98.52,gas_station,Encarnita Priego Tejada S.A.,Las Palmas,credit_card,0.2,False
+TXN-000362,33,2026-03-13 22:58:08.244536,72.26,gas_station,Talleres WJN S.L.,Girona,transfer,0.12,False
+TXN-000363,39,2026-03-12 07:41:08.244536,223.38,supermarket,Ruth Sotelo Elías S.Coop.,Zaragoza,credit_card,0.23,False
+TXN-000364,15,2026-02-14 22:39:08.244536,48.25,utilities,Ordóñez y Clavero S.A.,Granada,credit_card,0.21,False
+TXN-000365,35,2026-03-04 18:15:08.244536,173.27,restaurant,Azahar Tello Polo S.Coop.,Ourense,credit_card,0.08,False
+TXN-000366,12,2026-04-14 09:42:08.244536,127.54,supermarket,Silva y Olmo S.L.,Castellón,transfer,0.18,False
+TXN-000367,23,2026-04-04 13:33:08.244536,68.11,supermarket,Hermanos Álvarez S.Coop.,Barcelona,credit_card,0.16,False
+TXN-000368,32,2026-02-17 01:24:08.244536,129.54,gas_station,Restauración Reguera y asociados S.L.L.,Lleida,transfer,0.08,False
+TXN-000369,23,2026-04-29 23:44:08.244536,128.19,utilities,Banco Torrijos & Asociados S.Coop.,Barcelona,credit_card,0.21,False
+TXN-000370,35,2026-03-04 11:02:08.244536,128.78,online_shopping,Fábrica YPD S.Coop.,Ourense,debit_card,0.06,False
+TXN-000371,41,2026-04-03 08:53:08.244536,42.17,supermarket,Talleres Salinas S.L.L.,Burgos,debit_card,0.15,False
+TXN-000372,30,2026-04-12 14:30:08.244536,69.86,online_shopping,Industrias GIU S.L.N.E,Albacete,credit_card,0.28,False
+TXN-000373,18,2026-03-16 11:44:08.244536,161.6,restaurant,Perales y asociados S.Com.,Almería,credit_card,0.07,False
+TXN-000374,6,2026-04-20 14:44:08.244536,97.23,restaurant,Vives & Asociados S.A.T.,Barcelona,transfer,0.17,False
+TXN-000375,38,2026-04-14 18:08:08.244536,210.75,utilities,Talleres XAKO S.L.N.E,Pontevedra,debit_card,0.13,False
+TXN-000376,33,2026-02-24 00:49:08.244536,32.79,supermarket,Promociones Baena & Asociados S.Coop.,Girona,credit_card,0.25,False
+TXN-000377,36,2026-05-03 16:44:08.244536,191.55,online_shopping,Goicoechea y Plana S.L.N.E,Pontevedra,debit_card,0.2,False
+TXN-000378,38,2026-04-21 12:40:08.244536,192.01,utilities,Soluciones Alberto y asociados S.C.P,Pontevedra,debit_card,0.27,False
+TXN-000379,1,2026-03-23 03:28:08.244536,128.38,supermarket,Servicios Bautista S.L.,Baleares,credit_card,0.08,False
+TXN-000380,37,2026-04-13 22:44:08.244536,92.57,restaurant,Amador & Asociados S.L.N.E,Castellón,credit_card,0.25,False
+TXN-000381,34,2026-04-17 21:24:08.244536,220.62,utilities,Grupo Polo S.L.N.E,Vizcaya,credit_card,0.18,False
+TXN-000382,4,2026-02-19 13:41:08.244536,5.0,online_shopping,Banco UPTD S.A.,Cantabria,debit_card,0.23,False
+TXN-000383,42,2026-03-31 09:50:08.244536,68.09,restaurant,Espejo y asociados S.L.N.E,Granada,transfer,0.14,False
+TXN-000384,48,2026-05-06 22:29:08.244536,198.04,utilities,Alimentación Correa S.A.,Granada,debit_card,0.27,False
+TXN-000385,23,2026-02-19 02:01:08.244536,91.84,utilities,Hnos Corominas S.L.L.,Barcelona,transfer,0.15,False
+TXN-000386,26,2026-02-13 04:20:08.244536,145.95,supermarket,Alimentación Arnal S.A.,León,transfer,0.1,False
+TXN-000387,25,2026-02-27 09:15:08.244536,142.73,gas_station,Manufacturas Globales S.A.,Lugo,transfer,0.3,False
+TXN-000388,7,2026-03-14 10:56:08.244536,5.0,restaurant,Construcción Iberia S.A.,Ourense,credit_card,0.22,False
+TXN-000389,12,2026-04-09 13:33:08.244536,158.63,supermarket,Comercializadora MBS S.A.,Castellón,credit_card,0.2,False
+TXN-000390,18,2026-04-29 12:45:08.244536,172.57,restaurant,Huerta y Pou S.Com.,Almería,debit_card,0.13,False
+TXN-000391,34,2026-04-27 09:39:08.244536,229.08,utilities,Grupo Bauzà S.A.,Vizcaya,transfer,0.23,False
+TXN-000392,31,2026-04-01 10:39:08.244536,141.89,online_shopping,Jerónimo Checa Pomares S.L.,Almería,debit_card,0.18,False
+TXN-000393,27,2026-03-08 16:52:08.244536,143.23,utilities,Minería Españolas S.L.,Málaga,debit_card,0.15,False
+TXN-000394,31,2026-02-16 13:53:08.244536,156.59,online_shopping,Industrias XCZ S.A.,Almería,transfer,0.1,False
+TXN-000395,6,2026-04-27 01:23:08.244536,114.62,restaurant,Desarrollo Peña S.Coop.,Barcelona,transfer,0.2,False
+TXN-000396,30,2026-03-11 03:51:08.244536,75.92,online_shopping,Banca Privada GY S.A.,Albacete,debit_card,0.09,False
+TXN-000397,15,2026-03-05 04:02:08.244536,160.66,restaurant,Supermercados Garmendia & Asociados S.L.N.E,Granada,credit_card,0.26,False
+TXN-000398,49,2026-03-06 21:18:08.244536,134.9,restaurant,Borja Arce Tapia S.L.,Salamanca,credit_card,0.26,False
+TXN-000399,13,2026-02-20 12:03:08.244536,121.54,online_shopping,Carrión y asociados S.L.N.E,Melilla,transfer,0.08,False
+TXN-000400,20,2026-04-07 16:45:08.244536,124.62,utilities,Mosquera y asociados S.A.,Vizcaya,credit_card,0.21,False
+TXN-000401,15,2026-05-11 21:03:08.244536,52.2,utilities,Cruz Ramos Hierro S.L.L.,Granada,credit_card,0.12,False
+TXN-000402,36,2026-04-25 20:25:08.244536,264.33,online_shopping,Supermercados NVCX S.L.U.,Pontevedra,transfer,0.29,False
+TXN-000403,24,2026-03-09 01:14:08.244536,134.97,supermarket,Inmobiliaria Avanzadas S.L.,Las Palmas,credit_card,0.08,False
+TXN-000404,37,2026-05-06 05:12:08.244536,128.89,restaurant,Instalaciones Castellana S.L.N.E,Castellón,credit_card,0.22,False
+TXN-000405,12,2026-02-26 02:53:08.244536,152.79,restaurant,Grupo Fernandez S.A.,Castellón,credit_card,0.27,False
+TXN-000406,43,2026-02-17 02:30:08.244536,185.26,restaurant,Jover y Esteve S.L.U.,Asturias,transfer,0.11,False
+TXN-000407,9,2026-02-22 15:36:08.244536,93.52,supermarket,Feliciana Llanos Portero S.L.N.E,Pontevedra,transfer,0.1,False
+TXN-000408,5,2026-03-30 18:40:08.244536,178.68,supermarket,Banco PDW S.A.T.,Salamanca,credit_card,0.15,False
+TXN-000409,45,2026-03-29 16:30:08.244536,25.12,restaurant,Apolinar Cañizares Palacios S.L.L.,Málaga,transfer,0.1,False
+TXN-000410,31,2026-04-11 03:08:08.244536,152.08,online_shopping,Gustavo Carvajal Juliá S.A.,Almería,credit_card,0.28,False
+TXN-000411,29,2026-02-14 02:29:08.244536,116.38,utilities,Transportes Ibéricos S.A.,Álava,credit_card,0.1,False
+TXN-000412,33,2026-02-23 03:16:08.244536,50.56,gas_station,Familia Torralba S.L.,Girona,debit_card,0.26,False
+TXN-000413,0,2026-04-19 22:23:08.244536,96.42,utilities,Ramirez y Laguna S.Com.,Madrid,transfer,0.09,False
+TXN-000414,16,2026-04-28 08:53:08.244536,105.28,restaurant,Hermanos Huguet S.L.,Murcia,debit_card,0.14,False
+TXN-000415,35,2026-03-09 10:05:08.244536,171.04,restaurant,Brunilda Girón Elías S.Coop.,Ourense,debit_card,0.12,False
+TXN-000416,18,2026-04-22 03:00:08.244536,155.76,restaurant,Minería Izquierdo S.A.,Almería,transfer,0.1,False
+TXN-000417,3,2026-04-01 02:14:08.244536,140.6,supermarket,Gilabert y Lobo S.Com.,Murcia,debit_card,0.27,False
+TXN-000418,37,2026-04-18 10:41:08.244536,119.32,restaurant,Instalaciones Prats y asociados S.L.N.E,Castellón,transfer,0.17,False
+TXN-000419,26,2026-04-23 19:25:08.244536,127.11,supermarket,Paniagua & Asociados S.L.L.,León,transfer,0.12,False
+TXN-000420,41,2026-03-10 07:27:08.244536,114.61,supermarket,Soluciones SB S.A.U,Burgos,debit_card,0.2,False
+TXN-000421,33,2026-04-17 01:33:08.244536,5.0,supermarket,Grupo Gallardo S.Com.,Girona,transfer,0.21,False
+TXN-000422,29,2026-02-28 18:03:08.244536,161.61,utilities,Susanita Jimenez Ángel S.A.U,Álava,credit_card,0.09,False
+TXN-000423,16,2026-03-02 03:51:08.244536,56.62,restaurant,Tecnologías HJ S.L.N.E,Murcia,credit_card,0.24,False
+TXN-000424,28,2026-04-03 03:40:08.244536,270.8,cryptocurrency,Arana & Asociados S.Coop.,Islas Salomón,transfer,0.79,True
+TXN-000425,4,2026-04-09 00:02:08.244536,45.98,supermarket,Fábrica Reina S.L.,Cantabria,credit_card,0.28,False
+TXN-000426,23,2026-03-26 22:00:08.244536,66.69,utilities,Donato Camps Saavedra S.L.,Barcelona,transfer,0.11,False
+TXN-000427,16,2026-02-27 11:58:08.244536,122.79,restaurant,Transportes Luján S.L.,Murcia,credit_card,0.12,False
+TXN-000428,0,2026-04-16 10:58:08.244536,2279.52,wire_transfer,Ramiro Batalla Bellido S.L.N.E,Ucrania,credit_card,0.92,True
+TXN-000429,14,2026-03-02 19:02:08.244536,186.41,supermarket,Rovira y Lasa S.L.,Melilla,credit_card,0.23,False
+TXN-000430,28,2026-05-10 02:22:08.244536,100.7,restaurant,Grupo Araujo S.Com.,Cuenca,transfer,0.29,False
+TXN-000431,18,2026-02-18 04:24:08.244536,150.86,online_shopping,Industrias RLE S.A.,Almería,debit_card,0.23,False
+TXN-000432,47,2026-03-24 08:28:08.244536,195.08,restaurant,Supermercados Española S.Com.,Cuenca,transfer,0.06,False
+TXN-000433,12,2026-04-02 07:04:08.244536,170.91,restaurant,Ulises Mur Belmonte S.A.,Castellón,credit_card,0.1,False
+TXN-000434,23,2026-02-24 13:09:08.244536,80.35,utilities,Finanzas Múñiz S.Coop.,Barcelona,credit_card,0.26,False
+TXN-000435,36,2026-04-05 22:46:08.244536,130.9,gas_station,Blázquez & Asociados S.A.U,Pontevedra,debit_card,0.06,False
+TXN-000436,24,2026-03-01 19:59:08.244536,191.51,gas_station,Peiró y Escribano S.A.,Las Palmas,credit_card,0.15,False
+TXN-000437,37,2026-03-25 11:15:08.244536,119.45,gas_station,Villena & Asociados S.Coop.,Castellón,transfer,0.26,False
+TXN-000438,17,2026-04-18 20:13:08.244536,1361.52,wire_transfer,Inversiones Integrales S.L.,República Unida de Tanzanía,transfer,0.92,True
+TXN-000439,46,2026-02-22 14:26:08.244536,153.77,utilities,Gil Arellano Ferrera S.Com.,La Coruña,debit_card,0.18,False
+TXN-000440,48,2026-03-26 05:17:08.244536,147.18,online_shopping,Grupo Castelló S.Coop.,Granada,debit_card,0.23,False
+TXN-000441,15,2026-03-07 22:02:08.244536,18.68,restaurant,Comercial SWIY S.Coop.,Granada,transfer,0.26,False
+TXN-000442,14,2026-04-19 10:17:08.244536,179.74,utilities,Alimentación Bartolomé S.L.N.E,Melilla,debit_card,0.28,False
+TXN-000443,13,2026-02-14 15:43:08.244536,64.33,online_shopping,Fábrica Viñas & Asociados S.L.,Melilla,credit_card,0.13,False
+TXN-000444,40,2026-04-02 03:16:08.244536,97.7,gas_station,Finanzas Cuadrado & Asociados S.A.,Navarra,credit_card,0.16,False
+TXN-000445,34,2026-03-26 02:00:08.244536,219.05,online_shopping,Nico Jódar Benítez S.L.,Vizcaya,credit_card,0.21,False
+TXN-000446,37,2026-03-24 19:23:08.244536,66.79,gas_station,Industrias Armengol S.Coop.,Castellón,credit_card,0.2,False
+TXN-000447,30,2026-05-05 02:20:08.244536,97.38,gas_station,Minería Globales S.A.,Albacete,debit_card,0.12,False
+TXN-000448,1,2026-03-17 03:36:08.244536,37.11,supermarket,Murcia y Giner S.Com.,Baleares,debit_card,0.29,False
+TXN-000449,44,2026-04-13 21:10:08.244536,169.98,utilities,Gaya y Delgado S.Com.,Ciudad,transfer,0.09,False
+TXN-000450,14,2026-05-01 05:06:08.244536,201.04,utilities,Restauración CYY S.L.,Melilla,credit_card,0.28,False
+TXN-000451,21,2026-04-19 00:11:08.244536,180.17,utilities,Soraya Vega Osorio S.Com.,Cuenca,debit_card,0.06,False
+TXN-000452,43,2026-03-12 12:20:08.244536,237.41,restaurant,Tecnologías JOB S.L.,Asturias,transfer,0.16,False
+TXN-000453,37,2026-02-15 13:42:08.244536,69.95,gas_station,Nebot y asociados S.L.,Castellón,transfer,0.19,False
+TXN-000454,26,2026-03-19 22:36:08.244536,111.74,supermarket,Familia Valdés S.Com.,León,transfer,0.12,False
+TXN-000455,16,2026-02-20 23:09:08.244536,150.69,restaurant,Ruiz y Noguera S.Coop.,Murcia,credit_card,0.08,False
+TXN-000456,24,2026-03-20 23:16:08.244536,115.34,supermarket,Despacho Uribe S.L.,Las Palmas,debit_card,0.24,False
+TXN-000457,19,2026-04-27 00:13:08.244536,188.22,restaurant,Inmobiliaria Dueñas S.L.N.E,Huesca,credit_card,0.29,False
+TXN-000458,25,2026-05-08 09:29:08.244536,133.77,supermarket,Suministros Lluch y asociados S.A.,Lugo,debit_card,0.09,False
+TXN-000459,32,2026-04-09 16:16:08.244536,186.52,restaurant,Mena & Asociados S.Coop.,Lleida,transfer,0.16,False
+TXN-000460,0,2026-03-18 22:00:08.244536,110.3,utilities,Rafa Montero Madrigal S.L.N.E,Madrid,transfer,0.1,False
+TXN-000461,20,2026-04-14 14:16:08.244536,106.54,supermarket,Hermanos Castañeda S.Coop.,Vizcaya,credit_card,0.26,False
+TXN-000462,19,2026-02-22 01:23:08.244536,197.57,restaurant,Distribuciones Internacionales S.Com.,Huesca,transfer,0.14,False
+TXN-000463,5,2026-02-18 10:05:08.244536,163.69,supermarket,Inmobiliaria del Noroeste S.L.N.E,Salamanca,debit_card,0.23,False
+TXN-000464,22,2026-05-06 23:25:08.244536,35.39,supermarket,Pizarro y Prieto S.Coop.,León,credit_card,0.18,False
+TXN-000465,38,2026-02-23 13:16:08.244536,218.82,utilities,Fábrica Torre & Asociados S.Com.,Pontevedra,debit_card,0.14,False
+TXN-000466,0,2026-02-27 23:26:08.244536,118.84,gas_station,Bolaños y asociados S.C.P,Madrid,debit_card,0.18,False
+TXN-000467,15,2026-03-18 02:19:08.244536,46.21,restaurant,Industrias Ripoll S.Coop.,Granada,credit_card,0.22,False
+TXN-000468,27,2026-02-20 12:15:08.244536,131.5,gas_station,Hotel Ruiz S.A.,Málaga,transfer,0.28,False
+TXN-000469,10,2026-03-27 01:39:08.244536,117.22,online_shopping,Hnos González S.Com.,León,transfer,0.29,False
+TXN-000470,12,2026-04-21 17:56:08.244536,164.81,restaurant,Restauración ZH S.L.N.E,Castellón,transfer,0.22,False
+TXN-000471,11,2026-03-04 15:15:08.244536,39.01,utilities,Rodríguez y Bello S.L.,Cantabria,credit_card,0.14,False
+TXN-000472,11,2026-04-20 05:57:08.244536,29.99,online_shopping,Hermanos Canals S.L.,Cantabria,credit_card,0.17,False
+TXN-000473,20,2026-05-01 19:46:08.244536,91.83,supermarket,Hermanos Camacho S.L.U.,Vizcaya,debit_card,0.27,False
+TXN-000474,2,2026-05-04 05:17:08.244536,133.31,utilities,Finanzas HBC S.C.P,Valladolid,transfer,0.19,False
+TXN-000475,43,2026-03-16 09:51:08.244536,192.46,online_shopping,Minería Zamora S.A.,Asturias,debit_card,0.07,False
+TXN-000476,28,2026-05-10 13:22:08.244536,57.2,restaurant,Vázquez y Mayol S.L.,Cuenca,transfer,0.16,False
+TXN-000477,35,2026-02-20 07:34:08.244536,139.2,online_shopping,Hnos Torrent S.A.,Ourense,debit_card,0.28,False
+TXN-000478,3,2026-03-15 23:33:08.244536,162.78,utilities,Grupo Chaparro S.A.,Murcia,credit_card,0.18,False
+TXN-000479,29,2026-05-12 01:04:08.244536,136.17,utilities,Manufacturas Mulet S.Com.,Álava,debit_card,0.16,False
+TXN-000480,7,2026-04-29 11:38:08.244536,5.0,online_shopping,Supermercados Tejada & Asociados S.A.,Ourense,transfer,0.3,False
+TXN-000481,17,2026-05-05 10:48:08.244536,99.28,utilities,Maldonado y Gómez S.Coop.,Santa Cruz de Tenerife,debit_card,0.16,False
+TXN-000482,7,2026-03-29 19:18:08.244536,54.01,online_shopping,Benito Pacheco Amador S.L.N.E,Ourense,transfer,0.17,False
+TXN-000483,25,2026-02-25 10:14:08.244536,98.48,gas_station,Transportes OTOU S.A.,Lugo,credit_card,0.13,False
+TXN-000484,47,2026-04-07 18:49:08.244536,132.8,restaurant,Nogueira & Asociados S.L.,Cuenca,credit_card,0.21,False
+TXN-000485,48,2026-03-02 07:20:08.244536,70.13,online_shopping,Consultoría HD S.Coop.,Granada,transfer,0.11,False
+TXN-000486,8,2026-05-13 01:59:08.244536,203.0,restaurant,Banco IPV S.A.,Zamora,transfer,0.16,False
+TXN-000487,20,2026-04-05 06:25:08.244536,83.3,utilities,Castañeda & Asociados S.L.,Vizcaya,credit_card,0.29,False
+TXN-000488,5,2026-04-27 18:22:08.244536,185.61,restaurant,Alberto Robles Bermudez S.L.N.E,Salamanca,credit_card,0.3,False
+TXN-000489,19,2026-05-10 00:49:08.244536,172.61,utilities,Hermanos Lucena S.Coop.,Huesca,transfer,0.27,False
+TXN-000490,6,2026-03-24 00:06:08.244536,54.98,supermarket,Farmaceútica Salazar y asociados S.Coop.,Barcelona,transfer,0.09,False
+TXN-000491,26,2026-03-11 02:38:08.244536,137.11,supermarket,Noé Morales Cadenas S.Coop.,León,credit_card,0.15,False
+TXN-000492,23,2026-04-17 09:18:08.244536,49.01,utilities,Supermercados Cardona S.L.L.,Barcelona,debit_card,0.06,False
+TXN-000493,46,2026-02-15 04:59:08.244536,179.24,utilities,López y Vargas S.Com.,La Coruña,credit_card,0.14,False
+TXN-000494,28,2026-02-20 14:12:08.244536,71.32,restaurant,Calixto Gelabert Catalán S.A.,Cuenca,transfer,0.15,False
+TXN-000495,24,2026-04-15 16:51:08.244536,108.85,supermarket,Benavente y Paz S.Coop.,Las Palmas,credit_card,0.1,False
+TXN-000496,2,2026-02-26 06:14:08.244536,130.94,restaurant,Transportes Salvador S.Coop.,Valladolid,credit_card,0.21,False
+TXN-000497,2,2026-03-27 05:11:08.244536,123.09,utilities,Farmaceútica BT S.C.P,Valladolid,credit_card,0.23,False
+TXN-000498,32,2026-05-11 02:06:08.244536,186.95,restaurant,Bernad y Folch S.L.,Lleida,credit_card,0.19,False
+TXN-000499,5,2026-03-16 08:00:08.244536,180.6,supermarket,Instalaciones Ibéricos S.L.N.E,Salamanca,transfer,0.08,False
+TXN-000500,33,2026-02-22 13:18:08.244536,44.94,gas_station,Talavera y Chamorro S.L.,Girona,transfer,0.25,False
+TXN-000501,44,2026-02-27 11:27:08.244536,184.32,utilities,Morcillo y Gallart S.A.,Ciudad,credit_card,0.09,False
+TXN-000502,21,2026-04-01 04:48:08.244536,164.33,restaurant,Instalaciones Lobato S.Com.,Cuenca,debit_card,0.12,False
+TXN-000503,2,2026-05-12 03:39:08.244536,148.66,utilities,Chamorro & Asociados S.Coop.,Valladolid,credit_card,0.28,False
+TXN-000504,11,2026-03-31 23:40:08.244536,74.77,online_shopping,Alimentación SLA S.Com.,Cantabria,credit_card,0.15,False
+TXN-000505,6,2026-04-27 07:38:08.244536,149.28,restaurant,Soledad Mateu Escamilla S.L.N.E,Barcelona,transfer,0.25,False
+TXN-000506,25,2026-04-10 00:29:08.244536,115.13,supermarket,Farmaceútica RLY S.A.U,Lugo,credit_card,0.16,False
+TXN-000507,45,2026-02-28 22:29:08.244536,32.75,restaurant,Transportes Pereira & Asociados S.Com.,Málaga,debit_card,0.09,False
+TXN-000508,22,2026-02-18 09:35:08.244536,121.93,online_shopping,Grupo Rocamora S.L.U.,León,transfer,0.3,False
+TXN-000509,8,2026-04-07 13:18:08.244536,160.03,supermarket,Farmaceútica Herranz S.L.U.,Zamora,credit_card,0.17,False
+TXN-000510,17,2026-02-16 23:14:08.244536,92.33,utilities,Lorenzo & Asociados S.L.,Santa Cruz de Tenerife,credit_card,0.28,False
+TXN-000511,37,2026-03-26 19:34:08.244536,120.56,gas_station,Hermanos Clavero S.A.,Castellón,credit_card,0.23,False
+TXN-000512,32,2026-04-23 19:08:08.244536,150.27,restaurant,Logística Company S.L.,Lleida,transfer,0.17,False
+TXN-000513,17,2026-04-30 07:14:08.244536,106.29,utilities,Fiol y Peña S.A.,Santa Cruz de Tenerife,debit_card,0.21,False
+TXN-000514,2,2026-03-19 15:22:08.244536,146.39,restaurant,Felicidad Cañete Gabaldón S.L.N.E,Valladolid,credit_card,0.3,False
+TXN-000515,40,2026-04-23 07:35:08.244536,85.55,gas_station,Haro y Rebollo S.A.,Navarra,debit_card,0.26,False
+TXN-000516,29,2026-03-30 01:52:08.244536,141.73,online_shopping,Martorell y Chaves S.A.,Álava,transfer,0.11,False
+TXN-000517,27,2026-03-09 22:31:08.244536,166.4,utilities,Restauración Internacionales S.L.N.E,Málaga,credit_card,0.17,False
+TXN-000518,39,2026-05-05 14:29:08.244536,76.87,restaurant,Tolosa y Barreda S.Coop.,Zaragoza,transfer,0.12,False
+TXN-000519,20,2026-03-31 10:15:08.244536,143.79,supermarket,Hermanos Galvez S.L.,Vizcaya,debit_card,0.19,False
+TXN-000520,15,2026-02-24 23:46:08.244536,48.3,utilities,Ulises Reina Doménech S.Coop.,Granada,credit_card,0.21,False
+TXN-000521,40,2026-04-14 16:02:08.244536,111.8,utilities,Fábrica Españolas S.Coop.,Navarra,debit_card,0.06,False
+TXN-000522,34,2026-03-25 21:50:08.244536,253.48,utilities,Castells & Asociados S.Coop.,Vizcaya,transfer,0.2,False
+TXN-000523,9,2026-04-04 14:51:08.244536,142.65,supermarket,Farmaceútica Fuertes S.Com.,Pontevedra,transfer,0.21,False
+TXN-000524,14,2026-03-01 23:44:08.244536,1774.48,wire_transfer,Instalaciones Machado S.L.N.E,Etiopía,debit_card,0.91,True
+TXN-000525,33,2026-03-23 22:11:08.244536,66.47,gas_station,Distribuciones Inteligentes S.A.U,Girona,transfer,0.16,False
+TXN-000526,26,2026-05-10 00:40:08.244536,138.67,supermarket,Restauración del Noroeste S.L.U.,León,transfer,0.25,False
+TXN-000527,23,2026-04-26 16:42:08.244536,91.7,supermarket,Miralles y Ferrero S.Com.,Barcelona,debit_card,0.29,False
+TXN-000528,36,2026-03-10 02:29:08.244536,185.2,gas_station,Socorro Crespo Artigas S.L.N.E,Pontevedra,credit_card,0.11,False
+TXN-000529,28,2026-04-01 15:46:08.244536,41.42,restaurant,Micaela Acedo Calvet S.Com.,Cuenca,credit_card,0.05,False
+TXN-000530,35,2026-03-09 01:56:08.244536,146.53,restaurant,Comercial Márquez S.A.,Ourense,credit_card,0.09,False
+TXN-000531,11,2026-02-12 14:00:08.244536,57.1,utilities,Logística Integrales S.L.N.E,Cantabria,debit_card,0.05,False
+TXN-000532,14,2026-02-28 09:29:08.244536,176.37,utilities,Grupo Arnal S.L.,Melilla,credit_card,0.23,False
+TXN-000533,9,2026-04-29 14:32:08.244536,35.84,gas_station,López y asociados S.L.,Pontevedra,credit_card,0.06,False
+TXN-000534,28,2026-02-17 20:55:08.244536,83.48,supermarket,Construcción Llamas S.A.,Cuenca,credit_card,0.09,False
+TXN-000535,22,2026-02-24 15:16:08.244536,46.93,supermarket,Madrid & Asociados S.A.,León,transfer,0.08,False
+TXN-000536,47,2026-03-10 17:25:08.244536,136.4,restaurant,Talleres Díaz y asociados S.A.,Cuenca,transfer,0.26,False
+TXN-000537,11,2026-03-22 12:56:08.244536,47.71,utilities,Cid & Asociados S.A.,Cantabria,transfer,0.28,False
+TXN-000538,40,2026-05-09 08:51:08.244536,101.32,utilities,Hnos Yáñez S.L.U.,Navarra,credit_card,0.09,False
+TXN-000539,15,2026-02-15 11:22:08.244536,38.18,utilities,Félix Mir Vilar S.A.,Granada,debit_card,0.21,False
+TXN-000540,18,2026-02-18 05:50:08.244536,165.49,online_shopping,Farmaceútica Barreda y asociados S.L.U.,Almería,transfer,0.1,False
+TXN-000541,47,2026-04-12 13:49:08.244536,123.47,gas_station,Finanzas Sanchez S.Coop.,Cuenca,transfer,0.1,False
+TXN-000542,28,2026-03-05 08:21:08.244536,33.97,supermarket,Comercializadora Garriga & Asociados S.C.P,Cuenca,debit_card,0.29,False
+TXN-000543,41,2026-03-15 06:39:08.244536,19.27,restaurant,Calzada y asociados S.A.,Burgos,transfer,0.18,False
+TXN-000544,16,2026-04-29 22:19:08.244536,135.0,restaurant,Transportes González & Asociados S.Com.,Murcia,credit_card,0.07,False
+TXN-000545,29,2026-05-09 10:45:08.244536,105.16,online_shopping,Iker Montalbán Cabello S.A.,Álava,transfer,0.26,False
+TXN-000546,23,2026-03-09 22:24:08.244536,28.23,supermarket,Hnos Moreno S.Coop.,Barcelona,credit_card,0.17,False
+TXN-000547,29,2026-04-14 09:26:08.244536,158.55,utilities,Minería Núñez S.Com.,Álava,transfer,0.17,False
+TXN-000548,21,2026-05-03 15:43:08.244536,209.65,utilities,Familia Malo S.L.,Cuenca,debit_card,0.07,False
+TXN-000549,4,2026-02-28 04:37:08.244536,15.25,online_shopping,Marcial Reyes Comas S.L.N.E,Cantabria,credit_card,0.11,False
+TXN-000550,34,2026-03-24 19:53:08.244536,1071.52,cryptocurrency,Pozo & Asociados S.A.,Benin,debit_card,0.72,True
+TXN-000551,36,2026-04-05 17:41:08.244536,200.49,gas_station,Grupo Bernat S.L.,Pontevedra,credit_card,0.09,False
+TXN-000552,19,2026-02-23 00:38:08.244536,209.96,restaurant,Comercializadora Cases S.L.,Huesca,debit_card,0.07,False
+TXN-000553,11,2026-04-30 16:47:08.244536,86.73,utilities,Servicios NWK S.A.,Cantabria,transfer,0.11,False
+TXN-000554,41,2026-03-15 01:10:08.244536,45.5,supermarket,Grupo Torrent S.Com.,Burgos,transfer,0.06,False
+TXN-000555,14,2026-04-05 16:31:08.244536,171.57,supermarket,Transportes SKUX S.Coop.,Melilla,credit_card,0.2,False
+TXN-000556,30,2026-02-25 18:48:08.244536,140.32,gas_station,Compañía Españolas S.A.,Albacete,credit_card,0.18,False
+TXN-000557,13,2026-05-07 12:35:08.244536,102.95,online_shopping,Hnos Almagro S.L.N.E,Melilla,transfer,0.24,False
+TXN-000558,10,2026-04-08 04:28:08.244536,136.58,online_shopping,Manufacturas Montserrat y asociados S.Coop.,León,debit_card,0.06,False
+TXN-000559,34,2026-04-04 06:42:08.244536,229.07,utilities,Carro y Román S.A.,Vizcaya,debit_card,0.06,False
+TXN-000560,35,2026-02-20 14:34:08.244536,196.0,online_shopping,Servicios Integrales S.L.N.E,Ourense,credit_card,0.08,False
+TXN-000561,10,2026-03-31 09:06:08.244536,148.22,supermarket,Industrias Martí S.L.L.,León,transfer,0.15,False
+TXN-000562,12,2026-04-05 15:19:08.244536,153.69,restaurant,Hnos Benavides S.Com.,Castellón,debit_card,0.24,False
+TXN-000563,7,2026-04-19 10:46:08.244536,52.82,restaurant,Hermanos Gutiérrez S.Coop.,Ourense,credit_card,0.17,False
+TXN-000564,46,2026-03-01 11:44:08.244536,139.98,utilities,Inversiones Castellana S.A.,La Coruña,credit_card,0.23,False
+TXN-000565,35,2026-03-24 01:30:08.244536,170.53,online_shopping,Soluciones Arellano & Asociados S.L.N.E,Ourense,debit_card,0.12,False
+TXN-000566,48,2026-02-27 19:59:08.244536,109.51,online_shopping,Desarrollo Españolas S.Coop.,Granada,transfer,0.1,False
+TXN-000567,41,2026-04-04 21:02:08.244536,110.24,restaurant,Grande & Asociados S.A.,Burgos,credit_card,0.25,False
+TXN-000568,1,2026-03-24 14:28:08.244536,89.62,gas_station,Luisina Godoy Guillen S.L.,Baleares,debit_card,0.06,False
+TXN-000569,40,2026-04-21 03:46:08.244536,118.32,utilities,María Fernanda Castillo Roman S.A.,Navarra,debit_card,0.26,False
+TXN-000570,1,2026-02-20 07:12:08.244536,40.77,supermarket,Despacho YVT S.L.N.E,Baleares,debit_card,0.2,False
+TXN-000571,27,2026-03-20 21:05:08.244536,167.07,utilities,Supermercados Calzada S.L.N.E,Málaga,debit_card,0.09,False
+TXN-000572,29,2026-04-22 15:03:08.244536,134.9,online_shopping,Sandalio Castellanos Pablo S.L.,Álava,credit_card,0.2,False
+TXN-000573,1,2026-04-05 10:46:08.244536,7.2,gas_station,Molina y Lledó S.Coop.,Baleares,credit_card,0.17,False
+TXN-000574,0,2026-04-06 22:43:08.244536,248.39,gas_station,Adelia Saez Morante S.Coop.,Madrid,debit_card,0.07,False
+TXN-000575,42,2026-02-23 00:49:08.244536,202.49,restaurant,Santiago y Sanmiguel S.Coop.,Granada,credit_card,0.2,False
+TXN-000576,12,2026-03-08 15:35:08.244536,110.94,supermarket,Industrias Castellanos S.L.N.E,Castellón,transfer,0.12,False
+TXN-000577,26,2026-03-16 14:57:08.244536,69.0,supermarket,Inmobiliaria Fuertes y asociados S.L.,León,credit_card,0.14,False
+TXN-000578,19,2026-03-10 08:50:08.244536,123.65,utilities,Hnos Jerez S.Com.,Huesca,debit_card,0.22,False
+TXN-000579,25,2026-04-21 03:27:08.244536,104.02,supermarket,Fábrica XGUL S.Com.,Lugo,transfer,0.07,False
+TXN-000580,40,2026-04-13 15:06:08.244536,115.52,utilities,Ferrándiz y asociados S.Com.,Navarra,credit_card,0.11,False
+TXN-000581,17,2026-03-24 17:27:08.244536,1535.79,luxury,Huerta y Rueda S.L.U.,Bangladesh,debit_card,0.83,True
+TXN-000582,15,2026-03-24 08:10:08.244536,37.43,restaurant,Familia Rivas S.L.N.E,Granada,debit_card,0.13,False
+TXN-000583,16,2026-02-16 16:17:08.244536,155.17,restaurant,Minería Ferrando & Asociados S.L.N.E,Murcia,credit_card,0.1,False
+TXN-000584,22,2026-04-02 15:24:08.244536,85.62,supermarket,Tecnologías Pera S.L.N.E,León,debit_card,0.26,False
+TXN-000585,6,2026-04-07 01:41:08.244536,170.5,supermarket,Castejón y Ruano S.Com.,Barcelona,transfer,0.24,False
+TXN-000586,49,2026-02-12 23:35:08.244536,159.15,gas_station,Raya & Asociados S.L.,Salamanca,debit_card,0.09,False
+TXN-000587,44,2026-02-27 16:36:08.244536,162.65,utilities,Duran y Yuste S.A.U,Ciudad,transfer,0.21,False
+TXN-000588,43,2026-04-01 01:50:08.244536,216.28,restaurant,Hnos Molins S.L.N.E,Asturias,debit_card,0.21,False
+TXN-000589,43,2026-02-17 08:47:08.244536,183.15,online_shopping,Cifuentes y Puig S.L.L.,Asturias,transfer,0.19,False
+TXN-000590,30,2026-03-08 05:31:08.244536,112.07,gas_station,Hnos Mateu S.A.,Albacete,credit_card,0.05,False
+TXN-000591,28,2026-04-25 05:29:08.244536,48.87,supermarket,Hnos Uribe S.L.N.E,Cuenca,credit_card,0.13,False
+TXN-000592,15,2026-04-18 03:22:08.244536,32.15,restaurant,Industrias Luján y asociados S.A.,Granada,debit_card,0.21,False
+TXN-000593,8,2026-02-24 00:26:08.244536,179.13,restaurant,Manufacturas Solana S.Coop.,Zamora,debit_card,0.26,False
+TXN-000594,34,2026-04-14 23:29:08.244536,220.72,online_shopping,Barberá y asociados S.C.P,Vizcaya,credit_card,0.18,False
+TXN-000595,29,2026-02-11 10:32:08.244536,168.0,utilities,Guzman y Vidal S.L.,Álava,credit_card,0.07,False
+TXN-000596,19,2026-02-24 19:58:08.244536,188.91,utilities,Desarrollo Internacionales S.Coop.,Huesca,transfer,0.1,False
+TXN-000597,41,2026-02-18 17:39:08.244536,34.5,supermarket,Evita Blasco Pelayo S.Com.,Burgos,debit_card,0.21,False
+TXN-000598,31,2026-02-15 19:25:08.244536,174.0,utilities,Olmo y Aranda S.L.,Almería,credit_card,0.3,False
+TXN-000599,23,2026-02-14 22:57:08.244536,110.59,utilities,Banca Privada HW S.A.,Barcelona,debit_card,0.17,False
+TXN-000600,2,2026-05-10 16:44:08.244536,146.07,utilities,Grupo Iborra S.Coop.,Valladolid,debit_card,0.12,False
+TXN-000601,2,2026-04-26 08:20:08.244536,149.57,restaurant,Transportes Castellana S.L.U.,Valladolid,credit_card,0.15,False
+TXN-000602,19,2026-04-10 00:37:08.244536,169.51,utilities,Pareja y Niño S.Coop.,Huesca,debit_card,0.06,False
+TXN-000603,43,2026-02-27 08:47:08.244536,165.56,online_shopping,Plaza & Asociados S.C.P,Asturias,credit_card,0.06,False
+TXN-000604,3,2026-03-14 01:13:08.244536,193.32,utilities,Maldonado y Coello S.L.N.E,Murcia,transfer,0.18,False
+TXN-000605,31,2026-03-04 06:08:08.244536,98.1,online_shopping,Soluciones FR S.L.,Almería,credit_card,0.21,False
+TXN-000606,39,2026-03-19 14:15:08.244536,183.38,supermarket,Farmaceútica Integrales S.A.T.,Zaragoza,credit_card,0.18,False
+TXN-000607,48,2026-03-30 09:05:08.244536,120.65,utilities,Vicenta Cantón Marqués S.A.,Granada,debit_card,0.21,False
+TXN-000608,39,2026-04-17 18:41:08.244536,125.28,restaurant,Requena y asociados S.Coop.,Zaragoza,debit_card,0.21,False
+TXN-000609,28,2026-03-08 14:02:08.244536,83.27,restaurant,Logística Egea y asociados S.L.L.,Cuenca,transfer,0.12,False
+TXN-000610,14,2026-02-19 05:04:08.244536,186.11,utilities,Clemente Araujo Vilar S.A.,Melilla,transfer,0.21,False
+TXN-000611,22,2026-02-25 19:14:08.244536,30.15,online_shopping,Talleres IGT S.L.N.E,León,debit_card,0.08,False
+TXN-000612,27,2026-02-24 15:54:08.244536,167.13,gas_station,Industrias Alcántara y asociados S.C.P,Málaga,transfer,0.07,False
+TXN-000613,21,2026-04-28 20:04:08.244536,188.78,restaurant,Roldán y Isern S.Com.,Cuenca,credit_card,0.3,False
+TXN-000614,31,2026-03-21 23:01:08.244536,146.52,online_shopping,Familia Marquez S.L.L.,Almería,credit_card,0.3,False
+TXN-000615,49,2026-03-30 19:43:08.244536,94.26,restaurant,Grupo Antúnez S.A.,Salamanca,debit_card,0.13,False
+TXN-000616,8,2026-03-14 04:51:08.244536,203.81,supermarket,Familia Dueñas S.Coop.,Zamora,debit_card,0.07,False
+TXN-000617,19,2026-04-30 13:59:08.244536,128.96,restaurant,Castro & Asociados S.L.,Huesca,credit_card,0.1,False
+TXN-000618,19,2026-03-29 07:10:08.244536,163.13,restaurant,Roda y asociados S.C.P,Huesca,credit_card,0.22,False
+TXN-000619,47,2026-04-25 04:08:08.244536,71.16,gas_station,Fábrica Acevedo y asociados S.Coop.,Cuenca,credit_card,0.27,False
+TXN-000620,41,2026-05-02 13:15:08.244536,38.85,restaurant,Hnos Iglesia S.A.T.,Burgos,credit_card,0.25,False
+TXN-000621,36,2026-05-06 08:46:08.244536,122.34,online_shopping,Hnos Pombo S.A.,Pontevedra,credit_card,0.18,False
+TXN-000622,20,2026-05-12 12:36:08.244536,149.2,supermarket,Gargallo y Valentín S.L.L.,Vizcaya,transfer,0.19,False
+TXN-000623,20,2026-04-04 07:35:08.244536,181.84,supermarket,Grupo Seco S.L.N.E,Vizcaya,credit_card,0.21,False
+TXN-000624,49,2026-04-21 08:23:08.244536,130.44,gas_station,Eligia Feijoo Verdú S.Coop.,Salamanca,credit_card,0.23,False
+TXN-000625,34,2026-04-14 23:56:08.244536,91.69,online_shopping,Goicoechea y Vélez S.L.,Vizcaya,transfer,0.24,False
+TXN-000626,48,2026-03-30 21:59:08.244536,142.93,utilities,Tecnologías Guillén S.A.,Granada,transfer,0.18,False
+TXN-000627,2,2026-04-04 12:54:08.244536,132.46,utilities,Grupo Zamora S.Com.,Valladolid,credit_card,0.15,False
+TXN-000628,40,2026-04-21 14:17:08.244536,92.41,gas_station,Emma Piñeiro Aguirre S.Com.,Navarra,debit_card,0.17,False
+TXN-000629,15,2026-04-15 23:23:08.244536,89.54,utilities,Calvet y Agustí S.Com.,Granada,transfer,0.19,False
+TXN-000630,3,2026-04-25 21:55:08.244536,155.42,supermarket,Hermanos Arco S.Coop.,Murcia,debit_card,0.09,False
+TXN-000631,30,2026-05-10 17:38:08.244536,126.0,gas_station,Suministros Mata S.L.N.E,Albacete,credit_card,0.14,False
+TXN-000632,21,2026-03-30 13:54:08.244536,187.3,utilities,Instalaciones Españolas S.C.P,Cuenca,credit_card,0.22,False
+TXN-000633,31,2026-02-27 22:30:08.244536,145.68,utilities,Uriarte y Cantón S.A.,Almería,credit_card,0.06,False
+TXN-000634,34,2026-03-03 13:18:08.244536,165.1,online_shopping,Soluciones Globales S.A.,Vizcaya,transfer,0.12,False
+TXN-000635,11,2026-03-05 23:19:08.244536,19.77,utilities,Torre y asociados S.A.,Cantabria,transfer,0.21,False
+TXN-000636,40,2026-03-28 03:10:08.244536,108.03,gas_station,Tecnologías Baños S.Com.,Navarra,transfer,0.16,False
+TXN-000637,19,2026-02-28 15:11:08.244536,167.89,utilities,Hermanos Gaya S.L.N.E,Huesca,credit_card,0.19,False
+TXN-000638,5,2026-05-12 19:37:08.244536,163.84,supermarket,Cuervo & Asociados S.L.,Salamanca,debit_card,0.06,False
+TXN-000639,6,2026-04-30 17:00:08.244536,82.88,restaurant,Fabra y Elías S.C.P,Barcelona,debit_card,0.15,False
+TXN-000640,7,2026-03-11 16:20:08.244536,33.19,online_shopping,Manufacturas Pelayo S.A.,Ourense,debit_card,0.14,False
+TXN-000641,20,2026-03-23 10:58:08.244536,100.79,utilities,Industrias Ibérica S.Coop.,Vizcaya,credit_card,0.19,False
+TXN-000642,20,2026-02-14 00:06:08.244536,150.12,supermarket,Instalaciones Coloma S.L.,Vizcaya,credit_card,0.17,False
+TXN-000643,47,2026-04-01 11:06:08.244536,74.77,gas_station,Coello y asociados S.Com.,Cuenca,transfer,0.06,False
+TXN-000644,34,2026-02-25 00:10:08.244536,244.2,utilities,Cabañas y Cabo S.A.,Vizcaya,debit_card,0.1,False
+TXN-000645,19,2026-04-24 20:39:08.244536,201.2,restaurant,Hnos Moles S.Com.,Huesca,transfer,0.13,False
+TXN-000646,27,2026-04-20 05:50:08.244536,173.35,utilities,Hermanos Bejarano S.Com.,Málaga,credit_card,0.2,False
+TXN-000647,46,2026-02-15 05:43:08.244536,170.28,utilities,Hermanos Borrego S.A.,La Coruña,credit_card,0.14,False
+TXN-000648,16,2026-04-06 02:48:08.244536,1714.04,cryptocurrency,Rodolfo Pla Torrents S.L.,Serbia,debit_card,0.7,True
+TXN-000649,35,2026-03-24 13:56:08.244536,177.06,online_shopping,Javi Morcillo Pina S.Com.,Ourense,debit_card,0.08,False
+TXN-000650,2,2026-03-23 10:58:08.244536,156.77,restaurant,Danilo Tamarit Almazán S.A.,Valladolid,credit_card,0.07,False
+TXN-000651,15,2026-03-13 11:38:08.244536,5.0,utilities,Sancho & Asociados S.A.,Granada,debit_card,0.3,False
+TXN-000652,34,2026-03-13 23:11:08.244536,221.1,online_shopping,Hnos Vicente S.L.,Vizcaya,debit_card,0.1,False
+TXN-000653,49,2026-02-27 01:59:08.244536,151.1,restaurant,Banco Uría y asociados S.L.L.,Salamanca,debit_card,0.28,False
+TXN-000654,3,2026-03-05 14:59:08.244536,152.87,utilities,Compañía Seco S.A.,Murcia,credit_card,0.12,False
+TXN-000655,37,2026-02-20 11:38:08.244536,122.98,restaurant,Gámez y asociados S.Coop.,Castellón,credit_card,0.17,False
+TXN-000656,23,2026-02-12 10:00:08.244536,115.29,supermarket,Logística Landa S.L.,Barcelona,debit_card,0.24,False
+TXN-000657,38,2026-04-19 00:20:08.244536,189.86,utilities,Familia Roldán S.L.L.,Pontevedra,transfer,0.23,False
+TXN-000658,15,2026-03-26 01:04:08.244536,53.41,restaurant,Despacho Guzman & Asociados S.L.,Granada,debit_card,0.08,False
+TXN-000659,44,2026-04-16 18:42:08.244536,148.2,gas_station,Instalaciones Quintero y asociados S.L.,Ciudad,credit_card,0.27,False
+TXN-000660,38,2026-05-01 12:09:08.244536,221.63,supermarket,Hnos Carrión S.L.L.,Pontevedra,credit_card,0.12,False
+TXN-000661,42,2026-04-08 19:36:08.244536,105.96,restaurant,Soluciones Hoyos y asociados S.L.,Granada,credit_card,0.14,False
+TXN-000662,4,2026-03-18 05:22:08.244536,42.93,supermarket,Banco VPL S.C.P,Cantabria,debit_card,0.06,False
+TXN-000663,4,2026-03-03 08:02:08.244536,68.32,online_shopping,Desarrollo Internacionales S.Coop.,Cantabria,credit_card,0.14,False
+TXN-000664,13,2026-04-30 22:17:08.244536,81.06,restaurant,Distribuciones QWK S.Com.,Melilla,credit_card,0.17,False
+TXN-000665,32,2026-02-27 00:12:08.244536,185.07,restaurant,Pepito Tamayo Pastor S.Com.,Lleida,transfer,0.17,False
+TXN-000666,25,2026-04-19 21:42:08.244536,184.85,supermarket,Canals y Solís S.L.N.E,Lugo,credit_card,0.07,False
+TXN-000667,39,2026-05-01 19:20:08.244536,106.44,supermarket,Barceló y asociados S.Coop.,Zaragoza,debit_card,0.26,False
+TXN-000668,20,2026-03-26 15:32:08.244536,5.0,supermarket,Despacho Castellana S.A.,Vizcaya,transfer,0.19,False
+TXN-000669,12,2026-02-24 09:39:08.244536,818.6,cryptocurrency,Mario Zapata Prieto S.Coop.,Bulgaria,credit_card,0.83,True
+TXN-000670,34,2026-02-28 07:45:08.244536,169.11,utilities,Desarrollo Santamaria S.L.,Vizcaya,credit_card,0.1,False
+TXN-000671,9,2026-02-22 08:45:08.244536,94.1,gas_station,Suministros Avanzadas S.C.P,Pontevedra,debit_card,0.26,False
+TXN-000672,1,2026-03-06 05:14:08.244536,51.25,supermarket,Distribuciones XNM S.L.,Baleares,debit_card,0.25,False
+TXN-000673,37,2026-03-02 21:20:08.244536,50.1,restaurant,Farmaceútica MRS S.L.N.E,Castellón,debit_card,0.23,False
+TXN-000674,5,2026-02-21 20:27:08.244536,171.83,restaurant,Compañía Arenas S.A.,Salamanca,credit_card,0.22,False
+TXN-000675,42,2026-04-28 20:34:08.244536,52.41,utilities,Zamorano & Asociados S.Com.,Granada,debit_card,0.17,False
+TXN-000676,42,2026-04-19 03:53:08.244536,5.0,utilities,Minería Montalbán S.A.,Granada,credit_card,0.1,False
+TXN-000677,5,2026-04-18 02:50:08.244536,159.05,supermarket,Minería Azcona S.A.D,Salamanca,credit_card,0.15,False
+TXN-000678,46,2026-02-24 07:46:08.244536,73.67,online_shopping,Grupo Rosselló S.A.,La Coruña,credit_card,0.22,False
+TXN-000679,43,2026-04-27 05:36:08.244536,199.63,online_shopping,Farmaceútica Manrique & Asociados S.L.N.E,Asturias,transfer,0.05,False
+TXN-000680,6,2026-02-26 08:38:08.244536,85.7,restaurant,Transportes Paredes y asociados S.A.U,Barcelona,debit_card,0.29,False
+TXN-000681,24,2026-05-08 12:48:08.244536,161.94,supermarket,Osuna y Salom S.L.,Las Palmas,debit_card,0.3,False
+TXN-000682,9,2026-04-25 00:41:08.244536,45.69,gas_station,Carro y asociados S.L.,Pontevedra,transfer,0.25,False
+TXN-000683,1,2026-04-02 15:38:08.244536,5.0,supermarket,Corominas y Ricart S.A.,Baleares,credit_card,0.29,False
+TXN-000684,28,2026-02-14 03:51:08.244536,75.81,restaurant,Comercializadora Alarcón y asociados S.A.,Cuenca,transfer,0.08,False
+TXN-000685,19,2026-02-18 12:52:08.244536,175.86,utilities,Soluciones Ibérica S.Com.,Huesca,transfer,0.17,False
+TXN-000686,40,2026-04-30 19:34:08.244536,107.35,gas_station,Giralt y Mora S.C.P,Navarra,credit_card,0.29,False
+TXN-000687,48,2026-03-04 08:17:08.244536,82.05,utilities,Roldán y asociados S.L.,Granada,transfer,0.21,False
+TXN-000688,47,2026-03-27 03:52:08.244536,47.27,restaurant,Talleres UJI S.L.,Cuenca,credit_card,0.11,False
+TXN-000689,33,2026-04-15 19:07:08.244536,26.89,gas_station,Ramis y Carpio S.Coop.,Girona,credit_card,0.09,False
+TXN-000690,12,2026-03-06 14:41:08.244536,169.1,restaurant,Promociones Ortega S.Com.,Castellón,transfer,0.1,False
+TXN-000691,22,2026-04-08 12:29:08.244536,103.82,online_shopping,Fernandez y asociados S.L.U.,León,debit_card,0.26,False
+TXN-000692,15,2026-02-11 22:15:08.244536,82.86,utilities,Hermanos Peña S.Com.,Granada,debit_card,0.21,False
+TXN-000693,36,2026-03-17 17:13:08.244536,182.65,gas_station,Restauración Alcaraz S.A.T.,Pontevedra,debit_card,0.06,False
+TXN-000694,30,2026-02-13 06:18:08.244536,105.06,gas_station,Instalaciones Cerezo S.A.,Albacete,debit_card,0.16,False
+TXN-000695,23,2026-03-21 09:04:08.244536,73.89,supermarket,Rodríguez y asociados S.Com.,Barcelona,transfer,0.1,False
+TXN-000696,0,2026-04-22 07:01:08.244536,103.5,gas_station,Banco OPWN S.Coop.,Madrid,credit_card,0.13,False
+TXN-000697,10,2026-02-19 09:36:08.244536,70.26,supermarket,Instalaciones Marin & Asociados S.Coop.,León,credit_card,0.22,False
+TXN-000698,6,2026-02-15 23:13:08.244536,143.3,restaurant,Hnos Codina S.L.,Barcelona,transfer,0.26,False
+TXN-000699,37,2026-05-11 10:13:08.244536,79.86,restaurant,Distribuciones Lago S.L.,Castellón,credit_card,0.13,False
+TXN-000700,36,2026-02-23 19:49:08.244536,193.91,gas_station,Despacho Viana & Asociados S.Coop.,Pontevedra,credit_card,0.25,False
+TXN-000701,45,2026-05-11 12:00:08.244536,14.25,gas_station,Espiridión Tello Blanes S.Com.,Málaga,transfer,0.12,False
+TXN-000702,14,2026-04-19 13:14:08.244536,171.91,utilities,Manuela Pardo Cobo S.A.,Melilla,transfer,0.17,False
+TXN-000703,44,2026-03-06 00:32:08.244536,196.51,gas_station,Tamara Pellicer Cerezo S.L.N.E,Ciudad,credit_card,0.2,False
+TXN-000704,5,2026-05-07 11:18:08.244536,182.38,restaurant,Banca Privada Barba S.A.U,Salamanca,debit_card,0.12,False
+TXN-000705,20,2026-03-23 10:15:08.244536,115.01,utilities,Hermanos Escobar S.A.U,Vizcaya,credit_card,0.23,False
+TXN-000706,4,2026-03-29 09:00:08.244536,54.34,supermarket,Valentina Mancebo Estevez S.A.,Cantabria,debit_card,0.19,False
+TXN-000707,29,2026-02-18 06:00:08.244536,97.97,online_shopping,Comercial Prado S.Com.,Álava,transfer,0.27,False
+TXN-000708,43,2026-05-08 08:44:08.244536,206.35,restaurant,Familia Villar S.A.,Asturias,transfer,0.16,False
+TXN-000709,17,2026-02-24 16:53:08.244536,109.39,restaurant,Transportes Anguita S.A.,Santa Cruz de Tenerife,debit_card,0.17,False
+TXN-000710,46,2026-05-10 11:30:08.244536,100.95,utilities,Transportes OPE S.Com.,La Coruña,credit_card,0.28,False
+TXN-000711,2,2026-02-24 08:02:08.244536,148.66,utilities,Comercial Quirós & Asociados S.Coop.,Valladolid,debit_card,0.22,False
+TXN-000712,47,2026-03-03 04:29:08.244536,92.89,restaurant,Almagro y Iñiguez S.L.L.,Cuenca,debit_card,0.06,False
+TXN-000713,17,2026-03-28 05:48:08.244536,86.5,restaurant,Claudia Montes Salas S.A.,Santa Cruz de Tenerife,credit_card,0.08,False
+TXN-000714,22,2026-04-23 00:30:08.244536,82.37,online_shopping,Tecnologías DQ S.L.,León,credit_card,0.11,False
+TXN-000715,17,2026-04-27 06:55:08.244536,81.98,utilities,Comercial Ibérica S.A.,Santa Cruz de Tenerife,credit_card,0.12,False
+TXN-000716,22,2026-02-16 11:43:08.244536,91.25,online_shopping,Supermercados del Mediterráneo S.Com.,León,transfer,0.3,False
+TXN-000717,37,2026-03-14 05:42:08.244536,121.43,gas_station,Piquer y Ochoa S.A.,Castellón,credit_card,0.08,False
+TXN-000718,29,2026-05-01 09:05:08.244536,141.41,utilities,Aguilar y Galindo S.L.U.,Álava,credit_card,0.09,False
+TXN-000719,5,2026-04-20 11:58:08.244536,177.54,restaurant,Acevedo & Asociados S.L.,Salamanca,transfer,0.27,False
+TXN-000720,11,2026-04-23 09:51:08.244536,5.0,utilities,Anselma Carrillo Moles S.Com.,Cantabria,credit_card,0.14,False
+TXN-000721,16,2026-04-19 05:55:08.244536,126.65,restaurant,Farmaceútica Meléndez S.Coop.,Murcia,credit_card,0.15,False
+TXN-000722,25,2026-04-01 18:51:08.244536,151.85,gas_station,Hnos Aramburu S.C.P,Lugo,credit_card,0.05,False
+TXN-000723,28,2026-04-02 19:59:08.244536,34.17,restaurant,Heraclio Albero Toro S.Com.,Cuenca,credit_card,0.3,False
+TXN-000724,25,2026-04-14 14:30:08.244536,80.47,supermarket,Familia Alfaro S.L.N.E,Lugo,debit_card,0.08,False
+TXN-000725,23,2026-04-19 11:19:08.244536,102.34,utilities,Larrea y Aragón S.L.,Barcelona,credit_card,0.24,False
+TXN-000726,8,2026-02-25 09:58:08.244536,131.36,supermarket,Soluciones SFOI S.Com.,Zamora,debit_card,0.05,False
+TXN-000727,48,2026-02-20 20:33:08.244536,49.22,online_shopping,Yáñez y Bastida S.Coop.,Granada,debit_card,0.05,False
+TXN-000728,24,2026-02-20 00:58:08.244536,110.55,supermarket,Hotel Diéguez S.Coop.,Las Palmas,transfer,0.07,False
+TXN-000729,3,2026-04-08 13:30:08.244536,184.22,utilities,Transportes Gonzalez S.A.,Murcia,credit_card,0.17,False
+TXN-000730,36,2026-04-16 11:15:08.244536,205.7,gas_station,Infraestructuras Machado S.A.,Pontevedra,debit_card,0.15,False
+TXN-000731,6,2026-04-29 02:38:08.244536,125.55,restaurant,Promociones QZY S.Com.,Barcelona,credit_card,0.21,False
+TXN-000732,49,2026-04-25 20:38:08.244536,646.08,cryptocurrency,Maricruz Arana Enríquez S.C.P,Guyana,debit_card,0.81,True
+TXN-000733,10,2026-05-12 09:02:08.244536,126.72,supermarket,Edmundo Santana Lozano S.L.U.,León,transfer,0.1,False
+TXN-000734,16,2026-03-31 14:20:08.244536,157.78,restaurant,Distribuciones Galindo y asociados S.L.,Murcia,debit_card,0.18,False
+TXN-000735,40,2026-05-07 04:56:08.244536,103.89,gas_station,Tecnologías DRM S.L.,Navarra,transfer,0.23,False
+TXN-000736,40,2026-05-07 19:04:08.244536,112.99,gas_station,Hotel HP S.C.P,Navarra,transfer,0.28,False
+TXN-000737,17,2026-02-27 02:14:08.244536,130.12,restaurant,Escribano & Asociados S.A.,Santa Cruz de Tenerife,credit_card,0.28,False
+TXN-000738,11,2026-03-17 21:39:08.244536,70.0,online_shopping,Francisco Javier Alcázar Tenorio S.L.,Cantabria,transfer,0.1,False
+TXN-000739,20,2026-04-02 02:51:08.244536,51.94,supermarket,Néstor Morán Redondo S.Coop.,Vizcaya,transfer,0.07,False
+TXN-000740,38,2026-03-18 00:29:08.244536,165.83,utilities,Banco Ramis S.L.,Pontevedra,credit_card,0.2,False
+TXN-000741,26,2026-03-24 02:29:08.244536,1519.27,gambling,Fábrica GWW S.L.L.,Belarús,credit_card,0.7,True
+TXN-000742,14,2026-04-16 05:42:08.244536,186.79,utilities,Llano y asociados S.L.L.,Melilla,credit_card,0.09,False
+TXN-000743,27,2026-04-25 12:57:08.244536,168.27,utilities,Supermercados Castellana S.L.,Málaga,credit_card,0.21,False
+TXN-000744,11,2026-03-04 21:42:08.244536,10.93,online_shopping,Alimentación Amador S.A.,Cantabria,credit_card,0.19,False
+TXN-000745,17,2026-04-04 09:39:08.244536,95.02,restaurant,Coral Estévez Gracia S.L.N.E,Santa Cruz de Tenerife,debit_card,0.21,False
+TXN-000746,35,2026-03-20 07:46:08.244536,185.33,restaurant,Instalaciones JLS S.L.N.E,Ourense,debit_card,0.3,False
+TXN-000747,46,2026-03-06 01:49:08.244536,69.36,utilities,Manufacturas Castellana S.A.,La Coruña,transfer,0.07,False
+TXN-000748,48,2026-03-21 15:22:08.244536,160.93,online_shopping,Manufacturas Gallardo S.Coop.,Granada,transfer,0.2,False
+TXN-000749,32,2026-03-02 21:01:08.244536,104.2,restaurant,Apolonia Montenegro Puerta S.L.,Lleida,transfer,0.05,False
+TXN-000750,41,2026-03-03 19:42:08.244536,33.1,supermarket,Hnos Gibert S.L.,Burgos,debit_card,0.08,False
+TXN-000751,25,2026-03-30 07:34:08.244536,134.93,gas_station,Farmaceútica Ibéricos S.L.L.,Lugo,debit_card,0.17,False
+TXN-000752,14,2026-03-30 11:12:08.244536,192.67,supermarket,Casandra Gutierrez Ortuño S.L.,Melilla,transfer,0.11,False
+TXN-000753,46,2026-03-07 10:49:08.244536,70.28,online_shopping,Boix & Asociados S.C.P,La Coruña,debit_card,0.16,False
+TXN-000754,33,2026-03-10 14:59:08.244536,13.03,gas_station,Hotel Belmonte y asociados S.L.,Girona,transfer,0.23,False
+TXN-000755,5,2026-03-31 01:02:08.244536,161.67,restaurant,Almagro & Asociados S.A.,Salamanca,transfer,0.27,False
+TXN-000756,46,2026-05-12 00:56:08.244536,179.59,utilities,Morales & Asociados S.A.,La Coruña,transfer,0.29,False
+TXN-000757,6,2026-03-19 12:05:08.244536,75.25,supermarket,Talleres Española S.L.N.E,Barcelona,transfer,0.25,False
+TXN-000758,9,2026-04-30 01:24:08.244536,461.21,luxury,Servicios Caro S.Com.,Bulgaria,debit_card,0.77,True
+TXN-000759,4,2026-03-01 02:40:08.244536,84.09,supermarket,Distribuciones Iberia S.L.N.E,Cantabria,credit_card,0.12,False
+TXN-000760,41,2026-02-22 00:49:08.244536,69.87,restaurant,Martín Agullo Mesa S.Coop.,Burgos,transfer,0.09,False
+TXN-000761,5,2026-02-13 19:39:08.244536,170.09,supermarket,Hortensia Sanabria Adadia S.A.,Salamanca,debit_card,0.13,False
+TXN-000762,38,2026-03-05 13:43:08.244536,183.84,supermarket,Soluciones Ferrándiz y asociados S.Coop.,Pontevedra,transfer,0.12,False
+TXN-000763,7,2026-03-19 01:13:08.244536,54.73,online_shopping,Alimentación Canals S.A.,Ourense,transfer,0.06,False
+TXN-000764,47,2026-04-02 11:49:08.244536,68.8,gas_station,Puig y Seco S.Com.,Cuenca,debit_card,0.15,False
+TXN-000765,24,2026-03-16 03:01:08.244536,87.16,gas_station,Grupo Vaquero S.L.,Las Palmas,transfer,0.25,False
+TXN-000766,37,2026-04-20 18:30:08.244536,126.88,restaurant,Supermercados Española S.A.,Castellón,credit_card,0.29,False
+TXN-000767,24,2026-03-12 13:45:08.244536,137.1,gas_station,Hermanos Catalán S.L.,Las Palmas,transfer,0.25,False
+TXN-000768,0,2026-03-05 14:08:08.244536,174.91,gas_station,Baltasar Tudela Rivas S.A.,Madrid,transfer,0.15,False
+TXN-000769,27,2026-03-15 13:00:08.244536,152.75,utilities,Hermanos Coronado S.L.,Málaga,debit_card,0.06,False
+TXN-000770,21,2026-03-05 03:51:08.244536,173.74,restaurant,Grupo Valenciano S.Com.,Cuenca,debit_card,0.17,False
+TXN-000771,35,2026-02-12 19:15:08.244536,156.29,restaurant,Suárez y Espejo S.Com.,Ourense,debit_card,0.26,False
+TXN-000772,4,2026-02-14 07:15:08.244536,37.62,supermarket,Vilar y Amador S.L.,Cantabria,credit_card,0.2,False
+TXN-000773,33,2026-02-27 10:35:08.244536,64.14,supermarket,Cifuentes & Asociados S.L.L.,Girona,debit_card,0.24,False
+TXN-000774,19,2026-02-12 05:19:08.244536,154.53,restaurant,Logística Prieto y asociados S.C.P,Huesca,debit_card,0.29,False
+TXN-000775,36,2026-05-07 03:52:08.244536,157.47,gas_station,Cebrián Vera Barba S.Coop.,Pontevedra,transfer,0.14,False
+TXN-000776,17,2026-04-17 17:25:08.244536,94.91,restaurant,Alimentación Tena & Asociados S.L.,Santa Cruz de Tenerife,credit_card,0.3,False
+TXN-000777,47,2026-04-21 06:17:08.244536,69.17,restaurant,Alemán y Redondo S.L.,Cuenca,credit_card,0.12,False
+TXN-000778,4,2026-02-21 09:23:08.244536,86.46,supermarket,Fábrica Prats & Asociados S.L.L.,Cantabria,debit_card,0.29,False
+TXN-000779,32,2026-04-26 09:32:08.244536,105.06,gas_station,Soluciones Campillo y asociados S.A.,Lleida,credit_card,0.22,False
+TXN-000780,25,2026-02-14 06:04:08.244536,170.53,supermarket,Familia Blanca S.A.,Lugo,debit_card,0.09,False
+TXN-000781,17,2026-04-27 19:34:08.244536,113.18,utilities,Despacho Ibérica S.Com.,Santa Cruz de Tenerife,credit_card,0.29,False
+TXN-000782,3,2026-02-15 23:10:08.244536,159.03,utilities,Aránzazu Ríos Ocaña S.L.,Murcia,transfer,0.18,False
+TXN-000783,36,2026-04-16 05:40:08.244536,119.52,online_shopping,Desarrollo Moya S.A.,Pontevedra,debit_card,0.21,False
+TXN-000784,21,2026-02-19 15:38:08.244536,170.11,utilities,Criado y Carretero S.A.U,Cuenca,debit_card,0.22,False
+TXN-000785,31,2026-03-20 15:02:08.244536,169.11,utilities,Yésica Arana Duque S.A.,Almería,transfer,0.23,False
+TXN-000786,34,2026-03-13 01:57:08.244536,201.56,utilities,Hermanos Román S.L.L.,Vizcaya,debit_card,0.24,False
+TXN-000787,10,2026-03-18 23:43:08.244536,145.34,supermarket,Logística FOBH S.L.L.,León,debit_card,0.26,False
+TXN-000788,46,2026-04-07 19:25:08.244536,167.55,utilities,Juanito Conde Collado S.L.,La Coruña,credit_card,0.1,False
+TXN-000789,2,2026-04-10 13:27:08.244536,135.59,restaurant,Ruperta Quesada Suarez S.Coop.,Valladolid,credit_card,0.06,False
+TXN-000790,25,2026-03-02 10:04:08.244536,168.62,supermarket,Calzada & Asociados S.A.,Lugo,transfer,0.29,False
+TXN-000791,23,2026-05-04 06:11:08.244536,87.13,supermarket,Tecnologías Globales S.Coop.,Barcelona,debit_card,0.05,False
+TXN-000792,2,2026-03-27 23:25:08.244536,142.62,restaurant,Despacho OLMH S.Com.,Valladolid,debit_card,0.28,False
+TXN-000793,48,2026-02-27 00:26:08.244536,90.2,online_shopping,Promociones del Mediterráneo S.L.N.E,Granada,credit_card,0.18,False
+TXN-000794,2,2026-03-08 01:53:08.244536,144.46,utilities,León y Angulo S.A.,Valladolid,credit_card,0.2,False
+TXN-000795,16,2026-03-20 14:17:08.244536,129.24,supermarket,Farmaceútica Mate S.L.,Murcia,credit_card,0.23,False
+TXN-000796,10,2026-02-14 05:01:08.244536,158.49,online_shopping,Osvaldo Camino Cuéllar S.A.,León,transfer,0.16,False
+TXN-000797,32,2026-04-04 23:19:08.244536,118.93,gas_station,Finanzas Villalonga S.A.,Lleida,debit_card,0.08,False
+TXN-000798,5,2026-04-27 00:39:08.244536,176.73,supermarket,Talleres Cornejo S.L.L.,Salamanca,transfer,0.13,False
+TXN-000799,10,2026-02-13 03:47:08.244536,89.66,supermarket,Supermercados HJJ S.Coop.,León,credit_card,0.24,False
+TXN-000800,43,2026-03-29 01:39:08.244536,159.47,online_shopping,Farmaceútica Diaz S.A.,Asturias,transfer,0.18,False
+TXN-000801,10,2026-03-05 01:02:08.244536,134.92,supermarket,Morante y asociados S.A.T.,León,transfer,0.27,False
+TXN-000802,9,2026-04-16 14:38:08.244536,86.26,supermarket,Distribuciones LBS S.C.P,Pontevedra,debit_card,0.22,False
+TXN-000803,30,2026-02-11 15:38:08.244536,139.2,gas_station,Arellano & Asociados S.A.T.,Albacete,credit_card,0.24,False
+TXN-000804,12,2026-04-28 19:50:08.244536,167.64,supermarket,Familia Arce S.L.U.,Castellón,transfer,0.17,False
+TXN-000805,5,2026-05-09 22:35:08.244536,179.0,supermarket,Servicios Bravo S.L.N.E,Salamanca,debit_card,0.08,False
+TXN-000806,39,2026-04-17 10:30:08.244536,154.43,supermarket,Pombo & Asociados S.Com.,Zaragoza,transfer,0.3,False
+TXN-000807,13,2026-05-10 07:56:08.244536,114.84,online_shopping,Transportes del Norte S.A.,Melilla,debit_card,0.2,False
+TXN-000808,31,2026-04-06 05:29:08.244536,224.99,online_shopping,Teresa Molins Posada S.A.,Almería,credit_card,0.29,False
+TXN-000809,19,2026-03-08 07:52:08.244536,188.06,restaurant,Promociones Amador y asociados S.L.N.E,Huesca,transfer,0.15,False
+TXN-000810,35,2026-04-18 01:18:08.244536,172.21,online_shopping,Inversiones EY S.Coop.,Ourense,credit_card,0.11,False
+TXN-000811,15,2026-03-23 21:36:08.244536,67.9,utilities,Oliva y Sevillano S.Com.,Granada,credit_card,0.13,False
+TXN-000812,31,2026-04-08 06:59:08.244536,162.07,online_shopping,Fabra y asociados S.L.,Almería,credit_card,0.08,False
+TXN-000813,41,2026-04-24 16:59:08.244536,54.77,restaurant,Construcción Salmerón S.Coop.,Burgos,credit_card,0.11,False
+TXN-000814,13,2026-02-28 01:42:08.244536,100.82,restaurant,Grupo Ruano S.L.,Melilla,debit_card,0.14,False
+TXN-000815,49,2026-04-17 04:27:08.244536,165.71,gas_station,Teodoro Cuevas Gordillo S.A.,Salamanca,debit_card,0.3,False
+TXN-000816,47,2026-05-06 17:30:08.244536,116.56,gas_station,Transportes del Mediterráneo S.L.,Cuenca,debit_card,0.05,False
+TXN-000817,22,2026-04-07 12:35:08.244536,82.47,supermarket,Logística Collado y asociados S.Coop.,León,debit_card,0.25,False
+TXN-000818,23,2026-02-28 14:31:08.244536,1087.44,luxury,Lucía Gascón Alegria S.L.N.E,Suecia,transfer,0.74,True
+TXN-000819,49,2026-02-23 21:39:08.244536,98.79,gas_station,Minería BNO S.L.N.E,Salamanca,debit_card,0.05,False
+TXN-000820,27,2026-05-01 22:30:08.244536,140.33,gas_station,Acero y asociados S.L.N.E,Málaga,credit_card,0.19,False
+TXN-000821,10,2026-03-16 19:43:08.244536,134.62,online_shopping,Suministros Amorós S.A.,León,transfer,0.19,False
+TXN-000822,28,2026-03-15 17:26:08.244536,616.69,cryptocurrency,Onofre Ferrera Alegria S.A.,Camboya,credit_card,0.76,True
+TXN-000823,20,2026-02-14 07:13:08.244536,65.78,utilities,Núñez y Alberdi S.L.L.,Vizcaya,credit_card,0.11,False
+TXN-000824,39,2026-03-12 07:50:08.244536,84.88,supermarket,Despacho Madrigal y asociados S.Coop.,Zaragoza,debit_card,0.27,False
+TXN-000825,10,2026-03-19 01:51:08.244536,125.62,supermarket,Marina Molina Mur S.Coop.,León,transfer,0.24,False
+TXN-000826,31,2026-05-09 11:16:08.244536,172.76,online_shopping,Sevilla y Mercader S.L.L.,Almería,debit_card,0.17,False
+TXN-000827,30,2026-05-06 18:12:08.244536,77.36,online_shopping,Distribuciones Reguera S.C.P,Albacete,transfer,0.28,False
+TXN-000828,42,2026-02-11 14:02:08.244536,46.66,restaurant,Mena y Giralt S.Com.,Granada,transfer,0.07,False
+TXN-000829,4,2026-03-29 22:22:08.244536,110.13,supermarket,Finanzas Integrales S.Coop.,Cantabria,debit_card,0.12,False
+TXN-000830,11,2026-04-13 07:00:08.244536,35.43,online_shopping,Alimentación SGY S.Coop.,Cantabria,credit_card,0.13,False
+TXN-000831,24,2026-03-20 02:58:08.244536,156.36,supermarket,Manufacturas Globales S.Coop.,Las Palmas,transfer,0.21,False
+TXN-000832,27,2026-04-07 01:37:08.244536,144.62,utilities,Industrias Vázquez & Asociados S.A.T.,Málaga,transfer,0.21,False
+TXN-000833,18,2026-03-12 13:02:08.244536,160.66,restaurant,Minería del Mediterráneo S.A.U,Almería,transfer,0.26,False
+TXN-000834,9,2026-03-31 12:28:08.244536,83.24,supermarket,Talleres Atienza S.Coop.,Pontevedra,credit_card,0.18,False
+TXN-000835,20,2026-02-15 23:47:08.244536,105.39,supermarket,Construcción Feijoo S.A.,Vizcaya,debit_card,0.09,False
+TXN-000836,18,2026-03-25 03:31:08.244536,164.77,online_shopping,Banca Privada Álamo S.A.,Almería,credit_card,0.1,False
+TXN-000837,6,2026-05-12 13:11:08.244536,104.2,restaurant,Sanz & Asociados S.L.L.,Barcelona,credit_card,0.25,False
+TXN-000838,41,2026-03-17 08:45:08.244536,46.22,supermarket,Fabregat & Asociados S.Com.,Burgos,credit_card,0.15,False
+TXN-000839,44,2026-02-12 21:18:08.244536,2264.54,gambling,Familia Batalla S.A.,Liechtenstein,credit_card,0.74,True
+TXN-000840,4,2026-02-27 08:46:08.244536,27.52,supermarket,Fortunato Bueno Nevado S.A.,Cantabria,debit_card,0.06,False
+TXN-000841,39,2026-03-16 04:18:08.244536,135.0,supermarket,Marcelo Barceló Abascal S.L.N.E,Zaragoza,transfer,0.12,False
+TXN-000842,3,2026-03-29 03:42:08.244536,163.01,supermarket,Promociones RN S.Coop.,Murcia,debit_card,0.1,False
+TXN-000843,12,2026-04-07 05:10:08.244536,1178.07,cryptocurrency,Isern y asociados S.L.N.E,Angola,transfer,0.79,True
+TXN-000844,25,2026-03-27 01:15:08.244536,99.8,gas_station,Inmobiliaria SMRW S.A.,Lugo,credit_card,0.11,False
+TXN-000845,45,2026-03-28 05:23:08.244536,30.54,gas_station,Banca Privada Gárate S.Com.,Málaga,credit_card,0.27,False
+TXN-000846,42,2026-03-22 14:46:08.244536,110.73,utilities,Banco Bayón S.L.,Granada,transfer,0.18,False
+TXN-000847,33,2026-03-12 15:31:08.244536,5.0,gas_station,Fábrica Barrio y asociados S.Coop.,Girona,credit_card,0.12,False
+TXN-000848,12,2026-02-15 07:09:08.244536,142.65,restaurant,Fábrica INZ S.L.,Castellón,transfer,0.1,False
+TXN-000849,38,2026-04-25 18:21:08.244536,191.55,supermarket,Familia Valls S.A.,Pontevedra,debit_card,0.19,False
+TXN-000850,24,2026-03-14 15:18:08.244536,107.05,gas_station,Familia Donoso S.Com.,Las Palmas,transfer,0.2,False
+TXN-000851,21,2026-05-05 11:59:08.244536,203.17,utilities,Banca Privada CVKY S.A.,Cuenca,credit_card,0.25,False
+TXN-000852,38,2026-04-01 16:17:08.244536,224.31,utilities,Folch & Asociados S.C.P,Pontevedra,transfer,0.05,False
+TXN-000853,47,2026-05-10 16:32:08.244536,183.42,gas_station,Hnos Anglada S.A.,Cuenca,transfer,0.29,False
+TXN-000854,19,2026-03-19 17:21:08.244536,170.93,restaurant,Sebastian Naranjo Gelabert S.L.N.E,Huesca,credit_card,0.06,False
+TXN-000855,11,2026-03-09 02:29:08.244536,60.31,online_shopping,Bárcena y Valverde S.Coop.,Cantabria,credit_card,0.25,False
+TXN-000856,23,2026-05-03 08:30:08.244536,102.41,supermarket,Castro & Asociados S.L.,Barcelona,transfer,0.15,False
+TXN-000857,7,2026-03-23 06:24:08.244536,46.16,online_shopping,Martinez y Almazán S.Com.,Ourense,debit_card,0.11,False
+TXN-000858,1,2026-02-16 11:50:08.244536,145.28,gas_station,Alimentación Esteban y asociados S.L.,Baleares,transfer,0.19,False
+TXN-000859,33,2026-03-07 05:36:08.244536,36.17,supermarket,Comercializadora FRX S.L.,Girona,transfer,0.26,False
+TXN-000860,42,2026-04-05 20:59:08.244536,64.81,restaurant,Chico y Barros S.Coop.,Granada,credit_card,0.13,False
+TXN-000861,8,2026-03-10 21:24:08.244536,2327.91,luxury,Distribuciones Ferrero S.Com.,Haití,debit_card,0.7,True
+TXN-000862,18,2026-04-24 06:32:08.244536,177.23,online_shopping,Infraestructuras Crespi S.Com.,Almería,transfer,0.13,False
+TXN-000863,33,2026-04-19 17:42:08.244536,52.92,gas_station,Comercializadora Novoa y asociados S.L.N.E,Girona,transfer,0.25,False
+TXN-000864,33,2026-03-22 03:11:08.244536,63.97,gas_station,Hilda Torrens Salvà S.A.,Girona,transfer,0.25,False
+TXN-000865,46,2026-03-11 20:26:08.244536,171.33,utilities,Promociones Integrales S.L.N.E,La Coruña,credit_card,0.25,False
+TXN-000866,4,2026-03-10 11:49:08.244536,30.13,online_shopping,Minería Globales S.Coop.,Cantabria,transfer,0.21,False
+TXN-000867,4,2026-04-25 20:09:08.244536,32.97,supermarket,Vaquero & Asociados S.L.,Cantabria,credit_card,0.21,False
+TXN-000868,36,2026-05-06 20:51:08.244536,194.04,online_shopping,Jurado y Baró S.L.N.E,Pontevedra,transfer,0.26,False
+TXN-000869,6,2026-02-12 22:26:08.244536,67.05,supermarket,Supermercados Mayol S.L.U.,Barcelona,credit_card,0.15,False
+TXN-000870,40,2026-03-26 16:15:08.244536,104.21,utilities,Banco Ibéricos S.L.,Navarra,debit_card,0.25,False
+TXN-000871,3,2026-04-14 21:34:08.244536,204.84,utilities,Muñoz y asociados S.A.,Murcia,debit_card,0.18,False
+TXN-000872,9,2026-04-02 20:32:08.244536,22.29,gas_station,Morata & Asociados S.Com.,Pontevedra,debit_card,0.17,False
+TXN-000873,38,2026-03-04 23:25:08.244536,156.93,utilities,Andrade y Barragán S.L.N.E,Pontevedra,transfer,0.26,False
+TXN-000874,45,2026-03-14 11:17:08.244536,26.17,gas_station,Fábrica Nadal y asociados S.L.,Málaga,credit_card,0.27,False
+TXN-000875,35,2026-03-15 11:18:08.244536,171.73,online_shopping,Grupo Navas S.Com.,Ourense,debit_card,0.07,False
+TXN-000876,23,2026-02-12 19:15:08.244536,81.47,utilities,Castañeda y Sancho S.Coop.,Barcelona,transfer,0.21,False
+TXN-000877,35,2026-02-23 20:56:08.244536,190.37,online_shopping,Desarrollo Feliu S.L.,Ourense,transfer,0.12,False
+TXN-000878,8,2026-03-31 14:47:08.244536,158.81,supermarket,Transportes del Levante S.Coop.,Zamora,debit_card,0.2,False
+TXN-000879,28,2026-05-10 17:34:08.244536,92.25,restaurant,Salcedo y asociados S.L.L.,Cuenca,credit_card,0.07,False
+TXN-000880,11,2026-04-19 21:13:08.244536,15.58,online_shopping,Corbacho y asociados S.Com.,Cantabria,transfer,0.14,False
+TXN-000881,5,2026-04-15 15:25:08.244536,143.92,supermarket,Banco Españolas S.Com.,Salamanca,debit_card,0.14,False
+TXN-000882,19,2026-03-19 12:09:08.244536,173.81,utilities,Transportes del Norte S.A.,Huesca,credit_card,0.16,False
+TXN-000883,35,2026-03-15 21:59:08.244536,174.39,online_shopping,Tecnologías Internacionales S.A.,Ourense,debit_card,0.2,False
+TXN-000884,41,2026-02-28 15:44:08.244536,93.06,supermarket,Ribas y Llano S.L.,Burgos,debit_card,0.27,False
+TXN-000885,11,2026-05-12 16:02:08.244536,40.62,utilities,Soluciones HEO S.Coop.,Cantabria,credit_card,0.14,False
+TXN-000886,32,2026-03-12 06:46:08.244536,154.61,restaurant,Industrias Quevedo S.A.,Lleida,debit_card,0.16,False
+TXN-000887,39,2026-05-09 05:42:08.244536,158.4,restaurant,Vilar y asociados S.A.,Zaragoza,credit_card,0.17,False
+TXN-000888,8,2026-02-11 13:39:08.244536,158.31,supermarket,Iniesta y Cordero S.Com.,Zamora,credit_card,0.09,False
+TXN-000889,13,2026-04-02 00:12:08.244536,146.09,online_shopping,Manufacturas del Levante S.L.N.E,Melilla,transfer,0.14,False
+TXN-000890,28,2026-03-19 08:40:08.244536,29.43,restaurant,Marciano Iglesia Llorens S.A.,Cuenca,debit_card,0.12,False
+TXN-000891,34,2026-04-22 05:17:08.244536,136.19,online_shopping,Soluciones Globales S.L.N.E,Vizcaya,transfer,0.2,False
+TXN-000892,17,2026-02-20 07:30:08.244536,106.79,utilities,Inmobiliaria Avanzadas S.L.L.,Santa Cruz de Tenerife,debit_card,0.09,False
+TXN-000893,8,2026-03-30 23:18:08.244536,161.18,restaurant,Logística del Noroeste S.Com.,Zamora,debit_card,0.24,False
+TXN-000894,32,2026-03-21 20:39:08.244536,154.46,restaurant,Catalán y Torralba S.A.,Lleida,debit_card,0.15,False
+TXN-000895,46,2026-05-06 07:45:08.244536,111.31,utilities,Comercializadora Somoza S.A.,La Coruña,transfer,0.1,False
+TXN-000896,44,2026-03-07 18:29:08.244536,181.56,utilities,Industrias Olivares S.L.L.,Ciudad,credit_card,0.16,False
+TXN-000897,46,2026-04-16 10:41:08.244536,136.62,online_shopping,Restauración Palomares y asociados S.A.,La Coruña,debit_card,0.28,False
+TXN-000898,32,2026-03-04 06:09:08.244536,205.93,restaurant,Banca Privada Globales S.L.,Lleida,debit_card,0.17,False
+TXN-000899,29,2026-05-09 06:12:08.244536,121.3,online_shopping,Logística Estrada & Asociados S.C.P,Álava,transfer,0.07,False
+TXN-000900,7,2026-02-17 18:27:08.244536,16.55,restaurant,Desarrollo Internacionales S.A.,Ourense,transfer,0.28,False
+TXN-000901,45,2026-02-24 15:21:08.244536,13.8,restaurant,Supermercados Báez & Asociados S.A.,Málaga,credit_card,0.25,False
+TXN-000902,21,2026-04-07 04:40:08.244536,162.63,utilities,Construcción Rebollo y asociados S.Coop.,Cuenca,debit_card,0.22,False
+TXN-000903,21,2026-03-19 02:16:08.244536,185.02,restaurant,Logística Mata S.L.N.E,Cuenca,debit_card,0.07,False
+TXN-000904,33,2026-03-21 23:26:08.244536,21.71,gas_station,Encarnita Tejero Galván S.L.,Girona,transfer,0.14,False
+TXN-000905,10,2026-03-07 15:27:08.244536,87.5,online_shopping,Rosales y Artigas S.L.,León,debit_card,0.15,False
+TXN-000906,17,2026-04-28 13:40:08.244536,102.49,restaurant,Crespi y asociados S.Com.,Santa Cruz de Tenerife,credit_card,0.24,False
+TXN-000907,16,2026-03-14 15:26:08.244536,126.96,supermarket,Logística Pedrosa S.L.N.E,Murcia,transfer,0.18,False
+TXN-000908,34,2026-04-14 06:20:08.244536,177.26,online_shopping,Finanzas Lloret y asociados S.Com.,Vizcaya,credit_card,0.2,False
+TXN-000909,9,2026-05-03 03:08:08.244536,25.54,gas_station,Colomer y Cerezo S.L.,Pontevedra,transfer,0.24,False
+TXN-000910,3,2026-05-03 14:08:08.244536,145.9,supermarket,Finanzas MMSQ S.Coop.,Murcia,credit_card,0.25,False
+TXN-000911,37,2026-03-15 17:51:08.244536,83.23,gas_station,Hermanos Ribes S.Coop.,Castellón,transfer,0.16,False
+TXN-000912,22,2026-03-03 05:23:08.244536,117.65,online_shopping,Suministros Olivé y asociados S.Com.,León,transfer,0.19,False
+TXN-000913,25,2026-02-14 16:30:08.244536,147.99,gas_station,Instalaciones Cabañas & Asociados S.A.T.,Lugo,transfer,0.26,False
+TXN-000914,4,2026-05-03 12:35:08.244536,83.46,supermarket,Paz Prat Bueno S.Com.,Cantabria,transfer,0.05,False
+TXN-000915,6,2026-03-16 07:59:08.244536,169.97,restaurant,Hnos Toro S.Coop.,Barcelona,credit_card,0.07,False
+TXN-000916,26,2026-02-26 17:06:08.244536,164.2,supermarket,Industrias Peñas y asociados S.Com.,León,credit_card,0.24,False
+TXN-000917,37,2026-03-07 23:48:08.244536,87.31,gas_station,Soluciones OD S.L.,Castellón,debit_card,0.06,False
+TXN-000918,43,2026-02-15 16:13:08.244536,220.6,online_shopping,Bellido y Blanca S.C.P,Asturias,credit_card,0.16,False
+TXN-000919,29,2026-04-10 03:10:08.244536,173.32,online_shopping,Llamas y Cano S.L.,Álava,credit_card,0.1,False
+TXN-000920,48,2026-04-16 16:33:08.244536,110.37,online_shopping,Farmaceútica Prada S.A.,Granada,credit_card,0.26,False
+TXN-000921,17,2026-02-17 01:01:08.244536,62.45,restaurant,Heras y Báez S.Coop.,Santa Cruz de Tenerife,credit_card,0.12,False
+TXN-000922,33,2026-02-25 16:57:08.244536,59.77,supermarket,Carrillo y Frutos S.A.,Girona,credit_card,0.19,False
+TXN-000923,48,2026-04-01 20:19:08.244536,64.85,utilities,Grupo Narváez S.A.,Granada,debit_card,0.1,False
+TXN-000924,46,2026-02-13 23:25:08.244536,116.82,utilities,Promociones Marco S.C.P,La Coruña,credit_card,0.13,False
+TXN-000925,18,2026-02-23 00:06:08.244536,180.72,online_shopping,Fábrica Camacho y asociados S.Com.,Almería,credit_card,0.05,False
+TXN-000926,37,2026-03-14 21:45:08.244536,103.79,restaurant,Inversiones Adán y asociados S.L.,Castellón,debit_card,0.11,False
+TXN-000927,6,2026-04-19 03:59:08.244536,133.96,restaurant,Rico y asociados S.Coop.,Barcelona,transfer,0.11,False
+TXN-000928,35,2026-02-11 17:02:08.244536,185.87,restaurant,Urbano Sacristán Blasco S.L.,Ourense,credit_card,0.15,False
+TXN-000929,42,2026-04-29 22:06:08.244536,112.89,utilities,Vigil y asociados S.L.,Granada,credit_card,0.22,False
+TXN-000930,15,2026-03-05 14:06:08.244536,5.0,utilities,Banca Privada QPJU S.L.,Granada,transfer,0.3,False
+TXN-000931,39,2026-03-19 01:05:08.244536,231.61,restaurant,Logística Inteligentes S.L.,Zaragoza,transfer,0.06,False
+TXN-000932,11,2026-03-28 10:56:08.244536,102.43,online_shopping,Compañía Rocamora S.L.,Cantabria,transfer,0.28,False
+TXN-000933,35,2026-02-18 15:53:08.244536,220.59,restaurant,Construcción HO S.L.,Ourense,transfer,0.27,False
+TXN-000934,16,2026-02-19 20:44:08.244536,104.46,supermarket,Construcción TYG S.L.N.E,Murcia,debit_card,0.11,False
+TXN-000935,26,2026-04-29 14:08:08.244536,114.51,supermarket,Peñas y asociados S.A.,León,credit_card,0.07,False
+TXN-000936,35,2026-05-12 21:45:08.244536,165.35,restaurant,Instalaciones YZ S.Com.,Ourense,debit_card,0.27,False
+TXN-000937,11,2026-02-20 23:03:08.244536,8.48,online_shopping,Instalaciones Mínguez S.A.D,Cantabria,debit_card,0.21,False
+TXN-000938,35,2026-03-30 22:14:08.244536,166.95,restaurant,Jove y Lozano S.A.,Ourense,credit_card,0.22,False
+TXN-000939,10,2026-04-16 00:48:08.244536,136.41,supermarket,Espiridión Zurita Santiago S.L.,León,transfer,0.21,False
+TXN-000940,24,2026-04-07 19:35:08.244536,138.7,gas_station,Compañía Solera & Asociados S.A.,Las Palmas,debit_card,0.09,False
+TXN-000941,18,2026-03-31 00:55:08.244536,173.38,restaurant,Manufacturas Molina S.Com.,Almería,transfer,0.29,False
+TXN-000942,33,2026-02-15 08:41:08.244536,34.03,gas_station,Compañía Soler S.Coop.,Girona,credit_card,0.21,False
+TXN-000943,46,2026-02-28 12:13:08.244536,115.32,online_shopping,Bustamante & Asociados S.A.,La Coruña,debit_card,0.16,False
+TXN-000944,16,2026-03-11 07:42:08.244536,68.19,restaurant,Alimentación DLVO S.L.N.E,Murcia,transfer,0.17,False
+TXN-000945,11,2026-02-26 07:53:08.244536,24.38,utilities,Gras y asociados S.Coop.,Cantabria,credit_card,0.13,False
+TXN-000946,39,2026-05-01 16:52:08.244536,45.04,restaurant,Tecnologías Peinado & Asociados S.C.P,Zaragoza,transfer,0.11,False
+TXN-000947,11,2026-02-17 16:16:08.244536,544.05,gambling,Industrias Integrales S.Coop.,Timor-Leste,debit_card,0.91,True
+TXN-000948,39,2026-04-14 19:21:08.244536,124.69,restaurant,Ana Sofía Garmendia Perea S.L.L.,Zaragoza,transfer,0.17,False
+TXN-000949,47,2026-02-26 00:20:08.244536,103.85,restaurant,Despacho Cordero S.Coop.,Cuenca,credit_card,0.06,False
+TXN-000950,42,2026-04-01 03:59:08.244536,119.89,restaurant,Morillo y Fuertes S.L.,Granada,debit_card,0.05,False
+TXN-000951,2,2026-04-29 21:57:08.244536,160.63,restaurant,Compañía OBH S.Coop.,Valladolid,transfer,0.08,False
+TXN-000952,24,2026-02-27 13:15:08.244536,166.83,supermarket,Pulido y asociados S.L.,Las Palmas,transfer,0.1,False
+TXN-000953,17,2026-04-26 03:30:08.244536,113.87,utilities,Flor y Carretero S.Com.,Santa Cruz de Tenerife,credit_card,0.17,False
+TXN-000954,4,2026-04-25 10:51:08.244536,35.86,supermarket,Nando Larrañaga Calatayud S.Com.,Cantabria,transfer,0.09,False
+TXN-000955,48,2026-03-26 12:03:08.244536,86.4,online_shopping,Restauración Tomé S.L.N.E,Granada,credit_card,0.28,False
+TXN-000956,8,2026-03-22 12:25:08.244536,159.34,supermarket,Hermanos Torre S.Com.,Zamora,credit_card,0.12,False
+TXN-000957,46,2026-04-09 11:11:08.244536,139.84,online_shopping,Promociones Bayo S.A.,La Coruña,debit_card,0.09,False
+TXN-000958,41,2026-03-13 11:55:08.244536,94.54,restaurant,Bertrán y Cámara S.L.N.E,Burgos,credit_card,0.06,False
+TXN-000959,10,2026-03-15 07:17:08.244536,117.99,supermarket,Compañía LT S.L.,León,transfer,0.21,False
+TXN-000960,14,2026-03-30 01:47:08.244536,180.15,supermarket,Distribuciones Avanzadas S.A.,Melilla,debit_card,0.05,False
+TXN-000961,15,2026-05-09 12:18:08.244536,35.91,utilities,Grupo Domínguez S.L.N.E,Granada,credit_card,0.23,False
+TXN-000962,18,2026-03-06 05:52:08.244536,170.14,restaurant,Banca Privada Inteligentes S.L.N.E,Almería,credit_card,0.11,False
+TXN-000963,24,2026-04-15 11:00:08.244536,148.23,supermarket,Domitila Castillo Bustos S.A.,Las Palmas,transfer,0.07,False
+TXN-000964,18,2026-04-24 01:05:08.244536,147.77,online_shopping,Alimentación Ibérica S.L.N.E,Almería,credit_card,0.14,False
+TXN-000965,9,2026-04-22 20:27:08.244536,51.0,supermarket,Hermanos Merino S.A.,Pontevedra,debit_card,0.1,False
+TXN-000966,37,2026-03-29 13:45:08.244536,135.6,gas_station,Manufacturas Sureda y asociados S.Coop.,Castellón,transfer,0.21,False
+TXN-000967,29,2026-04-22 23:03:08.244536,161.08,online_shopping,Farmaceútica Fernandez S.A.U,Álava,credit_card,0.16,False
+TXN-000968,31,2026-03-03 02:44:08.244536,169.42,utilities,Hotel FHE S.A.D,Almería,debit_card,0.29,False
+TXN-000969,1,2026-03-21 07:00:08.244536,47.52,gas_station,Alimentación Roman y asociados S.L.,Baleares,transfer,0.09,False
+TXN-000970,11,2026-02-25 07:04:08.244536,49.95,utilities,Promociones Lastra y asociados S.L.,Cantabria,debit_card,0.08,False
+TXN-000971,4,2026-04-16 00:51:08.244536,65.43,online_shopping,Manufacturas Internacionales S.L.N.E,Cantabria,credit_card,0.07,False
+TXN-000972,27,2026-04-28 01:08:08.244536,171.21,gas_station,Grupo Román S.L.N.E,Málaga,credit_card,0.06,False
+TXN-000973,44,2026-04-13 02:12:08.244536,185.8,gas_station,Montserrat Vendrell Almansa S.A.,Ciudad,credit_card,0.13,False
+TXN-000974,6,2026-03-03 05:46:08.244536,180.52,restaurant,Alimentación Barrera S.L.,Barcelona,debit_card,0.3,False
+TXN-000975,5,2026-03-07 03:54:08.244536,179.35,supermarket,Landa y asociados S.L.,Salamanca,credit_card,0.09,False
+TXN-000976,15,2026-04-30 22:59:08.244536,73.14,restaurant,Olmedo y Palacios S.A.,Granada,transfer,0.28,False
+TXN-000977,43,2026-03-05 03:59:08.244536,197.85,online_shopping,Hermanos Santamaría S.Coop.,Asturias,transfer,0.16,False
+TXN-000978,21,2026-05-03 01:01:08.244536,172.24,restaurant,Talleres Cervantes S.Com.,Cuenca,credit_card,0.19,False
+TXN-000979,25,2026-04-27 16:42:08.244536,101.61,gas_station,Hnos Escribano S.L.N.E,Lugo,transfer,0.14,False
+TXN-000980,46,2026-04-18 23:32:08.244536,169.16,online_shopping,Banca Privada Guzman S.L.,La Coruña,credit_card,0.1,False
+TXN-000981,21,2026-03-21 13:18:08.244536,178.25,restaurant,Familia Morata S.L.U.,Cuenca,debit_card,0.07,False
+TXN-000982,28,2026-03-04 19:13:08.244536,33.19,supermarket,Sebastian Santana Marcos S.A.,Cuenca,debit_card,0.22,False
+TXN-000983,29,2026-03-24 08:35:08.244536,141.79,utilities,Che Lago Valencia S.A.T.,Álava,credit_card,0.23,False
+TXN-000984,34,2026-03-02 09:09:08.244536,109.81,online_shopping,Infraestructuras KKB S.L.L.,Vizcaya,debit_card,0.13,False
+TXN-000985,49,2026-04-16 01:13:08.244536,66.85,gas_station,Despacho Globales S.L.N.E,Salamanca,credit_card,0.24,False
+TXN-000986,25,2026-04-27 09:39:08.244536,142.28,supermarket,Distribuciones del Levante S.A.,Lugo,transfer,0.24,False
+TXN-000987,36,2026-04-30 23:39:08.244536,205.26,online_shopping,Durán y asociados S.L.N.E,Pontevedra,debit_card,0.07,False
+TXN-000988,22,2026-03-04 07:43:08.244536,124.92,supermarket,Rodríguez y Sosa S.A.,León,credit_card,0.17,False
+TXN-000989,24,2026-03-22 12:10:08.244536,157.96,supermarket,Compañía Armengol S.C.P,Las Palmas,transfer,0.16,False
+TXN-000990,8,2026-05-06 20:55:08.244536,153.76,restaurant,Construcción Internacionales S.L.,Zamora,credit_card,0.11,False
+TXN-000991,17,2026-04-12 03:30:08.244536,111.11,utilities,Inversiones Avanzadas S.L.,Santa Cruz de Tenerife,transfer,0.24,False
+TXN-000992,4,2026-02-20 12:20:08.244536,145.64,supermarket,Supermercados IT S.L.L.,Cantabria,debit_card,0.06,False
+TXN-000993,29,2026-04-19 06:56:08.244536,165.66,online_shopping,Bonilla y Rey S.L.N.E,Álava,credit_card,0.13,False
+TXN-000994,24,2026-03-25 16:10:08.244536,135.5,gas_station,Hermanos Pera S.A.,Las Palmas,transfer,0.07,False
+TXN-000995,8,2026-03-05 21:56:08.244536,161.84,supermarket,Nicolás Téllez Vilaplana S.A.,Zamora,credit_card,0.16,False
+TXN-000996,27,2026-02-22 13:43:08.244536,167.53,gas_station,Jorge Ferrando Boix S.L.,Málaga,debit_card,0.28,False
+TXN-000997,42,2026-04-22 05:25:08.244536,170.85,utilities,Berrocal y asociados S.Com.,Granada,transfer,0.19,False
+TXN-000998,16,2026-02-11 17:03:08.244536,151.71,restaurant,Iván Hurtado Goñi S.A.U,Murcia,transfer,0.27,False
+TXN-000999,44,2026-02-26 02:29:08.244536,213.33,gas_station,Tur y Muro S.Coop.,Ciudad,credit_card,0.22,False
+TXN-001000,6,2026-03-16 18:27:08.244536,121.47,restaurant,Hermanos Palma S.Coop.,Barcelona,transfer,0.12,False
