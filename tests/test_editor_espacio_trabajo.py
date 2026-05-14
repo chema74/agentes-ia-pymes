@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import socket
 import tempfile
 import time
 import unittest
@@ -63,6 +64,12 @@ def esperar_servidor(puerto: int, segundos: float = 8.0) -> None:
         except Exception:
             time.sleep(0.15)
     raise AssertionError("El servidor no arranco a tiempo.")
+
+
+def obtener_puerto_libre() -> int:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.bind(("127.0.0.1", 0))
+        return int(sock.getsockname()[1])
 
 
 def cerrar_proceso(proceso: subprocess.Popen) -> None:
@@ -257,10 +264,11 @@ def test_servidor_lista_historico() -> None:
         historico.mkdir(parents=True, exist_ok=True)
         (historico / "20260507-120000-informe.txt").write_text("Informe historico 01\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8912)
+        puerto = obtener_puerto_libre()
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8912)
-            with request.urlopen("http://127.0.0.1:8912/api/historico?id=1", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/historico?id=1", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("historico"), list)
