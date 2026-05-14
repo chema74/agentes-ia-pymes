@@ -1,6 +1,6 @@
-﻿[project]
+[project]
 name = "agentes-ia-pymes"
-version = "2.0.0"
+version = "2.1.1"
 requires-python = ">=3.11"
 description = "Repositorio tecnico de agentes IA locales para PYMES"
 license = { text = "CC BY-SA 4.0" }
@@ -49,3 +49,7 @@ omit = [
 fail_under = 60
 show_missing = true
 skip_covered = false
+
+[tool.setuptools]
+py-modules = []
+
