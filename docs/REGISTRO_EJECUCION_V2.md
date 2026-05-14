@@ -161,3 +161,15 @@ Las evidencias locales pueden usarse para revisión, capturas o preparación fut
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
+
+## 2026-05-14 - Mejora integral de calidad (V2.1)
+
+- Se migro toda la suite de `test_editor_espacio_trabajo.py` a puertos dinamicos para reducir flakiness.
+- Se incorporaron `a11-esg-reporting` y `a12-finanzas-anomalias` al contrato recomendado (`tests/`, `datos_ejemplo/`, `docs/`).
+- Se anadio secret scanning en CI con `gitleaks`.
+- Se anadio `Makefile` con comandos estandar (`qa`, `test`, `test-cov`, `security`, `release-check`).
+- Validaciones ejecutadas:
+  - `python scripts/verificar_utf8.py` OK
+  - `python scripts/validar_contrato_agentes.py` OK
+  - `python scripts/validar_repositorio.py` OK
+  - `python -m pytest -q` OK

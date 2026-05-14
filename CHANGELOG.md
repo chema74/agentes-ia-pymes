@@ -13,6 +13,10 @@
 - Roadmap V2.1 de calidad: `docs/ROADMAP_V2_1_CALIDAD.md`.
 
 ### Changed
+- Integracion de `a11` y `a12` con `tests/`, `datos_ejemplo/` y `docs/`.
+- Secret scanning en CI via `gitleaks`.
+- `Makefile` para flujos DX de calidad y release.
+- Migracion de tests de servidor a puertos dinamicos en toda la suite del editor local.
 - CI dividida en fases: `quality`, `tests`, `security`.
 - `validar_repositorio.py` ahora incluye control UTF-8 y contrato de agentes.
 - `pytest.ini` incluye marcadores de tipologia de pruebas.
