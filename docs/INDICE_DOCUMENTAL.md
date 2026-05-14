@@ -77,6 +77,7 @@ Cada carpeta dentro de `agentes/` contiene documentación V1, JSON ficticio, scr
 - Para revisar evidencias V2: `docs/MAPA_EVIDENCIAS_V2.md`.
 - Para revisar límites y alcance V2: `docs/LIMITES_ALCANCE_V2.md`.
 - Para validar el cierre V2: `docs/CHECKLIST_VALIDACION_V2.md`.
+- Para validar salida a release V2: `docs/CHECKLIST_RELEASE_V2.md`.
 - Para revisar la ejecución real V2: `docs/REGISTRO_EJECUCION_V2.md`.
 - Para revisar el cierre provisional V2: `docs/CIERRE_TECNICO_V2_PROVISIONAL.md`.
 - Para revisar evidencias V1: `docs/EVIDENCIAS_TECNICAS.md`.
