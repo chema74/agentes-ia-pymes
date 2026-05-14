@@ -17,3 +17,6 @@ Thumbs.db
 # Salidas y espacio de trabajo local
 salidas/
 espacio_trabajo/
+
+# Logs temporales de validacion local
+fallo_pytest_ci.txt
