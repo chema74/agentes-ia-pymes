@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: agentes-ia-pymes
+Version: 2.1.1
+Summary: Repositorio tecnico de agentes IA locales para PYMES
+License: CC BY-SA 4.0
+Requires-Python: >=3.11
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+Requires-Dist: ruff>=0.6.0; extra == "dev"
+Requires-Dist: mypy>=1.11; extra == "dev"
+Requires-Dist: pip-audit>=2.7; extra == "dev"
+Requires-Dist: pre-commit>=3.8; extra == "dev"
