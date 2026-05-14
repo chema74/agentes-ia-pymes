@@ -113,12 +113,35 @@ def validar_utf8(raiz_repositorio: Path) -> None:
         raise RuntimeError("Fallaron las comprobaciones de codificacion UTF-8.")
 
 
+def validar_contrato_agentes(raiz_repositorio: Path) -> None:
+    script_contrato = raiz_repositorio / "scripts" / "validar_contrato_agentes.py"
+    if not script_contrato.exists():
+        raise FileNotFoundError(f"Falta script de contrato de agentes: {script_contrato}")
+
+    print("Verificando contrato tecnico de agentes...")
+    resultado = subprocess.run(
+        [sys.executable, str(script_contrato)],
+        cwd=raiz_repositorio,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    if resultado.stdout:
+        print(resultado.stdout.strip())
+    if resultado.stderr:
+        print(resultado.stderr.strip())
+    if resultado.returncode != 0:
+        raise RuntimeError("Fallaron las comprobaciones del contrato de agentes.")
+
+
 def main() -> int:
     try:
         raiz_repositorio = obtener_raiz_repositorio()
         agentes = listar_agentes(raiz_repositorio)
 
         validar_utf8(raiz_repositorio)
+        validar_contrato_agentes(raiz_repositorio)
         json_validados, agentes_con_json = validar_jsons_agentes(agentes)
         tests_agentes = validar_tests_agentes(raiz_repositorio, agentes)
         tests_transversales = validar_tests_transversales(raiz_repositorio)

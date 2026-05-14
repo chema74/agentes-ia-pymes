@@ -1,0 +1,28 @@
+﻿repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+  - repo: local
+    hooks:
+      - id: verificar-utf8
+        name: verificar codificacion utf-8
+        entry: python scripts/verificar_utf8.py
+        language: system
+        pass_filenames: false
+      - id: ruff-lint
+        name: ruff lint
+        entry: ruff check .
+        language: system
+        pass_filenames: false
+      - id: mypy-core
+        name: mypy scripts tests
+        entry: mypy scripts tests
+        language: system
+        pass_filenames: false
