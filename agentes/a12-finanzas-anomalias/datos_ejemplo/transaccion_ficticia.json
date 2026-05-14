@@ -1,0 +1,12 @@
+{
+  "transaction_id": "TXN-000001",
+  "user_id": 7,
+  "timestamp": "2026-05-10T14:22:00",
+  "amount": 145.8,
+  "merchant_category": "supermarket",
+  "merchant_name": "Comercio Ejemplo",
+  "location": "Madrid",
+  "payment_method": "debit_card",
+  "user_risk_score": 0.18,
+  "is_fraud": false
+}

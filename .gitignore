@@ -20,3 +20,8 @@ espacio_trabajo/
 
 # Logs temporales de validacion local
 fallo_pytest_ci.txt
+
+.pytest_cache/
+.pytest-tmp/
+.mypy_cache/
+.ruff_cache/

@@ -1,0 +1,13 @@
+{
+  "company_id": "PYME-ESG-001",
+  "name": "Ejemplo Sostenible SL",
+  "sector": "servicios",
+  "employees": 48,
+  "revenue_eur": 1250000.0,
+  "energy_kwh": 142000.0,
+  "co2_tonnes": 58.4,
+  "diversity_pct": 46.5,
+  "training_hours": 24.0,
+  "local_suppliers_pct": 62.0,
+  "csrd_compliant": true
+}

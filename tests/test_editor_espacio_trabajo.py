@@ -116,10 +116,12 @@ def test_servidor_lista_agentes() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8872)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8872)
-            with request.urlopen("http://127.0.0.1:8872/api/agentes", timeout=3) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/agentes", timeout=3) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert len(datos["agentes"]) == 10
         finally:
@@ -133,10 +135,12 @@ def test_servidor_lee_agente() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8873)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8873)
-            with request.urlopen("http://127.0.0.1:8873/api/agente?id=1", timeout=3) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/agente?id=1", timeout=3) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert "datos" in datos
             assert isinstance(datos["datos"], dict)
@@ -151,14 +155,16 @@ def test_servidor_guarda_agente() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8874)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8874)
-            with request.urlopen("http://127.0.0.1:8874/api/agente?id=1", timeout=3) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/agente?id=1", timeout=3) as resp:
                 base = json.loads(resp.read().decode("utf-8"))["datos"]
             base["campo_prueba_editor"] = True
 
-            status, guardado = post_json("http://127.0.0.1:8874/api/agente?id=1", {"datos": base})
+            status, guardado = post_json(f"http://127.0.0.1:{puerto}/api/agente?id=1", {"datos": base})
             assert status == 200
             assert "mensaje" in guardado
 
@@ -176,11 +182,13 @@ def test_servidor_rechaza_json_invalido() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8875)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8875)
+            esperar_servidor(puerto)
             req = request.Request(
-                "http://127.0.0.1:8875/api/agente?id=1",
+                f"http://127.0.0.1:{puerto}/api/agente?id=1",
                 data=b"{no-valido}",
                 method="POST",
                 headers={"Content-Type": "application/json; charset=utf-8"},
@@ -202,10 +210,12 @@ def test_servidor_ejecuta_agente() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8876)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8876)
-            status, respuesta = post_json("http://127.0.0.1:8876/api/ejecutar?id=1")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/ejecutar?id=1")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "agente-01" / "informe.txt").is_file()
@@ -220,10 +230,12 @@ def test_servidor_genera_panel() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8877)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8877)
-            status, respuesta = post_json("http://127.0.0.1:8877/api/generar-panel")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/generar-panel")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "panel_local.html").is_file()
@@ -238,14 +250,16 @@ def test_servidor_lee_informe() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8878)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8878)
-            status_ejecutar, respuesta_ejecutar = post_json("http://127.0.0.1:8878/api/ejecutar?id=1")
+            esperar_servidor(puerto)
+            status_ejecutar, respuesta_ejecutar = post_json(f"http://127.0.0.1:{puerto}/api/ejecutar?id=1")
             assert status_ejecutar == 200
             assert respuesta_ejecutar.get("ok") is True
 
-            with request.urlopen("http://127.0.0.1:8878/api/informe?id=1", timeout=10) as resp:
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/informe?id=1", timeout=10) as resp:
                 informe = json.loads(resp.read().decode("utf-8"))
             assert informe.get("ok") is True
             assert bool(informe.get("contenido", "").strip())
@@ -289,10 +303,12 @@ def test_servidor_lee_informe_historico() -> None:
         nombre = "20260507-120000-informe.txt"
         (historico / nombre).write_text("Contenido historico prueba\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8913)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8913)
-            with request.urlopen(f"http://127.0.0.1:8913/api/historico/informe?id=1&archivo={nombre}", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/historico/informe?id=1&archivo={nombre}", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "Contenido historico prueba" in datos.get("contenido", "")
@@ -307,11 +323,13 @@ def test_servidor_rechaza_historico_con_ruta_arbitraria() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8914)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8914)
+            esperar_servidor(puerto)
             try:
-                request.urlopen("http://127.0.0.1:8914/api/historico/informe?id=1&archivo=../secreto.txt", timeout=5)
+                request.urlopen(f"http://127.0.0.1:{puerto}/api/historico/informe?id=1&archivo=../secreto.txt", timeout=5)
                 assert False, "Se esperaba error controlado por ruta arbitraria"
             except error.HTTPError as http_error:
                 assert http_error.code == 400
@@ -334,10 +352,12 @@ def test_servidor_compara_informe_historico() -> None:
         nombre = "20260507-120000-informe.txt"
         (historico / nombre).write_text("Decision recomendada: bloquear\nHistorico\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8916)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8916)
-            with request.urlopen(f"http://127.0.0.1:8916/api/comparar?id=1&archivo={nombre}", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/comparar?id=1&archivo={nombre}", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "decision_actual" in datos
@@ -354,11 +374,13 @@ def test_servidor_rechaza_comparacion_ruta_arbitraria() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8917)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8917)
+            esperar_servidor(puerto)
             try:
-                request.urlopen("http://127.0.0.1:8917/api/comparar?id=1&archivo=../secreto.txt", timeout=5)
+                request.urlopen(f"http://127.0.0.1:{puerto}/api/comparar?id=1&archivo=../secreto.txt", timeout=5)
                 assert False, "Se esperaba error controlado por ruta arbitraria en comparacion"
             except error.HTTPError as http_error:
                 assert http_error.code == 400
@@ -374,10 +396,12 @@ def test_pagina_principal_contiene_acciones() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8879)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8879)
-            with request.urlopen("http://127.0.0.1:8879/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 content_type = resp.headers.get("Content-Type", "")
                 cuerpo = resp.read()
             html = cuerpo.decode("utf-8")
@@ -415,10 +439,12 @@ def test_pagina_principal_contiene_historico() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8915)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8915)
-            with request.urlopen("http://127.0.0.1:8915/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Histórico local de ejecuciones" in html
             assert "Actualizar histórico" in html
@@ -434,10 +460,12 @@ def test_pagina_principal_contiene_comparador() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8918)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8918)
-            with request.urlopen("http://127.0.0.1:8918/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Comparar con último informe" in html
             assert "Comparación local" in html
@@ -452,10 +480,12 @@ def test_servidor_genera_informe_consolidado() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8919)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8919)
-            status, respuesta = post_json("http://127.0.0.1:8919/api/generar-informe-consolidado")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/generar-informe-consolidado")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "informe_consolidado.md").is_file()
@@ -471,10 +501,12 @@ def test_servidor_lee_informe_consolidado() -> None:
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
         (salidas / "informe_consolidado.md").write_text("Informe consolidado local\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8920)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8920)
-            with request.urlopen("http://127.0.0.1:8920/api/informe-consolidado", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/informe-consolidado", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "Informe consolidado local" in datos.get("contenido", "")
@@ -489,10 +521,12 @@ def test_pagina_principal_contiene_informe_consolidado() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8921)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8921)
-            with request.urlopen("http://127.0.0.1:8921/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Informe consolidado local" in html
             assert "Generar informe consolidado" in html
@@ -514,10 +548,12 @@ def test_servidor_exporta_evidencias_demo() -> None:
         (salidas / "agente-01").mkdir(parents=True, exist_ok=True)
         (salidas / "agente-01" / "informe.txt").write_text("Informe agente 01\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8922)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8922)
-            status, respuesta = post_json("http://127.0.0.1:8922/api/exportar-evidencias-demo")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/exportar-evidencias-demo")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.md").is_file()
@@ -536,10 +572,12 @@ def test_servidor_lee_evidencias_demo() -> None:
         carpeta.mkdir(parents=True, exist_ok=True)
         (carpeta / "INDICE_EVIDENCIAS.md").write_text("# Paquete local de evidencias de demo\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8923)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8923)
-            with request.urlopen("http://127.0.0.1:8923/api/evidencias-demo", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/evidencias-demo", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "Paquete local de evidencias de demo" in datos.get("contenido_markdown", "")
@@ -554,10 +592,12 @@ def test_pagina_principal_contiene_evidencias_demo() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8924)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8924)
-            with request.urlopen("http://127.0.0.1:8924/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Paquete local de evidencias" in html
             assert "Exportar evidencias de demo" in html
@@ -573,10 +613,12 @@ def test_servidor_ejecuta_demo_local() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8925)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8925)
-            status, respuesta = post_json("http://127.0.0.1:8925/api/ejecutar-demo-local")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/ejecutar-demo-local")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "panel_local.html").is_file() or (salidas / "evidencias_demo" / "INDICE_EVIDENCIAS.md").is_file()
@@ -591,10 +633,12 @@ def test_pagina_principal_contiene_demo_local() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8926)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8926)
-            with request.urlopen("http://127.0.0.1:8926/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Demo local reproducible" in html
             assert "Ejecutar demo local completa" in html
@@ -609,10 +653,12 @@ def test_servidor_genera_guion_demo() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8927)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8927)
-            status, respuesta = post_json("http://127.0.0.1:8927/api/generar-guion-demo")
+            esperar_servidor(puerto)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/generar-guion-demo")
             assert status == 200
             assert respuesta.get("ok") is True
             assert (salidas / "guion_demo_local.md").is_file()
@@ -630,10 +676,12 @@ def test_servidor_lee_guion_demo() -> None:
 
         (salidas / "guion_demo_local.md").write_text("# Guion local de demo guiada\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8928)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8928)
-            with request.urlopen("http://127.0.0.1:8928/api/guion-demo", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/guion-demo", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert "Guion local de demo guiada" in datos.get("contenido_markdown", "")
@@ -649,10 +697,12 @@ def test_pagina_principal_contiene_guion_demo() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8929)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8929)
-            with request.urlopen("http://127.0.0.1:8929/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Guion local de demo" in html
             assert "Generar guion de demo" in html
@@ -669,10 +719,12 @@ def test_catalogo_muestra_nombres_completos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8880)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8880)
-            with request.urlopen("http://127.0.0.1:8880/api/agentes", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/agentes", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert len(datos["agentes"]) == 10
             nombres = [agente["nombre"] for agente in datos["agentes"]]
@@ -689,10 +741,12 @@ def test_servidor_resumen_sin_informes() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8881)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8881)
-            with request.urlopen("http://127.0.0.1:8881/api/resumen", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/resumen", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert len(datos["agentes"]) == 10
@@ -714,10 +768,12 @@ def test_servidor_resumen_con_informe() -> None:
         carpeta.mkdir(parents=True, exist_ok=True)
         (carpeta / "informe.txt").write_text("Decision humana recomendada: bloquear\n", encoding="utf-8")
 
-        proceso = iniciar_editor(trabajo, salidas, 8882)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8882)
-            with request.urlopen("http://127.0.0.1:8882/api/resumen", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/resumen", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             agente_01 = next(a for a in datos["agentes"] if a["id"] == 1)
             assert agente_01["existe_informe"] is True
@@ -733,10 +789,12 @@ def test_pagina_principal_contiene_resumen() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8883)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8883)
-            with request.urlopen("http://127.0.0.1:8883/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Resumen local de agentes" in html
             assert "Actualizar resumen" in html
@@ -753,10 +811,12 @@ def test_pagina_principal_contiene_boton_panel_local() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8884)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8884)
-            with request.urlopen("http://127.0.0.1:8884/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
             assert "Abrir panel local" in html
             assert "salidas" in html
@@ -772,10 +832,12 @@ def test_pagina_principal_mantiene_consola_resumen() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8885)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8885)
-            with request.urlopen("http://127.0.0.1:8885/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Resumen local de agentes" in html
             assert "Edición JSON" in html
@@ -792,10 +854,12 @@ def test_api_panel_devuelve_estado() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8886)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8886)
-            with request.urlopen("http://127.0.0.1:8886/api/panel", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/panel", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert "ok" in datos
             assert "ruta_panel" in datos
@@ -811,10 +875,12 @@ def test_formulario_agente_01_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8887)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8887)
-            with request.urlopen("http://127.0.0.1:8887/api/formulario/agente-01", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-01", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -831,11 +897,13 @@ def test_formulario_agente_01_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8888)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8888)
+            esperar_servidor(puerto)
             payload = {"campos": {"cliente.nombre_empresa": "Empresa Piloto Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8888/api/formulario/agente-01", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-01", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -853,10 +921,12 @@ def test_pagina_principal_contiene_edicion_guiada() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8889)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8889)
-            with request.urlopen("http://127.0.0.1:8889/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Edición guiada" in html and "Agente 01" in html
             assert "Cargar edición guiada" in html
@@ -872,10 +942,12 @@ def test_formulario_agente_02_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8890)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8890)
-            with request.urlopen("http://127.0.0.1:8890/api/formulario/agente-02", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-02", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -890,11 +962,13 @@ def test_formulario_agente_02_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8891)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8891)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre_empresa": "Empresa Documental Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8891/api/formulario/agente-02", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-02", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -912,10 +986,12 @@ def test_formulario_agente_03_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8892)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8892)
-            with request.urlopen("http://127.0.0.1:8892/api/formulario/agente-03", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-03", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -930,11 +1006,13 @@ def test_formulario_agente_03_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8893)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8893)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre_empresa": "Empresa Seguimiento Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8893/api/formulario/agente-03", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-03", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -952,10 +1030,12 @@ def test_pagina_principal_indica_edicion_guiada_ampliada() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8894)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8894)
-            with request.urlopen("http://127.0.0.1:8894/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Edición guiada" in html
             assert "Agente 01" in html
@@ -972,10 +1052,12 @@ def test_formulario_agente_04_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8895)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8895)
-            with request.urlopen("http://127.0.0.1:8895/api/formulario/agente-04", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-04", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -990,11 +1072,13 @@ def test_formulario_agente_04_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8896)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8896)
+            esperar_servidor(puerto)
             payload = {"campos": {"propuesta.plazo_estimado": "tres semanas"}}
-            status, respuesta = post_json("http://127.0.0.1:8896/api/formulario/agente-04", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-04", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1012,10 +1096,12 @@ def test_formulario_agente_05_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8897)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8897)
-            with request.urlopen("http://127.0.0.1:8897/api/formulario/agente-05", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-05", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1030,11 +1116,13 @@ def test_formulario_agente_05_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8898)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8898)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Operaciones Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8898/api/formulario/agente-05", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-05", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1052,10 +1140,12 @@ def test_formulario_agente_06_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8899)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8899)
-            with request.urlopen("http://127.0.0.1:8899/api/formulario/agente-06", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-06", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1070,11 +1160,13 @@ def test_formulario_agente_06_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8900)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8900)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Cobros Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8900/api/formulario/agente-06", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-06", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1092,10 +1184,12 @@ def test_pagina_principal_indica_edicion_guiada_hasta_agente_06() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8901)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8901)
-            with request.urlopen("http://127.0.0.1:8901/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Edición guiada" in html
             assert "Agente 01" in html
@@ -1115,10 +1209,12 @@ def test_formulario_agente_07_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8902)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8902)
-            with request.urlopen("http://127.0.0.1:8902/api/formulario/agente-07", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-07", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1133,11 +1229,13 @@ def test_formulario_agente_07_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8903)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8903)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Pipeline Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8903/api/formulario/agente-07", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-07", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1155,10 +1253,12 @@ def test_formulario_agente_08_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8904)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8904)
-            with request.urlopen("http://127.0.0.1:8904/api/formulario/agente-08", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-08", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1173,11 +1273,13 @@ def test_formulario_agente_08_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8905)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8905)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Formacion Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8905/api/formulario/agente-08", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-08", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1195,10 +1297,12 @@ def test_formulario_agente_09_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8906)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8906)
-            with request.urlopen("http://127.0.0.1:8906/api/formulario/agente-09", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-09", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1213,11 +1317,13 @@ def test_formulario_agente_09_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8907)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8907)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Mercado Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8907/api/formulario/agente-09", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-09", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1235,10 +1341,12 @@ def test_formulario_agente_10_devuelve_campos() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8908)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8908)
-            with request.urlopen("http://127.0.0.1:8908/api/formulario/agente-10", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-10", timeout=5) as resp:
                 datos = json.loads(resp.read().decode("utf-8"))
             assert datos.get("ok") is True
             assert isinstance(datos.get("campos"), list)
@@ -1253,11 +1361,13 @@ def test_formulario_agente_10_guarda_cambio() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8909)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8909)
+            esperar_servidor(puerto)
             payload = {"campos": {"empresa_ficticia.nombre": "NexoSur Revision Editada"}}
-            status, respuesta = post_json("http://127.0.0.1:8909/api/formulario/agente-10", payload)
+            status, respuesta = post_json(f"http://127.0.0.1:{puerto}/api/formulario/agente-10", payload)
             assert status == 200
             assert respuesta.get("ok") is True
 
@@ -1275,10 +1385,12 @@ def test_pagina_principal_indica_edicion_guiada_para_10_agentes() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8910)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8910)
-            with request.urlopen("http://127.0.0.1:8910/", timeout=5) as resp:
+            esperar_servidor(puerto)
+            with request.urlopen(f"http://127.0.0.1:{puerto}/", timeout=5) as resp:
                 html = resp.read().decode("utf-8")
             assert "Edición guiada" in html
             assert "Agente 01" in html
@@ -1302,11 +1414,13 @@ def test_formulario_agente_99_no_valido() -> None:
         preparado = ejecutar(SCRIPT_PREPARAR, "--directorio-trabajo", str(trabajo))
         assert preparado.returncode == 0, preparado.stdout + preparado.stderr
 
-        proceso = iniciar_editor(trabajo, salidas, 8911)
+        puerto = obtener_puerto_libre()
+
+        proceso = iniciar_editor(trabajo, salidas, puerto)
         try:
-            esperar_servidor(8911)
+            esperar_servidor(puerto)
             try:
-                request.urlopen("http://127.0.0.1:8911/api/formulario/agente-99", timeout=5)
+                request.urlopen(f"http://127.0.0.1:{puerto}/api/formulario/agente-99", timeout=5)
                 assert False, "Se esperaba error controlado para formulario no valido"
             except error.HTTPError as http_error:
                 assert http_error.code == 404
@@ -1380,4 +1494,5 @@ def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: 
     ):
         suite.addTest(unittest.FunctionTestCase(funcion))
     return suite
+
 
