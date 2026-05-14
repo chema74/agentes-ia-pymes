@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 # Secciones principales que debe tener el expediente ficticio.
 SECCIONES_OBLIGATORIAS = [
@@ -72,11 +71,7 @@ def cargar_expediente(ruta_expediente):
 
 def validar_secciones(expediente):
     """Comprueba que el expediente contiene todas las secciones principales."""
-    return [
-        seccion
-        for seccion in SECCIONES_OBLIGATORIAS
-        if seccion not in expediente
-    ]
+    return [seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in expediente]
 
 
 def validar_campos_cliente(cliente):
@@ -218,8 +213,7 @@ def imprimir_informe(
 
     pendientes_detectados = nombres_de_items(resumen_checklist["obligatorios_pendientes"])
     pendientes_detectados.extend(
-        accion.get("descripcion_accion", "Accion sin descripcion")
-        for accion in acciones_abiertas
+        accion.get("descripcion_accion", "Accion sin descripcion") for accion in acciones_abiertas
     )
 
     imprimir_lista("Pendientes detectados", pendientes_detectados)

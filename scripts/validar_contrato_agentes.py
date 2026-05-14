@@ -1,8 +1,8 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from pathlib import Path
-import sys
 
 REQUIRED_FILES = ["README.md", "requirements.txt"]
 REQUIRED_DIRS = ["src"]

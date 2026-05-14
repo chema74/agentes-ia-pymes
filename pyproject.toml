@@ -35,7 +35,12 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 no_implicit_optional = true
 check_untyped_defs = true
-exclude = "(^agentes/.*/tests/|^salidas/|^espacio_trabajo/)"
+exclude = '''(?x)(
+  ^agentes/.*/tests/
+  | ^agentes/.*/src/
+  | ^salidas/
+  | ^espacio_trabajo/
+)'''
 
 [tool.coverage.run]
 source = ["scripts", "tests"]

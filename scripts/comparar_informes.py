@@ -3,8 +3,8 @@ from __future__ import annotations
 import argparse
 import difflib
 import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 AGENTES_VALIDOS = set(range(1, 11))
 
@@ -111,7 +111,9 @@ def comparar_textos(texto_actual: str, texto_historico: str) -> tuple[str, dict[
     return diff_texto, resumen
 
 
-def ejecutar_comparacion(agente: int, archivo_historico: str, directorio_salidas: Path) -> tuple[dict, int]:
+def ejecutar_comparacion(
+    agente: int, archivo_historico: str, directorio_salidas: Path
+) -> tuple[dict, int]:
     agente = validar_agente(agente)
     carpeta_agente = directorio_salidas / f"agente-{agente:02d}"
     ruta_actual = carpeta_agente / "informe.txt"
@@ -171,7 +173,9 @@ def main(argv: list[str] | None = None) -> int:
         directorio_salidas = raiz / directorio_salidas
 
     try:
-        resultado, codigo = ejecutar_comparacion(args.agente, args.archivo_historico, directorio_salidas)
+        resultado, codigo = ejecutar_comparacion(
+            args.agente, args.archivo_historico, directorio_salidas
+        )
         imprimir_resultado(resultado, args.solo_resumen)
         return codigo
     except (ValueError, FileNotFoundError) as error:

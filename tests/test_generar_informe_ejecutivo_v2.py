@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Pruebas del generador de informe ejecutivo V2.
 
@@ -23,10 +22,9 @@ def cargar_modulo():
     """
     ruta = Path(__file__).resolve().parents[1] / "scripts" / "generar_informe_ejecutivo_v2.py"
     spec = importlib.util.spec_from_file_location("generar_informe_ejecutivo_v2", ruta)
-    modulo = importlib.util.module_from_spec(spec)
-
+    assert spec is not None
     assert spec.loader is not None
-    assert spec.name is not None
+    modulo = importlib.util.module_from_spec(spec)
 
     sys.modules[spec.name] = modulo
     spec.loader.exec_module(modulo)

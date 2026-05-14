@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -22,9 +21,7 @@ RUTA_JSON_POR_DEFECTO = (
 
 
 def construir_parser():
-    parser = argparse.ArgumentParser(
-        description="Valida formacion interna ficticia del Agente 08."
-    )
+    parser = argparse.ArgumentParser(description="Valida formacion interna ficticia del Agente 08.")
     parser.add_argument(
         "ruta_json",
         nargs="?",
@@ -53,15 +50,10 @@ def validar_estructura(datos):
 
     faltantes = [s for s in SECCIONES_OBLIGATORIAS if s not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("modulos_formativos"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'modulos_formativos' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'modulos_formativos' debe ser una lista."
 
     for seccion in [
         "rutas_formativas",
@@ -73,9 +65,7 @@ def validar_estructura(datos):
             return f"Error: estructura incompleta. La seccion '{seccion}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -120,14 +110,10 @@ def analizar(datos):
     ]
     modulos_completados = [m for m in modulos if texto(m, "estado_modulo") == "completado"]
     modulos_bloqueados = [m for m in modulos if texto(m, "estado_modulo") == "bloqueado"]
-    prioridades_altas = [
-        m for m in modulos if texto(m, "prioridad_modulo") == "alta"
-    ]
+    prioridades_altas = [m for m in modulos if texto(m, "prioridad_modulo") == "alta"]
     responsables_ausentes = [m for m in modulos if not texto(m, "responsable_contenido")]
 
-    perfiles_sin_ruta = [
-        p for p in perfiles if not texto(p, "ruta_asignada")
-    ]
+    perfiles_sin_ruta = [p for p in perfiles if not texto(p, "ruta_asignada")]
 
     modulo_ids_con_evidencia = {
         identificador(e, "identificador_modulo")
@@ -168,21 +154,13 @@ def analizar(datos):
     return {
         "total_registros_formativos": len(modulos),
         "modulos_pendientes": deduplicar_por_id(modulos_pendientes, "identificador_modulo"),
-        "modulos_curso_revision": deduplicar_por_id(
-            modulos_curso_revision, "identificador_modulo"
-        ),
-        "modulos_completados": deduplicar_por_id(
-            modulos_completados, "identificador_modulo"
-        ),
+        "modulos_curso_revision": deduplicar_por_id(modulos_curso_revision, "identificador_modulo"),
+        "modulos_completados": deduplicar_por_id(modulos_completados, "identificador_modulo"),
         "modulos_bloqueados": deduplicar_por_id(modulos_bloqueados, "identificador_modulo"),
         "prioridades_altas": deduplicar_por_id(prioridades_altas, "identificador_modulo"),
         "perfiles_sin_ruta": deduplicar_por_id(perfiles_sin_ruta, "identificador_perfil"),
-        "evidencias_ausentes": deduplicar_por_id(
-            evidencias_ausentes, "identificador_modulo"
-        ),
-        "responsables_ausentes": deduplicar_por_id(
-            responsables_ausentes, "identificador_modulo"
-        ),
+        "evidencias_ausentes": deduplicar_por_id(evidencias_ausentes, "identificador_modulo"),
+        "responsables_ausentes": deduplicar_por_id(responsables_ausentes, "identificador_modulo"),
         "riesgos_operativos": deduplicar_por_id(riesgos_operativos, "identificador_ruta"),
         "acciones_abiertas": deduplicar_por_id(acciones_abiertas, "identificador_accion"),
         "acciones_urgentes": deduplicar_por_id(acciones_urgentes, "identificador_accion"),
@@ -193,13 +171,25 @@ def analizar(datos):
 
 
 def recomendar_decision(analisis):
-    if analisis["modulos_bloqueados"] or analisis["riesgos_operativos"] or analisis["datos_criticos_ausentes"]:
+    if (
+        analisis["modulos_bloqueados"]
+        or analisis["riesgos_operativos"]
+        or analisis["datos_criticos_ausentes"]
+    ):
         return "bloquear"
 
-    if analisis["prioridades_altas"] or analisis["acciones_urgentes"] or analisis["modulos_pendientes"]:
+    if (
+        analisis["prioridades_altas"]
+        or analisis["acciones_urgentes"]
+        or analisis["modulos_pendientes"]
+    ):
         return "priorizar_formacion"
 
-    if analisis["perfiles_sin_ruta"] or analisis["responsables_ausentes"] or analisis["evidencias_ausentes"]:
+    if (
+        analisis["perfiles_sin_ruta"]
+        or analisis["responsables_ausentes"]
+        or analisis["evidencias_ausentes"]
+    ):
         return "pedir_informacion"
 
     if (
@@ -241,9 +231,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
         analisis["modulos_curso_revision"],
         "identificador_modulo",
     )
-    imprimir_lista(
-        "Modulos completados", analisis["modulos_completados"], "identificador_modulo"
-    )
+    imprimir_lista("Modulos completados", analisis["modulos_completados"], "identificador_modulo")
     print("")
     print("Resumen de prioridades:")
     imprimir_lista(
@@ -253,9 +241,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     )
     print("")
     print("Resumen de bloqueos:")
-    imprimir_lista(
-        "Modulos bloqueados", analisis["modulos_bloqueados"], "identificador_modulo"
-    )
+    imprimir_lista("Modulos bloqueados", analisis["modulos_bloqueados"], "identificador_modulo")
     print("")
     print("Resumen de evidencias:")
     imprimir_lista(
@@ -277,7 +263,9 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     )
     print("")
     print("Resumen de riesgos:")
-    imprimir_lista("Riesgos formativos u operativos", analisis["riesgos_operativos"], "identificador_ruta")
+    imprimir_lista(
+        "Riesgos formativos u operativos", analisis["riesgos_operativos"], "identificador_ruta"
+    )
     print("")
     print("Resumen de acciones siguientes:")
     imprimir_lista(

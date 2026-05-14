@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import argparse
 import os
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 
 def obtener_raiz_repositorio() -> Path:
@@ -50,7 +50,9 @@ def ejecutar_comando_local(comando: list[str], raiz: Path) -> tuple[int, str]:
     return resultado.returncode, salida
 
 
-def validar_entorno(raiz: Path, directorio_trabajo: Path, directorio_salidas: Path) -> tuple[bool, str]:
+def validar_entorno(
+    raiz: Path, directorio_trabajo: Path, directorio_salidas: Path
+) -> tuple[bool, str]:
     requeridos = [
         raiz / "scripts" / "preparar_espacio_trabajo.py",
         raiz / "scripts" / "ejecutar_agente.py",
@@ -80,7 +82,13 @@ def ejecutar_paso(nombre: str, comando: list[str], raiz: Path) -> tuple[bool, st
     return True, "\n".join(reporte)
 
 
-def construir_resumen(directorio_trabajo: Path, directorio_salidas: Path, crear_zip: bool, abrir_editor: bool, puerto_editor: int) -> str:
+def construir_resumen(
+    directorio_trabajo: Path,
+    directorio_salidas: Path,
+    crear_zip: bool,
+    abrir_editor: bool,
+    puerto_editor: int,
+) -> str:
     panel = directorio_salidas / "panel_local.html"
     informe_md = directorio_salidas / "informe_consolidado.md"
     informe_html = directorio_salidas / "informe_consolidado.html"
@@ -109,7 +117,9 @@ def construir_resumen(directorio_trabajo: Path, directorio_salidas: Path, crear_
             f"--directorio-salidas {directorio_salidas} --puerto {puerto_editor}"
         )
         lineas.append(f"- Comando sugerido para editor: {comando_editor}")
-    lineas.append("- Aviso: demo local temporal; no es API productiva, no es dashboard productivo y no es publicacion web.")
+    lineas.append(
+        "- Aviso: demo local temporal; no es API productiva, no es dashboard productivo y no es publicacion web."
+    )
     return "\n".join(lineas)
 
 
@@ -206,7 +216,15 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Error: fallo en paso '{nombre}'.")
             return 1
 
-    print(construir_resumen(directorio_trabajo, directorio_salidas, args.crear_zip, args.abrir_editor, args.puerto_editor))
+    print(
+        construir_resumen(
+            directorio_trabajo,
+            directorio_salidas,
+            args.crear_zip,
+            args.abrir_editor,
+            args.puerto_editor,
+        )
+    )
     return 0
 
 

@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -53,15 +52,10 @@ def validar_estructura(datos):
 
     faltantes = [s for s in SECCIONES_OBLIGATORIAS if s not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("controles_internos"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'controles_internos' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'controles_internos' debe ser una lista."
 
     for seccion in [
         "evidencias_revision",
@@ -73,9 +67,7 @@ def validar_estructura(datos):
             return f"Error: estructura incompleta. La seccion '{seccion}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -118,22 +110,16 @@ def analizar(datos):
         d for d in documentos if texto(d, "estado_documento") in ["pendiente", "en_revision"]
     ]
     hallazgos_abiertos = [
-        h for h in hallazgos if texto(h, "estado_hallazgo") in ["pendiente", "en_revision", "bloqueado"]
-    ]
-    riesgos_criticos_altos = [
         h
         for h in hallazgos
-        if texto(h, "nivel_riesgo_operativo") in ["alto", "critico", "crítico"]
+        if texto(h, "estado_hallazgo") in ["pendiente", "en_revision", "bloqueado"]
     ]
-    bloqueados = [
-        c for c in controles if texto(c, "estado_control") == "bloqueado"
+    riesgos_criticos_altos = [
+        h for h in hallazgos if texto(h, "nivel_riesgo_operativo") in ["alto", "critico", "crítico"]
     ]
-    prioridades_altas = [
-        c for c in controles if texto(c, "prioridad_revision") == "alta"
-    ]
-    responsables_ausentes = [
-        c for c in controles if not texto(c, "responsable_interno")
-    ]
+    bloqueados = [c for c in controles if texto(c, "estado_control") == "bloqueado"]
+    prioridades_altas = [c for c in controles if texto(c, "prioridad_revision") == "alta"]
+    responsables_ausentes = [c for c in controles if not texto(c, "responsable_interno")]
 
     control_ids_con_evidencia = {
         identificador(e, "identificador_control")
@@ -163,15 +149,15 @@ def analizar(datos):
     categorias_sensibles = [
         c
         for c in controles
-        if any(
-            clave in texto(c, "tipo_control")
-            for clave in ["datos_personales", "rgpd"]
-        )
+        if any(clave in texto(c, "tipo_control") for clave in ["datos_personales", "rgpd"])
     ]
 
     estados_incompletos = []
     for c in controles:
-        if not texto(c, "estado_control") or texto(c, "estado_control") in ["sin_definir", "ambiguo"]:
+        if not texto(c, "estado_control") or texto(c, "estado_control") in [
+            "sin_definir",
+            "ambiguo",
+        ]:
             estados_incompletos.append(c)
 
     datos_criticos_ausentes = []
@@ -188,31 +174,21 @@ def analizar(datos):
         "documentos_pendientes": deduplicar_por_id(
             documentos_pendientes, "identificador_documento"
         ),
-        "evidencias_ausentes": deduplicar_por_id(
-            evidencias_ausentes, "identificador_control"
-        ),
+        "evidencias_ausentes": deduplicar_por_id(evidencias_ausentes, "identificador_control"),
         "evidencias_criticas_ausentes": deduplicar_por_id(
             evidencias_criticas_ausentes, "identificador_control"
         ),
-        "hallazgos_abiertos": deduplicar_por_id(
-            hallazgos_abiertos, "identificador_hallazgo"
-        ),
+        "hallazgos_abiertos": deduplicar_por_id(hallazgos_abiertos, "identificador_hallazgo"),
         "riesgos_criticos_altos": deduplicar_por_id(
             riesgos_criticos_altos, "identificador_hallazgo"
         ),
         "bloqueados": deduplicar_por_id(bloqueados, "identificador_control"),
         "prioridades_altas": deduplicar_por_id(prioridades_altas, "identificador_control"),
-        "responsables_ausentes": deduplicar_por_id(
-            responsables_ausentes, "identificador_control"
-        ),
+        "responsables_ausentes": deduplicar_por_id(responsables_ausentes, "identificador_control"),
         "acciones_abiertas": deduplicar_por_id(acciones_abiertas, "identificador_accion"),
         "acciones_urgentes": deduplicar_por_id(acciones_urgentes, "identificador_accion"),
-        "categorias_sensibles": deduplicar_por_id(
-            categorias_sensibles, "identificador_control"
-        ),
-        "estados_incompletos": deduplicar_por_id(
-            estados_incompletos, "identificador_control"
-        ),
+        "categorias_sensibles": deduplicar_por_id(categorias_sensibles, "identificador_control"),
+        "estados_incompletos": deduplicar_por_id(estados_incompletos, "identificador_control"),
         "datos_criticos_ausentes": deduplicar_por_id(
             datos_criticos_ausentes, "identificador_control"
         ),
@@ -236,7 +212,11 @@ def recomendar_decision(analisis):
     ):
         return "priorizar_revision"
 
-    if analisis["responsables_ausentes"] or analisis["evidencias_ausentes"] or analisis["estados_incompletos"]:
+    if (
+        analisis["responsables_ausentes"]
+        or analisis["evidencias_ausentes"]
+        or analisis["estados_incompletos"]
+    ):
         return "pedir_informacion"
 
     if (
@@ -276,14 +256,10 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     imprimir_lista(
         "Documentos pendientes", analisis["documentos_pendientes"], "identificador_documento"
     )
-    imprimir_lista(
-        "Evidencias ausentes", analisis["evidencias_ausentes"], "identificador_control"
-    )
+    imprimir_lista("Evidencias ausentes", analisis["evidencias_ausentes"], "identificador_control")
     print("")
     print("Resumen de hallazgos:")
-    imprimir_lista(
-        "Hallazgos abiertos", analisis["hallazgos_abiertos"], "identificador_hallazgo"
-    )
+    imprimir_lista("Hallazgos abiertos", analisis["hallazgos_abiertos"], "identificador_hallazgo")
     print("")
     print("Resumen de riesgos:")
     imprimir_lista(
@@ -315,10 +291,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     )
     imprimir_lista("Acciones urgentes", analisis["acciones_urgentes"], "identificador_accion")
     print("")
-    print(
-        "Aviso: este informe no es asesoria legal, fiscal, laboral, financiera ni "
-        "regulatoria."
-    )
+    print("Aviso: este informe no es asesoria legal, fiscal, laboral, financiera ni regulatoria.")
     print(
         "Aviso: este informe no acredita cumplimiento normativo; solo organiza revision "
         "interna ficticia con supervision humana."

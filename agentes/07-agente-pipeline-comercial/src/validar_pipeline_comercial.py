@@ -1,9 +1,8 @@
-from pathlib import Path
 import argparse
 import json
 import sys
 from datetime import date
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -54,15 +53,10 @@ def validar_estructura(datos):
 
     faltantes = [s for s in SECCIONES_OBLIGATORIAS if s not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("oportunidades_comerciales"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'oportunidades_comerciales' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'oportunidades_comerciales' debe ser una lista."
 
     for seccion in [
         "bloqueos_comerciales",
@@ -74,9 +68,7 @@ def validar_estructura(datos):
             return f"Error: estructura incompleta. La seccion '{seccion}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -139,17 +131,13 @@ def analizar(datos):
         if texto(o, "estado_oportunidad") == "bloqueada"
         or str(o.get("bloqueo_asociado") or "").strip()
     ]
-    prioridades_altas = [
-        o for o in oportunidades if texto(o, "prioridad_seguimiento") == "alta"
-    ]
+    prioridades_altas = [o for o in oportunidades if texto(o, "prioridad_seguimiento") == "alta"]
     temperatura_alta = [
         o
         for o in oportunidades
         if texto(o, "temperatura_comercial") in ["alta", "caliente", "critica", "crítica"]
     ]
-    sin_responsable = [
-        o for o in oportunidades if not texto(o, "responsable_interno")
-    ]
+    sin_responsable = [o for o in oportunidades if not texto(o, "responsable_interno")]
     sin_proxima_accion = [
         o
         for o in oportunidades
@@ -159,12 +147,17 @@ def analizar(datos):
     seguimiento_vencido = []
     for o in oportunidades:
         fecha = parsear_fecha(o.get("fecha_ultima_interaccion"))
-        if fecha and fecha < hoy and texto(o, "estado_oportunidad") in [
-            "abierta",
-            "en_revision",
-            "bloqueada",
-            "pendiente",
-        ]:
+        if (
+            fecha
+            and fecha < hoy
+            and texto(o, "estado_oportunidad")
+            in [
+                "abierta",
+                "en_revision",
+                "bloqueada",
+                "pendiente",
+            ]
+        ):
             seguimiento_vencido.append(o)
 
     riesgos_criticos = [
@@ -216,25 +209,15 @@ def analizar(datos):
         "perdidas": deduplicar_por_id(perdidas, "identificador_oportunidad"),
         "descartadas": deduplicar_por_id(descartadas, "identificador_oportunidad"),
         "bloqueadas": deduplicar_por_id(bloqueadas, "identificador_oportunidad"),
-        "prioridades_altas": deduplicar_por_id(
-            prioridades_altas, "identificador_oportunidad"
-        ),
-        "temperatura_alta": deduplicar_por_id(
-            temperatura_alta, "identificador_oportunidad"
-        ),
+        "prioridades_altas": deduplicar_por_id(prioridades_altas, "identificador_oportunidad"),
+        "temperatura_alta": deduplicar_por_id(temperatura_alta, "identificador_oportunidad"),
         "sin_responsable": deduplicar_por_id(sin_responsable, "identificador_oportunidad"),
-        "sin_proxima_accion": deduplicar_por_id(
-            sin_proxima_accion, "identificador_oportunidad"
-        ),
-        "seguimiento_vencido": deduplicar_por_id(
-            seguimiento_vencido, "identificador_oportunidad"
-        ),
+        "sin_proxima_accion": deduplicar_por_id(sin_proxima_accion, "identificador_oportunidad"),
+        "seguimiento_vencido": deduplicar_por_id(seguimiento_vencido, "identificador_oportunidad"),
         "riesgos_criticos": deduplicar_por_id(riesgos_criticos, "identificador_bloqueo"),
         "acciones_abiertas": deduplicar_por_id(acciones_abiertas, "identificador_accion"),
         "acciones_urgentes": deduplicar_por_id(acciones_urgentes, "identificador_accion"),
-        "importes_invalidos": deduplicar_por_id(
-            importes_invalidos, "identificador_oportunidad"
-        ),
+        "importes_invalidos": deduplicar_por_id(importes_invalidos, "identificador_oportunidad"),
         "datos_criticos_ausentes": deduplicar_por_id(
             datos_criticos_ausentes, "identificador_oportunidad"
         ),
@@ -245,7 +228,11 @@ def analizar(datos):
 
 
 def recomendar_decision(analisis):
-    if analisis["bloqueadas"] or analisis["riesgos_criticos"] or analisis["datos_criticos_ausentes"]:
+    if (
+        analisis["bloqueadas"]
+        or analisis["riesgos_criticos"]
+        or analisis["datos_criticos_ausentes"]
+    ):
         return "bloquear"
 
     if (
@@ -256,7 +243,11 @@ def recomendar_decision(analisis):
     ):
         return "priorizar_oportunidad"
 
-    if analisis["sin_responsable"] or analisis["sin_proxima_accion"] or analisis["importes_invalidos"]:
+    if (
+        analisis["sin_responsable"]
+        or analisis["sin_proxima_accion"]
+        or analisis["importes_invalidos"]
+    ):
         return "pedir_informacion"
 
     if (
@@ -311,9 +302,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     )
     print("")
     print("Resumen de bloqueos:")
-    imprimir_lista(
-        "Oportunidades bloqueadas", analisis["bloqueadas"], "identificador_oportunidad"
-    )
+    imprimir_lista("Oportunidades bloqueadas", analisis["bloqueadas"], "identificador_oportunidad")
     print("")
     print("Resumen de riesgos:")
     imprimir_lista(

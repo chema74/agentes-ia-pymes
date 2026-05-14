@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from datetime import datetime
 from html import escape
 from pathlib import Path
-import sys
 
 RUTAS_ESPERADAS = [
     "http://127.0.0.1:8765/",
@@ -17,8 +17,16 @@ RUTAS_ESPERADAS = [
 
 RUTAS_EVIDENCIAS = [
     ("Panel local", "salidas/panel_local.html", Path("panel_local.html")),
-    ("Informe consolidado Markdown", "salidas/informe_consolidado.md", Path("informe_consolidado.md")),
-    ("Informe consolidado HTML", "salidas/informe_consolidado.html", Path("informe_consolidado.html")),
+    (
+        "Informe consolidado Markdown",
+        "salidas/informe_consolidado.md",
+        Path("informe_consolidado.md"),
+    ),
+    (
+        "Informe consolidado HTML",
+        "salidas/informe_consolidado.html",
+        Path("informe_consolidado.html"),
+    ),
     (
         "Indice de evidencias HTML",
         "salidas/evidencias_demo/INDICE_EVIDENCIAS.html",
@@ -51,7 +59,9 @@ def resolver_ruta(valor: str, raiz: Path) -> Path:
 
 
 def estado_evidencia(directorio_salidas: Path, ruta_relativa: Path) -> str:
-    return "disponible" if (directorio_salidas / ruta_relativa).is_file() else "pendiente de generar"
+    return (
+        "disponible" if (directorio_salidas / ruta_relativa).is_file() else "pendiente de generar"
+    )
 
 
 def construir_resumen_evidencias(directorio_salidas: Path) -> list[str]:
@@ -147,12 +157,7 @@ def construir_markdown(fecha: str, directorio_salidas: Path) -> str:
 
 def construir_bloque_html(titulo: str, elementos: list[str]) -> str:
     items = "".join(f"<li>{escape(elemento)}</li>" for elemento in elementos)
-    return (
-        f'<section class="bloque">'
-        f"<h2>{escape(titulo)}</h2>"
-        f"<ul>{items}</ul>"
-        f"</section>"
-    )
+    return f'<section class="bloque"><h2>{escape(titulo)}</h2><ul>{items}</ul></section>'
 
 
 def construir_html(fecha: str, directorio_salidas: Path) -> str:
@@ -204,7 +209,9 @@ def construir_html(fecha: str, directorio_salidas: Path) -> str:
             ],
         ),
     ]
-    tarjetas_bloques = "".join(construir_bloque_html(titulo, elementos) for titulo, elementos in bloques)
+    tarjetas_bloques = "".join(
+        construir_bloque_html(titulo, elementos) for titulo, elementos in bloques
+    )
 
     rutas_html = []
     for ruta in RUTAS_ESPERADAS:
@@ -212,7 +219,11 @@ def construir_html(fecha: str, directorio_salidas: Path) -> str:
             estado = "disponible"
         else:
             relativa = Path(ruta.replace("salidas/", "", 1))
-            estado = "disponible" if (directorio_salidas / relativa).is_file() else "no disponible todavia"
+            estado = (
+                "disponible"
+                if (directorio_salidas / relativa).is_file()
+                else "no disponible todavia"
+            )
         rutas_html.append(f"<li><code>{escape(ruta)}</code> ({escape(estado)})</li>")
 
     evidencias_html = []

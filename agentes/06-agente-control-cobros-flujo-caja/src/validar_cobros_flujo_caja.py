@@ -1,9 +1,8 @@
-from pathlib import Path
 import argparse
 import json
 import sys
 from datetime import date
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -54,15 +53,10 @@ def validar_estructura(datos):
 
     faltantes = [seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("cobros_pendientes"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'cobros_pendientes' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'cobros_pendientes' debe ser una lista."
 
     for seccion_lista in [
         "riesgos_cobro",
@@ -71,15 +65,10 @@ def validar_estructura(datos):
         "referencias_cobro",
     ]:
         if seccion_lista in datos and not isinstance(datos.get(seccion_lista), list):
-            return (
-                "Error: estructura incompleta. "
-                f"La seccion '{seccion_lista}' debe ser una lista."
-            )
+            return f"Error: estructura incompleta. La seccion '{seccion_lista}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -155,23 +144,11 @@ def analizar(datos):
         if texto(c, "riesgo_retraso") in ["alto", "critico", "crítico"]
         or texto(c, "estado_cobro") in ["en_revision", "vencido", "bloqueado"]
     ]
-    cobros_bloqueados = [
-        c
-        for c in cobros
-        if texto(c, "estado_cobro") == "bloqueado"
-    ]
-    prioridades_altas = [
-        c for c in cobros if texto(c, "prioridad_seguimiento") == "alta"
-    ]
-    importes_invalidos = [
-        c for c in cobros if not importe_valido(c.get("importe_previsto"))
-    ]
-    clientes_ausentes = [
-        c for c in cobros if not texto(c, "nombre_cliente")
-    ]
-    responsables_ausentes = [
-        c for c in cobros if not texto(c, "responsable_interno")
-    ]
+    cobros_bloqueados = [c for c in cobros if texto(c, "estado_cobro") == "bloqueado"]
+    prioridades_altas = [c for c in cobros if texto(c, "prioridad_seguimiento") == "alta"]
+    importes_invalidos = [c for c in cobros if not importe_valido(c.get("importe_previsto"))]
+    clientes_ausentes = [c for c in cobros if not texto(c, "nombre_cliente")]
+    responsables_ausentes = [c for c in cobros if not texto(c, "responsable_interno")]
     campos_criticos_ausentes = []
     for cobro in cobros:
         if (
@@ -191,9 +168,7 @@ def analizar(datos):
         for a in acciones_abiertas
         if texto(a, "prioridad_accion") in ["alta", "urgente", "critica", "crítica"]
     ]
-    riesgos_criticos = [
-        r for r in riesgos if texto(r, "nivel_riesgo") in ["critico", "crítico"]
-    ]
+    riesgos_criticos = [r for r in riesgos if texto(r, "nivel_riesgo") in ["critico", "crítico"]]
     tension_operativa = [
         p
         for p in previsiones
@@ -210,18 +185,14 @@ def analizar(datos):
         "prioridades_altas": deduplicar_por_id(prioridades_altas, "identificador_cobro"),
         "importes_invalidos": deduplicar_por_id(importes_invalidos, "identificador_cobro"),
         "clientes_ausentes": deduplicar_por_id(clientes_ausentes, "identificador_cobro"),
-        "responsables_ausentes": deduplicar_por_id(
-            responsables_ausentes, "identificador_cobro"
-        ),
+        "responsables_ausentes": deduplicar_por_id(responsables_ausentes, "identificador_cobro"),
         "campos_criticos_ausentes": deduplicar_por_id(
             campos_criticos_ausentes, "identificador_cobro"
         ),
         "acciones_abiertas": deduplicar_por_id(acciones_abiertas, "identificador_accion"),
         "acciones_urgentes": deduplicar_por_id(acciones_urgentes, "identificador_accion"),
         "riesgos_criticos": deduplicar_por_id(riesgos_criticos, "identificador_riesgo"),
-        "tension_operativa": deduplicar_por_id(
-            tension_operativa, "identificador_prevision"
-        ),
+        "tension_operativa": deduplicar_por_id(tension_operativa, "identificador_prevision"),
     }
 
 

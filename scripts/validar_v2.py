@@ -1,5 +1,3 @@
-﻿from __future__ import annotations
-
 """
 Validador operativo V2 para el repositorio agentes-ia-pymes.
 
@@ -14,13 +12,14 @@ Su objetivo es añadir una capa específica de control V2:
 El informe generado queda en salidas/, carpeta ignorada por Git.
 """
 
+from __future__ import annotations
+
 import argparse
 import subprocess
 import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-
 
 DOCUMENTOS_V2_OBLIGATORIOS = [
     "docs/PLAN_V2_AGENTES_IA_PYMES.md",
@@ -173,9 +172,7 @@ def ejecutar_comando(nombre: str, comando: list[str], raiz: Path) -> EjecucionCo
     )
 
     salida = "\n".join(
-        parte
-        for parte in [resultado.stdout.strip(), resultado.stderr.strip()]
-        if parte
+        parte for parte in [resultado.stdout.strip(), resultado.stderr.strip()] if parte
     )
 
     return EjecucionComando(
@@ -199,7 +196,9 @@ def generar_informe_validacion(
 
     ruta_informe = directorio_salidas / "validacion_v2.md"
 
-    resultado_global = "correcta" if not errores and all(e.correcta for e in ejecuciones) else "con incidencias"
+    resultado_global = (
+        "correcta" if not errores and all(e.correcta for e in ejecuciones) else "con incidencias"
+    )
 
     lineas: list[str] = [
         "# Validación V2 — agentes-ia-pymes",
@@ -249,8 +248,12 @@ def generar_informe_validacion(
 
     lineas.append("## Alcance")
     lineas.append("")
-    lineas.append("Esta validación no convierte el repositorio en SaaS, API productiva, dashboard productivo ni sistema multiusuario.")
-    lineas.append("Su objetivo es verificar documentación V2, ejecución local y trazabilidad de evidencias.")
+    lineas.append(
+        "Esta validación no convierte el repositorio en SaaS, API productiva, dashboard productivo ni sistema multiusuario."
+    )
+    lineas.append(
+        "Su objetivo es verificar documentación V2, ejecución local y trazabilidad de evidencias."
+    )
     lineas.append("")
     lineas.append("## Licencia y Autoría")
     lineas.append("")

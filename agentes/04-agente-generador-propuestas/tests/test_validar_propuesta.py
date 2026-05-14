@@ -1,17 +1,12 @@
-from pathlib import Path
 import os
 import subprocess
 import sys
 import unittest
-
+from pathlib import Path
 
 RAIZ_REPOSITORIO = Path(__file__).resolve().parents[3]
 SCRIPT = (
-    RAIZ_REPOSITORIO
-    / "agentes"
-    / "04-agente-generador-propuestas"
-    / "src"
-    / "validar_propuesta.py"
+    RAIZ_REPOSITORIO / "agentes" / "04-agente-generador-propuestas" / "src" / "validar_propuesta.py"
 )
 JSON_FICTICIO = (
     RAIZ_REPOSITORIO

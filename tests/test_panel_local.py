@@ -1,10 +1,9 @@
-﻿import os
+import os
 import subprocess
 import sys
-from pathlib import Path
 import tempfile
 import unittest
-
+from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 SCRIPT = RAIZ / "scripts" / "generar_panel_local.py"

@@ -1,10 +1,9 @@
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
-
+from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 SCRIPT = RAIZ / "scripts" / "comparar_informes.py"
@@ -29,9 +28,13 @@ def test_comparar_informes_ok() -> None:
         base = Path(tmp) / "agente-01"
         historico = base / "historico"
         historico.mkdir(parents=True, exist_ok=True)
-        (base / "informe.txt").write_text("Decision recomendada: aprobar\nLinea actual\n", encoding="utf-8")
+        (base / "informe.txt").write_text(
+            "Decision recomendada: aprobar\nLinea actual\n", encoding="utf-8"
+        )
         nombre = "20260507-120000-informe.txt"
-        (historico / nombre).write_text("Decision recomendada: bloquear\nLinea historica\n", encoding="utf-8")
+        (historico / nombre).write_text(
+            "Decision recomendada: bloquear\nLinea historica\n", encoding="utf-8"
+        )
 
         resultado = ejecutar_comando(
             "--agente",

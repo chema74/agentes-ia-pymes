@@ -1,15 +1,15 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime
 import html
 import json
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import sys
 import zipfile
+from datetime import datetime
+from pathlib import Path
 
 AGENTES = [
     (1, "Agente 01 - Onboarding Inteligente"),
@@ -125,7 +125,9 @@ def construir_mapa_evidencias(directorio_salidas: Path) -> list[dict]:
     return mapa
 
 
-def copiar_evidencias(directorio_evidencias: Path, mapa: list[dict]) -> tuple[list[dict], list[dict]]:
+def copiar_evidencias(
+    directorio_evidencias: Path, mapa: list[dict]
+) -> tuple[list[dict], list[dict]]:
     incluidas = []
     no_disponibles = []
     for item in mapa:
@@ -181,13 +183,17 @@ def construir_indice_markdown(
     lineas.extend(["", "## Rutas locales copiadas"])
     if incluidas:
         for item in incluidas:
-            lineas.append(f"- Origen: {item['origen']} -> Destino: {directorio_evidencias / item['destino_relativo']}")
+            lineas.append(
+                f"- Origen: {item['origen']} -> Destino: {directorio_evidencias / item['destino_relativo']}"
+            )
     else:
         lineas.append("- Sin rutas copiadas.")
 
     lineas.extend(["", "## Descripcion breve por agente"])
     for numero, nombre in AGENTES:
-        lineas.append(f"- agente-{numero:02d}: {nombre}. Informe local en `agentes/agente-{numero:02d}-informe.txt` si esta disponible.")
+        lineas.append(
+            f"- agente-{numero:02d}: {nombre}. Informe local en `agentes/agente-{numero:02d}-informe.txt` si esta disponible."
+        )
 
     lineas.extend(
         [
@@ -206,8 +212,8 @@ def construir_indice_html(fecha: str, incluidas: list[dict], no_disponibles: lis
         tarjetas_incluidas.append(
             f"""
             <article class="tarjeta ok">
-              <h3>{html.escape(item['nombre'])}</h3>
-              <p>{html.escape(item['descripcion'])}</p>
+              <h3>{html.escape(item["nombre"])}</h3>
+              <p>{html.escape(item["descripcion"])}</p>
               <p><strong>Archivo:</strong> <a href="{html.escape(ruta_rel)}">{html.escape(ruta_rel)}</a></p>
             </article>
             """.strip()
@@ -218,9 +224,9 @@ def construir_indice_html(fecha: str, incluidas: list[dict], no_disponibles: lis
         tarjetas_no_disponibles.append(
             f"""
             <article class="tarjeta no">
-              <h3>{html.escape(item['nombre'])}</h3>
-              <p>{html.escape(item['descripcion'])}</p>
-              <p><strong>No disponible:</strong> <code>{html.escape(str(item['origen']))}</code></p>
+              <h3>{html.escape(item["nombre"])}</h3>
+              <p>{html.escape(item["descripcion"])}</p>
+              <p><strong>No disponible:</strong> <code>{html.escape(str(item["origen"]))}</code></p>
             </article>
             """.strip()
         )
@@ -253,13 +259,13 @@ def construir_indice_html(fecha: str, incluidas: list[dict], no_disponibles: lis
     <section class="card">
       <h2>Evidencias incluidas</h2>
       <div class="grid">
-        {"".join(tarjetas_incluidas) if tarjetas_incluidas else '<p>No hay evidencias incluidas.</p>'}
+        {"".join(tarjetas_incluidas) if tarjetas_incluidas else "<p>No hay evidencias incluidas.</p>"}
       </div>
     </section>
     <section class="card">
       <h2>Evidencias no disponibles</h2>
       <div class="grid">
-        {"".join(tarjetas_no_disponibles) if tarjetas_no_disponibles else '<p>No hay evidencias faltantes.</p>'}
+        {"".join(tarjetas_no_disponibles) if tarjetas_no_disponibles else "<p>No hay evidencias faltantes.</p>"}
       </div>
     </section>
   </main>
@@ -285,7 +291,8 @@ def main(argv: list[str] | None = None) -> int:
         directorio_salidas = resolver_ruta(args.directorio_salidas, raiz)
 
         evidencias_explicitado = any(
-            arg == "--directorio-evidencias" or arg.startswith("--directorio-evidencias=") for arg in args_lista
+            arg == "--directorio-evidencias" or arg.startswith("--directorio-evidencias=")
+            for arg in args_lista
         )
         if evidencias_explicitado:
             directorio_evidencias = resolver_ruta(args.directorio_evidencias, raiz)

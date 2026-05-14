@@ -1,22 +1,29 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import shutil
-import sys
+from pathlib import Path
 
 CATALOGO_JSON = {
-    1: Path("agentes/01-agente-onboarding-inteligente/datos_ejemplo/cliente_onboarding_ficticio.json"),
-    2: Path("agentes/02-agente-documental-inteligente/datos_ejemplo/inventario_documental_ficticio.json"),
+    1: Path(
+        "agentes/01-agente-onboarding-inteligente/datos_ejemplo/cliente_onboarding_ficticio.json"
+    ),
+    2: Path(
+        "agentes/02-agente-documental-inteligente/datos_ejemplo/inventario_documental_ficticio.json"
+    ),
     3: Path("agentes/03-agente-seguimiento-clientes/datos_ejemplo/cartera_clientes_ficticia.json"),
     4: Path("agentes/04-agente-generador-propuestas/datos_ejemplo/propuesta_ficticia.json"),
     5: Path("agentes/05-agente-operaciones-pymes/datos_ejemplo/operaciones_pymes_ficticias.json"),
-    6: Path("agentes/06-agente-control-cobros-flujo-caja/datos_ejemplo/cobros_flujo_caja_ficticios.json"),
+    6: Path(
+        "agentes/06-agente-control-cobros-flujo-caja/datos_ejemplo/cobros_flujo_caja_ficticios.json"
+    ),
     7: Path("agentes/07-agente-pipeline-comercial/datos_ejemplo/pipeline_comercial_ficticio.json"),
     8: Path("agentes/08-agente-formacion-interna/datos_ejemplo/formacion_interna_ficticia.json"),
     9: Path("agentes/09-agente-analisis-mercado/datos_ejemplo/analisis_mercado_ficticio.json"),
-    10: Path("agentes/10-agente-revision-cumplimiento/datos_ejemplo/revision_cumplimiento_ficticia.json"),
+    10: Path(
+        "agentes/10-agente-revision-cumplimiento/datos_ejemplo/revision_cumplimiento_ficticia.json"
+    ),
 }
 
 
@@ -46,7 +53,9 @@ def validar_json(ruta_json: Path) -> None:
         json.load(archivo)
 
 
-def copiar_json_agente(numero: int, origen: Path, directorio_trabajo: Path, sobrescribir: bool) -> None:
+def copiar_json_agente(
+    numero: int, origen: Path, directorio_trabajo: Path, sobrescribir: bool
+) -> None:
     if not origen.is_file():
         raise FileNotFoundError(f"Falta JSON original del agente {numero:02d}: {origen}")
 

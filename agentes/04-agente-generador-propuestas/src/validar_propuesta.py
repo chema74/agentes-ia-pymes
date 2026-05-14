@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -22,9 +21,7 @@ RUTA_JSON_POR_DEFECTO = (
 
 
 def construir_parser():
-    parser = argparse.ArgumentParser(
-        description="Valida una propuesta ficticia del Agente 04."
-    )
+    parser = argparse.ArgumentParser(description="Valida una propuesta ficticia del Agente 04.")
     parser.add_argument(
         "ruta_json",
         nargs="?",
@@ -53,10 +50,7 @@ def validar_estructura(datos):
 
     faltantes = [seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("propuesta"), dict):
         return "Error: estructura incompleta. La seccion 'propuesta' debe ser un objeto."
@@ -68,15 +62,10 @@ def validar_estructura(datos):
         "alcance_propuesta",
     ]:
         if seccion_lista in datos and not isinstance(datos.get(seccion_lista), list):
-            return (
-                "Error: estructura incompleta. "
-                f"La seccion '{seccion_lista}' debe ser una lista."
-            )
+            return f"Error: estructura incompleta. La seccion '{seccion_lista}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -182,15 +171,9 @@ def analizar(datos):
         or propuesta.get("nombre_cliente")
         or "no disponible",
         "total_servicios_fases_entregables": len(entregables) + len(alcance),
-        "pendientes": deduplicar_por_id(
-            pendientes, "identificador_entregable"
-        ),
-        "incompletos": deduplicar_por_id(
-            incompletos, "identificador_entregable"
-        ),
-        "en_revision": deduplicar_por_id(
-            en_revision, "identificador_entregable"
-        ),
+        "pendientes": deduplicar_por_id(pendientes, "identificador_entregable"),
+        "incompletos": deduplicar_por_id(incompletos, "identificador_entregable"),
+        "en_revision": deduplicar_por_id(en_revision, "identificador_entregable"),
         "bloqueados": bloqueados,
         "acciones_abiertas": acciones_abiertas,
         "riesgos_criticos": riesgos_criticos,
@@ -239,7 +222,9 @@ def imprimir_informe(ruta_json, analisis, decision):
         "identificador_entregable",
     )
     imprimir_lista("Resumen de bloqueos", analisis["bloqueados"], "identificador_accion")
-    print(f"Resumen de riesgos o advertencias: {len(analisis['riesgos_criticos']) + len(analisis['advertencias'])}")
+    print(
+        f"Resumen de riesgos o advertencias: {len(analisis['riesgos_criticos']) + len(analisis['advertencias'])}"
+    )
     imprimir_lista(
         "Resumen de acciones siguientes",
         analisis["acciones_abiertas"],

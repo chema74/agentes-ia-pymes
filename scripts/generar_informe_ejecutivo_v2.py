@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Generador de informe ejecutivo V2 para agentes-ia-pymes.
 
@@ -15,9 +14,8 @@ import argparse
 import json
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-
 
 DOCUMENTOS_CLAVE = [
     "docs/PLAN_V2_AGENTES_IA_PYMES.md",
@@ -121,7 +119,7 @@ def construir_informe(base: Path) -> str:
     docs_ok = sum(1 for item in documentos if item.existe)
     salidas_ok = sum(1 for item in salidas if item.existe)
 
-    fecha = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    fecha = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
     lineas = [
         "# 📌 INFORME EJECUTIVO V2 — AGENTES IA PYMES",
@@ -153,50 +151,54 @@ def construir_informe(base: Path) -> str:
         estado = "OK" if item.existe else "PENDIENTE"
         lineas.append(f"- `{estado}` — `{item.ruta}` — {item.resumen}")
 
-    lineas.extend([
-        "",
-        "---",
-        "",
-        "## 4. Evidencias locales detectadas",
-        "",
-    ])
+    lineas.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 4. Evidencias locales detectadas",
+            "",
+        ]
+    )
 
     for item in salidas:
         estado = "OK" if item.existe else "PENDIENTE"
         lineas.append(f"- `{estado}` — `{item.ruta}` — {item.resumen}")
 
-    lineas.extend([
-        "",
-        "---",
-        "",
-        "## 5. Lectura profesional",
-        "",
-        "La V2 del repositorio queda orientada a demostrar una arquitectura local, auditable y explicable de agentes para PYMES (Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas).",
-        "",
-        "El valor principal no está en prometer un producto SaaS (Software as a Service – Software como Servicio), sino en mostrar una base técnica reproducible: documentación, validación, demo local, evidencias y límites explícitos.",
-        "",
-        "---",
-        "",
-        "## 6. Límites declarados",
-        "",
-        "- Este informe no convierte el repositorio en producto comercial final.",
-        "- Este informe no modifica la web pública.",
-        "- Este informe no ejecuta despliegues.",
-        "- Este informe no añade dependencias cloud.",
-        "- Este informe no sustituye una auditoría técnica completa.",
-        "",
-        "---",
-        "",
-        "## 7. Estado final",
-        "",
-        "`INFORME_EJECUTIVO_V2_GENERADO: OK`",
-        "",
-        "`WEB_PUBLICA: NO_MODIFICADA`",
-        "",
-        "`DEPENDENCIAS_EXTERNAS_OBLIGATORIAS: NINGUNA`",
-        "",
-        LICENCIA,
-    ])
+    lineas.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 5. Lectura profesional",
+            "",
+            "La V2 del repositorio queda orientada a demostrar una arquitectura local, auditable y explicable de agentes para PYMES (Small and Medium-sized Enterprises – Pequeñas y Medianas Empresas).",
+            "",
+            "El valor principal no está en prometer un producto SaaS (Software as a Service – Software como Servicio), sino en mostrar una base técnica reproducible: documentación, validación, demo local, evidencias y límites explícitos.",
+            "",
+            "---",
+            "",
+            "## 6. Límites declarados",
+            "",
+            "- Este informe no convierte el repositorio en producto comercial final.",
+            "- Este informe no modifica la web pública.",
+            "- Este informe no ejecuta despliegues.",
+            "- Este informe no añade dependencias cloud.",
+            "- Este informe no sustituye una auditoría técnica completa.",
+            "",
+            "---",
+            "",
+            "## 7. Estado final",
+            "",
+            "`INFORME_EJECUTIVO_V2_GENERADO: OK`",
+            "",
+            "`WEB_PUBLICA: NO_MODIFICADA`",
+            "",
+            "`DEPENDENCIAS_EXTERNAS_OBLIGATORIAS: NINGUNA`",
+            "",
+            LICENCIA,
+        ]
+    )
 
     return "\n".join(lineas)
 
@@ -232,12 +234,18 @@ def main() -> int:
     ruta_generada = escribir_informe(base, salida)
 
     if args.json:
-        print(json.dumps({
-            "resultado": "ok",
-            "archivo": str(ruta_generada),
-            "web_publica": "no_modificada",
-            "dependencias_externas_obligatorias": "ninguna",
-        }, ensure_ascii=False, indent=2))
+        print(
+            json.dumps(
+                {
+                    "resultado": "ok",
+                    "archivo": str(ruta_generada),
+                    "web_publica": "no_modificada",
+                    "dependencias_externas_obligatorias": "ninguna",
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
     else:
         print(f"OK_INFORME_EJECUTIVO_V2: {ruta_generada}")
 

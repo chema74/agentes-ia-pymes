@@ -1,9 +1,8 @@
-from pathlib import Path
 import argparse
 import json
 import sys
 from datetime import date
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -54,26 +53,16 @@ def validar_estructura(datos):
 
     faltantes = [seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("clientes"), list):
         return "Error: estructura incompleta. La seccion 'clientes' debe ser una lista."
 
-    if "acciones_seguimiento" in datos and not isinstance(
-        datos.get("acciones_seguimiento"), list
-    ):
-        return (
-            "Error: estructura incompleta. La seccion 'acciones_seguimiento' debe ser "
-            "una lista."
-        )
+    if "acciones_seguimiento" in datos and not isinstance(datos.get("acciones_seguimiento"), list):
+        return "Error: estructura incompleta. La seccion 'acciones_seguimiento' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -146,15 +135,12 @@ def analizar_clientes(datos):
     activos = [c for c in clientes if texto(c, "estado_cliente") == "activo"]
     en_riesgo_estado = [c for c in clientes if texto(c, "estado_cliente") == "en_riesgo"]
     riesgos_altos = [
-        c
-        for c in clientes
-        if texto(c, "riesgo_operativo") in ["alto", "critico", "crítico"]
+        c for c in clientes if texto(c, "riesgo_operativo") in ["alto", "critico", "crítico"]
     ]
     bloqueados = [
         c
         for c in clientes
-        if texto(c, "estado_cliente") == "bloqueado"
-        or es_bloqueado(c.get("bloqueo"))
+        if texto(c, "estado_cliente") == "bloqueado" or es_bloqueado(c.get("bloqueo"))
     ]
     prioridades_altas = [c for c in clientes if texto(c, "prioridad") == "alta"]
     responsables_ausentes = [c for c in clientes if not texto(c, "responsable_interno")]
@@ -165,9 +151,7 @@ def analizar_clientes(datos):
     acciones_revision_curso = [
         a for a in acciones if texto(a, "estado_accion") in ["en_revision", "en_curso"]
     ]
-    acciones_bloqueadas = [
-        a for a in acciones if texto(a, "estado_accion") == "bloqueada"
-    ]
+    acciones_bloqueadas = [a for a in acciones if texto(a, "estado_accion") == "bloqueada"]
 
     return {
         "total_clientes": len(clientes),
@@ -175,9 +159,7 @@ def analizar_clientes(datos):
         "en_riesgo": deduplicar_por_identificador(
             en_riesgo_estado + riesgos_altos, "identificador_cliente"
         ),
-        "bloqueados": deduplicar_por_identificador(
-            bloqueados, "identificador_cliente"
-        ),
+        "bloqueados": deduplicar_por_identificador(bloqueados, "identificador_cliente"),
         "sin_proxima_accion": sin_proxima_accion,
         "seguimientos_vencidos": seguimientos_vencidos,
         "prioridades_altas": prioridades_altas,
@@ -236,15 +218,11 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     print("")
     print("Resumen de riesgos:")
     imprimir_lista("Clientes en riesgo", analisis["en_riesgo"], "identificador_cliente")
-    imprimir_lista(
-        "Prioridades altas", analisis["prioridades_altas"], "identificador_cliente"
-    )
+    imprimir_lista("Prioridades altas", analisis["prioridades_altas"], "identificador_cliente")
     print("")
     print("Resumen de bloqueos:")
     imprimir_lista("Clientes bloqueados", analisis["bloqueados"], "identificador_cliente")
-    imprimir_lista(
-        "Acciones bloqueadas", analisis["acciones_bloqueadas"], "identificador_accion"
-    )
+    imprimir_lista("Acciones bloqueadas", analisis["acciones_bloqueadas"], "identificador_accion")
     print("")
     print("Resumen de proximas acciones:")
     imprimir_lista(
@@ -255,9 +233,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
         analisis["seguimientos_vencidos"],
         "identificador_cliente",
     )
-    imprimir_lista(
-        "Acciones pendientes", analisis["acciones_pendientes"], "identificador_accion"
-    )
+    imprimir_lista("Acciones pendientes", analisis["acciones_pendientes"], "identificador_accion")
     imprimir_lista(
         "Acciones en revision o en curso",
         analisis["acciones_revision_curso"],

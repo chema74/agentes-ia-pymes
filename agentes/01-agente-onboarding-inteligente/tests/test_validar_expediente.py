@@ -1,8 +1,8 @@
-from pathlib import Path
 import os
 import subprocess
 import sys
 import unittest
+from pathlib import Path
 
 
 class PruebaValidarExpediente(unittest.TestCase):
@@ -16,10 +16,7 @@ class PruebaValidarExpediente(unittest.TestCase):
         self.ruta_json = self.ruta_agente / "datos_ejemplo" / "cliente_onboarding_ficticio.json"
         self.ruta_json_inexistente = self.ruta_agente / "datos_ejemplo" / "no_existe.json"
         self.ruta_json_incompleto = (
-            self.ruta_agente
-            / "tests"
-            / "datos_prueba"
-            / "expediente_incompleto.json"
+            self.ruta_agente / "tests" / "datos_prueba" / "expediente_incompleto.json"
         )
 
     def ejecutar_script(self, argumentos=None):

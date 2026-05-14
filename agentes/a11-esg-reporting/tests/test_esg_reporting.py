@@ -1,9 +1,8 @@
-from pathlib import Path
 import importlib.util
 import io
-from contextlib import redirect_stdout
 import unittest
-
+from contextlib import redirect_stdout
+from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
 SRC = BASE / "src"

@@ -1,15 +1,15 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import difflib
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
-from urllib.parse import parse_qs, urlparse
 import webbrowser
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 AGENTES = {
     1: "Agente de Onboarding Inteligente",
@@ -26,119 +26,667 @@ AGENTES = {
 
 FORMULARIOS_GUIADOS = {
     1: [
-        {"clave": "nombre_cliente", "etiqueta": "Nombre del cliente", "rutas_json": ["cliente.nombre_cliente"], "multilinea": False},
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["cliente.nombre_empresa"], "multilinea": False},
-        {"clave": "correo_contacto", "etiqueta": "Correo de contacto", "rutas_json": ["cliente.correo_contacto"], "multilinea": False},
-        {"clave": "telefono_contacto", "etiqueta": "Telefono de contacto", "rutas_json": ["cliente.telefono_contacto"], "multilinea": False},
-        {"clave": "tipo_servicio_solicitado", "etiqueta": "Tipo de servicio solicitado", "rutas_json": ["cliente.tipo_servicio_solicitado"], "multilinea": False},
-        {"clave": "necesidad_principal", "etiqueta": "Necesidad principal", "rutas_json": ["cliente.necesidad_principal"], "multilinea": True},
-        {"clave": "prioridad_inicial", "etiqueta": "Prioridad inicial", "rutas_json": ["cliente.prioridad_inicial"], "multilinea": False},
-        {"clave": "estado_onboarding", "etiqueta": "Estado del onboarding", "rutas_json": ["cliente.estado_onboarding"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["cliente.responsable_interno"], "multilinea": False},
-        {"clave": "observaciones_internas", "etiqueta": "Observaciones internas", "rutas_json": ["cliente.observaciones_internas"], "multilinea": True},
+        {
+            "clave": "nombre_cliente",
+            "etiqueta": "Nombre del cliente",
+            "rutas_json": ["cliente.nombre_cliente"],
+            "multilinea": False,
+        },
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["cliente.nombre_empresa"],
+            "multilinea": False,
+        },
+        {
+            "clave": "correo_contacto",
+            "etiqueta": "Correo de contacto",
+            "rutas_json": ["cliente.correo_contacto"],
+            "multilinea": False,
+        },
+        {
+            "clave": "telefono_contacto",
+            "etiqueta": "Telefono de contacto",
+            "rutas_json": ["cliente.telefono_contacto"],
+            "multilinea": False,
+        },
+        {
+            "clave": "tipo_servicio_solicitado",
+            "etiqueta": "Tipo de servicio solicitado",
+            "rutas_json": ["cliente.tipo_servicio_solicitado"],
+            "multilinea": False,
+        },
+        {
+            "clave": "necesidad_principal",
+            "etiqueta": "Necesidad principal",
+            "rutas_json": ["cliente.necesidad_principal"],
+            "multilinea": True,
+        },
+        {
+            "clave": "prioridad_inicial",
+            "etiqueta": "Prioridad inicial",
+            "rutas_json": ["cliente.prioridad_inicial"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_onboarding",
+            "etiqueta": "Estado del onboarding",
+            "rutas_json": ["cliente.estado_onboarding"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["cliente.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones_internas",
+            "etiqueta": "Observaciones internas",
+            "rutas_json": ["cliente.observaciones_internas"],
+            "multilinea": True,
+        },
     ],
     2: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
-        {"clave": "estado", "etiqueta": "Estado", "rutas_json": ["metadatos_ejemplo.estado"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_revision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.motivo_decision",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado",
+            "etiqueta": "Estado",
+            "rutas_json": ["metadatos_ejemplo.estado"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia"],
+            "multilinea": True,
+        },
     ],
     3: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
-        {"clave": "estado", "etiqueta": "Estado", "rutas_json": ["metadatos_ejemplo.estado"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector", "empresa_ficticia.tipo_actividad"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_revision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.motivo_decision",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado",
+            "etiqueta": "Estado",
+            "rutas_json": ["metadatos_ejemplo.estado"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia"],
+            "multilinea": True,
+        },
     ],
     4: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre", "propuesta.nombre_empresa"], "multilinea": False},
-        {"clave": "nombre_cliente", "etiqueta": "Nombre del cliente", "rutas_json": ["cliente_ficticio.nombre_cliente", "propuesta.nombre_cliente"], "multilinea": False},
-        {"clave": "estado_propuesta", "etiqueta": "Estado de la propuesta", "rutas_json": ["propuesta.estado", "propuesta.estado_propuesta"], "multilinea": False},
-        {"clave": "objetivo", "etiqueta": "Objetivo", "rutas_json": ["propuesta.objetivo", "propuesta.necesidad_principal"], "multilinea": True},
-        {"clave": "alcance", "etiqueta": "Alcance", "rutas_json": ["propuesta.alcance", "propuesta.alcance_preliminar"], "multilinea": True},
-        {"clave": "plazo_estimado", "etiqueta": "Plazo estimado", "rutas_json": ["propuesta.plazo_estimado"], "multilinea": False},
-        {"clave": "importe_estimado", "etiqueta": "Importe estimado", "rutas_json": ["propuesta.importe_estimado", "propuesta.importe"], "multilinea": False},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_revision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.motivo_decision"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": [
+                "empresa_ficticia.nombre_empresa",
+                "empresa_ficticia.nombre",
+                "propuesta.nombre_empresa",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "nombre_cliente",
+            "etiqueta": "Nombre del cliente",
+            "rutas_json": ["cliente_ficticio.nombre_cliente", "propuesta.nombre_cliente"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_propuesta",
+            "etiqueta": "Estado de la propuesta",
+            "rutas_json": ["propuesta.estado", "propuesta.estado_propuesta"],
+            "multilinea": False,
+        },
+        {
+            "clave": "objetivo",
+            "etiqueta": "Objetivo",
+            "rutas_json": ["propuesta.objetivo", "propuesta.necesidad_principal"],
+            "multilinea": True,
+        },
+        {
+            "clave": "alcance",
+            "etiqueta": "Alcance",
+            "rutas_json": ["propuesta.alcance", "propuesta.alcance_preliminar"],
+            "multilinea": True,
+        },
+        {
+            "clave": "plazo_estimado",
+            "etiqueta": "Plazo estimado",
+            "rutas_json": ["propuesta.plazo_estimado"],
+            "multilinea": False,
+        },
+        {
+            "clave": "importe_estimado",
+            "etiqueta": "Importe estimado",
+            "rutas_json": ["propuesta.importe_estimado", "propuesta.importe"],
+            "multilinea": False,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_revision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.motivo_decision",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     5: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general de operaciones", "rutas_json": ["operaciones.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["operaciones.prioridad_general"], "multilinea": False},
-        {"clave": "bloqueo_principal", "etiqueta": "Bloqueo principal", "rutas_json": ["operaciones.bloqueo_principal"], "multilinea": True},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general de operaciones",
+            "rutas_json": [
+                "operaciones.estado_general",
+                "resultado_validacion_manual.estado_general",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_general",
+            "etiqueta": "Prioridad general",
+            "rutas_json": ["operaciones.prioridad_general"],
+            "multilinea": False,
+        },
+        {
+            "clave": "bloqueo_principal",
+            "etiqueta": "Bloqueo principal",
+            "rutas_json": ["operaciones.bloqueo_principal"],
+            "multilinea": True,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     6: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general de control operativo", "rutas_json": ["control_cobros.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "riesgo_operativo", "etiqueta": "Riesgo operativo", "rutas_json": ["control_cobros.riesgo_operativo"], "multilinea": False},
-        {"clave": "prioridad_revision", "etiqueta": "Prioridad de revision", "rutas_json": ["control_cobros.prioridad_revision"], "multilinea": False},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general de control operativo",
+            "rutas_json": [
+                "control_cobros.estado_general",
+                "resultado_validacion_manual.estado_general",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "riesgo_operativo",
+            "etiqueta": "Riesgo operativo",
+            "rutas_json": ["control_cobros.riesgo_operativo"],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_revision",
+            "etiqueta": "Prioridad de revision",
+            "rutas_json": ["control_cobros.prioridad_revision"],
+            "multilinea": False,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     7: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general del pipeline", "rutas_json": ["pipeline.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["pipeline.prioridad_general"], "multilinea": False},
-        {"clave": "oportunidad_destacada", "etiqueta": "Oportunidad destacada", "rutas_json": ["pipeline.oportunidad_destacada"], "multilinea": True},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general del pipeline",
+            "rutas_json": ["pipeline.estado_general", "resultado_validacion_manual.estado_general"],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_general",
+            "etiqueta": "Prioridad general",
+            "rutas_json": ["pipeline.prioridad_general"],
+            "multilinea": False,
+        },
+        {
+            "clave": "oportunidad_destacada",
+            "etiqueta": "Oportunidad destacada",
+            "rutas_json": ["pipeline.oportunidad_destacada"],
+            "multilinea": True,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     8: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general de formacion", "rutas_json": ["formacion.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "prioridad_general", "etiqueta": "Prioridad general", "rutas_json": ["formacion.prioridad_general"], "multilinea": False},
-        {"clave": "ruta_destacada", "etiqueta": "Ruta destacada", "rutas_json": ["formacion.ruta_destacada"], "multilinea": True},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general de formacion",
+            "rutas_json": [
+                "formacion.estado_general",
+                "resultado_validacion_manual.estado_general",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_general",
+            "etiqueta": "Prioridad general",
+            "rutas_json": ["formacion.prioridad_general"],
+            "multilinea": False,
+        },
+        {
+            "clave": "ruta_destacada",
+            "etiqueta": "Ruta destacada",
+            "rutas_json": ["formacion.ruta_destacada"],
+            "multilinea": True,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     9: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general del analisis", "rutas_json": ["analisis_mercado.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "prioridad_exploracion", "etiqueta": "Prioridad de exploracion", "rutas_json": ["analisis_mercado.prioridad_exploracion"], "multilinea": False},
-        {"clave": "oportunidad_destacada", "etiqueta": "Oportunidad destacada", "rutas_json": ["analisis_mercado.oportunidad_destacada"], "multilinea": True},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general del analisis",
+            "rutas_json": [
+                "analisis_mercado.estado_general",
+                "resultado_validacion_manual.estado_general",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_exploracion",
+            "etiqueta": "Prioridad de exploracion",
+            "rutas_json": ["analisis_mercado.prioridad_exploracion"],
+            "multilinea": False,
+        },
+        {
+            "clave": "oportunidad_destacada",
+            "etiqueta": "Oportunidad destacada",
+            "rutas_json": ["analisis_mercado.oportunidad_destacada"],
+            "multilinea": True,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
     10: [
-        {"clave": "nombre_empresa", "etiqueta": "Nombre de la empresa", "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"], "multilinea": False},
-        {"clave": "sector", "etiqueta": "Sector", "rutas_json": ["empresa_ficticia.sector"], "multilinea": False},
-        {"clave": "responsable_interno", "etiqueta": "Responsable interno", "rutas_json": ["empresa_ficticia.responsable_interno"], "multilinea": False},
-        {"clave": "estado_general", "etiqueta": "Estado general de revision", "rutas_json": ["revision_cumplimiento.estado_general", "resultado_validacion_manual.estado_general"], "multilinea": False},
-        {"clave": "prioridad_revision", "etiqueta": "Prioridad de revision", "rutas_json": ["revision_cumplimiento.prioridad_revision"], "multilinea": False},
-        {"clave": "riesgo_operativo", "etiqueta": "Riesgo operativo", "rutas_json": ["revision_cumplimiento.riesgo_operativo"], "multilinea": False},
-        {"clave": "decision_recomendada", "etiqueta": "Decision recomendada", "rutas_json": ["resultado_validacion_manual.decision_recomendada", "resultado_validacion_manual.decision_humana"], "multilinea": False},
-        {"clave": "observaciones", "etiqueta": "Observaciones", "rutas_json": ["resultado_validacion_manual.observaciones", "resultado_validacion_manual.observaciones_finales"], "multilinea": True},
-        {"clave": "estado_ejemplo", "etiqueta": "Estado del ejemplo", "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"], "multilinea": False},
-        {"clave": "advertencia", "etiqueta": "Advertencia", "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"], "multilinea": True},
+        {
+            "clave": "nombre_empresa",
+            "etiqueta": "Nombre de la empresa",
+            "rutas_json": ["empresa_ficticia.nombre_empresa", "empresa_ficticia.nombre"],
+            "multilinea": False,
+        },
+        {
+            "clave": "sector",
+            "etiqueta": "Sector",
+            "rutas_json": ["empresa_ficticia.sector"],
+            "multilinea": False,
+        },
+        {
+            "clave": "responsable_interno",
+            "etiqueta": "Responsable interno",
+            "rutas_json": ["empresa_ficticia.responsable_interno"],
+            "multilinea": False,
+        },
+        {
+            "clave": "estado_general",
+            "etiqueta": "Estado general de revision",
+            "rutas_json": [
+                "revision_cumplimiento.estado_general",
+                "resultado_validacion_manual.estado_general",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "prioridad_revision",
+            "etiqueta": "Prioridad de revision",
+            "rutas_json": ["revision_cumplimiento.prioridad_revision"],
+            "multilinea": False,
+        },
+        {
+            "clave": "riesgo_operativo",
+            "etiqueta": "Riesgo operativo",
+            "rutas_json": ["revision_cumplimiento.riesgo_operativo"],
+            "multilinea": False,
+        },
+        {
+            "clave": "decision_recomendada",
+            "etiqueta": "Decision recomendada",
+            "rutas_json": [
+                "resultado_validacion_manual.decision_recomendada",
+                "resultado_validacion_manual.decision_humana",
+            ],
+            "multilinea": False,
+        },
+        {
+            "clave": "observaciones",
+            "etiqueta": "Observaciones",
+            "rutas_json": [
+                "resultado_validacion_manual.observaciones",
+                "resultado_validacion_manual.observaciones_finales",
+            ],
+            "multilinea": True,
+        },
+        {
+            "clave": "estado_ejemplo",
+            "etiqueta": "Estado del ejemplo",
+            "rutas_json": ["metadatos_ejemplo.estado", "metadatos_ejemplo.estado_documental"],
+            "multilinea": False,
+        },
+        {
+            "clave": "advertencia",
+            "etiqueta": "Advertencia",
+            "rutas_json": ["metadatos_ejemplo.advertencia", "metadatos_ejemplo.nota"],
+            "multilinea": True,
+        },
     ],
 }
 
@@ -210,7 +758,9 @@ def listar_historico_agente(directorio_salidas: Path, agente_id: int) -> list[di
     return historico
 
 
-def resolver_archivo_historico(directorio_salidas: Path, agente_id: int, nombre_archivo: str) -> Path:
+def resolver_archivo_historico(
+    directorio_salidas: Path, agente_id: int, nombre_archivo: str
+) -> Path:
     if not nombre_archivo:
         raise ValueError("Debes indicar el nombre del archivo historico.")
     if Path(nombre_archivo).name != nombre_archivo:
@@ -246,11 +796,15 @@ def extraer_decision_recomendada(texto: str) -> str:
     return "No identificada"
 
 
-def construir_comparacion_informes(directorio_salidas: Path, agente_id: int, archivo_historico: str) -> dict:
+def construir_comparacion_informes(
+    directorio_salidas: Path, agente_id: int, archivo_historico: str
+) -> dict:
     ruta_historica = resolver_archivo_historico(directorio_salidas, agente_id, archivo_historico)
     ruta_actual = ruta_informe_agente(directorio_salidas, agente_id)
     if not ruta_actual.is_file():
-        raise FileNotFoundError(f"No existe el ultimo informe del agente {agente_id:02d}: {ruta_actual}")
+        raise FileNotFoundError(
+            f"No existe el ultimo informe del agente {agente_id:02d}: {ruta_actual}"
+        )
     if not ruta_historica.is_file():
         raise FileNotFoundError(f"No existe el informe historico solicitado: {ruta_historica}")
 
@@ -453,7 +1007,9 @@ def ejecutar_comando_local(argumentos: list[str]) -> tuple[int, str]:
     return resultado.returncode, salida
 
 
-def ejecutar_agente_local(agente_id: int, directorio_trabajo: Path, directorio_salidas: Path) -> dict:
+def ejecutar_agente_local(
+    agente_id: int, directorio_trabajo: Path, directorio_salidas: Path
+) -> dict:
     comando = [
         sys.executable,
         str(obtener_raiz_repositorio() / "scripts" / "ejecutar_agente.py"),
@@ -472,7 +1028,9 @@ def ejecutar_agente_local(agente_id: int, directorio_trabajo: Path, directorio_s
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Agente ejecutado correctamente." if codigo == 0 else "Error al ejecutar el agente.",
+        "mensaje": "Agente ejecutado correctamente."
+        if codigo == 0
+        else "Error al ejecutar el agente.",
         "salida_consola": salida,
         "ruta_informe": str(ruta_informe),
     }
@@ -495,7 +1053,9 @@ def ejecutar_todos_local(directorio_trabajo: Path, directorio_salidas: Path) -> 
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Ejecucion de todos los agentes completada." if codigo == 0 else "Error al ejecutar todos los agentes.",
+        "mensaje": "Ejecucion de todos los agentes completada."
+        if codigo == 0
+        else "Error al ejecutar todos los agentes.",
         "salida_consola": salida,
     }
 
@@ -536,7 +1096,9 @@ def generar_informe_consolidado_local(directorio_salidas: Path) -> dict:
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Informe consolidado local generado." if codigo == 0 else "Error al generar el informe consolidado local.",
+        "mensaje": "Informe consolidado local generado."
+        if codigo == 0
+        else "Error al generar el informe consolidado local.",
         "salida_consola": salida,
         "ruta_markdown": str(ruta_md),
         "ruta_html": str(ruta_html),
@@ -560,7 +1122,9 @@ def exportar_evidencias_demo_local(directorio_salidas: Path) -> dict:
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Paquete local de evidencias exportado." if codigo == 0 else "Error al exportar paquete local de evidencias.",
+        "mensaje": "Paquete local de evidencias exportado."
+        if codigo == 0
+        else "Error al exportar paquete local de evidencias.",
         "salida_consola": salida,
         "ruta_directorio_evidencias": str(ruta_directorio),
         "ruta_indice_html": str(ruta_indice_html),
@@ -582,7 +1146,9 @@ def ejecutar_demo_local(directorio_trabajo: Path, directorio_salidas: Path) -> d
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Demo local reproducible completada." if codigo == 0 else "Error al ejecutar la demo local reproducible.",
+        "mensaje": "Demo local reproducible completada."
+        if codigo == 0
+        else "Error al ejecutar la demo local reproducible.",
         "salida_consola": salida,
         "ruta_panel": str(directorio_salidas / "panel_local.html"),
         "ruta_informe_consolidado": str(directorio_salidas / "informe_consolidado.md"),
@@ -605,7 +1171,9 @@ def generar_guion_demo_local(directorio_salidas: Path) -> dict:
     return {
         "ok": codigo == 0,
         "codigo_salida": codigo,
-        "mensaje": "Guion local de demo generado." if codigo == 0 else "Error al generar guion local de demo.",
+        "mensaje": "Guion local de demo generado."
+        if codigo == 0
+        else "Error al generar guion local de demo.",
         "salida_consola": salida,
         "ruta_markdown": str(ruta_md),
         "ruta_html": str(ruta_html),
@@ -1280,17 +1848,28 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 except FileNotFoundError as error:
                     self._enviar_json(404, {"error": str(error)})
                 except json.JSONDecodeError as error:
-                    self._enviar_json(500, {"error": f"JSON invalido en archivo de trabajo: {error}"})
+                    self._enviar_json(
+                        500, {"error": f"JSON invalido en archivo de trabajo: {error}"}
+                    )
                 return
             if url.path == "/api/informe":
                 try:
                     agente_id = validar_agente_id(parse_qs(url.query).get("id", [None])[0])
                     ruta = ruta_informe_agente(directorio_salidas, agente_id)
                     if not ruta.is_file():
-                        self._enviar_json(404, {"ok": False, "mensaje": "Informe no encontrado.", "ruta_informe": str(ruta)})
+                        self._enviar_json(
+                            404,
+                            {
+                                "ok": False,
+                                "mensaje": "Informe no encontrado.",
+                                "ruta_informe": str(ruta),
+                            },
+                        )
                         return
                     contenido = ruta.read_text(encoding="utf-8", errors="replace")
-                    self._enviar_json(200, {"ok": True, "contenido": contenido, "ruta_informe": str(ruta)})
+                    self._enviar_json(
+                        200, {"ok": True, "contenido": contenido, "ruta_informe": str(ruta)}
+                    )
                 except ValueError as error:
                     self._enviar_json(400, {"ok": False, "error": str(error)})
                 return
@@ -1317,10 +1896,26 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     archivo = query.get("archivo", [""])[0]
                     ruta = resolver_archivo_historico(directorio_salidas, agente_id, archivo)
                     if not ruta.is_file():
-                        self._enviar_json(404, {"ok": False, "mensaje": "Informe hist\u00f3rico no encontrado.", "ruta_informe": str(ruta)})
+                        self._enviar_json(
+                            404,
+                            {
+                                "ok": False,
+                                "mensaje": "Informe hist\u00f3rico no encontrado.",
+                                "ruta_informe": str(ruta),
+                            },
+                        )
                         return
                     contenido = ruta.read_text(encoding="utf-8", errors="replace")
-                    self._enviar_json(200, {"ok": True, "agente": f"agente-{agente_id:02d}", "archivo": ruta.name, "contenido": contenido, "ruta_informe": str(ruta)})
+                    self._enviar_json(
+                        200,
+                        {
+                            "ok": True,
+                            "agente": f"agente-{agente_id:02d}",
+                            "archivo": ruta.name,
+                            "contenido": contenido,
+                            "ruta_informe": str(ruta),
+                        },
+                    )
                 except ValueError as error:
                     self._enviar_json(400, {"ok": False, "error": str(error)})
                 return
@@ -1329,7 +1924,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     query = parse_qs(url.query)
                     agente_id = validar_agente_id(query.get("id", [None])[0])
                     archivo = query.get("archivo", [""])[0]
-                    resultado = construir_comparacion_informes(directorio_salidas, agente_id, archivo)
+                    resultado = construir_comparacion_informes(
+                        directorio_salidas, agente_id, archivo
+                    )
                     self._enviar_json(200, resultado)
                 except ValueError as error:
                     self._enviar_json(400, {"ok": False, "error": str(error)})
@@ -1338,7 +1935,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 return
             if url.path == "/api/panel":
                 ruta_panel = directorio_salidas / "panel_local.html"
-                self._enviar_json(200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()})
+                self._enviar_json(
+                    200, {"ok": True, "ruta_panel": str(ruta_panel), "existe": ruta_panel.is_file()}
+                )
                 return
             if url.path == "/api/informe-consolidado":
                 ruta_md = directorio_salidas / "informe_consolidado.md"
@@ -1384,7 +1983,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         "existe_markdown": ruta_md.is_file(),
                         "existe_html": ruta_html.is_file(),
                         "existe_zip": ruta_zip.is_file(),
-                        "mensaje": "Índice de evidencias disponible." if ruta_md.is_file() else "Índice de evidencias no encontrado.",
+                        "mensaje": "Índice de evidencias disponible."
+                        if ruta_md.is_file()
+                        else "Índice de evidencias no encontrado.",
                     },
                 )
                 return
@@ -1403,7 +2004,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                         "ruta_html": str(ruta_html),
                         "existe_markdown": ruta_md.is_file(),
                         "existe_html": ruta_html.is_file(),
-                        "mensaje": "Guion de demo disponible." if ruta_md.is_file() else "Guion de demo no disponible todavia.",
+                        "mensaje": "Guion de demo disponible."
+                        if ruta_md.is_file()
+                        else "Guion de demo no disponible todavia.",
                     },
                 )
                 return
@@ -1412,19 +2015,40 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                 self._enviar_json(200, {"ok": True, "agentes": agentes})
                 return
             if url.path.startswith("/api/formulario/"):
-                agente_id = obtener_id_formulario_desde_ruta(url.path)
-                if agente_id is None:
-                    self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                agente_id_raw = obtener_id_formulario_desde_ruta(url.path)
+                if agente_id_raw is None:
+                    self._enviar_json(
+                        404, {"ok": False, "error": "Formulario no disponible para este agente."}
+                    )
                     return
+                agente_id = agente_id_raw
                 if not agente_con_edicion_guiada(agente_id):
-                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente."})
+                    self._enviar_json(
+                        404,
+                        {
+                            "ok": False,
+                            "agente": f"agente-{agente_id:02d}",
+                            "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente.",
+                        },
+                    )
                     return
                 try:
-                    self._enviar_json(200, construir_formulario_por_agente(directorio_trabajo, agente_id))
+                    self._enviar_json(
+                        200, construir_formulario_por_agente(directorio_trabajo, agente_id)
+                    )
                 except FileNotFoundError as error:
-                    self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": str(error)})
+                    self._enviar_json(
+                        404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": str(error)}
+                    )
                 except Exception as error:
-                    self._enviar_json(500, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": f"Error al cargar el formulario: {error}"})
+                    self._enviar_json(
+                        500,
+                        {
+                            "ok": False,
+                            "agente": f"agente-{agente_id:02d}",
+                            "error": f"Error al cargar el formulario: {error}",
+                        },
+                    )
                 return
             self._enviar_json(404, {"error": "Ruta no encontrada."})
 
@@ -1436,22 +2060,40 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     payload = self._leer_json_post()
                     if "datos" not in payload:
                         raise ValueError("Falta la clave 'datos' en el cuerpo de la peticion.")
-                    guardar_json_agente(directorio_trabajo, agente_id, json.dumps(payload["datos"], ensure_ascii=False))
+                    guardar_json_agente(
+                        directorio_trabajo,
+                        agente_id,
+                        json.dumps(payload["datos"], ensure_ascii=False),
+                    )
                     datos = leer_json_agente(directorio_trabajo, agente_id)
-                    self._enviar_json(200, {"mensaje": "Guardado correcto en espacio de trabajo.", "id": agente_id, "datos": datos})
+                    self._enviar_json(
+                        200,
+                        {
+                            "mensaje": "Guardado correcto en espacio de trabajo.",
+                            "id": agente_id,
+                            "datos": datos,
+                        },
+                    )
                     return
 
                 if url.path == "/api/ejecutar":
                     agente_id = validar_agente_id(parse_qs(url.query).get("id", [None])[0])
-                    self._enviar_json(200, ejecutar_agente_local(agente_id, directorio_trabajo, directorio_salidas))
+                    self._enviar_json(
+                        200,
+                        ejecutar_agente_local(agente_id, directorio_trabajo, directorio_salidas),
+                    )
                     return
 
                 if url.path == "/api/ejecutar-todos":
-                    self._enviar_json(200, ejecutar_todos_local(directorio_trabajo, directorio_salidas))
+                    self._enviar_json(
+                        200, ejecutar_todos_local(directorio_trabajo, directorio_salidas)
+                    )
                     return
 
                 if url.path == "/api/generar-panel":
-                    self._enviar_json(200, generar_panel_local(directorio_trabajo, directorio_salidas))
+                    self._enviar_json(
+                        200, generar_panel_local(directorio_trabajo, directorio_salidas)
+                    )
                     return
                 if url.path == "/api/generar-informe-consolidado":
                     self._enviar_json(200, generar_informe_consolidado_local(directorio_salidas))
@@ -1460,22 +2102,37 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
                     self._enviar_json(200, exportar_evidencias_demo_local(directorio_salidas))
                     return
                 if url.path == "/api/ejecutar-demo-local":
-                    self._enviar_json(200, ejecutar_demo_local(directorio_trabajo, directorio_salidas))
+                    self._enviar_json(
+                        200, ejecutar_demo_local(directorio_trabajo, directorio_salidas)
+                    )
                     return
                 if url.path == "/api/generar-guion-demo":
                     self._enviar_json(200, generar_guion_demo_local(directorio_salidas))
                     return
 
                 if url.path.startswith("/api/formulario/"):
-                    agente_id = obtener_id_formulario_desde_ruta(url.path)
-                    if agente_id is None:
-                        self._enviar_json(404, {"ok": False, "error": "Formulario no disponible para este agente."})
+                    agente_id_raw = obtener_id_formulario_desde_ruta(url.path)
+                    if agente_id_raw is None:
+                        self._enviar_json(
+                            404,
+                            {"ok": False, "error": "Formulario no disponible para este agente."},
+                        )
                         return
+                    agente_id = agente_id_raw
                     if not agente_con_edicion_guiada(agente_id):
-                        self._enviar_json(404, {"ok": False, "agente": f"agente-{agente_id:02d}", "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente."})
+                        self._enviar_json(
+                            404,
+                            {
+                                "ok": False,
+                                "agente": f"agente-{agente_id:02d}",
+                                "error": "Edici\u00f3n guiada todav\u00eda no disponible para este agente.",
+                            },
+                        )
                         return
                     payload = self._leer_json_post()
-                    self._enviar_json(200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload))
+                    self._enviar_json(
+                        200, guardar_formulario_por_agente(directorio_trabajo, agente_id, payload)
+                    )
                     return
 
                 self._enviar_json(404, {"error": "Ruta no encontrada."})
@@ -1494,7 +2151,9 @@ def crear_handler(directorio_trabajo: Path, directorio_salidas: Path):
     return EditorHandler
 
 
-def iniciar_servidor(directorio_trabajo: Path, directorio_salidas: Path, host: str, puerto: int, abrir: bool) -> int:
+def iniciar_servidor(
+    directorio_trabajo: Path, directorio_salidas: Path, host: str, puerto: int, abrir: bool
+) -> int:
     handler = crear_handler(directorio_trabajo, directorio_salidas)
     servidor = HTTPServer((host, puerto), handler)
 
@@ -1516,6 +2175,7 @@ def iniciar_servidor(directorio_trabajo: Path, directorio_salidas: Path, host: s
         return 0
     finally:
         servidor.server_close()
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1530,7 +2190,9 @@ def main(argv: list[str] | None = None) -> int:
             print("Primero ejecuta: python scripts/preparar_espacio_trabajo.py")
             return 1
         directorio_salidas.mkdir(parents=True, exist_ok=True)
-        return iniciar_servidor(directorio_trabajo, directorio_salidas, args.host, args.puerto, args.abrir)
+        return iniciar_servidor(
+            directorio_trabajo, directorio_salidas, args.host, args.puerto, args.abrir
+        )
     except OSError as error:
         print(f"Error al arrancar el servidor local: {error}")
         return 1
@@ -1541,7 +2203,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
-
-
-

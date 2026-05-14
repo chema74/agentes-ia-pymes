@@ -1,10 +1,10 @@
-﻿import json
+import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 SCRIPT_PREPARAR = RAIZ / "scripts" / "preparar_espacio_trabajo.py"

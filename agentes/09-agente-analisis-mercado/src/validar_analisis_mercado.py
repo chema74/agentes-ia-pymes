@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -53,15 +52,10 @@ def validar_estructura(datos):
 
     faltantes = [s for s in SECCIONES_OBLIGATORIAS if s not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("senales_mercado"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'senales_mercado' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'senales_mercado' debe ser una lista."
 
     for seccion in [
         "competidores_observados",
@@ -73,9 +67,7 @@ def validar_estructura(datos):
             return f"Error: estructura incompleta. La seccion '{seccion}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -114,16 +106,12 @@ def analizar(datos):
     riesgos = datos.get("riesgos_mercado", [])
     acciones = datos.get("acciones_exploracion", [])
 
-    senales_pendientes = [
-        s for s in senales if texto(s, "estado_senal") in ["pendiente", "nueva"]
-    ]
+    senales_pendientes = [s for s in senales if texto(s, "estado_senal") in ["pendiente", "nueva"]]
     senales_revision = [s for s in senales if texto(s, "estado_senal") == "en_revision"]
     senales_descartadas = [s for s in senales if texto(s, "estado_senal") == "descartada"]
     senales_bloqueadas = [s for s in senales if texto(s, "estado_senal") == "bloqueada"]
 
-    oportunidades_alta = [
-        o for o in oportunidades if texto(o, "prioridad_exploracion") == "alta"
-    ]
+    oportunidades_alta = [o for o in oportunidades if texto(o, "prioridad_exploracion") == "alta"]
     riesgos_criticos_altos = [
         r for r in riesgos if texto(r, "nivel_riesgo") in ["alta", "critica", "crítica"]
     ]
@@ -131,9 +119,7 @@ def analizar(datos):
         c for c in competidores if texto(c, "nivel_amenaza") in ["alta", "media"]
     ]
     sin_fuente = [s for s in senales if not texto(s, "fuente_observada")]
-    fiabilidad_baja = [
-        s for s in senales if texto(s, "nivel_relevancia") in ["baja"]
-    ]
+    fiabilidad_baja = [s for s in senales if texto(s, "nivel_relevancia") in ["baja"]]
     responsables_ausentes = [s for s in senales if not texto(s, "responsable_revision")]
     acciones_abiertas = [
         a for a in acciones if texto(a, "estado_accion") in ["pendiente", "en_revision"]
@@ -143,9 +129,7 @@ def analizar(datos):
         for a in acciones_abiertas
         if texto(a, "prioridad_accion") in ["alta", "urgente", "critica", "crítica"]
     ]
-    bloqueos_analisis = [
-        a for a in acciones if texto(a, "estado_accion") == "bloqueada"
-    ]
+    bloqueos_analisis = [a for a in acciones if texto(a, "estado_accion") == "bloqueada"]
 
     datos_criticos_ausentes = []
     for senal in senales:
@@ -161,29 +145,19 @@ def analizar(datos):
         "total_registros": len(senales),
         "senales_pendientes": deduplicar_por_id(senales_pendientes, "identificador_senal"),
         "senales_revision": deduplicar_por_id(senales_revision, "identificador_senal"),
-        "senales_descartadas": deduplicar_por_id(
-            senales_descartadas, "identificador_senal"
-        ),
+        "senales_descartadas": deduplicar_por_id(senales_descartadas, "identificador_senal"),
         "senales_bloqueadas": deduplicar_por_id(senales_bloqueadas, "identificador_senal"),
-        "oportunidades_alta": deduplicar_por_id(
-            oportunidades_alta, "identificador_oportunidad"
-        ),
-        "riesgos_criticos_altos": deduplicar_por_id(
-            riesgos_criticos_altos, "identificador_riesgo"
-        ),
+        "oportunidades_alta": deduplicar_por_id(oportunidades_alta, "identificador_oportunidad"),
+        "riesgos_criticos_altos": deduplicar_por_id(riesgos_criticos_altos, "identificador_riesgo"),
         "competidores_relevantes": deduplicar_por_id(
             competidores_relevantes, "identificador_competidor"
         ),
         "sin_fuente": deduplicar_por_id(sin_fuente, "identificador_senal"),
         "fiabilidad_baja": deduplicar_por_id(fiabilidad_baja, "identificador_senal"),
-        "responsables_ausentes": deduplicar_por_id(
-            responsables_ausentes, "identificador_senal"
-        ),
+        "responsables_ausentes": deduplicar_por_id(responsables_ausentes, "identificador_senal"),
         "acciones_abiertas": deduplicar_por_id(acciones_abiertas, "identificador_accion"),
         "acciones_urgentes": deduplicar_por_id(acciones_urgentes, "identificador_accion"),
-        "bloqueos_analisis": deduplicar_por_id(
-            bloqueos_analisis, "identificador_accion"
-        ),
+        "bloqueos_analisis": deduplicar_por_id(bloqueos_analisis, "identificador_accion"),
         "datos_criticos_ausentes": deduplicar_por_id(
             datos_criticos_ausentes, "identificador_senal"
         ),
@@ -245,9 +219,7 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     print("Resumen de senales de mercado:")
     imprimir_lista("Senales pendientes", analisis["senales_pendientes"], "identificador_senal")
     imprimir_lista("Senales en revision", analisis["senales_revision"], "identificador_senal")
-    imprimir_lista(
-        "Senales descartadas", analisis["senales_descartadas"], "identificador_senal"
-    )
+    imprimir_lista("Senales descartadas", analisis["senales_descartadas"], "identificador_senal")
     print("")
     print("Resumen de oportunidades:")
     imprimir_lista(
@@ -267,13 +239,13 @@ def imprimir_informe(ruta_json, datos, analisis, decision):
     imprimir_lista(
         "Riesgos criticos o altos", analisis["riesgos_criticos_altos"], "identificador_riesgo"
     )
-    imprimir_lista(
-        "Bloqueos de analisis", analisis["bloqueos_analisis"], "identificador_accion"
-    )
+    imprimir_lista("Bloqueos de analisis", analisis["bloqueos_analisis"], "identificador_accion")
     print("")
     print("Resumen de fuentes o fiabilidad:")
     imprimir_lista("Senales sin fuente", analisis["sin_fuente"], "identificador_senal")
-    imprimir_lista("Senales con fiabilidad baja", analisis["fiabilidad_baja"], "identificador_senal")
+    imprimir_lista(
+        "Senales con fiabilidad baja", analisis["fiabilidad_baja"], "identificador_senal"
+    )
     print("")
     print("Resumen de datos incompletos:")
     imprimir_lista(

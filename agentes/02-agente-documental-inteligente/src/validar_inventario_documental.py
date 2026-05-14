@@ -1,8 +1,7 @@
-from pathlib import Path
 import argparse
 import json
 import sys
-
+from pathlib import Path
 
 ESTADOS_DOCUMENTALES = [
     "recibido",
@@ -65,13 +64,10 @@ def validar_estructura(datos):
     if not isinstance(datos, dict):
         return "Error: estructura incompleta. El JSON principal debe ser un objeto."
 
-    secciones_faltantes = [
-        seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in datos
-    ]
+    secciones_faltantes = [seccion for seccion in SECCIONES_OBLIGATORIAS if seccion not in datos]
     if secciones_faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(secciones_faltantes)
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(
+            secciones_faltantes
         )
 
     listas_obligatorias = [
@@ -125,8 +121,7 @@ def es_obsoleto_critico(documento, prioridades_por_documento):
     criticidad = obtener_texto(documento, "criticidad")
     prioridad = prioridades_por_documento.get(identificador, "")
     return obtener_texto(documento, "estado_documental") == "obsoleto" and (
-        criticidad in ["alta", "critica", "crítica"]
-        or prioridad in ["alta", "critica", "crítica"]
+        criticidad in ["alta", "critica", "crítica"] or prioridad in ["alta", "critica", "crítica"]
     )
 
 
@@ -152,14 +147,10 @@ def analizar_inventario(datos):
     documentos = datos["documentos"]
     pendientes = datos["pendientes_documentales"]
     acciones = datos["acciones_documentales_siguientes"]
-    prioridades = obtener_prioridades_por_documento(
-        datos.get("clasificaciones_documentales", [])
-    )
+    prioridades = obtener_prioridades_por_documento(datos.get("clasificaciones_documentales", []))
 
     documentos_pendientes = filtrar_por_estado(documentos, "estado_documental", ["pendiente"])
-    documentos_incompletos = filtrar_por_estado(
-        documentos, "estado_documental", ["incompleto"]
-    )
+    documentos_incompletos = filtrar_por_estado(documentos, "estado_documental", ["incompleto"])
     documentos_obsoletos = filtrar_por_estado(documentos, "estado_documental", ["obsoleto"])
     documentos_duplicados = filtrar_por_estado(documentos, "estado_documental", ["duplicado"])
     pendientes_activos = filtrar_por_estado(
@@ -168,13 +159,9 @@ def analizar_inventario(datos):
     pendientes_bloqueados = filtrar_por_estado(
         pendientes, "estado_pendiente", ["bloqueado", "bloqueante"]
     )
-    acciones_abiertas = filtrar_por_estado(
-        acciones, "estado_accion", ["pendiente", "en_revision"]
-    )
+    acciones_abiertas = filtrar_por_estado(acciones, "estado_accion", ["pendiente", "en_revision"])
 
-    duplicados_sin_resolver = detectar_duplicados_sin_resolver(
-        documentos_duplicados, pendientes
-    )
+    duplicados_sin_resolver = detectar_duplicados_sin_resolver(documentos_duplicados, pendientes)
     obsoletos_criticos = [
         documento
         for documento in documentos_obsoletos

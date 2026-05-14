@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime
 import html
-from pathlib import Path
 import sys
+from datetime import datetime
+from pathlib import Path
 
 AGENTES = [
     (1, "Agente 01 - Onboarding Inteligente"),
@@ -150,14 +150,18 @@ def construir_html(informes: list[dict], fecha: str) -> str:
     tarjetas = []
     for info in informes:
         clase = "ok" if info["existe"] else "no"
-        detalle = html.escape(info["contenido"].strip() or "(informe vacio)") if info["existe"] else "informe no disponible"
+        detalle = (
+            html.escape(info["contenido"].strip() or "(informe vacio)")
+            if info["existe"]
+            else "informe no disponible"
+        )
         tarjetas.append(
             f"""
             <article class="tarjeta {clase}">
-              <h3>agente-{info['id']:02d} - {html.escape(info['nombre'])}</h3>
-              <p><strong>Estado:</strong> {html.escape(info['estado'])}</p>
-              <p><strong>Decision recomendada:</strong> {html.escape(info['decision'])}</p>
-              <p><strong>Ruta local:</strong> <code>{html.escape(str(info['ruta_informe']))}</code></p>
+              <h3>agente-{info["id"]:02d} - {html.escape(info["nombre"])}</h3>
+              <p><strong>Estado:</strong> {html.escape(info["estado"])}</p>
+              <p><strong>Decision recomendada:</strong> {html.escape(info["decision"])}</p>
+              <p><strong>Ruta local:</strong> <code>{html.escape(str(info["ruta_informe"]))}</code></p>
               <details>
                 <summary>Detalle del informe</summary>
                 <pre>{detalle}</pre>

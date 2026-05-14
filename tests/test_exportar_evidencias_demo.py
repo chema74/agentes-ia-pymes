@@ -1,10 +1,9 @@
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
-
+from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 SCRIPT = RAIZ / "scripts" / "exportar_evidencias_demo.py"
@@ -27,7 +26,9 @@ def ejecutar_comando(*argumentos: str) -> subprocess.CompletedProcess[str]:
 def crear_evidencias_minimas(base: Path) -> None:
     (base / "panel_local.html").write_text("<html><body>panel</body></html>\n", encoding="utf-8")
     (base / "informe_consolidado.md").write_text("# Informe consolidado local\n", encoding="utf-8")
-    (base / "informe_consolidado.html").write_text("<html><body>consolidado</body></html>\n", encoding="utf-8")
+    (base / "informe_consolidado.html").write_text(
+        "<html><body>consolidado</body></html>\n", encoding="utf-8"
+    )
     (base / "agente-01").mkdir(parents=True, exist_ok=True)
     (base / "agente-10").mkdir(parents=True, exist_ok=True)
     (base / "agente-01" / "informe.txt").write_text("Informe agente 01\n", encoding="utf-8")

@@ -1,9 +1,8 @@
-from pathlib import Path
 import argparse
 import json
 import sys
 from datetime import date
-
+from pathlib import Path
 
 SECCIONES_OBLIGATORIAS = [
     "metadatos_ejemplo",
@@ -23,9 +22,7 @@ RUTA_JSON_POR_DEFECTO = (
 
 
 def construir_parser():
-    parser = argparse.ArgumentParser(
-        description="Valida operaciones ficticias del Agente 05."
-    )
+    parser = argparse.ArgumentParser(description="Valida operaciones ficticias del Agente 05.")
     parser.add_argument(
         "ruta_json",
         nargs="?",
@@ -54,15 +51,10 @@ def validar_estructura(datos):
 
     faltantes = [s for s in SECCIONES_OBLIGATORIAS if s not in datos]
     if faltantes:
-        return (
-            "Error: estructura incompleta. Faltan secciones principales: "
-            + ", ".join(faltantes)
-        )
+        return "Error: estructura incompleta. Faltan secciones principales: " + ", ".join(faltantes)
 
     if not isinstance(datos.get("tareas_operativas"), list):
-        return (
-            "Error: estructura incompleta. La seccion 'tareas_operativas' debe ser una lista."
-        )
+        return "Error: estructura incompleta. La seccion 'tareas_operativas' debe ser una lista."
 
     for seccion in [
         "bloqueos_operativos",
@@ -74,9 +66,7 @@ def validar_estructura(datos):
             return f"Error: estructura incompleta. La seccion '{seccion}' debe ser una lista."
 
     if "resultado_validacion_manual" not in datos:
-        return (
-            "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
-        )
+        return "Error: estructura incompleta. Falta 'resultado_validacion_manual' en el JSON."
 
     return None
 
@@ -134,15 +124,18 @@ def analizar(datos):
     hoy = date.today()
     for tarea in tareas:
         fecha = parsear_fecha(tarea.get("fecha_prevista"))
-        if fecha and fecha < hoy and texto(tarea, "estado_tarea") not in [
-            "completada",
-            "descartada",
-        ]:
+        if (
+            fecha
+            and fecha < hoy
+            and texto(tarea, "estado_tarea")
+            not in [
+                "completada",
+                "descartada",
+            ]
+        ):
             vencidas.append(tarea)
 
-    dependencias_no_resueltas = [
-        t for t in tareas if str(t.get("bloqueo_asociado") or "").strip()
-    ]
+    dependencias_no_resueltas = [t for t in tareas if str(t.get("bloqueo_asociado") or "").strip()]
     riesgos_criticos = [
         b
         for b in bloqueos
