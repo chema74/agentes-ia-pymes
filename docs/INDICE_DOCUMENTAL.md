@@ -70,6 +70,10 @@ Cada carpeta dentro de `agentes/` contiene documentación V1, JSON ficticio, scr
 
 ## Referencias de uso
 
+- Para alta de agentes nuevos: `docs/GUIA_ANIADIR_AGENTE.md`.
+- Para plan de mejora continua: `docs/ROADMAP_V2_1_CALIDAD.md`.
+- Para decisiones de arquitectura: `docs/adr/ADR-001-calidad-validacion-unificada.md`.
+
 - Para entender el alcance completo: `README.md` y `CATALOGO.md`.
 - Para revisar la lectura empresarial V2: `docs/RESUMEN_EJECUTIVO_EMPRESAS_V2.md`.
 - Para revisar el plan de intervención V2: `docs/PLAN_V2_AGENTES_IA_PYMES.md`.

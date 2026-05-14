@@ -1,5 +1,25 @@
 # Registro de cambios
 
+## [2.1.0-dev] - 2026-05-14
+
+### Added
+- Pipeline local de calidad: `scripts/ci_local.py`.
+- Validacion de contrato tecnico de agentes: `scripts/validar_contrato_agentes.py`.
+- Configuracion `pre-commit` y extras de desarrollo en `pyproject.toml`.
+- Politica de seguridad: `SECURITY.md`.
+- Plantilla de PR con checklist tecnico.
+- ADR inicial de calidad: `docs/adr/ADR-001-calidad-validacion-unificada.md`.
+- Guia para incorporar agentes: `docs/GUIA_ANIADIR_AGENTE.md`.
+- Roadmap V2.1 de calidad: `docs/ROADMAP_V2_1_CALIDAD.md`.
+
+### Changed
+- CI dividida en fases: `quality`, `tests`, `security`.
+- `validar_repositorio.py` ahora incluye control UTF-8 y contrato de agentes.
+- `pytest.ini` incluye marcadores de tipologia de pruebas.
+
+### Fixed
+- Robustez de test de historico en editor local con puerto dinamico.
+
 ## v1-local-completa - Demo local completa
 
 Esta versión deja cerrada la V1 local completa como demo técnica reproducible, explicable, validada y documentada en entorno local temporal.
