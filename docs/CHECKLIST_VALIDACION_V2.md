@@ -245,7 +245,7 @@ La V2 debe cerrarse solo cuando el repositorio pueda defenderse como:
 
 ---
 
-## 🪪 Licencia y Autoría
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
