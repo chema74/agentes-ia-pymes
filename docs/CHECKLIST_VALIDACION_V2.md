@@ -1,4 +1,4 @@
-﻿# ✅ CHECKLIST DE VALIDACIÓN V2 — AGENTES IA PARA PYMES
+﻿# CHECKLIST DE VALIDACIÓN V2 — AGENTES IA PARA PYMES
 
 ## Control de cierre técnico y documental
 
