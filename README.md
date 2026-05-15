@@ -225,7 +225,7 @@ Queda fuera del alcance actual:
 - sustitución de revisión humana.
 
 ---
-## 🖼️ Material de portfolio
+## Material de portfolio
 
 Este repositorio incluye una ficha pública y una selección de capturas preparadas para presentar la V1 local completa como proyecto técnico de portfolio.
 
@@ -238,7 +238,7 @@ Este material tiene alcance demostrativo. El proyecto no incluye IA (*Artificial
 
 
 
-## 🪪 Licencia y Autoría
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
