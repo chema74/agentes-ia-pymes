@@ -112,7 +112,7 @@ Cada agente debe definir en qué puntos interviene una persona para revisar, val
 - ¿Hay revisión humana?
 - ¿Se evitan promesas no verificables?
 
-## 🪪 Licencia y Autoría
+## Licencia y Autoría
 
 Publicado bajo licencia Creative Commons CC BY-SA 4.0 International.  
 © 2025 – Txema Ríos. Todos los derechos compartidos.
