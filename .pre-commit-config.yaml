@@ -18,11 +18,11 @@
         pass_filenames: false
       - id: ruff-lint
         name: ruff lint
-        entry: ruff check .
+        entry: python -m ruff check .
         language: system
         pass_filenames: false
       - id: mypy-core
-        name: mypy scripts tests
-        entry: mypy scripts tests
+        name: mypy scripts tests agentes
+        entry: python scripts/verificar_tipos.py
         language: system
         pass_filenames: false

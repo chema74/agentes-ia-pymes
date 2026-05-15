@@ -32,7 +32,7 @@ def main() -> int:
     ]
 
     if not args.sin_mypy:
-        steps.append(("Mypy (scripts/tests)", ["mypy", "scripts", "tests"]))
+        steps.append(("Mypy (scripts/tests/agentes)", [sys.executable, "scripts/verificar_tipos.py"]))
 
     if args.sin_cobertura:
         steps.append(("Pytest", [sys.executable, "-m", "pytest", "-q"]))
@@ -47,6 +47,7 @@ def main() -> int:
                     "-q",
                     "--cov=scripts",
                     "--cov=tests",
+                    "--cov=agentes",
                     "--cov-report=term-missing",
                 ],
             )

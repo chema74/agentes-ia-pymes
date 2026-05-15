@@ -1,11 +1,25 @@
 """Detector de anomalías financieras con Isolation Forest."""
 
 import os
+from pathlib import Path
 
 import joblib
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
+
+TRUSTED_MODEL_DIR = Path(__file__).resolve().parents[1] / "models"
+
+
+def resolve_trusted_model_path(filepath: str | os.PathLike[str]) -> Path:
+    """Limita la carga de joblib a modelos locales controlados por el agente."""
+    path = Path(filepath).expanduser().resolve()
+    trusted_dir = TRUSTED_MODEL_DIR.resolve()
+    if path.suffix != ".pkl":
+        raise ValueError("Solo se permite cargar modelos con extension .pkl.")
+    if not path.is_relative_to(trusted_dir):
+        raise ValueError(f"Modelo no confiable fuera de {trusted_dir}: {path}")
+    return path
 
 
 class FraudDetector:
@@ -61,10 +75,11 @@ class FraudDetector:
 
     @classmethod
     def load(cls, filepath: str) -> "FraudDetector":
-        data = joblib.load(filepath)
+        model_path = resolve_trusted_model_path(filepath)
+        data = joblib.load(model_path)
         detector = cls(contamination=data["contamination"])
         detector.model = data["model"]
         detector.scaler = data["scaler"]
         detector.feature_columns = data["feature_columns"]
-        print(f" Modelo cargado desde: {filepath}")
+        print(f" Modelo cargado desde: {model_path}")
         return detector

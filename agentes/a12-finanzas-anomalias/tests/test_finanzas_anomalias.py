@@ -43,3 +43,11 @@ class TestFinanzasAnomalias(unittest.TestCase):
         self.assertIn("prediction", result.columns)
         self.assertIn("anomaly_score", result.columns)
         self.assertIn("confidence", result.columns)
+
+    def test_model_load_rejects_paths_outside_trusted_models_dir(self) -> None:
+        with self.assertRaises(ValueError):
+            fraud_detector.resolve_trusted_model_path(BASE.parent / "modelo_externo.pkl")
+
+    def test_model_load_rejects_non_pickle_extension(self) -> None:
+        with self.assertRaises(ValueError):
+            fraud_detector.resolve_trusted_model_path(BASE / "models" / "modelo.json")

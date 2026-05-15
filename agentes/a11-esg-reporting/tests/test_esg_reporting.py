@@ -20,6 +20,7 @@ def _load_module(module_name: str, file_name: str):
 try:
     data_generator = _load_module("a11_data_generator", "data_generator.py")
     esg_calculator = _load_module("a11_esg_calculator", "esg_calculator.py")
+    main_module = _load_module("a11_main", "main.py")
     DEPENDENCIES_OK = True
 except Exception:
     DEPENDENCIES_OK = False
@@ -42,3 +43,13 @@ class TestESGReporting(unittest.TestCase):
         self.assertIn("energy_efficiency", result.columns)
         self.assertIn("social_score", result.columns)
         self.assertIn("esg_grade", result.columns)
+
+    def test_safe_filename_neutralizes_path_segments(self) -> None:
+        filename = main_module.safe_filename("../cliente/riesgo")
+        self.assertEqual(filename, "cliente_riesgo")
+        self.assertNotIn("..", filename)
+        self.assertNotIn("/", filename)
+
+    def test_safe_output_path_rejects_escape(self) -> None:
+        with self.assertRaises(ValueError):
+            main_module.safe_output_path(BASE, "../fuera.md")

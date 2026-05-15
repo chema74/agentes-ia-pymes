@@ -36,22 +36,23 @@ warn_unused_ignores = true
 no_implicit_optional = true
 check_untyped_defs = true
 exclude = '''(?x)(
-  ^agentes/.*/tests/
-  | ^agentes/.*/src/
-  | ^salidas/
+  ^salidas/
   | ^espacio_trabajo/
 )'''
 
+[[tool.mypy.overrides]]
+module = ["joblib", "pandas", "pandas.*", "sklearn", "sklearn.*"]
+ignore_missing_imports = true
+
 [tool.coverage.run]
-source = ["scripts", "tests"]
+source = ["scripts", "tests", "agentes"]
 omit = [
   "*/__pycache__/*",
   "*/.venv/*",
-  "agentes/*",
 ]
 
 [tool.coverage.report]
-fail_under = 49
+fail_under = 50
 show_missing = true
 skip_covered = false
 

@@ -2,6 +2,7 @@
 
 import random
 from datetime import datetime, timedelta
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -30,7 +31,7 @@ def generate_synthetic_transactions(
 
     # Usuarios base con comportamiento normal
     n_users = 50
-    users = [
+    users: list[dict[str, Any]] = [
         {
             "user_id": i,
             "avg_amount": random.uniform(20, 200),

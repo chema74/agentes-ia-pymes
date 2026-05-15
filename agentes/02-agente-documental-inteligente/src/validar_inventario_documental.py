@@ -126,7 +126,7 @@ def es_obsoleto_critico(documento, prioridades_por_documento):
 
 
 def obtener_prioridades_por_documento(clasificaciones):
-    prioridades = {}
+    prioridades: dict[str, str] = {}
     if not isinstance(clasificaciones, list):
         return prioridades
     for clasificacion in clasificaciones:
@@ -187,7 +187,7 @@ def analizar_inventario(datos):
 
 
 def detectar_duplicados_sin_resolver(documentos_duplicados, pendientes):
-    pendientes_por_documento = {}
+    pendientes_por_documento: dict[str, list[dict]] = {}
     for pendiente in pendientes:
         identificador = obtener_identificador(pendiente, "identificador_documento")
         pendientes_por_documento.setdefault(identificador, []).append(pendiente)
